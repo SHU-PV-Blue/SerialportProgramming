@@ -19,7 +19,7 @@ namespace IVCurvometerTestTool
 
 		private void MainForm_Load(object sender, EventArgs e)
 		{
-			panel1.Controls.Add(new DataControlBase());
+			//panel1.Controls.Add(new UserControl1());
 		}
 	}
 }
