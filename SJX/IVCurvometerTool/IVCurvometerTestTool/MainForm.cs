@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using System.Threading;
 using System.IO.Ports;
 using Microsoft.VisualBasic.Devices;
 
@@ -17,10 +18,24 @@ namespace IVCurvometerTestTool
 	{
 
 		SerialPort _serialPort;
+		byte _testerID;
+		Thread _sendHeartbeatThread;
+		int _heartbeatCycle;
+
 
 		public MainForm()
 		{
 			InitializeComponent();
+		}
+
+		void SendHeartbeat()
+		{
+			while(true)
+			{
+				byte[] heartbeat = { 0xAA, _testerID, 0x00, 0xCC, 0x33, 0xC3, 0x3C };
+				_serialPort.Write(heartbeat, 0, heartbeat.Length);
+				Thread.Sleep(_heartbeatCycle);
+			}
 		}
 
 		private void MainForm_Load(object sender, EventArgs e)
@@ -32,6 +47,7 @@ namespace IVCurvometerTestTool
 				foreach (string str in com.Ports.SerialPortNames)
 					cbPortName.Items.Add(str);
 			}
+			_testerID = Convert.ToByte(txtTesterID.Text, 16);
 		}
 
 		private void btnSwitchPort_Click(object sender, EventArgs e)
@@ -95,6 +111,40 @@ namespace IVCurvometerTestTool
 				return;
 			}
 			btnSwitchPort.Text = "关闭串口";
+		}
+
+		private void btnSwitchHeartbeat_Click(object sender, EventArgs e)
+		{
+			if(_serialPort == null || !_serialPort.IsOpen)
+			{
+				MessageBox.Show("请先打开串口","失败");
+				return;
+			}
+
+			if (_sendHeartbeatThread != null && _sendHeartbeatThread.IsAlive)
+				_sendHeartbeatThread.Abort();
+			if (btnSwitchHeartbeat.Text == "终止")
+			{
+				btnSwitchHeartbeat.Text = "开始";
+				return;
+			}
+			_heartbeatCycle = Convert.ToInt32(txtHeartbeat.Text);
+			_sendHeartbeatThread = new Thread(new ThreadStart(SendHeartbeat));
+			_sendHeartbeatThread.Start();
+			btnSwitchHeartbeat.Text = "终止";
+		}
+
+		private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+		{
+			if (_sendHeartbeatThread != null && _sendHeartbeatThread.IsAlive)
+				_sendHeartbeatThread.Abort();
+			if (_serialPort != null && _serialPort.IsOpen)
+				_serialPort.Close();
+		}
+
+		private void btnTesterID_Click(object sender, EventArgs e)
+		{
+			_testerID = Convert.ToByte(txtTesterID.Text, 16);
 		}
 	}
 }

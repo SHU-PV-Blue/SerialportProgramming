@@ -419,6 +419,7 @@
 			this.btnTesterID.TabIndex = 14;
 			this.btnTesterID.Text = "确认";
 			this.btnTesterID.UseVisualStyleBackColor = true;
+			this.btnTesterID.Click += new System.EventHandler(this.btnTesterID_Click);
 			// 
 			// btnSwitchHeartbeat
 			// 
@@ -428,6 +429,7 @@
 			this.btnSwitchHeartbeat.TabIndex = 17;
 			this.btnSwitchHeartbeat.Text = "开始";
 			this.btnSwitchHeartbeat.UseVisualStyleBackColor = true;
+			this.btnSwitchHeartbeat.Click += new System.EventHandler(this.btnSwitchHeartbeat_Click);
 			// 
 			// txtHeartbeat
 			// 
@@ -509,6 +511,7 @@
 			this.Name = "MainForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "IV曲线仪通讯测试";
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
 			this.Load += new System.EventHandler(this.MainForm_Load);
 			this.gbPortSet.ResumeLayout(false);
 			this.gbPortSet.PerformLayout();
