@@ -102,17 +102,20 @@
 			this.btnSwitchPort.TabIndex = 10;
 			this.btnSwitchPort.Text = "打开串口";
 			this.btnSwitchPort.UseVisualStyleBackColor = true;
+			this.btnSwitchPort.Click += new System.EventHandler(this.btnSwitchPort_Click);
 			// 
 			// cbStopBits
 			// 
 			this.cbStopBits.FormattingEnabled = true;
 			this.cbStopBits.Items.AddRange(new object[] {
-            "COM1",
-            "无校检"});
+            "1",
+            "1.5",
+            "2"});
 			this.cbStopBits.Location = new System.Drawing.Point(53, 132);
 			this.cbStopBits.Name = "cbStopBits";
 			this.cbStopBits.Size = new System.Drawing.Size(66, 20);
 			this.cbStopBits.TabIndex = 9;
+			this.cbStopBits.Text = "1";
 			// 
 			// lblStopBits
 			// 
@@ -127,12 +130,15 @@
 			// 
 			this.cbDataBits.FormattingEnabled = true;
 			this.cbDataBits.Items.AddRange(new object[] {
-            "COM1",
-            "无校检"});
+            "5",
+            "6",
+            "7",
+            "8"});
 			this.cbDataBits.Location = new System.Drawing.Point(53, 106);
 			this.cbDataBits.Name = "cbDataBits";
 			this.cbDataBits.Size = new System.Drawing.Size(66, 20);
 			this.cbDataBits.TabIndex = 7;
+			this.cbDataBits.Text = "8";
 			// 
 			// lblDataBits
 			// 
@@ -147,12 +153,16 @@
 			// 
 			this.cbParity.FormattingEnabled = true;
 			this.cbParity.Items.AddRange(new object[] {
-            "COM1",
-            "无校检"});
+            "None",
+            "Odd",
+            "Even",
+            "Mark",
+            "Space"});
 			this.cbParity.Location = new System.Drawing.Point(53, 80);
 			this.cbParity.Name = "cbParity";
 			this.cbParity.Size = new System.Drawing.Size(66, 20);
 			this.cbParity.TabIndex = 5;
+			this.cbParity.Text = "None";
 			// 
 			// lblParity
 			// 
@@ -167,12 +177,23 @@
 			// 
 			this.cbBaudRate.FormattingEnabled = true;
 			this.cbBaudRate.Items.AddRange(new object[] {
-            "COM1",
-            "无校检"});
+            "300",
+            "600",
+            "1200",
+            "2400",
+            "4800",
+            "9600",
+            "19200",
+            "38400",
+            "43000",
+            "56000",
+            "57600",
+            "115200"});
 			this.cbBaudRate.Location = new System.Drawing.Point(53, 54);
 			this.cbBaudRate.Name = "cbBaudRate";
 			this.cbBaudRate.Size = new System.Drawing.Size(66, 20);
 			this.cbBaudRate.TabIndex = 3;
+			this.cbBaudRate.Text = "9600";
 			// 
 			// lblBaudRate
 			// 
@@ -187,8 +208,7 @@
 			// 
 			this.cbPortName.FormattingEnabled = true;
 			this.cbPortName.Items.AddRange(new object[] {
-            "COM1",
-            "无校检"});
+            "无可用"});
 			this.cbPortName.Location = new System.Drawing.Point(53, 28);
 			this.cbPortName.Name = "cbPortName";
 			this.cbPortName.Size = new System.Drawing.Size(66, 20);
@@ -426,7 +446,7 @@
 			this.btnSwitchHeartbeat.Name = "btnSwitchHeartbeat";
 			this.btnSwitchHeartbeat.Size = new System.Drawing.Size(75, 23);
 			this.btnSwitchHeartbeat.TabIndex = 17;
-			this.btnSwitchHeartbeat.Text = "确认";
+			this.btnSwitchHeartbeat.Text = "开始";
 			this.btnSwitchHeartbeat.UseVisualStyleBackColor = true;
 			// 
 			// txtHeartbeat
@@ -459,6 +479,7 @@
 			this.Controls.Add(this.gbReceiveData);
 			this.Controls.Add(this.gbPortSet);
 			this.Name = "MainForm";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "IV曲线仪通讯测试";
 			this.Load += new System.EventHandler(this.MainForm_Load);
 			this.gbPortSet.ResumeLayout(false);
