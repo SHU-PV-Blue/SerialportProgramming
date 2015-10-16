@@ -63,7 +63,16 @@ namespace IVCurvometerTestTool
 			while(true)
 			{
 				byte[] readbyte = new byte[1];
-				_serialPort.Read(readbyte,0,1);
+				try
+				{
+					_serialPort.Read(readbyte, 0, 1);
+					//虽然极力避免，但还是有一定的概率关闭串口时触发“System.ObjectDisposedException”类型的未经处理的异常在 mscorlib.dll 中发生   其他信息: 已关闭 S
+				}
+				catch
+				{
+					Thread.Sleep(200);
+					continue;
+				}
 				receiveData.Add(readbyte[0]);
 				if(receiveData.Count > 1 + 4
 					&& receiveData[receiveData.Count - 4] == 0xCC
@@ -83,6 +92,8 @@ namespace IVCurvometerTestTool
 					}
 					lbReceiveData.Items.Add(showData);
 					lbReceiveData.SelectedIndex = lbReceiveData.Items.Count - 1;
+					lbReceiveExplanation.Items.Add(Explainer.Explain(receiveData.ToArray()));
+					lbReceiveExplanation.SelectedIndex = lbReceiveExplanation.Items.Count - 1;
 					receiveData.Clear();
 				}
 			}
@@ -104,10 +115,12 @@ namespace IVCurvometerTestTool
 		{
 			if(btnSwitchPort.Text == "关闭串口")
 			{
-				if (_serialPort.IsOpen)
-					_serialPort.Close();
 				if (_listenPortThread != null && _listenPortThread.IsAlive)
 					_listenPortThread.Abort();
+				if (_sendHeartbeatThread != null && _sendHeartbeatThread.IsAlive)
+					_sendHeartbeatThread.Abort();
+				if (_serialPort.IsOpen)
+					_serialPort.Close();
 				btnSwitchPort.Text = "打开串口";
 				return;
 			}
@@ -153,6 +166,7 @@ namespace IVCurvometerTestTool
 					_serialPort.StopBits = StopBits.OnePointFive;
 					break;
 			}
+			_serialPort.ReadTimeout = 1;
 			try
 			{
 				_serialPort.Open();
