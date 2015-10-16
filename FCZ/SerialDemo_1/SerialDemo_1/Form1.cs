@@ -29,13 +29,7 @@ namespace SerialDemo_1
 
 		private void Form1_Load(object sender, EventArgs e)
 		{
-			string[] ports = SerialPort.GetPortNames();
-			foreach (string p in ports) { cmbPorts.Items.Add(p); }
-			cmbPorts.SelectedIndex = 0;
-			cmbBaudRate.SelectedIndex = 0;
-			cmbDataBit.SelectedIndex = 0;
-			cmbParity.SelectedIndex = 0;
-			cmbStopBit.SelectedIndex = 0;
+			
 		}
 
 		private void btnSetParam_Click(object sender, EventArgs e)
@@ -44,6 +38,12 @@ namespace SerialDemo_1
 			strBaudRate = cmbBaudRate.Text;
 			strDataBits = cmbDataBit.Text;
 			strStopBits = cmbStopBit.Text;
+
+			sp.PortName = strPortName;
+			sp.BaudRate = Convert.ToInt32(strBaudRate);
+			sp.DataBits = Convert.ToByte(strDataBits);
+			sp.StopBits = StopBits.One;
+
 			//sp.ReadTimeout = 500;
 		}
 
@@ -74,6 +74,25 @@ namespace SerialDemo_1
 		{
 			sp.Write(txtSend.Text);
 			string strRecivel = sp.ReadExisting();
+			txtRecive.AppendText(strRecivel + Environment.NewLine); 
+		}
+
+		private void btnInit_Click(object sender, EventArgs e)
+		{
+			try
+			{
+				string[] ports = SerialPort.GetPortNames();
+				foreach (string p in ports) { cmbPorts.Items.Add(p); }
+				cmbPorts.SelectedIndex = 0;
+				cmbBaudRate.SelectedIndex = 0;
+				cmbDataBit.SelectedIndex = 0;
+				cmbParity.SelectedIndex = 0;
+				cmbStopBit.SelectedIndex = 0;
+			}
+			catch (Exception ex)
+			{
+				txtRecive.AppendText("异常:" + ex.Message + Environment.NewLine);
+			}
 		}
 	}
 }

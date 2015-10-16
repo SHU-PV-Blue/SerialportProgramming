@@ -46,11 +46,13 @@
 			this.btnClose = new System.Windows.Forms.Button();
 			this.btnSend = new System.Windows.Forms.Button();
 			this.btnExit = new System.Windows.Forms.Button();
+			this.btnInit = new System.Windows.Forms.Button();
 			this.groupBox1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// groupBox1
 			// 
+			this.groupBox1.Controls.Add(this.btnInit);
 			this.groupBox1.Controls.Add(this.btnSetParam);
 			this.groupBox1.Controls.Add(this.cmbParity);
 			this.groupBox1.Controls.Add(this.label5);
@@ -72,9 +74,9 @@
 			// 
 			// btnSetParam
 			// 
-			this.btnSetParam.Location = new System.Drawing.Point(37, 221);
+			this.btnSetParam.Location = new System.Drawing.Point(12, 208);
 			this.btnSetParam.Name = "btnSetParam";
-			this.btnSetParam.Size = new System.Drawing.Size(140, 30);
+			this.btnSetParam.Size = new System.Drawing.Size(76, 30);
 			this.btnSetParam.TabIndex = 2;
 			this.btnSetParam.Text = "应用设置";
 			this.btnSetParam.UseVisualStyleBackColor = true;
@@ -191,20 +193,19 @@
 			this.txtRecive.Location = new System.Drawing.Point(232, 31);
 			this.txtRecive.Multiline = true;
 			this.txtRecive.Name = "txtRecive";
-			this.txtRecive.Size = new System.Drawing.Size(340, 142);
+			this.txtRecive.Size = new System.Drawing.Size(405, 142);
 			this.txtRecive.TabIndex = 1;
 			// 
 			// txtSend
 			// 
 			this.txtSend.Location = new System.Drawing.Point(232, 195);
-			this.txtSend.Multiline = true;
 			this.txtSend.Name = "txtSend";
-			this.txtSend.Size = new System.Drawing.Size(340, 50);
+			this.txtSend.Size = new System.Drawing.Size(340, 21);
 			this.txtSend.TabIndex = 1;
 			// 
 			// btnOpen
 			// 
-			this.btnOpen.Location = new System.Drawing.Point(578, 31);
+			this.btnOpen.Location = new System.Drawing.Point(12, 279);
 			this.btnOpen.Name = "btnOpen";
 			this.btnOpen.Size = new System.Drawing.Size(59, 38);
 			this.btnOpen.TabIndex = 3;
@@ -214,7 +215,7 @@
 			// 
 			// btnClose
 			// 
-			this.btnClose.Location = new System.Drawing.Point(578, 91);
+			this.btnClose.Location = new System.Drawing.Point(80, 279);
 			this.btnClose.Name = "btnClose";
 			this.btnClose.Size = new System.Drawing.Size(59, 38);
 			this.btnClose.TabIndex = 4;
@@ -224,9 +225,9 @@
 			// 
 			// btnSend
 			// 
-			this.btnSend.Location = new System.Drawing.Point(578, 207);
+			this.btnSend.Location = new System.Drawing.Point(578, 195);
 			this.btnSend.Name = "btnSend";
-			this.btnSend.Size = new System.Drawing.Size(59, 38);
+			this.btnSend.Size = new System.Drawing.Size(59, 21);
 			this.btnSend.TabIndex = 5;
 			this.btnSend.Text = "发送";
 			this.btnSend.UseVisualStyleBackColor = true;
@@ -234,7 +235,7 @@
 			// 
 			// btnExit
 			// 
-			this.btnExit.Location = new System.Drawing.Point(578, 153);
+			this.btnExit.Location = new System.Drawing.Point(155, 279);
 			this.btnExit.Name = "btnExit";
 			this.btnExit.Size = new System.Drawing.Size(59, 38);
 			this.btnExit.TabIndex = 6;
@@ -242,11 +243,21 @@
 			this.btnExit.UseVisualStyleBackColor = true;
 			this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
 			// 
+			// btnInit
+			// 
+			this.btnInit.Location = new System.Drawing.Point(109, 208);
+			this.btnInit.Name = "btnInit";
+			this.btnInit.Size = new System.Drawing.Size(82, 30);
+			this.btnInit.TabIndex = 2;
+			this.btnInit.Text = "初始化参数";
+			this.btnInit.UseVisualStyleBackColor = true;
+			this.btnInit.Click += new System.EventHandler(this.btnInit_Click);
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(649, 269);
+			this.ClientSize = new System.Drawing.Size(649, 399);
 			this.Controls.Add(this.btnExit);
 			this.Controls.Add(this.btnSend);
 			this.Controls.Add(this.btnClose);
@@ -284,6 +295,7 @@
 		private System.Windows.Forms.Button btnClose;
 		private System.Windows.Forms.Button btnSend;
 		private System.Windows.Forms.Button btnExit;
+		private System.Windows.Forms.Button btnInit;
 	}
 }
 
