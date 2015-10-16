@@ -20,6 +20,7 @@ namespace IVCurvometerTestTool
 		SerialPort _serialPort;
 		byte _testerID;
 		Thread _sendHeartbeatThread;
+		Thread _listenPortThread;
 		int _heartbeatCycle;
 
 
@@ -56,6 +57,37 @@ namespace IVCurvometerTestTool
 			lbSendExplanation.SelectedIndex = lbSendData.Items.Count - 1;
 		}
 
+		void ListenPort()
+		{
+			List<byte> receiveData = new List<byte>();
+			while(true)
+			{
+				byte[] readbyte = new byte[1];
+				_serialPort.Read(readbyte,0,1);
+				receiveData.Add(readbyte[0]);
+				if(receiveData.Count > 1 + 4
+					&& receiveData[receiveData.Count - 4] == 0xCC
+					&& receiveData[receiveData.Count - 3] == 0x33
+ 					&& receiveData[receiveData.Count - 2] == 0xC3
+					&& receiveData[receiveData.Count - 1] == 0x3C
+					)
+				{
+					string showData = "";
+					foreach (var b in receiveData)
+					{
+						string str = Convert.ToString(b, 16);
+						str = str.ToUpper();
+						if (str.Length == 1)
+							str = "0" + str;
+						showData += str + " ";
+					}
+					lbReceiveData.Items.Add(showData);
+					lbReceiveData.SelectedIndex = lbReceiveData.Items.Count - 1;
+					receiveData.Clear();
+				}
+			}
+		}
+
 		private void MainForm_Load(object sender, EventArgs e)
 		{
 			Computer com = new Computer();
@@ -74,6 +106,8 @@ namespace IVCurvometerTestTool
 			{
 				if (_serialPort.IsOpen)
 					_serialPort.Close();
+				if (_listenPortThread != null && _listenPortThread.IsAlive)
+					_listenPortThread.Abort();
 				btnSwitchPort.Text = "打开串口";
 				return;
 			}
@@ -128,6 +162,8 @@ namespace IVCurvometerTestTool
 				MessageBox.Show(ex.Message,"打开串口失败");
 				return;
 			}
+			_listenPortThread = new Thread(new ThreadStart(ListenPort));
+			_listenPortThread.Start();
 			btnSwitchPort.Text = "关闭串口";
 		}
 
@@ -156,6 +192,8 @@ namespace IVCurvometerTestTool
 		{
 			if (_sendHeartbeatThread != null && _sendHeartbeatThread.IsAlive)
 				_sendHeartbeatThread.Abort();
+			if (_listenPortThread != null && _listenPortThread.IsAlive)
+				_listenPortThread.Abort();
 			if (_serialPort != null && _serialPort.IsOpen)
 				_serialPort.Close();
 		}
