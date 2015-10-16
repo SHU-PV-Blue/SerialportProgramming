@@ -67,11 +67,15 @@
 			this.txtTesterID = new System.Windows.Forms.TextBox();
 			this.btnTesterID = new System.Windows.Forms.Button();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.btnSystem = new System.Windows.Forms.Button();
+			this.label2 = new System.Windows.Forms.Label();
+			this.cbSystem = new System.Windows.Forms.ComboBox();
 			this.gbPortSet.SuspendLayout();
 			this.gbReceiveData.SuspendLayout();
 			this.gbControl.SuspendLayout();
 			this.tcControl.SuspendLayout();
 			this.tpHeartbeat.SuspendLayout();
+			this.tpSystem.SuspendLayout();
 			this.gbReceiveExplanation.SuspendLayout();
 			this.gbSendData.SuspendLayout();
 			this.gbSendExplanation.SuspendLayout();
@@ -293,7 +297,7 @@
 			// 
 			// btnSwitchHeartbeat
 			// 
-			this.btnSwitchHeartbeat.Location = new System.Drawing.Point(448, 83);
+			this.btnSwitchHeartbeat.Location = new System.Drawing.Point(372, 83);
 			this.btnSwitchHeartbeat.Name = "btnSwitchHeartbeat";
 			this.btnSwitchHeartbeat.Size = new System.Drawing.Size(75, 23);
 			this.btnSwitchHeartbeat.TabIndex = 17;
@@ -303,7 +307,7 @@
 			// 
 			// txtHeartbeat
 			// 
-			this.txtHeartbeat.Location = new System.Drawing.Point(310, 85);
+			this.txtHeartbeat.Location = new System.Drawing.Point(244, 85);
 			this.txtHeartbeat.Name = "txtHeartbeat";
 			this.txtHeartbeat.Size = new System.Drawing.Size(122, 21);
 			this.txtHeartbeat.TabIndex = 16;
@@ -312,7 +316,7 @@
 			// label1
 			// 
 			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(191, 88);
+			this.label1.Location = new System.Drawing.Point(125, 88);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(113, 12);
 			this.label1.TabIndex = 15;
@@ -320,6 +324,9 @@
 			// 
 			// tpSystem
 			// 
+			this.tpSystem.Controls.Add(this.cbSystem);
+			this.tpSystem.Controls.Add(this.btnSystem);
+			this.tpSystem.Controls.Add(this.label2);
 			this.tpSystem.Location = new System.Drawing.Point(4, 22);
 			this.tpSystem.Name = "tpSystem";
 			this.tpSystem.Padding = new System.Windows.Forms.Padding(3);
@@ -496,6 +503,46 @@
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "测试仪选择";
 			// 
+			// btnSystem
+			// 
+			this.btnSystem.Location = new System.Drawing.Point(311, 83);
+			this.btnSystem.Name = "btnSystem";
+			this.btnSystem.Size = new System.Drawing.Size(75, 23);
+			this.btnSystem.TabIndex = 20;
+			this.btnSystem.Text = "发送";
+			this.btnSystem.UseVisualStyleBackColor = true;
+			this.btnSystem.Click += new System.EventHandler(this.btnSystem_Click);
+			// 
+			// label2
+			// 
+			this.label2.AutoSize = true;
+			this.label2.Location = new System.Drawing.Point(125, 88);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(53, 12);
+			this.label2.TabIndex = 18;
+			this.label2.Text = "选择操作";
+			// 
+			// cbSystem
+			// 
+			this.cbSystem.FormattingEnabled = true;
+			this.cbSystem.Items.AddRange(new object[] {
+            "测量命令",
+            "辐照度测量",
+            "温度测量",
+            "电源电压测量",
+            "IV特性数据",
+            "IV-STC特性数据",
+            "存储命令",
+            "电压系数测量",
+            "电流系数测量",
+            "辐照度系数测量",
+            "温度系数测量",
+            "电源电压系数测量"});
+			this.cbSystem.Location = new System.Drawing.Point(184, 85);
+			this.cbSystem.Name = "cbSystem";
+			this.cbSystem.Size = new System.Drawing.Size(121, 20);
+			this.cbSystem.TabIndex = 21;
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -522,6 +569,8 @@
 			this.tcControl.ResumeLayout(false);
 			this.tpHeartbeat.ResumeLayout(false);
 			this.tpHeartbeat.PerformLayout();
+			this.tpSystem.ResumeLayout(false);
+			this.tpSystem.PerformLayout();
 			this.gbReceiveExplanation.ResumeLayout(false);
 			this.gbSendData.ResumeLayout(false);
 			this.gbSendExplanation.ResumeLayout(false);
@@ -572,5 +621,8 @@
 		private System.Windows.Forms.ListBox lbReceiveExplanation;
 		private System.Windows.Forms.ListBox lbSendData;
 		private System.Windows.Forms.ListBox lbSendExplanation;
+		private System.Windows.Forms.ComboBox cbSystem;
+		private System.Windows.Forms.Button btnSystem;
+		private System.Windows.Forms.Label label2;
 	}
 }

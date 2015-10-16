@@ -38,6 +38,24 @@ namespace IVCurvometerTestTool
 			}
 		}
 
+		void WritePort(byte[] data, string messege)
+		{
+			_serialPort.Write(data, 0, data.Length);
+			string showData = "";
+			foreach(var b in data)
+			{
+				string str = Convert.ToString(b, 16);
+				str = str.ToUpper();
+				if (str.Length == 1)
+					str = "0" + str;
+				showData += str + " ";
+			}
+			lbSendData.Items.Add(showData);
+			lbSendData.SelectedIndex = lbSendData.Items.Count - 1;
+			lbSendExplanation.Items.Add(messege);
+			lbSendExplanation.SelectedIndex = lbSendData.Items.Count - 1;
+		}
+
 		private void MainForm_Load(object sender, EventArgs e)
 		{
 			Computer com = new Computer();
@@ -145,6 +163,61 @@ namespace IVCurvometerTestTool
 		private void btnTesterID_Click(object sender, EventArgs e)
 		{
 			_testerID = Convert.ToByte(txtTesterID.Text, 16);
+		}
+
+		private void btnSystem_Click(object sender, EventArgs e)
+		{
+			if (_serialPort == null || !_serialPort.IsOpen)
+			{
+				MessageBox.Show("请先打开串口", "失败");
+				return;
+			}
+			byte commandCode;
+			switch(cbSystem.Text)
+			{
+				case "测量命令":
+					commandCode = 0x05;
+					break;
+				case "辐照度测量":
+					commandCode = 0x06;
+					break;
+				case "温度测量":
+					commandCode = 0x07;
+					break;
+				case "电源电压测量":
+					commandCode = 0x08;
+					break;
+				case "IV特性数据":
+					commandCode = 0x09;
+					break;
+				case "IV-STC特性数据":
+					commandCode = 0x0A;
+					break;
+				case "存储命令":
+					commandCode = 0x0B;
+					break;
+				case "电压系数测量":
+					commandCode = 0x3D;
+					break;
+				case "电流系数测量":
+					commandCode = 0x3E;
+					break;
+				case "辐照度系数测量":
+					commandCode = 0x3F;
+					break;
+				case "温度系数测量":
+					commandCode = 0x40;
+					break;
+				case "电源电压系数测量":
+					commandCode = 0x42;
+					break;
+				default:
+					MessageBox.Show("请选择操作!", "错误");
+					return;
+			}
+			
+			byte[] systemCommand = { 0xAA, _testerID, 0x01, commandCode, 0xCC, 0x33, 0xC3, 0x3C };
+			WritePort(systemCommand, "系统命令:" + cbSystem.Text);
 		}
 	}
 }
