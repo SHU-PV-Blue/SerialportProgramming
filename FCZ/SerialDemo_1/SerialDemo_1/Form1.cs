@@ -74,10 +74,11 @@ namespace SerialDemo_1
 			if (ckbAutoSend.Checked)
 			{
 				Timer AutoSendTimer = new Timer();
+
 			}
 			else
 			{
-
+				sp.Write(txtSend.Text);
 			}
 			
 		}
@@ -96,17 +97,22 @@ namespace SerialDemo_1
 			}
 			catch (Exception ex)
 			{
-				txtRecive.AppendText("异常:" + ex.Message + Environment.NewLine);
+				txtRecive.AppendText("异常:" + ex.Message + "\r\n");
 			}
 		}
 
 		private void btnRecive_Click(object sender, EventArgs e)
 		{
-			DateTime dt = DateTime.Now;
-			string strRecivel = sp.ReadExisting();
-			txtRecive.AppendText(dt.ToString() + strRecivel + Environment.NewLine);
+			if (sp.IsOpen)
+			{
+				DateTime dt = DateTime.Now;
+				string strRecivel = sp.ReadExisting();
+				txtRecive.AppendText(dt.ToString() + strRecivel);
+				txtRecive.AppendText("\n");
 
-			SaveData(dt, strRecivel);
+				SaveData(dt, strRecivel);
+			}
+			
 		}
 
 		private void SaveData(DateTime dt, string strRecive)
@@ -114,16 +120,18 @@ namespace SerialDemo_1
 			try
 			{
 				FileStream fs = new FileStream(@"E:\光伏\串口\Data\"  + "1.txt", FileMode.OpenOrCreate, FileAccess.Write);
-				StreamWriter sw = new StreamWriter(fs, System.Text.Encoding.GetEncoding("GB2312"));
-				sw.Flush();
-				sw.BaseStream.Seek(0, SeekOrigin.Begin);
-				sw.WriteLine(strRecive);
-				sw.Flush();
-				sw.Close();
+				
+				fs.Position = fs.Length;                  //将待写入内容追加到文件末尾  
+				 StreamWriter sw = new StreamWriter(fs, Encoding.UTF8);//(fs, System.Text.Encoding.GetEncoding("GB2312"));
+				 sw.Flush();
+				 sw.BaseStream.Seek(fs.Position, SeekOrigin.Begin);
+				 sw.WriteLine(dt.ToString() + strRecive);
+				 sw.Flush();
+				 sw.Close();
 			}
 			catch(Exception ex)
 			{
-				txtRecive.AppendText("异常: " + ex.Message + Environment.NewLine);
+				txtRecive.AppendText("异常: " + ex.Message + "\r\n");
 			}
 		}
 
