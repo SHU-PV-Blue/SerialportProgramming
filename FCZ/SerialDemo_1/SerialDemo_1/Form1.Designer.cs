@@ -72,7 +72,7 @@
 			this.groupBox1.Controls.Add(this.cmbPorts);
 			this.groupBox1.Controls.Add(this.label1);
 			this.groupBox1.ForeColor = System.Drawing.Color.Orange;
-			this.groupBox1.Location = new System.Drawing.Point(0, 0);
+			this.groupBox1.Location = new System.Drawing.Point(0, 11);
 			this.groupBox1.Name = "groupBox1";
 			this.groupBox1.Size = new System.Drawing.Size(226, 235);
 			this.groupBox1.TabIndex = 0;
@@ -222,7 +222,7 @@
 			// 
 			// btnOpen
 			// 
-			this.btnOpen.Location = new System.Drawing.Point(12, 279);
+			this.btnOpen.Location = new System.Drawing.Point(12, 290);
 			this.btnOpen.Name = "btnOpen";
 			this.btnOpen.Size = new System.Drawing.Size(59, 38);
 			this.btnOpen.TabIndex = 3;
@@ -232,7 +232,7 @@
 			// 
 			// btnClose
 			// 
-			this.btnClose.Location = new System.Drawing.Point(80, 279);
+			this.btnClose.Location = new System.Drawing.Point(80, 290);
 			this.btnClose.Name = "btnClose";
 			this.btnClose.Size = new System.Drawing.Size(59, 38);
 			this.btnClose.TabIndex = 4;
@@ -252,7 +252,7 @@
 			// 
 			// btnExit
 			// 
-			this.btnExit.Location = new System.Drawing.Point(155, 279);
+			this.btnExit.Location = new System.Drawing.Point(155, 290);
 			this.btnExit.Name = "btnExit";
 			this.btnExit.Size = new System.Drawing.Size(59, 38);
 			this.btnExit.TabIndex = 6;
@@ -262,7 +262,7 @@
 			// 
 			// btnRecive
 			// 
-			this.btnRecive.Location = new System.Drawing.Point(232, 279);
+			this.btnRecive.Location = new System.Drawing.Point(232, 290);
 			this.btnRecive.Name = "btnRecive";
 			this.btnRecive.Size = new System.Drawing.Size(75, 38);
 			this.btnRecive.TabIndex = 7;
@@ -279,7 +279,7 @@
 			this.groupBox2.Controls.Add(this.txtRecive);
 			this.groupBox2.Controls.Add(this.txtSend);
 			this.groupBox2.Controls.Add(this.btnSend);
-			this.groupBox2.Location = new System.Drawing.Point(232, 0);
+			this.groupBox2.Location = new System.Drawing.Point(232, 11);
 			this.groupBox2.Name = "groupBox2";
 			this.groupBox2.Size = new System.Drawing.Size(405, 235);
 			this.groupBox2.TabIndex = 8;
