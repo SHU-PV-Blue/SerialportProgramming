@@ -53,6 +53,9 @@ namespace SerialDemo_1
 			sp.DataReceived += ReciveData;
 			InitParam();
 			AutoSendTimer.Tick  += new EventHandler(AutoSend);
+
+
+
 		}
 
 		/// <summary>
@@ -301,6 +304,11 @@ namespace SerialDemo_1
 		private void btnPassWord_Click(object sender, EventArgs e)
 		{
 			Send(strPasswordInfo);
+		}
+
+		private void btnSetSystemConfig_Click(object sender, EventArgs e)
+		{
+
 		}
 
 

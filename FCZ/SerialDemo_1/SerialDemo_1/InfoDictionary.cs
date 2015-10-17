@@ -6,7 +6,42 @@ using System.Threading.Tasks;
 
 namespace SerialDemo_1
 {
-	public static class InfoDictionary
+	static class InfoDictionary
 	{
+		public static Dictionary<byte, int> dicYear;
+		public static Dictionary<byte, int> dicMonth;
+		public static Dictionary<byte, int> dicDay;
+		public static Dictionary<byte, int> dicHour;
+		public static Dictionary<byte, int> dicMinute;
+		public static Dictionary<byte, string> dicLang;
+
+		static InfoDictionary()
+		{
+			int i;
+			byte j;
+
+			for(i=2000, j = 0x00; i<2016; i++,j++)
+			{
+				dicYear.Add(j, i);
+			}
+			for (i = 1, j = 0x00; i <= 12; i++, j++)
+			{
+				dicMonth.Add(j, i);
+			}
+			for (i = 1, j = 0x00; i < 31; i++, j++)
+			{
+				dicDay.Add(j, i);
+			}
+			for (i = 0, j = 0x00; i < 23; i++, j++)
+			{
+				dicHour.Add(j, i);
+			}
+			for (i = 0, j = 0x00; i < 59; i++, j++)
+			{
+				dicMinute.Add(j, i);
+			}
+			dicLang.Add(0, "中文");
+			dicLang.Add(1, "英文");
+		}
 	}
 }

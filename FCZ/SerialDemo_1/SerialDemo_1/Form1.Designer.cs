@@ -77,10 +77,10 @@
 			this.cmbHour = new System.Windows.Forms.ComboBox();
 			this.cmbMinute = new System.Windows.Forms.ComboBox();
 			this.label17 = new System.Windows.Forms.Label();
-			this.cmbSaveTime = new System.Windows.Forms.ComboBox();
 			this.cmbLang = new System.Windows.Forms.ComboBox();
 			this.label18 = new System.Windows.Forms.Label();
 			this.btnSetSystemConfig = new System.Windows.Forms.Button();
+			this.txtSaveTime = new System.Windows.Forms.TextBox();
 			this.groupBox1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
 			this.groupBox3.SuspendLayout();
@@ -390,12 +390,12 @@
 			// tbpSysConfig
 			// 
 			this.tbpSysConfig.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+			this.tbpSysConfig.Controls.Add(this.txtSaveTime);
 			this.tbpSysConfig.Controls.Add(this.btnSetSystemConfig);
 			this.tbpSysConfig.Controls.Add(this.cmbDay);
 			this.tbpSysConfig.Controls.Add(this.cmbMinute);
 			this.tbpSysConfig.Controls.Add(this.cmbMonth);
 			this.tbpSysConfig.Controls.Add(this.cmbLang);
-			this.tbpSysConfig.Controls.Add(this.cmbSaveTime);
 			this.tbpSysConfig.Controls.Add(this.cmbHour);
 			this.tbpSysConfig.Controls.Add(this.cmbYear);
 			this.tbpSysConfig.Controls.Add(this.label11);
@@ -634,14 +634,6 @@
 			this.label17.TabIndex = 0;
 			this.label17.Text = "小时";
 			// 
-			// cmbSaveTime
-			// 
-			this.cmbSaveTime.FormattingEnabled = true;
-			this.cmbSaveTime.Location = new System.Drawing.Point(78, 92);
-			this.cmbSaveTime.Name = "cmbSaveTime";
-			this.cmbSaveTime.Size = new System.Drawing.Size(69, 20);
-			this.cmbSaveTime.TabIndex = 1;
-			// 
 			// cmbLang
 			// 
 			this.cmbLang.FormattingEnabled = true;
@@ -672,6 +664,14 @@
 			this.btnSetSystemConfig.TabIndex = 2;
 			this.btnSetSystemConfig.Text = "确定";
 			this.btnSetSystemConfig.UseVisualStyleBackColor = false;
+			this.btnSetSystemConfig.Click += new System.EventHandler(this.btnSetSystemConfig_Click);
+			// 
+			// txtSaveTime
+			// 
+			this.txtSaveTime.Location = new System.Drawing.Point(78, 89);
+			this.txtSaveTime.Name = "txtSaveTime";
+			this.txtSaveTime.Size = new System.Drawing.Size(69, 21);
+			this.txtSaveTime.TabIndex = 3;
 			// 
 			// Form1
 			// 
@@ -745,7 +745,6 @@
 		private System.Windows.Forms.Label label8;
 		private System.Windows.Forms.ComboBox cmbMinute;
 		private System.Windows.Forms.ComboBox cmbLang;
-		private System.Windows.Forms.ComboBox cmbSaveTime;
 		private System.Windows.Forms.ComboBox cmbHour;
 		private System.Windows.Forms.Label label18;
 		private System.Windows.Forms.Label label16;
@@ -755,6 +754,7 @@
 		private System.Windows.Forms.Label label13;
 		private System.Windows.Forms.Label label12;
 		private System.Windows.Forms.Button btnSetSystemConfig;
+		private System.Windows.Forms.TextBox txtSaveTime;
 	}
 }
 
