@@ -30,8 +30,7 @@ namespace SerialDemo_1
 		private void Form1_Load(object sender, EventArgs e)
 		{
 			string[] ports = SerialPort.GetPortNames();
-			foreach (string p in ports) 
-                { cmbPorts.Items.Add(p); }
+            cmbPorts.Items.AddRange(ports);
 			cmbPorts.SelectedIndex = 0;
 			cmbBaudRate.SelectedIndex = 0;
 			cmbDataBit.SelectedIndex = 0;
@@ -44,6 +43,7 @@ namespace SerialDemo_1
 			sp.PortName = cmbPorts.Text;
 			sp.BaudRate = Convert.ToInt32(cmbBaudRate.Text);
 			sp.DataBits = Convert.ToByte(cmbDataBit.Text);
+            sp.Parity = Parity.None;
             sp.StopBits = StopBits.One;
          
 			//sp.ReadTimeout = 500;
@@ -53,7 +53,7 @@ namespace SerialDemo_1
         {
 
             string strRecivel = sp.ReadExisting();
-            txtRecive.AppendText("ewrewrewr");
+            txtRecive.AppendText(strRecivel);
         }
 
 		private void btnOpen_Click(object sender, EventArgs e)
