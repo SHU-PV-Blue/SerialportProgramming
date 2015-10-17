@@ -30,7 +30,8 @@ namespace SerialDemo_1
 		private void Form1_Load(object sender, EventArgs e)
 		{
 			string[] ports = SerialPort.GetPortNames();
-			foreach (string p in ports) { cmbPorts.Items.Add(p); }
+			foreach (string p in ports) 
+                { cmbPorts.Items.Add(p); }
 			cmbPorts.SelectedIndex = 0;
 			cmbBaudRate.SelectedIndex = 0;
 			cmbDataBit.SelectedIndex = 0;
@@ -40,18 +41,28 @@ namespace SerialDemo_1
 
 		private void btnSetParam_Click(object sender, EventArgs e)
 		{
-			strPortName = cmbPorts.Text;
-			strBaudRate = cmbBaudRate.Text;
-			strDataBits = cmbDataBit.Text;
-			strStopBits = cmbStopBit.Text;
+			sp.PortName = cmbPorts.Text;
+			sp.BaudRate = Convert.ToInt32(cmbBaudRate.Text);
+			sp.DataBits = Convert.ToByte(cmbDataBit.Text);
+            sp.StopBits = StopBits.One;
+         
 			//sp.ReadTimeout = 500;
 		}
+
+        private void showData(object sender, SerialDataReceivedEventArgs e)
+        {
+
+            string strRecivel = sp.ReadExisting();
+            txtRecive.AppendText("ewrewrewr");
+        }
 
 		private void btnOpen_Click(object sender, EventArgs e)
 		{
 			try
-			{
+            {
+                sp.DataReceived += showData;
 				sp.Open();
+                txtRecive.AppendText("端口" + sp.PortName + "已打开。\n");
 			}
 			catch (Exception ex)
 			{
@@ -62,6 +73,7 @@ namespace SerialDemo_1
 		private void btnClose_Click(object sender, EventArgs e)
 		{
 			sp.Close();
+            txtRecive.AppendText("端口" + sp.PortName + "已关闭。\n");
 		}
 
 		private void btnExit_Click(object sender, EventArgs e)
@@ -73,7 +85,11 @@ namespace SerialDemo_1
 		private void btnSend_Click(object sender, EventArgs e)
 		{
 			sp.Write(txtSend.Text);
-			string strRecivel = sp.ReadExisting();
 		}
+
+        private void cmbPorts_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
 	}
 }
