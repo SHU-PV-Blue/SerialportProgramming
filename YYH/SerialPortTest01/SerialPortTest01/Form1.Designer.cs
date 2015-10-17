@@ -205,7 +205,7 @@
             // 
             this.计算器ToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("计算器ToolStripMenuItem.Image")));
             this.计算器ToolStripMenuItem.Name = "计算器ToolStripMenuItem";
-            this.计算器ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.计算器ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.计算器ToolStripMenuItem.Text = "计算器";
             this.计算器ToolStripMenuItem.Click += new System.EventHandler(this.计算器ToolStripMenuItem_Click);
             // 
@@ -464,6 +464,7 @@
             // rbReceiveHex
             // 
             this.rbReceiveHex.AutoSize = true;
+            this.rbReceiveHex.Checked = true;
             this.rbReceiveHex.Location = new System.Drawing.Point(88, 25);
             this.rbReceiveHex.Name = "rbReceiveHex";
             this.rbReceiveHex.Size = new System.Drawing.Size(41, 16);
@@ -475,12 +476,10 @@
             // rbReceiveAscii
             // 
             this.rbReceiveAscii.AutoSize = true;
-            this.rbReceiveAscii.Checked = true;
             this.rbReceiveAscii.Location = new System.Drawing.Point(8, 25);
             this.rbReceiveAscii.Name = "rbReceiveAscii";
             this.rbReceiveAscii.Size = new System.Drawing.Size(53, 16);
             this.rbReceiveAscii.TabIndex = 0;
-            this.rbReceiveAscii.TabStop = true;
             this.rbReceiveAscii.Text = "ASCII";
             this.rbReceiveAscii.UseVisualStyleBackColor = true;
             // 
@@ -558,6 +557,7 @@
             // rbSendHex
             // 
             this.rbSendHex.AutoSize = true;
+            this.rbSendHex.Checked = true;
             this.rbSendHex.Location = new System.Drawing.Point(88, 20);
             this.rbSendHex.Name = "rbSendHex";
             this.rbSendHex.Size = new System.Drawing.Size(41, 16);
@@ -569,12 +569,10 @@
             // rbSendAscii
             // 
             this.rbSendAscii.AutoSize = true;
-            this.rbSendAscii.Checked = true;
             this.rbSendAscii.Location = new System.Drawing.Point(8, 20);
             this.rbSendAscii.Name = "rbSendAscii";
             this.rbSendAscii.Size = new System.Drawing.Size(53, 16);
             this.rbSendAscii.TabIndex = 1;
-            this.rbSendAscii.TabStop = true;
             this.rbSendAscii.Text = "ASCII";
             this.rbSendAscii.UseVisualStyleBackColor = true;
             // 

@@ -248,18 +248,26 @@ namespace SerialPortTest01
                 string mess = txtSend.Text.Trim();
                 if (!string.IsNullOrEmpty(mess))
                 {
-                    try
+                    if (rbSendHex.Checked)      //判断是否十六进制发送
                     {
-                        string pattern = @"\s+";
-                        string[] messages = Regex.Split(mess,pattern);
-                        byte[] buf = Array.ConvertAll(messages, new Converter<string, byte>(StringToHex));
+                        try
+                        {
+                            string pattern = @"\s+";
+                            string[] messages = Regex.Split(mess, pattern);
+                            byte[] buf = Array.ConvertAll(messages, new Converter<string, byte>(StringToHex));
 
-                        sePort.Write(buf, 0, buf.Length);
+                            sePort.Write(buf, 0, buf.Length);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("发送数据格式错误,请检查格式!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        MessageBox.Show("发送数据格式错误,请检查格式!","提示",MessageBoxButtons.OK,MessageBoxIcon.Warning);
-                        return;
+                        byte[] buf = Encoding.ASCII.GetBytes(mess);
+                        sePort.Write(buf,0,buf.Length);
                     }
                 }
             }
