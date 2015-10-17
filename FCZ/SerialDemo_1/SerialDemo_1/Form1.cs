@@ -54,9 +54,16 @@ namespace SerialDemo_1
 			InitParam();
 			AutoSendTimer.Tick  += new EventHandler(AutoSend);
 
-
+			BindingSource bs = new BindingSource();
+			bs.DataSource = InfoDictionary.dicYear;
+			cmbYear.DataSource = bs;
+			cmbYear.DisplayMember = "Value";
+			cmbYear.ValueMember = "Key";
 
 		}
+
+		//private void AddSysyemConfig(Dictionary<byte , int > dic)
+
 
 		/// <summary>
 		/// 设置参数,将参数赋值到串口中

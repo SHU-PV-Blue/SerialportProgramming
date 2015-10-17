@@ -20,6 +20,13 @@ namespace SerialDemo_1
 			int i;
 			byte j;
 
+			dicYear =	new Dictionary<byte,int>();
+			dicMonth  =	new Dictionary<byte,int>();
+			dicDay =	new Dictionary<byte,int>();
+			dicHour =	new Dictionary<byte,int>();
+			dicMinute =	new Dictionary<byte,int>();
+			dicLang =	new Dictionary<byte, string>();
+
 			for(i=2000, j = 0x00; i<2016; i++,j++)
 			{
 				dicYear.Add(j, i);
