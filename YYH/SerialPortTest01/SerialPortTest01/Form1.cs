@@ -243,9 +243,16 @@ namespace SerialPortTest01
         {
             if (sePort != null)
             {
-                byte[] buf = Encoding.Default.GetBytes(txtSend.Text);
+                string mess = txtSend.Text.Trim();
+                string[] messages = mess.Split(' ');
+                byte[] buf = Array.ConvertAll(messages, new Converter<string, byte>(StringToHex));
+                
                 sePort.Write(buf, 0, buf.Length);
             }
+        }
+        public static byte StringToHex(string str)
+        {
+            return Convert.ToByte(str, 16);
         }
         /// <summary>
         /// 发送消息按钮事件
