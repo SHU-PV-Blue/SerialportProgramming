@@ -374,5 +374,89 @@ namespace SerialDemo_1
 			}
 			return str;
 		}
+
+//======================   设置密码   ==========================================
+
+		string pswStr = "";
+
+		private void btnPsw0_Click(object sender, EventArgs e)
+		{
+			if (txtPsw.Text.Length >= 4) { return; }
+			pswStr += "30";
+			txtPsw.AppendText("0");
+		}
+
+		private void btnPsw1_Click(object sender, EventArgs e)
+		{
+			if (txtPsw.Text.Length >= 4) { return; }
+			pswStr += "31";
+			txtPsw.AppendText("1");
+		}
+		private void btnPsw2_Click(object sender, EventArgs e)
+		{
+			if (txtPsw.Text.Length >= 4) { return; }
+			pswStr += "32";
+			txtPsw.AppendText("2");
+		}
+
+		private void btnPsw3_Click(object sender, EventArgs e)
+		{
+			if (txtPsw.Text.Length >= 4) { return; }
+			pswStr += "33";
+			txtPsw.AppendText("3");
+		}
+
+		private void btnPsw4_Click(object sender, EventArgs e)
+		{
+			if (txtPsw.Text.Length >= 4) { return; }
+			pswStr += "34";
+			txtPsw.AppendText("4");
+		}
+
+		private void btnPsw5_Click(object sender, EventArgs e)
+		{
+			if (txtPsw.Text.Length >= 4) { return; }
+			pswStr += "35";
+			txtPsw.AppendText("5");
+		}
+
+		private void btnPsw6_Click(object sender, EventArgs e)
+		{
+			if (txtPsw.Text.Length >= 4) { return; }
+			pswStr += "36";
+			txtPsw.AppendText("6");
+		}
+
+		private void btnPsw7_Click(object sender, EventArgs e)
+		{
+			if (txtPsw.Text.Length >= 4) { return; }
+			pswStr += "37";
+			txtPsw.AppendText("7");
+		}
+
+		private void btnPsw8_Click(object sender, EventArgs e)
+		{
+			if (txtPsw.Text.Length >= 4) { return; }
+			pswStr += "38";
+			txtPsw.AppendText("8");
+		}
+
+		private void btnPsw9_Click(object sender, EventArgs e)
+		{
+			if (txtPsw.Text.Length >= 4) { return; }
+			pswStr += "39";
+			txtPsw.AppendText("9");
+		}
+
+		private void btnPswBack_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void btnSetPsw_Click(object sender, EventArgs e)
+		{
+
+		}
+
 	}
 }
