@@ -72,12 +72,20 @@
 			this.btnTesterID = new System.Windows.Forms.Button();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.tmrSendHeartbeat = new System.Windows.Forms.Timer(this.components);
+			this.cbPageID = new System.Windows.Forms.ComboBox();
+			this.btnPageTips = new System.Windows.Forms.Button();
+			this.label3 = new System.Windows.Forms.Label();
+			this.cbPageType = new System.Windows.Forms.ComboBox();
+			this.label4 = new System.Windows.Forms.Label();
+			this.cbPageOperate = new System.Windows.Forms.ComboBox();
+			this.label5 = new System.Windows.Forms.Label();
 			this.gbPortSet.SuspendLayout();
 			this.gbReceiveData.SuspendLayout();
 			this.gbControl.SuspendLayout();
 			this.tcControl.SuspendLayout();
 			this.tpHeartbeat.SuspendLayout();
 			this.tpSystem.SuspendLayout();
+			this.tpPageTips.SuspendLayout();
 			this.gbReceiveExplanation.SuspendLayout();
 			this.gbSendData.SuspendLayout();
 			this.gbSendExplanation.SuspendLayout();
@@ -334,7 +342,7 @@
 			this.tpSystem.Padding = new System.Windows.Forms.Padding(3);
 			this.tpSystem.Size = new System.Drawing.Size(727, 179);
 			this.tpSystem.TabIndex = 1;
-			this.tpSystem.Text = "系统命令";
+			this.tpSystem.Text = "系统操作";
 			this.tpSystem.UseVisualStyleBackColor = true;
 			// 
 			// cbSystem
@@ -433,11 +441,18 @@
 			// 
 			// tpPageTips
 			// 
+			this.tpPageTips.Controls.Add(this.cbPageOperate);
+			this.tpPageTips.Controls.Add(this.label5);
+			this.tpPageTips.Controls.Add(this.cbPageType);
+			this.tpPageTips.Controls.Add(this.label4);
+			this.tpPageTips.Controls.Add(this.cbPageID);
+			this.tpPageTips.Controls.Add(this.btnPageTips);
+			this.tpPageTips.Controls.Add(this.label3);
 			this.tpPageTips.Location = new System.Drawing.Point(4, 22);
 			this.tpPageTips.Name = "tpPageTips";
 			this.tpPageTips.Size = new System.Drawing.Size(727, 179);
 			this.tpPageTips.TabIndex = 8;
-			this.tpPageTips.Text = "页面提示";
+			this.tpPageTips.Text = "页面类型";
 			this.tpPageTips.UseVisualStyleBackColor = true;
 			// 
 			// tpMainPage
@@ -549,6 +564,91 @@
 			// 
 			this.tmrSendHeartbeat.Tick += new System.EventHandler(this.tmrSendHeartbeat_Tick);
 			// 
+			// cbPageID
+			// 
+			this.cbPageID.FormattingEnabled = true;
+			this.cbPageID.Items.AddRange(new object[] {
+            "测量主页面",
+            "参数设置主页面",
+            "系统检测中...",
+            "测量中...",
+            "无输入电压",
+            "输入电压过高",
+            "存储完成",
+            "确认删除",
+            "存储空间不足",
+            "系统故障",
+            "系统严重故障",
+            "系统故障01",
+            "系统故障02",
+            "系统温度过高"});
+			this.cbPageID.Location = new System.Drawing.Point(111, 85);
+			this.cbPageID.Name = "cbPageID";
+			this.cbPageID.Size = new System.Drawing.Size(121, 20);
+			this.cbPageID.TabIndex = 24;
+			// 
+			// btnPageTips
+			// 
+			this.btnPageTips.Location = new System.Drawing.Point(588, 83);
+			this.btnPageTips.Name = "btnPageTips";
+			this.btnPageTips.Size = new System.Drawing.Size(75, 23);
+			this.btnPageTips.TabIndex = 23;
+			this.btnPageTips.Text = "发送";
+			this.btnPageTips.UseVisualStyleBackColor = true;
+			this.btnPageTips.Click += new System.EventHandler(this.btnPageTips_Click);
+			// 
+			// label3
+			// 
+			this.label3.AutoSize = true;
+			this.label3.Location = new System.Drawing.Point(52, 88);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(53, 12);
+			this.label3.TabIndex = 22;
+			this.label3.Text = "页面编号";
+			// 
+			// cbPageType
+			// 
+			this.cbPageType.FormattingEnabled = true;
+			this.cbPageType.Items.AddRange(new object[] {
+            "主页面",
+            "信息对话框",
+            "信息提示框",
+            "故障提示框"});
+			this.cbPageType.Location = new System.Drawing.Point(297, 85);
+			this.cbPageType.Name = "cbPageType";
+			this.cbPageType.Size = new System.Drawing.Size(121, 20);
+			this.cbPageType.TabIndex = 26;
+			// 
+			// label4
+			// 
+			this.label4.AutoSize = true;
+			this.label4.Location = new System.Drawing.Point(238, 88);
+			this.label4.Name = "label4";
+			this.label4.Size = new System.Drawing.Size(53, 12);
+			this.label4.TabIndex = 25;
+			this.label4.Text = "页面类型";
+			// 
+			// cbPageOperate
+			// 
+			this.cbPageOperate.FormattingEnabled = true;
+			this.cbPageOperate.Items.AddRange(new object[] {
+            "完成",
+            "确定",
+            "取消"});
+			this.cbPageOperate.Location = new System.Drawing.Point(461, 85);
+			this.cbPageOperate.Name = "cbPageOperate";
+			this.cbPageOperate.Size = new System.Drawing.Size(121, 20);
+			this.cbPageOperate.TabIndex = 28;
+			// 
+			// label5
+			// 
+			this.label5.AutoSize = true;
+			this.label5.Location = new System.Drawing.Point(426, 88);
+			this.label5.Name = "label5";
+			this.label5.Size = new System.Drawing.Size(29, 12);
+			this.label5.TabIndex = 27;
+			this.label5.Text = "操作";
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -577,6 +677,8 @@
 			this.tpHeartbeat.PerformLayout();
 			this.tpSystem.ResumeLayout(false);
 			this.tpSystem.PerformLayout();
+			this.tpPageTips.ResumeLayout(false);
+			this.tpPageTips.PerformLayout();
 			this.gbReceiveExplanation.ResumeLayout(false);
 			this.gbSendData.ResumeLayout(false);
 			this.gbSendExplanation.ResumeLayout(false);
@@ -631,5 +733,12 @@
 		private System.Windows.Forms.Button btnSystem;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Timer tmrSendHeartbeat;
+		private System.Windows.Forms.ComboBox cbPageOperate;
+		private System.Windows.Forms.Label label5;
+		private System.Windows.Forms.ComboBox cbPageType;
+		private System.Windows.Forms.Label label4;
+		private System.Windows.Forms.ComboBox cbPageID;
+		private System.Windows.Forms.Button btnPageTips;
+		private System.Windows.Forms.Label label3;
 	}
 }

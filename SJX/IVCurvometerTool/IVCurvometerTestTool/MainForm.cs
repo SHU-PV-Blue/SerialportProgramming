@@ -231,13 +231,18 @@ namespace IVCurvometerTestTool
 			}
 			
 			byte[] systemCommand = { 0xAA, _testerID, 0x01, commandCode, 0xCC, 0x33, 0xC3, 0x3C };
-			WritePort(systemCommand, "系统命令:" + cbSystem.Text);
+			WritePort(systemCommand, "系统操作:" + cbSystem.Text);
 		}
 
 		private void tmrSendHeartbeat_Tick(object sender, EventArgs e)
 		{
 			byte[] heartbeat = { 0xAA, _testerID, 0x00, 0xCC, 0x33, 0xC3, 0x3C };
 			_serialPort.Write(heartbeat, 0, heartbeat.Length);
+		}
+
+		private void btnPageTips_Click(object sender, EventArgs e)
+		{
+
 		}
 	}
 }
