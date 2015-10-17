@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO.Ports;
 using System.Timers;
+
 namespace Thirty_TwoSerialPort
 {
 	public partial class Form1 : Form
@@ -19,8 +20,9 @@ namespace Thirty_TwoSerialPort
 		}
 		SerialPort serialPort = new SerialPort();
 		public byte dbit = 8;
-		DateTime dt = DateTime.Now;
 		System.Timers.Timer tm = new System.Timers.Timer();
+		System.Timers.Timer TimeGetSencond = new System.Timers.Timer();
+		private StringBuilder builder = new StringBuilder();
 		private void groupBox1_Enter(object sender, EventArgs e)
 		{
 
@@ -56,10 +58,13 @@ namespace Thirty_TwoSerialPort
 						int bytes = serialPort.BytesToRead;
 						byte[] buffer = new byte[bytes];
 						serialPort.Read(buffer, 0, bytes);
-						string rec = null;
-						rec = Encoding.ASCII.GetString(buffer);
-						textBox6.AppendText("接收数据：" + rec);
-						textBox6.AppendText("\r\n");
+						builder.Clear();
+						foreach(byte b in buffer)
+						{
+							builder.Append(b.ToString("X2") + " ");
+						}
+						textBox6.AppendText("接收数据：" + builder.ToString());
+						textBox6.AppendText(Environment.NewLine);
 						toolStripStatusLabel1.Text = "数据接收完成。。。。";
 					}
 					else
@@ -92,8 +97,16 @@ namespace Thirty_TwoSerialPort
 					}
 					else
 					{
-						byte[] SendMessage = System.Text.Encoding.Default.GetBytes(textBox7.Text);
-						serialPort.Write(SendMessage, 0, SendMessage.Length);
+						string str = textBox7.Text;
+						str = str.Replace(" ", "");
+						byte[] Sendbyte = new byte[str.Length / 2];
+						for (int i = 0, j = 0; i < str.Length; i = i + 2, j++)
+						{
+							string mysubstring = str.Substring(i, 2);
+							Sendbyte[j] = Convert.ToByte(mysubstring, 16);
+						}
+
+						serialPort.Write(Sendbyte, 0, Sendbyte.Length);
 						textBox6.AppendText("发送数据: " + textBox7.Text);
 						textBox6.AppendText("\r\n");
 						toolStripStatusLabel1.Text = "发送数据成功";
@@ -104,9 +117,9 @@ namespace Thirty_TwoSerialPort
 					MessageBox.Show("请开启端口", "信息提示");
 				}
 			}
-			catch (Exception ee)
+			catch
 			{
-				MessageBox.Show(ee.Message, "信息提示");
+				MessageBox.Show("请确保输入的指令正确", "信息提示");
 			}
 		}
 
@@ -115,10 +128,15 @@ namespace Thirty_TwoSerialPort
 			try
 			{
 				string str = "0101000000203DD2";
-				byte[] SendMessage = System.Text.Encoding.Default.GetBytes(str);
-				serialPort.Write(SendMessage, 0, SendMessage.Length);
+				byte[] Sendbyte = new byte[str.Length / 2];
+				for (int i = 0, j = 0; i < str.Length; i = i + 2, j++)
+				{
+					string mysubstring = str.Substring(i, 2);
+					Sendbyte[j] = Convert.ToByte(mysubstring, 16);
+				}
+				serialPort.Write(Sendbyte, 0, Sendbyte.Length);
 				toolStripStatusLabel1.Text = "发送数据成功";
-				textBox6.AppendText("发送数据：0101000000203DD2C\r\n");
+				textBox6.AppendText("发送数据：01 01 00 00 00 20 3D D2\r\n");
 			}
 			catch (Exception ee)
 			{
@@ -131,11 +149,16 @@ namespace Thirty_TwoSerialPort
 			try
 			{
 				string str = "010400000020F1D2";
-				byte[] SendMessage = System.Text.Encoding.Default.GetBytes(str);
-				serialPort.Write(SendMessage, 0, SendMessage.Length);
+				byte[] Sendbyte = new byte [str.Length / 2];
+				for (int i = 0,j = 0; i < str.Length; i = i +2,j++)
+				{
+					string mysubstring = str.Substring(i,2);
+					Sendbyte[j] = Convert.ToByte(mysubstring,16);
+				}
 
+				serialPort.Write(Sendbyte, 0, Sendbyte.Length);
 				toolStripStatusLabel1.Text = "发送数据成功";
-				textBox6.AppendText("发送数据：010400000020F1D2\r\n");
+				textBox6.AppendText("发送数据：01 04 00 00 00 20 F1 D2\r\n");
 			}
 			catch (Exception ee)
 			{
@@ -199,28 +222,38 @@ namespace Thirty_TwoSerialPort
 		private void toolStripButton3_Click(object sender, EventArgs e)
 		{
 			//点击button之后，新开线程，用来检测时间，时间到了可以自动触发并发送指令
-
+			DateTime dt = DateTime.Now;
 			DateTime StartTime;
 			DateTime.TryParse(comboBox2.Text, out StartTime);
-			DateTime OverTime;
-			DateTime.TryParse(comboBox3.Text, out OverTime);
+
+			//string StrTime = dt.ToLongTimeString().ToString();
+			//DateTime NowTime;
+			//DateTime.TryParse(StrTime, out NowTime);
+
+			DateTime EndTime;
+			DateTime.TryParse(comboBox3.Text, out EndTime);
 			try
 			{
 			//	if(DateTime.Now == StartTime)
 				//{
 				tm.Start();
-				tm.Elapsed += new ElapsedEventHandler(timer1_Tick);
 				tm.Enabled = true;
 				tm.Interval = 3000;
-					//将当前时间转换成时分秒形式，并每个三十秒输出时间间隔
-					
-				//}
-				textBox6.AppendText("发送信息[电机]：01001010101010");
-				textBox6.AppendText("\r\n");
-				if(DateTime.Now == OverTime)
+				tm.Elapsed += new ElapsedEventHandler(timer1_Tick);
+				TimeGetSencond.Start();
+				TimeGetSencond.Elapsed += new ElapsedEventHandler(timer2_Tick);
+				TimeGetSencond.Enabled = true;
+				TimeGetSencond.Interval = 1000;
+
+				string StrTime = dt.ToLongTimeString().ToString();
+				DateTime NowTime;
+				DateTime.TryParse(StrTime, out NowTime);
+				if(NowTime == EndTime)
 				{
 					tm.Stop();
 					tm.Enabled = false;
+					TimeGetSencond.Stop();
+					TimeGetSencond.Enabled = false;
 				}
 
 			}
@@ -229,30 +262,52 @@ namespace Thirty_TwoSerialPort
 				MessageBox.Show(ee.Message, "提示信息");
 			}
 		}
-
+		private delegate void Combobox2CallBack();
 		private void timer1_Tick(object sender, EventArgs e)
 		{
-			try
+			textBox6CallBack callback = delegate()
 			{
-				//DateTime dt = DateTime.Now;
-			//	DateTime StartTime;
-			//	DateTime.TryParse(comboBox2.Text, out StartTime);
-			//	string NowTime = dt.ToLongTimeString().ToString();
-			//	DateTime NewTime;
-			//	DateTime.TryParse(NowTime, out NewTime);
-				//textBox1.Text = (NewTime - StartTime).ToString();
-				//每隔三十秒输出指令
-				string str = "01001010101010 ";
-				byte[] SendMessage = System.Text.Encoding.Default.GetBytes(str);
-				serialPort.Write(SendMessage, 0, SendMessage.Length);
-				//textBox6.AppendText("发送信息[电机]：" + str);
-			//	textBox6.AppendText("\r\n");
-			}
-			catch(Exception ee)
-			{
-				MessageBox.Show(ee.Message,"提示信息");
-			}
+					try
+					{
+						
+						string str = "01001010101010 ";
+						byte[] SendMessage = System.Text.Encoding.Default.GetBytes(str);
+						serialPort.Write(SendMessage, 0, SendMessage.Length);
+
+						textBox6.AppendText("发送信息[电机：" + DateTime.Now + "]" +  "010101010101010\r\n");
+					}
+					catch (Exception ee)
+					{
+						MessageBox.Show(ee.Message, "提示信息");
+					}
+			};
+			textBox6.Invoke(callback);
 					
+		}
+		private void timer2_Tick(object sender,EventArgs e)
+		{
+			Combobox2CallBack comcalback = delegate()
+			{
+
+				try
+				{
+					DateTime dt = DateTime.Now;
+					DateTime StartTime;
+					DateTime.TryParse(comboBox2.Text, out StartTime);
+					DateTime EndTime;
+					DateTime.TryParse(comboBox3.Text, out EndTime);
+					string StrTime = dt.ToLongTimeString().ToString();
+					DateTime NowTime;
+					DateTime.TryParse(StrTime, out NowTime);
+					textBox1.Text = (NowTime - StartTime).ToString();
+					toolStripStatusLabel1.Text = "发送成功";
+				}
+				catch (Exception ee)
+				{
+					MessageBox.Show(ee.Message, "信息提示");
+				}
+			};
+			comboBox2.Invoke(comcalback);
 		}
 	}
 }
