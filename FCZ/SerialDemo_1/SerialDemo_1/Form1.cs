@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 using System.IO.Ports;
 using System.IO;
+
 
 namespace SerialDemo_1
 {
@@ -20,13 +20,22 @@ namespace SerialDemo_1
 			InitializeComponent();
 		}
 
+		//定义一个串口对象
 		SerialPort sp = new SerialPort();
+
+		//初始化各个参数变量的值
 		public static string strPortName = "";
 		public static string strBaudRate = "";
 		public static string strDataBits = "";
 		public static string strStopBits = "";
+//变量声明
+
+		//是否处于发送状态
 		bool IsSended = false;
+		//定时器
 		Timer AutoSendTimer = new Timer();
+
+		//接收的数据字符串
 		StringBuilder Recivestr = new StringBuilder();
 		
 		
@@ -44,7 +53,49 @@ namespace SerialDemo_1
 			sp.DataReceived += ReciveData;
 			InitParam();
 			AutoSendTimer.Tick  += new EventHandler(AutoSend);
+
+			BindingSource bsYear = new BindingSource();
+			bsYear.DataSource = InfoDictionary.dicYear;
+			cmbYear.DataSource = bsYear;
+			cmbYear.DisplayMember = "Value";
+			cmbYear.ValueMember = "Key";
+
+
+
+			BindingSource bsMonth = new BindingSource();
+			bsMonth.DataSource = InfoDictionary.dicMonth;
+			cmbMonth.DataSource = bsMonth;
+			cmbMonth.DisplayMember = "Value";
+			cmbMonth.ValueMember = "Key";
+
+			BindingSource bsDay = new BindingSource();
+			bsDay.DataSource = InfoDictionary.dicDay;
+			cmbDay.DataSource = bsDay;
+			cmbDay.DisplayMember = "Value";
+			cmbDay.ValueMember = "Key";
+
+			BindingSource bsHour = new BindingSource();
+			bsHour.DataSource = InfoDictionary.dicHour;
+			cmbHour.DataSource = bsHour;
+			cmbHour.DisplayMember = "Value";
+			cmbHour.ValueMember = "Key";
+
+			BindingSource bsMinute = new BindingSource();
+			bsMinute.DataSource = InfoDictionary.dicMinute;
+			cmbMinute.DataSource = bsMinute;
+			cmbMinute.DisplayMember = "Value";
+			cmbMinute.ValueMember = "Key";
+
+			BindingSource bsLang = new BindingSource();
+			bsLang.DataSource = InfoDictionary.dicLang;
+			cmbLang.DataSource = bsLang;
+			cmbLang.DisplayMember = "Value";
+			cmbLang.ValueMember = "Key";
+
 		}
+
+		//private void AddSysyemConfig(Dictionary<byte , int > dic)
+
 
 		/// <summary>
 		/// 设置参数,将参数赋值到串口中
@@ -67,6 +118,8 @@ namespace SerialDemo_1
 				sp.ReadTimeout = 500;
 
 				sp.Open();
+
+				txtRecive.AppendText("串口成功开启!\n");
 			}
 			catch (Exception ex)
 			{
@@ -142,16 +195,12 @@ namespace SerialDemo_1
 					{
 						btnSend.Text = "发送";
 						AutoSendTimer.Stop();
-						AutoSendTimer.Dispose();
 						IsSended = false;
 					}
 				}
 				else
 				{
-					try 
-					{
-						Send();
-					}
+					try { Send(txtSend.Text);}
 					catch (Exception ex) { txtRecive.AppendText("异常: " + ex.Message + "\r\n"); }
 				}
 		}
@@ -160,19 +209,20 @@ namespace SerialDemo_1
 		/// <summary>
 		/// 发送数据
 		/// </summary>
-		private void Send()
+		private void Send(String str)
 		{
 			if (sp != null)
 			{
-				string mess = txtSend.Text.Trim();
-				string[] messages = mess.Split(' ');
-				byte[] buf = Array.ConvertAll(messages, new Converter<string, byte>(StringToHex));
-				sp.Write(buf, 0, buf.Length);
+				str = str.Replace(" ", "");
+				byte[] Sendbyte = new byte[str.Length / 2];
+				for (int i = 0, j = 0; i < str.Length; i = i + 2, j++)
+				{
+					string mysubstring = str.Substring(i, 2);
+					Sendbyte[j] = Convert.ToByte(mysubstring, 16);
+				}
+
+				sp.Write(Sendbyte, 0, Sendbyte.Length);
 			}
-		}
-		public static byte StringToHex(string str)
-		{
-			return Convert.ToByte(str, 16);
 		}
 
 		/// <summary>
@@ -184,24 +234,19 @@ namespace SerialDemo_1
 		{
 			try 
 			{
-				Send();
+				Send(txtSend.Text);
 			}
 			catch (Exception ex) { txtRecive.AppendText("异常: " + ex.Message + "\r\n"); }
 		}
 
+		/// <summary>
+		/// 初始化参数
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void btnInit_Click(object sender, EventArgs e)
 		{
-			
-		}
-
-		private void btnRecive_Click(object sender, EventArgs e)
-		{
-		//	if (sp.IsOpen)
-		//	{
-		//		try {  }
-		//		catch (Exception ex) { txtRecive.AppendText("异常: " + ex.Message + "\r\n"); }
-		//	}
-			
+			InitParam();
 		}
 
 		/// <summary>
@@ -226,12 +271,16 @@ namespace SerialDemo_1
 				StreamWriter sw = new StreamWriter(fs, Encoding.UTF8);//(fs, System.Text.Encoding.GetEncoding("GB2312"));
 				sw.Flush();
 				sw.BaseStream.Seek(fs.Position, SeekOrigin.Begin);
-				sw.WriteLine(dt.ToString() +" "+ TranString(buffer));
+				sw.WriteLine(dt.ToString() + " " + TranString(buffer));
 				sw.Flush();
 				sw.Close();
-				//string strRecivel = sp.ReadExisting();
 		}
 
+		/// <summary>
+		/// 将接收到的数据转化成相应字符串
+		/// </summary>
+		/// <param name="buffer"></param>
+		/// <returns></returns>
 		private StringBuilder  TranString(byte[] buffer)
 		{
 			Recivestr.Clear();
@@ -243,6 +292,11 @@ namespace SerialDemo_1
 			return Recivestr;
 		}
 
+		/// <summary>
+		/// 是否循环发送
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void ckbAutoSend_CheckedChanged(object sender, EventArgs e)
 		{
 			if(ckbAutoSend.Checked)
@@ -259,12 +313,66 @@ namespace SerialDemo_1
 			}
 		}
 
-		private void button1_Click(object sender, EventArgs e)
+		private void btnReciveClear_Click(object sender, EventArgs e)
 		{
 			txtRecive.Clear();
 		}
+//====================    快捷键设置      ======================================================
+		string strWeatherInfo = "01 03 00 00 F1 D8";
+		string strHistoryWeather = "01 03 00 37 B0 0E";
+		string strSystemInfo = "01 03 00 20 F0 00";
+		string strPasswordInfo = "01 03 00 61 00 04 15 d7";
+
+		private void button1_Click(object sender, EventArgs e)
+		{
+			Send(strWeatherInfo);
+			txtRecive.AppendText(strWeatherInfo + "\r\n");
+		}
+
+		private void btnHistoryWeather_Click(object sender, EventArgs e)
+		{
+			Send(strHistoryWeather);
+			txtRecive.AppendText(strHistoryWeather + "\r\n");
+		}
+
+		private void btnSysConfig_Click(object sender, EventArgs e)
+		{
+			Send(strSystemInfo);
+			txtRecive.AppendText(strSystemInfo + "\r\n");
+		}
+
+		private void btnPassWord_Click(object sender, EventArgs e)
+		{
+			Send(strPasswordInfo);
+			txtRecive.AppendText(strPasswordInfo + "\r\n");
+		}
+
+		private void btnSetSystemConfig_Click(object sender, EventArgs e)
+		{
+			string SendMsg = "01 10 00 20 00 04 08 "
+						+ValueToString(cmbYear.SelectedValue) + " "
+						+ ValueToString(cmbMonth.SelectedValue) + " "
+						+ ValueToString(cmbDay.SelectedValue) + " "
+						+ ValueToString(cmbHour.SelectedValue) + " "
+						+ ValueToString(cmbMinute.SelectedValue) + " "
+						+ ValueToString(txtSaveTime.Text) + " "
+						+ ValueToString(cmbLang.SelectedValue)
+						+ " 00 59 DD";
+			Send(SendMsg);
+
+			txtRecive.AppendText(SendMsg + "\r\n");
+		}
 
 
-
+//=============================================================================================
+		private string ValueToString(object obj)
+		{
+			string str = Convert.ToString(Convert.ToInt32(obj), 16);
+			if (str.Length%2 == 1)
+			{
+				str = "0" + str;
+			}
+			return str;
+		}
 	}
 }

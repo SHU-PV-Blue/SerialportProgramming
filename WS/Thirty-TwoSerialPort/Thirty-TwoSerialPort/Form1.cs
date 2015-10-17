@@ -9,19 +9,22 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO.Ports;
 using System.Timers;
-
+using System.IO;
 namespace Thirty_TwoSerialPort
 {
 	public partial class Form1 : Form
 	{
+		bool isStart = false;
+		SerialPort serialPort = new SerialPort();
 		public Form1()
 		{
 			InitializeComponent();
 		}
-		SerialPort serialPort = new SerialPort();
+		//SerialPort serialPort = new SerialPort();
 		public byte dbit = 8;
 		System.Timers.Timer tm = new System.Timers.Timer();
 		System.Timers.Timer TimeGetSencond = new System.Timers.Timer();
+		System.Timers.Timer TimeReadSencond = new System.Timers.Timer();
 		private StringBuilder builder = new StringBuilder();
 		private void groupBox1_Enter(object sender, EventArgs e)
 		{
@@ -221,45 +224,56 @@ namespace Thirty_TwoSerialPort
 
 		private void toolStripButton3_Click(object sender, EventArgs e)
 		{
-			//点击button之后，新开线程，用来检测时间，时间到了可以自动触发并发送指令
-			DateTime dt = DateTime.Now;
-			DateTime StartTime;
-			DateTime.TryParse(comboBox2.Text, out StartTime);
-
-			//string StrTime = dt.ToLongTimeString().ToString();
-			//DateTime NowTime;
-			//DateTime.TryParse(StrTime, out NowTime);
-
-			DateTime EndTime;
-			DateTime.TryParse(comboBox3.Text, out EndTime);
-			try
+			if (serialPort.IsOpen)
 			{
-			//	if(DateTime.Now == StartTime)
-				//{
-				tm.Start();
-				tm.Enabled = true;
-				tm.Interval = 3000;
-				tm.Elapsed += new ElapsedEventHandler(timer1_Tick);
-				TimeGetSencond.Start();
-				TimeGetSencond.Elapsed += new ElapsedEventHandler(timer2_Tick);
-				TimeGetSencond.Enabled = true;
-				TimeGetSencond.Interval = 1000;
-
-				string StrTime = dt.ToLongTimeString().ToString();
-				DateTime NowTime;
-				DateTime.TryParse(StrTime, out NowTime);
-				if(NowTime == EndTime)
+				if (toolStripButton3.Text == "启动双轴电机")
+				{
+					toolStripButton3.Text = "关闭双轴电机";
+					MessageBox.Show("已经启动双轴电机", "信息提示");
+					if (isStart)
+					{
+						return;
+					}
+					isStart = true;
+					DateTime dt = DateTime.Now;
+					DateTime StartTime;
+					DateTime.TryParse(comboBox2.Text, out StartTime);
+					DateTime EndTime;
+					DateTime.TryParse(comboBox3.Text, out EndTime);
+					try
+					{
+						TimeReadSencond.Start();
+						TimeReadSencond.Enabled = true;
+						TimeReadSencond.Interval = 1000;
+						TimeReadSencond.Elapsed += new ElapsedEventHandler(timer3_Tick);
+						//string StrTime = dt.ToLongTimeString().ToString();
+						//DateTime NowTime;
+						//DateTime.TryParse(StrTime, out NowTime);
+						//if (NowTime == EndTime)
+						//{
+						//	tm.Stop();
+						//	tm.Enabled = false;
+						//	TimeGetSencond.Stop();
+						//	TimeGetSencond.Enabled = false;
+						//}
+					}
+					catch (Exception ee)
+					{
+						MessageBox.Show(ee.Message, "信息提示");
+					}
+				}
+				else
 				{
 					tm.Stop();
-					tm.Enabled = false;
 					TimeGetSencond.Stop();
-					TimeGetSencond.Enabled = false;
+					TimeReadSencond.Stop();
+					MessageBox.Show("已经关闭双轴电机", "信息提示");
+					toolStripButton3.Text ="启动双轴电机";
 				}
-
 			}
-			catch(Exception ee)
+			else
 			{
-				MessageBox.Show(ee.Message, "提示信息");
+				MessageBox.Show("请打开端口", "信息提示");
 			}
 		}
 		private delegate void Combobox2CallBack();
@@ -267,19 +281,24 @@ namespace Thirty_TwoSerialPort
 		{
 			textBox6CallBack callback = delegate()
 			{
-					try
-					{
-						
-						string str = "01001010101010 ";
-						byte[] SendMessage = System.Text.Encoding.Default.GetBytes(str);
-						serialPort.Write(SendMessage, 0, SendMessage.Length);
+				try
+				{
 
-						textBox6.AppendText("发送信息[电机：" + DateTime.Now + "]" +  "010101010101010\r\n");
-					}
-					catch (Exception ee)
+					string str = "010400000020F1D2";
+					byte[] Sendbyte = new byte[str.Length / 2];
+					for (int i = 0, j = 0; i < str.Length; i = i + 2, j++)
 					{
-						MessageBox.Show(ee.Message, "提示信息");
+						string mysubstring = str.Substring(i, 2);
+						Sendbyte[j] = Convert.ToByte(mysubstring, 16);
 					}
+					serialPort.Write(Sendbyte, 0, Sendbyte.Length);
+
+					textBox6.AppendText("发送信息[电机：" + DateTime.Now + "]" + "01 04 00 00 00 20 F1 D2\r\n");
+				}
+				catch (Exception ee)
+				{
+					MessageBox.Show(ee.Message, "提示信息");
+				}
 			};
 			textBox6.Invoke(callback);
 					
@@ -294,8 +313,6 @@ namespace Thirty_TwoSerialPort
 					DateTime dt = DateTime.Now;
 					DateTime StartTime;
 					DateTime.TryParse(comboBox2.Text, out StartTime);
-					DateTime EndTime;
-					DateTime.TryParse(comboBox3.Text, out EndTime);
 					string StrTime = dt.ToLongTimeString().ToString();
 					DateTime NowTime;
 					DateTime.TryParse(StrTime, out NowTime);
@@ -308,6 +325,80 @@ namespace Thirty_TwoSerialPort
 				}
 			};
 			comboBox2.Invoke(comcalback);
+		}
+		private void timer3_Tick(object sender, EventArgs e)
+		{
+			Combobox2CallBack comcalback = delegate()
+			{
+				try
+				{
+					DateTime dt = DateTime.Now;
+					string StrTime = dt.ToLongTimeString().ToString();
+					label13.Text = StrTime;
+					DateTime NowTime;
+					DateTime.TryParse(StrTime, out NowTime);
+					DateTime StartTime;
+					DateTime.TryParse(comboBox2.Text, out StartTime);
+					DateTime EndTime;
+					DateTime.TryParse(comboBox3.Text, out EndTime);
+					if (StartTime == NowTime)
+					{
+						tm.Start();
+						tm.Enabled = true;
+						tm.Interval = 3000;
+						tm.Elapsed += new ElapsedEventHandler(timer1_Tick);
+						TimeGetSencond.Start();
+						TimeGetSencond.Elapsed += new ElapsedEventHandler(timer2_Tick);
+						TimeGetSencond.Enabled = true;
+						TimeGetSencond.Interval = 1000;
+					}
+					if (EndTime == NowTime)
+					{
+						tm.Stop();
+						TimeGetSencond.Stop();
+						TimeReadSencond.Stop();
+						MessageBox.Show("指令发送完成", "信息提示");
+					}
+				}
+				catch (Exception ee)
+				{
+					MessageBox.Show(ee.Message);
+				}
+			};
+			comboBox2.Invoke(comcalback);
+		}
+
+		private void toolStripButton2_Click(object sender, EventArgs e)
+		{
+			SaveFileDialog saveDialog = new SaveFileDialog();
+			saveDialog.Filter = "数据库文件（*.bak）|*.bak|数据文件（*.mdf)|*.mdf|日志文件（*.ldf)|*.ldf|文本文件（*.txt)|*.txt";
+			saveDialog.FilterIndex = 1;
+			saveDialog.RestoreDirectory = true;
+			if(saveDialog.ShowDialog() == DialogResult.OK)
+			{
+				string localFilePath = saveDialog.FileName.ToString();
+				localFilePath = localFilePath.Substring(0, localFilePath.LastIndexOf("\\"));
+
+				System.IO.FileStream fileStream = (System.IO.FileStream)saveDialog.OpenFile();
+
+				int bytes = serialPort.BytesToRead;
+				byte[] buffer = new byte[bytes];
+				serialPort.Read(buffer, 0, bytes);
+				foreach (byte b in buffer)
+				{
+					builder.Append(b.ToString("X2") + " ");
+				}
+
+				fileStream.Position = fileStream.Length;
+				StreamWriter streamWriter = new StreamWriter(fileStream);
+				streamWriter.Flush();
+				streamWriter.BaseStream.Seek(fileStream.Position, SeekOrigin.Begin);
+				streamWriter.WriteLine(builder.ToString());
+				streamWriter.Flush();
+				streamWriter.Close();
+
+			}
+
 		}
 	}
 }

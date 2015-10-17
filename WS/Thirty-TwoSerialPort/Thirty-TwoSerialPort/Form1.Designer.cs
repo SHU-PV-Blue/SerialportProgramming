@@ -72,6 +72,9 @@
 			this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
 			this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
+			this.label11 = new System.Windows.Forms.Label();
+			this.label12 = new System.Windows.Forms.Label();
+			this.label13 = new System.Windows.Forms.Label();
 			this.groupBox1.SuspendLayout();
 			this.statusStrip1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
@@ -112,6 +115,9 @@
 			// 
 			// groupBox1
 			// 
+			this.groupBox1.Controls.Add(this.label13);
+			this.groupBox1.Controls.Add(this.label12);
+			this.groupBox1.Controls.Add(this.label11);
 			this.groupBox1.Controls.Add(this.label10);
 			this.groupBox1.Controls.Add(this.textBox1);
 			this.groupBox1.Controls.Add(this.comboBox1);
@@ -148,7 +154,7 @@
 			// 
 			// textBox1
 			// 
-			this.textBox1.Location = new System.Drawing.Point(311, 103);
+			this.textBox1.Location = new System.Drawing.Point(311, 138);
 			this.textBox1.Name = "textBox1";
 			this.textBox1.Size = new System.Drawing.Size(80, 21);
 			this.textBox1.TabIndex = 10;
@@ -164,7 +170,7 @@
 			// label9
 			// 
 			this.label9.AutoSize = true;
-			this.label9.Location = new System.Drawing.Point(231, 106);
+			this.label9.Location = new System.Drawing.Point(219, 141);
 			this.label9.Name = "label9";
 			this.label9.Size = new System.Drawing.Size(65, 12);
 			this.label9.TabIndex = 9;
@@ -207,7 +213,7 @@
             "21:00:00",
             "22:00:00",
             "23:00:00"});
-			this.comboBox3.Location = new System.Drawing.Point(311, 68);
+			this.comboBox3.Location = new System.Drawing.Point(311, 103);
 			this.comboBox3.Name = "comboBox3";
 			this.comboBox3.Size = new System.Drawing.Size(80, 20);
 			this.comboBox3.TabIndex = 8;
@@ -224,7 +230,7 @@
 			// label8
 			// 
 			this.label8.AutoSize = true;
-			this.label8.Location = new System.Drawing.Point(231, 71);
+			this.label8.Location = new System.Drawing.Point(219, 106);
 			this.label8.Name = "label8";
 			this.label8.Size = new System.Drawing.Size(65, 12);
 			this.label8.TabIndex = 6;
@@ -258,7 +264,7 @@
             "21:00:00",
             "22:00:00",
             "23:00:00"});
-			this.comboBox2.Location = new System.Drawing.Point(311, 34);
+			this.comboBox2.Location = new System.Drawing.Point(310, 63);
 			this.comboBox2.Name = "comboBox2";
 			this.comboBox2.Size = new System.Drawing.Size(81, 20);
 			this.comboBox2.TabIndex = 7;
@@ -285,7 +291,7 @@
 			// label7
 			// 
 			this.label7.AutoSize = true;
-			this.label7.Location = new System.Drawing.Point(231, 37);
+			this.label7.Location = new System.Drawing.Point(219, 71);
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(65, 12);
 			this.label7.TabIndex = 5;
@@ -489,6 +495,7 @@
 			this.toolStripButton2.Name = "toolStripButton2";
 			this.toolStripButton2.Size = new System.Drawing.Size(36, 22);
 			this.toolStripButton2.Text = "保存";
+			this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
 			// 
 			// toolStripSeparator3
 			// 
@@ -519,6 +526,31 @@
 			this.toolStripButton4.Size = new System.Drawing.Size(36, 22);
 			this.toolStripButton4.Text = "退出";
 			this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
+			// 
+			// label11
+			// 
+			this.label11.AutoSize = true;
+			this.label11.Location = new System.Drawing.Point(231, 141);
+			this.label11.Name = "label11";
+			this.label11.Size = new System.Drawing.Size(0, 12);
+			this.label11.TabIndex = 21;
+			// 
+			// label12
+			// 
+			this.label12.AutoSize = true;
+			this.label12.Location = new System.Drawing.Point(219, 40);
+			this.label12.Name = "label12";
+			this.label12.Size = new System.Drawing.Size(65, 12);
+			this.label12.TabIndex = 22;
+			this.label12.Text = "当前时间：";
+			// 
+			// label13
+			// 
+			this.label13.AutoSize = true;
+			this.label13.Location = new System.Drawing.Point(309, 37);
+			this.label13.Name = "label13";
+			this.label13.Size = new System.Drawing.Size(0, 12);
+			this.label13.TabIndex = 23;
 			// 
 			// Form1
 			// 
@@ -598,6 +630,9 @@
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
 		private System.Windows.Forms.Label label10;
+		private System.Windows.Forms.Label label12;
+		private System.Windows.Forms.Label label11;
+		private System.Windows.Forms.Label label13;
 	}
 }
 

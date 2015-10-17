@@ -30,8 +30,7 @@ namespace SerialDemo_1
 		private void Form1_Load(object sender, EventArgs e)
 		{
 			string[] ports = SerialPort.GetPortNames();
-            foreach (string p in ports)
-            { cmbPorts.Items.Add(p); }
+            cmbPorts.Items.AddRange(ports);
 			cmbPorts.SelectedIndex = 0;
 			cmbBaudRate.SelectedIndex = 0;
 			cmbDataBit.SelectedIndex = 0;
