@@ -51,10 +51,50 @@ namespace IVCurvometerTestTool
 			页面操作.Add(0x01, "确定");
 			页面操作.Add(0x02, "取消");
 
+			数据地址 = new Dictionary<byte[], string>();
+			数据地址.Add(new byte[] { 0x00, 0x00 }, "电流系数A地址");
+			数据地址.Add(new byte[] { 0x04, 0x00 }, "电流系数B地址");
+			数据地址.Add(new byte[] { 0x08, 0x00 }, "电压系数A地址");
+			数据地址.Add(new byte[] { 0x0C, 0x00 }, "电压系数B地址");
+			数据地址.Add(new byte[] { 0x10, 0x00 }, "温度系数A地址");
+			数据地址.Add(new byte[] { 0x14, 0x00 }, "温度系数B地址");
+			数据地址.Add(new byte[] { 0x18, 0x00 }, "照明系数A地址");
+			数据地址.Add(new byte[] { 0x1C, 0x00 }, "照明系数B地址");
+			数据地址.Add(new byte[] { 0x20, 0x00 }, "电池系数A地址");
+			数据地址.Add(new byte[] { 0x24, 0x00 }, "电池系数B地址");
+			数据地址.Add(new byte[] { 0x28, 0x00 }, "分流器系数地址");
+			数据地址.Add(new byte[] { 0x2C, 0x00 }, "照明仪系数地址");
+			数据地址.Add(new byte[] { 0x30, 0x00 }, "单晶硅电压温度系数");
+			数据地址.Add(new byte[] { 0x34, 0x00 }, "单晶硅电流温度系数");
+			数据地址.Add(new byte[] { 0x38, 0x00 }, "多晶硅电压温度系数");
+			数据地址.Add(new byte[] { 0x3C, 0x00 }, "多晶硅电流温度系数");
+			数据地址.Add(new byte[] { 0x40, 0x00 }, "薄膜电压温度系数");
+			数据地址.Add(new byte[] { 0x44, 0x00 }, "薄膜电流温度系数");
+			数据地址.Add(new byte[] { 0x48, 0x00 }, "电池类型选择");
+			数据地址.Add(new byte[] { 0x4C, 0x00 }, "单晶硅组件内阻");
+			数据地址.Add(new byte[] { 0x50, 0x00 }, "照度仪选择地址");
+			数据地址.Add(new byte[] { 0x54, 0x00 }, "照度仪系数地址");
+			数据地址.Add(new byte[] { 0x58, 0x00 }, "多晶硅组件内阻");
+			数据地址.Add(new byte[] { 0x5C, 0x00 }, "薄膜组件内阻");
+			数据地址.Add(new byte[] { 0x60, 0x00 }, "单晶硅组件内阻温度系数");
+			数据地址.Add(new byte[] { 0x64, 0x00 }, "多晶硅组件内阻温度系数");
+			数据地址.Add(new byte[] { 0x68, 0x00 }, "薄膜组件内阻温度系数");
+			数据地址.Add(new byte[] { 0x6C, 0x00 }, "阵列测量序号");
+			数据地址.Add(new byte[] { 0x70, 0x00 }, "被测阵列编号");
+			数据地址.Add(new byte[] { 0x78, 0x00 }, "系统设置密码");
+			数据地址.Add(new byte[] { 0x80, 0x00 }, "系统ID");
+			数据地址.Add(new byte[] { 0xD0, 0x7F }, "系统硬件型号");
+			数据地址.Add(new byte[] { 0xD8, 0x7F }, "系统软件版本");
+			数据地址.Add(new byte[] { 0xE0, 0x7F }, "系统硬件编号");
+			数据地址.Add(new byte[] { 0xF0, 0x7F }, "系统最大测量电流");
+			数据地址.Add(new byte[] { 0xF4, 0x7F }, "系统最大测量电压");
+			数据地址.Add(new byte[] { 0x00, 0x80 }, "所有数据");
+			
 		}
 		static public Dictionary<byte, string> 系统操作;
 		static public Dictionary<byte, string> 页面类型;
 		static public Dictionary<byte, string> 页面编号;
 		static public Dictionary<byte, string> 页面操作;
+		static public Dictionary<byte[], string> 数据地址;
 	}
 }

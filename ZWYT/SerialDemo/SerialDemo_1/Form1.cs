@@ -51,7 +51,6 @@ namespace SerialDemo_1
 
         private void showData(object sender, SerialDataReceivedEventArgs e)
         {
-
             string strRecivel = sp.ReadExisting();
             txtRecive.AppendText(strRecivel);
         }

@@ -27,6 +27,11 @@ namespace IVCurvometerTestTool
 
 		void WritePort(byte[] data, string messege)
 		{
+			if (_serialPort == null || !_serialPort.IsOpen)
+			{
+				MessageBox.Show("请先打开串口", "失败");
+				return;
+			}
 			_serialPort.Write(data, 0, data.Length);
 			string showData = "";
 			foreach(var b in data)
@@ -150,13 +155,6 @@ namespace IVCurvometerTestTool
 
 		private void btnSwitchHeartbeat_Click(object sender, EventArgs e)
 		{
-			if(_serialPort == null || !_serialPort.IsOpen)
-			{
-				MessageBox.Show("请先打开串口","失败");
-				return;
-			}
-
-			
 			if (btnSwitchHeartbeat.Text == "终止")
 			{
 				tmrSendHeartbeat.Stop();
@@ -267,6 +265,28 @@ namespace IVCurvometerTestTool
 
 			byte[] buffer = { 0xAA, _testerID, 0x14, pageID, pageType, pageOperate, 0xCC, 0x33, 0xC3, 0x3C };
 			WritePort(buffer, "页面提示:" + cbPageType.Text + ":" + cbPageID.Text + ":" + cbPageOperate.Text);
+		}
+
+		private void btnGetData_Click(object sender, EventArgs e)
+		{
+			byte[] address = new byte[2];
+			bool ifFind = false;
+
+			foreach (var p in CodeCommadPair.数据地址)
+			{
+				if (p.Value == cbGetData.Text)
+				{
+					address = p.Key;
+					ifFind = true;
+				}
+			}
+			if (!ifFind)
+			{
+				MessageBox.Show("请选择页面类型", "错误");
+				return;
+			}
+			byte[] buffer = { 0xAA, _testerID, 0x11, address[0], address[1], 0xCC, 0x33, 0xC3, 0x3C };
+			WritePort(buffer, "数据查询:" + cbGetData.Text);
 		}
 	}
 }
