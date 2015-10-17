@@ -194,16 +194,6 @@ namespace SerialDemo_1
 			
 		}
 
-		private void btnRecive_Click(object sender, EventArgs e)
-		{
-		//	if (sp.IsOpen)
-		//	{
-		//		try {  }
-		//		catch (Exception ex) { txtRecive.AppendText("异常: " + ex.Message + "\r\n"); }
-		//	}
-			
-		}
-
 		/// <summary>
 		/// 接收数据线程
 		/// </summary>
@@ -226,10 +216,9 @@ namespace SerialDemo_1
 				StreamWriter sw = new StreamWriter(fs, Encoding.UTF8);//(fs, System.Text.Encoding.GetEncoding("GB2312"));
 				sw.Flush();
 				sw.BaseStream.Seek(fs.Position, SeekOrigin.Begin);
-				sw.WriteLine(dt.ToString() +" "+ TranString(buffer));
+				sw.WriteLine(dt.ToString() + " " + TranString(buffer));
 				sw.Flush();
 				sw.Close();
-				//string strRecivel = sp.ReadExisting();
 		}
 
 		private StringBuilder  TranString(byte[] buffer)
