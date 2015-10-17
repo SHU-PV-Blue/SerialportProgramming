@@ -37,10 +37,13 @@ namespace IVCurvometerTestTool
 					str = "0" + str;
 				showData += str + " ";
 			}
-			lbSendData.Items.Add(showData);
-			lbSendData.SelectedIndex = lbSendData.Items.Count - 1;
-			lbSendExplanation.Items.Add(messege);
-			lbSendExplanation.SelectedIndex = lbSendData.Items.Count - 1;
+			this.Invoke((EventHandler)(delegate
+			{
+				lbSendData.Items.Add(showData);
+				lbSendData.SelectedIndex = lbSendData.Items.Count - 1;
+				lbSendExplanation.Items.Add(messege);
+				lbSendExplanation.SelectedIndex = lbSendData.Items.Count - 1;
+			}));
 		}
 
 		void DataReceivedHandler(object sender, SerialDataReceivedEventArgs e)
@@ -58,10 +61,13 @@ namespace IVCurvometerTestTool
 					str = "0" + str;
 				showData += str + " ";
 			}
-			lbReceiveData.Items.Add(showData);
-			lbReceiveData.SelectedIndex = lbReceiveData.Items.Count - 1;
-			lbReceiveExplanation.Items.Add(Explainer.Explain(readbyte));
-			lbReceiveExplanation.SelectedIndex = lbReceiveExplanation.Items.Count - 1;
+			this.Invoke((EventHandler)(delegate
+			{
+				lbReceiveData.Items.Add(showData);
+				lbReceiveData.SelectedIndex = lbReceiveData.Items.Count - 1;
+				lbReceiveExplanation.Items.Add(Explainer.Explain(readbyte));
+				lbReceiveExplanation.SelectedIndex = lbReceiveExplanation.Items.Count - 1;
+			}));
 		}
 
 		private void MainForm_Load(object sender, EventArgs e)
@@ -82,6 +88,7 @@ namespace IVCurvometerTestTool
 			{
 				if (_serialPort.IsOpen)
 					_serialPort.Close();
+				tmrSendHeartbeat.Stop();
 				btnSwitchPort.Text = "打开串口";
 				return;
 			}
