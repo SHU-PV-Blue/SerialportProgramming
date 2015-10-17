@@ -41,7 +41,7 @@ namespace SerialDemo_1
 			string[] ports = SerialPort.GetPortNames();
 			Array.Sort(ports);
 			cmbPorts.Items.AddRange(ports);
-
+			sp.DataReceived += ReciveData;
 			InitParam();
 			AutoSendTimer.Tick  += new EventHandler(AutoSend);
 		}
@@ -53,16 +53,26 @@ namespace SerialDemo_1
 		/// <param name="e"></param>
 		private void btnSetParam_Click(object sender, EventArgs e)
 		{
-			strPortName = cmbPorts.Text;
-			strBaudRate = cmbBaudRate.Text;
-			strDataBits = cmbDataBit.Text;
-			strStopBits = cmbStopBit.Text;
+			try
+			{
+				strPortName = cmbPorts.Text;
+				strBaudRate = cmbBaudRate.Text;
+				strDataBits = cmbDataBit.Text;
+				strStopBits = cmbStopBit.Text;
 
-			sp.PortName = strPortName;
-			sp.BaudRate = Convert.ToInt32(strBaudRate);
-			sp.DataBits = Convert.ToByte(strDataBits);
-			sp.StopBits = StopBits.One;
-			sp.ReadTimeout = 500;
+				sp.PortName = strPortName;
+				sp.BaudRate = Convert.ToInt32(strBaudRate);
+				sp.DataBits = Convert.ToByte(strDataBits);
+				sp.StopBits = StopBits.One;
+				sp.ReadTimeout = 500;
+
+				sp.Open();
+			}
+			catch (Exception ex)
+			{
+				txtRecive.AppendText("异常: " + ex.Message);
+				txtRecive.AppendText("\r\n");
+			}
 		}
 
 		/// <summary>
@@ -83,23 +93,6 @@ namespace SerialDemo_1
 				txtRecive.AppendText("异常:" + ex.Message + "\r\n");
 			}
 			
-		}
-
-		/// <summary>
-		/// 打开串口
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		private void btnOpen_Click(object sender, EventArgs e)
-		{
-			try
-			{
-				sp.Open();
-			}
-			catch (Exception ex)
-			{
-				txtRecive.AppendText("异常: " + ex.Message + "\r\n");
-			}
 		}
 
 		/// <summary>
@@ -157,11 +150,29 @@ namespace SerialDemo_1
 				{
 					try 
 					{
-						sp.Write(txtSend.Text);
-						sp.DataReceived += ReciveData; 
+						Send();
 					}
 					catch (Exception ex) { txtRecive.AppendText("异常: " + ex.Message + "\r\n"); }
 				}
+		}
+
+
+		/// <summary>
+		/// 发送数据
+		/// </summary>
+		private void Send()
+		{
+			if (sp != null)
+			{
+				string mess = txtSend.Text.Trim();
+				string[] messages = mess.Split(' ');
+				byte[] buf = Array.ConvertAll(messages, new Converter<string, byte>(StringToHex));
+				sp.Write(buf, 0, buf.Length);
+			}
+		}
+		public static byte StringToHex(string str)
+		{
+			return Convert.ToByte(str, 16);
 		}
 
 		/// <summary>
@@ -172,9 +183,8 @@ namespace SerialDemo_1
 		private void AutoSend(object sender, EventArgs e) 
 		{
 			try 
-			{ 
-				sp.DataReceived += ReciveData;
-				sp.Write(txtSend.Text);
+			{
+				Send();
 			}
 			catch (Exception ex) { txtRecive.AppendText("异常: " + ex.Message + "\r\n"); }
 		}
@@ -186,11 +196,11 @@ namespace SerialDemo_1
 
 		private void btnRecive_Click(object sender, EventArgs e)
 		{
-			if (sp.IsOpen)
-			{
-				try { sp.DataReceived += ReciveData; }
-				catch (Exception ex) { txtRecive.AppendText("异常: " + ex.Message + "\r\n"); }
-			}
+		//	if (sp.IsOpen)
+		//	{
+		//		try {  }
+		//		catch (Exception ex) { txtRecive.AppendText("异常: " + ex.Message + "\r\n"); }
+		//	}
 			
 		}
 
@@ -207,7 +217,7 @@ namespace SerialDemo_1
 				sp.Read(buffer, 0, n);
 				this.Invoke((EventHandler)(delegate
 				{
-					txtRecive.AppendText(dt.ToString() + TranString(buffer));
+					txtRecive.AppendText(dt.ToString() +" "+ TranString(buffer));
 					txtRecive.AppendText("\r\n");
 					
 				}));
@@ -216,7 +226,7 @@ namespace SerialDemo_1
 				StreamWriter sw = new StreamWriter(fs, Encoding.UTF8);//(fs, System.Text.Encoding.GetEncoding("GB2312"));
 				sw.Flush();
 				sw.BaseStream.Seek(fs.Position, SeekOrigin.Begin);
-				sw.WriteLine(dt.ToString() + TranString(buffer));
+				sw.WriteLine(dt.ToString() +" "+ TranString(buffer));
 				sw.Flush();
 				sw.Close();
 				//string strRecivel = sp.ReadExisting();
@@ -224,6 +234,7 @@ namespace SerialDemo_1
 
 		private StringBuilder  TranString(byte[] buffer)
 		{
+			Recivestr.Clear();
 			//依次的拼接出16进制字符串  
 			foreach (byte b in buffer)
 			{
@@ -246,6 +257,11 @@ namespace SerialDemo_1
 			{
 				txtTimeCell.ReadOnly = true;
 			}
+		}
+
+		private void button1_Click(object sender, EventArgs e)
+		{
+			txtRecive.Clear();
 		}
 
 
