@@ -32,8 +32,9 @@ namespace SerialDemo_1
 
 		//是否处于发送状态
 		bool IsSended = false;
-		//自动发送的定时器
+		//定时器
 		Timer AutoSendTimer = new Timer();
+
 		//接收的数据字符串
 		StringBuilder Recivestr = new StringBuilder();
 		
@@ -157,7 +158,7 @@ namespace SerialDemo_1
 				}
 				else
 				{
-					try { Send();}
+					try { Send(txtSend.Text);}
 					catch (Exception ex) { txtRecive.AppendText("异常: " + ex.Message + "\r\n"); }
 				}
 		}
@@ -166,11 +167,10 @@ namespace SerialDemo_1
 		/// <summary>
 		/// 发送数据
 		/// </summary>
-		private void Send()
+		private void Send(String str)
 		{
 			if (sp != null)
 			{
-				string str = txtSend.Text;
 				str = str.Replace(" ", "");
 				byte[] Sendbyte = new byte[str.Length / 2];
 				for (int i = 0, j = 0; i < str.Length; i = i + 2, j++)
@@ -194,7 +194,7 @@ namespace SerialDemo_1
 		{
 			try 
 			{
-				Send();
+				Send(txtSend.Text);
 			}
 			catch (Exception ex) { txtRecive.AppendText("异常: " + ex.Message + "\r\n"); }
 		}
@@ -252,6 +252,11 @@ namespace SerialDemo_1
 			return Recivestr;
 		}
 
+		/// <summary>
+		/// 是否循环发送
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void ckbAutoSend_CheckedChanged(object sender, EventArgs e)
 		{
 			if(ckbAutoSend.Checked)
@@ -268,11 +273,38 @@ namespace SerialDemo_1
 			}
 		}
 
-		private void button1_Click(object sender, EventArgs e)
+		private void btnReciveClear_Click(object sender, EventArgs e)
 		{
 			txtRecive.Clear();
 		}
+//====================    快捷键设置      ======================================================
+		string strWeatherInfo = "01 03 00 00 F1 D8";
+		string strHistoryWeather = "01 03 00 37 B0 0E";
+		string strSystemInfo = "01 03 00 20 F0 00";
+		string strPasswordInfo = "01 03 00 61 00 04 15 d7";
 
+		private void button1_Click(object sender, EventArgs e)
+		{
+			Send(strWeatherInfo);
+		}
+
+		private void btnHistoryWeather_Click(object sender, EventArgs e)
+		{
+			Send(strHistoryWeather);
+		}
+
+		private void btnSysConfig_Click(object sender, EventArgs e)
+		{
+			Send(strSystemInfo);
+		}
+
+		private void btnPassWord_Click(object sender, EventArgs e)
+		{
+			Send(strPasswordInfo);
+		}
+
+
+//=============================================================================================
 
 
 	}
