@@ -20,9 +20,7 @@ namespace IVCurvometerTestTool
 		SerialPort _serialPort;
 		byte _testerID;
 		Thread _sendHeartbeatThread;
-		Thread _listenPortThread;
 		int _heartbeatCycle;
-
 
 		public MainForm()
 		{
@@ -57,46 +55,25 @@ namespace IVCurvometerTestTool
 			lbSendExplanation.SelectedIndex = lbSendData.Items.Count - 1;
 		}
 
-		void ListenPort()
+		void DataReceivedHandler(object sender, SerialDataReceivedEventArgs e)
 		{
-			List<byte> receiveData = new List<byte>();
-			while(true)
+			byte[] readbyte = new byte[_serialPort.BytesToRead];
+
+			_serialPort.Read(readbyte, 0, readbyte.Length);
+
+			string showData = "";
+			foreach (var b in readbyte)
 			{
-				byte[] readbyte = new byte[1];
-				try
-				{
-					_serialPort.Read(readbyte, 0, 1);
-					//虽然极力避免，但还是有一定的概率关闭串口时触发“System.ObjectDisposedException”类型的未经处理的异常在 mscorlib.dll 中发生   其他信息: 已关闭 S
-				}
-				catch
-				{
-					Thread.Sleep(200);
-					continue;
-				}
-				receiveData.Add(readbyte[0]);
-				if(receiveData.Count > 1 + 4
-					&& receiveData[receiveData.Count - 4] == 0xCC
-					&& receiveData[receiveData.Count - 3] == 0x33
- 					&& receiveData[receiveData.Count - 2] == 0xC3
-					&& receiveData[receiveData.Count - 1] == 0x3C
-					)
-				{
-					string showData = "";
-					foreach (var b in receiveData)
-					{
-						string str = Convert.ToString(b, 16);
-						str = str.ToUpper();
-						if (str.Length == 1)
-							str = "0" + str;
-						showData += str + " ";
-					}
-					lbReceiveData.Items.Add(showData);
-					lbReceiveData.SelectedIndex = lbReceiveData.Items.Count - 1;
-					lbReceiveExplanation.Items.Add(Explainer.Explain(receiveData.ToArray()));
-					lbReceiveExplanation.SelectedIndex = lbReceiveExplanation.Items.Count - 1;
-					receiveData.Clear();
-				}
+				string str = Convert.ToString(b, 16);
+				str = str.ToUpper();
+				if (str.Length == 1)
+					str = "0" + str;
+				showData += str + " ";
 			}
+			lbReceiveData.Items.Add(showData);
+			lbReceiveData.SelectedIndex = lbReceiveData.Items.Count - 1;
+			lbReceiveExplanation.Items.Add(Explainer.Explain(readbyte));
+			lbReceiveExplanation.SelectedIndex = lbReceiveExplanation.Items.Count - 1;
 		}
 
 		private void MainForm_Load(object sender, EventArgs e)
@@ -115,8 +92,6 @@ namespace IVCurvometerTestTool
 		{
 			if(btnSwitchPort.Text == "关闭串口")
 			{
-				if (_listenPortThread != null && _listenPortThread.IsAlive)
-					_listenPortThread.Abort();
 				if (_sendHeartbeatThread != null && _sendHeartbeatThread.IsAlive)
 					_sendHeartbeatThread.Abort();
 				if (_serialPort.IsOpen)
@@ -167,6 +142,7 @@ namespace IVCurvometerTestTool
 					break;
 			}
 			_serialPort.ReadTimeout = 1;
+			_serialPort.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
 			try
 			{
 				_serialPort.Open();
@@ -176,8 +152,6 @@ namespace IVCurvometerTestTool
 				MessageBox.Show(ex.Message,"打开串口失败");
 				return;
 			}
-			_listenPortThread = new Thread(new ThreadStart(ListenPort));
-			_listenPortThread.Start();
 			btnSwitchPort.Text = "关闭串口";
 		}
 
@@ -206,8 +180,6 @@ namespace IVCurvometerTestTool
 		{
 			if (_sendHeartbeatThread != null && _sendHeartbeatThread.IsAlive)
 				_sendHeartbeatThread.Abort();
-			if (_listenPortThread != null && _listenPortThread.IsAlive)
-				_listenPortThread.Abort();
 			if (_serialPort != null && _serialPort.IsOpen)
 				_serialPort.Close();
 		}
