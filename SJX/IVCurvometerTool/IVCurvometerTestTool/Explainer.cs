@@ -45,13 +45,13 @@ namespace IVCurvometerTestTool
 						result += "页面类型:";
 						string str;
 						if (CodeCommadPair.页面类型.TryGetValue(inputBytes[4], out str))
-							result += str = ":";
+							result += str + ":";
 						else
 							result += "无法解析的页面类型";
 						if (CodeCommadPair.页面编号.TryGetValue(inputBytes[3], out str))
-							result += str = ":";
+							result += str;
 						else
-							result += "页面编号";
+							result += "无法解析的页面编号";
 						break;
 					}
 				

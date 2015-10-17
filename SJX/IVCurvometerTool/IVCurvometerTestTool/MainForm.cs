@@ -186,50 +186,22 @@ namespace IVCurvometerTestTool
 				MessageBox.Show("请先打开串口", "失败");
 				return;
 			}
-			byte commandCode;
-			switch(cbSystem.Text)
+			byte commandCode = 0;
+			bool ifFind = false;
+			foreach(var p in CodeCommadPair.系统操作)
 			{
-				case "测量命令":
-					commandCode = 0x05;
+				if (p.Value == cbSystem.Text)
+				{
+					commandCode = p.Key;
+					ifFind = true;
 					break;
-				case "辐照度测量":
-					commandCode = 0x06;
-					break;
-				case "温度测量":
-					commandCode = 0x07;
-					break;
-				case "电源电压测量":
-					commandCode = 0x08;
-					break;
-				case "IV特性数据":
-					commandCode = 0x09;
-					break;
-				case "IV-STC特性数据":
-					commandCode = 0x0A;
-					break;
-				case "存储命令":
-					commandCode = 0x0B;
-					break;
-				case "电压系数测量":
-					commandCode = 0x3D;
-					break;
-				case "电流系数测量":
-					commandCode = 0x3E;
-					break;
-				case "辐照度系数测量":
-					commandCode = 0x3F;
-					break;
-				case "温度系数测量":
-					commandCode = 0x40;
-					break;
-				case "电源电压系数测量":
-					commandCode = 0x42;
-					break;
-				default:
-					MessageBox.Show("请选择操作!", "错误");
-					return;
+				}
 			}
-			
+			if (!ifFind)
+			{
+				MessageBox.Show("请选择操作!", "错误");
+				return;
+			}
 			byte[] systemCommand = { 0xAA, _testerID, 0x01, commandCode, 0xCC, 0x33, 0xC3, 0x3C };
 			WritePort(systemCommand, "系统操作:" + cbSystem.Text);
 		}
@@ -242,7 +214,59 @@ namespace IVCurvometerTestTool
 
 		private void btnPageTips_Click(object sender, EventArgs e)
 		{
+			byte pageID = 0;
+			byte pageType = 0;
+			byte pageOperate = 0;
+			bool ifFind;
 
+			ifFind = false;
+			foreach (var p in CodeCommadPair.页面类型)
+			{
+				if (p.Value == cbPageType.Text)
+				{
+					pageType = p.Key;
+					ifFind = true;
+				}
+			}
+			if (!ifFind)
+			{
+				MessageBox.Show("请选择页面类型", "错误");
+				return;
+			}
+
+			ifFind = false;
+			foreach(var p in CodeCommadPair.页面编号)
+			{
+				if(p.Value == cbPageID.Text)
+				{
+					pageID = p.Key;
+					ifFind = true;
+				}
+			}
+			if(!ifFind)
+			{
+				MessageBox.Show("请选择页面编号", "错误");
+				return;
+			}
+
+
+			ifFind = false;
+			foreach (var p in CodeCommadPair.页面操作)
+			{
+				if (p.Value == cbPageOperate.Text)
+				{
+					pageOperate = p.Key;
+					ifFind = true;
+				}
+			}
+			if (!ifFind)
+			{
+				MessageBox.Show("请选择页面操作", "错误");
+				return;
+			}
+
+			byte[] buffer = { 0xAA, _testerID, 0x14, pageID, pageType, pageOperate, 0xCC, 0x33, 0xC3, 0x3C };
+			WritePort(buffer, "页面提示:" + cbPageType.Text + ":" + cbPageID.Text + ":" + cbPageOperate.Text);
 		}
 	}
 }
