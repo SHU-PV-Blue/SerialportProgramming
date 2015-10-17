@@ -155,8 +155,12 @@ namespace SerialDemo_1
 		/// <param name="e"></param>
 		private void btnClose_Click(object sender, EventArgs e)
 		{
-			if(sp.IsOpen)
+			if (sp.IsOpen)
+			{
 				sp.Close();
+				txtRecive.AppendText("串口已关闭!\r\n");
+			}
+				
 		}
 
 		/// <summary>
