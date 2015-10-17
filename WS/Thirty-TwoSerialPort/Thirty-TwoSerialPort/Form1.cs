@@ -9,17 +9,18 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO.Ports;
 using System.Timers;
-
+using System.IO;
 namespace Thirty_TwoSerialPort
 {
 	public partial class Form1 : Form
 	{
 		bool isStart = false;
+		SerialPort serialPort = new SerialPort();
 		public Form1()
 		{
 			InitializeComponent();
 		}
-		SerialPort serialPort = new SerialPort();
+		//SerialPort serialPort = new SerialPort();
 		public byte dbit = 8;
 		System.Timers.Timer tm = new System.Timers.Timer();
 		System.Timers.Timer TimeGetSencond = new System.Timers.Timer();
@@ -225,9 +226,9 @@ namespace Thirty_TwoSerialPort
 		{
 			if (serialPort.IsOpen)
 			{
-				if (toolStripButton3.Text == "打开串口")
+				if (toolStripButton3.Text == "启动双轴电机")
 				{
-					toolStripButton3.Text = "关闭串口";
+					toolStripButton3.Text = "关闭双轴电机";
 					MessageBox.Show("已经启动双轴电机", "信息提示");
 					if (isStart)
 					{
@@ -261,17 +262,20 @@ namespace Thirty_TwoSerialPort
 						MessageBox.Show(ee.Message, "信息提示");
 					}
 				}
-				if(toolStripButton3.Text == "关闭双轴电机")
+				else
 				{
 					tm.Stop();
 					TimeGetSencond.Stop();
+					TimeReadSencond.Stop();
+					MessageBox.Show("已经关闭双轴电机", "信息提示");
+					toolStripButton3.Text ="启动双轴电机";
 				}
 			}
 			else
 			{
 				MessageBox.Show("请打开端口", "信息提示");
 			}
-			}
+		}
 		private delegate void Combobox2CallBack();
 		private void timer1_Tick(object sender, EventArgs e)
 		{
@@ -330,6 +334,7 @@ namespace Thirty_TwoSerialPort
 				{
 					DateTime dt = DateTime.Now;
 					string StrTime = dt.ToLongTimeString().ToString();
+					label13.Text = StrTime;
 					DateTime NowTime;
 					DateTime.TryParse(StrTime, out NowTime);
 					DateTime StartTime;
@@ -351,6 +356,8 @@ namespace Thirty_TwoSerialPort
 					{
 						tm.Stop();
 						TimeGetSencond.Stop();
+						TimeReadSencond.Stop();
+						MessageBox.Show("指令发送完成", "信息提示");
 					}
 				}
 				catch (Exception ee)
@@ -359,6 +366,39 @@ namespace Thirty_TwoSerialPort
 				}
 			};
 			comboBox2.Invoke(comcalback);
+		}
+
+		private void toolStripButton2_Click(object sender, EventArgs e)
+		{
+			SaveFileDialog saveDialog = new SaveFileDialog();
+			saveDialog.Filter = "数据库文件（*.bak）|*.bak|数据文件（*.mdf)|*.mdf|日志文件（*.ldf)|*.ldf|文本文件（*.txt)|*.txt";
+			saveDialog.FilterIndex = 1;
+			saveDialog.RestoreDirectory = true;
+			if(saveDialog.ShowDialog() == DialogResult.OK)
+			{
+				string localFilePath = saveDialog.FileName.ToString();
+				localFilePath = localFilePath.Substring(0, localFilePath.LastIndexOf("\\"));
+
+				System.IO.FileStream fileStream = (System.IO.FileStream)saveDialog.OpenFile();
+
+				int bytes = serialPort.BytesToRead;
+				byte[] buffer = new byte[bytes];
+				serialPort.Read(buffer, 0, bytes);
+				foreach (byte b in buffer)
+				{
+					builder.Append(b.ToString("X2") + " ");
+				}
+
+				fileStream.Position = fileStream.Length;
+				StreamWriter streamWriter = new StreamWriter(fileStream);
+				streamWriter.Flush();
+				streamWriter.BaseStream.Seek(fileStream.Position, SeekOrigin.Begin);
+				streamWriter.WriteLine(builder.ToString());
+				streamWriter.Flush();
+				streamWriter.Close();
+
+			}
+
 		}
 	}
 }

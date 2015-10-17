@@ -253,13 +253,13 @@
 			// 
 			// btnRecive
 			// 
-			this.btnRecive.Location = new System.Drawing.Point(26, 282);
-			this.btnRecive.Name = "btnRecive";
-			this.btnRecive.Size = new System.Drawing.Size(95, 30);
-			this.btnRecive.TabIndex = 7;
-			this.btnRecive.Text = "接收";
-			this.btnRecive.UseVisualStyleBackColor = true;
-			this.btnRecive.Click += new System.EventHandler(this.btnRecive_Click);
+			//this.btnRecive.Location = new System.Drawing.Point(26, 282);
+			//this.btnRecive.Name = "btnRecive";
+			//this.btnRecive.Size = new System.Drawing.Size(95, 30);
+			//this.btnRecive.TabIndex = 7;
+			//this.btnRecive.Text = "接收";
+			//this.btnRecive.UseVisualStyleBackColor = true;
+			//this.btnRecive.Click += new System.EventHandler(this.btnRecive_Click);
 			// 
 			// groupBox2
 			// 
