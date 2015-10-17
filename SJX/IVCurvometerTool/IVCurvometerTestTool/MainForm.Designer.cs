@@ -82,12 +82,17 @@
 			this.cbGetData = new System.Windows.Forms.ComboBox();
 			this.btnGetData = new System.Windows.Forms.Button();
 			this.label6 = new System.Windows.Forms.Label();
+			this.cbSetData = new System.Windows.Forms.ComboBox();
+			this.btnSetData = new System.Windows.Forms.Button();
+			this.label7 = new System.Windows.Forms.Label();
+			this.txtSetData = new System.Windows.Forms.TextBox();
 			this.gbPortSet.SuspendLayout();
 			this.gbReceiveData.SuspendLayout();
 			this.gbControl.SuspendLayout();
 			this.tcControl.SuspendLayout();
 			this.tpHeartbeat.SuspendLayout();
 			this.tpSystem.SuspendLayout();
+			this.tpSetData.SuspendLayout();
 			this.tpGetData.SuspendLayout();
 			this.tpPageTips.SuspendLayout();
 			this.gbReceiveExplanation.SuspendLayout();
@@ -419,6 +424,10 @@
 			// 
 			// tpSetData
 			// 
+			this.tpSetData.Controls.Add(this.txtSetData);
+			this.tpSetData.Controls.Add(this.cbSetData);
+			this.tpSetData.Controls.Add(this.btnSetData);
+			this.tpSetData.Controls.Add(this.label7);
 			this.tpSetData.Location = new System.Drawing.Point(4, 22);
 			this.tpSetData.Name = "tpSetData";
 			this.tpSetData.Size = new System.Drawing.Size(727, 179);
@@ -724,6 +733,72 @@
 			this.label6.TabIndex = 22;
 			this.label6.Text = "选择数据";
 			// 
+			// cbSetData
+			// 
+			this.cbSetData.FormattingEnabled = true;
+			this.cbSetData.Items.AddRange(new object[] {
+            "电流系数A地址",
+            "电流系数B地址",
+            "电压系数A地址",
+            "电压系数B地址",
+            "温度系数A地址",
+            "温度系数B地址",
+            "照明系数A地址",
+            "照明系数B地址",
+            "电池系数A地址",
+            "电池系数B地址",
+            "分流器系数地址",
+            "照明仪系数地址",
+            "单晶硅电压温度系数",
+            "单晶硅电流温度系数",
+            "多晶硅电压温度系数",
+            "多晶硅电流温度系数",
+            "薄膜电压温度系数",
+            "薄膜电流温度系数",
+            "电池类型选择",
+            "单晶硅组件内阻",
+            "照度仪选择地址",
+            "照度仪系数地址",
+            "多晶硅组件内阻",
+            "薄膜组件内阻",
+            "单晶硅组件内阻温度系数",
+            "多晶硅组件内阻温度系数",
+            "薄膜组件内阻温度系数",
+            "阵列测量序号",
+            "被测阵列编号",
+            "系统设置密码",
+            "系统ID"});
+			this.cbSetData.Location = new System.Drawing.Point(187, 85);
+			this.cbSetData.Name = "cbSetData";
+			this.cbSetData.Size = new System.Drawing.Size(161, 20);
+			this.cbSetData.TabIndex = 27;
+			// 
+			// btnSetData
+			// 
+			this.btnSetData.Location = new System.Drawing.Point(457, 83);
+			this.btnSetData.Name = "btnSetData";
+			this.btnSetData.Size = new System.Drawing.Size(75, 23);
+			this.btnSetData.TabIndex = 26;
+			this.btnSetData.Text = "发送";
+			this.btnSetData.UseVisualStyleBackColor = true;
+			this.btnSetData.Click += new System.EventHandler(this.btnSetData_Click);
+			// 
+			// label7
+			// 
+			this.label7.AutoSize = true;
+			this.label7.Location = new System.Drawing.Point(128, 88);
+			this.label7.Name = "label7";
+			this.label7.Size = new System.Drawing.Size(53, 12);
+			this.label7.TabIndex = 25;
+			this.label7.Text = "选择数据";
+			// 
+			// txtSetData
+			// 
+			this.txtSetData.Location = new System.Drawing.Point(359, 85);
+			this.txtSetData.Name = "txtSetData";
+			this.txtSetData.Size = new System.Drawing.Size(92, 21);
+			this.txtSetData.TabIndex = 28;
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -752,6 +827,8 @@
 			this.tpHeartbeat.PerformLayout();
 			this.tpSystem.ResumeLayout(false);
 			this.tpSystem.PerformLayout();
+			this.tpSetData.ResumeLayout(false);
+			this.tpSetData.PerformLayout();
 			this.tpGetData.ResumeLayout(false);
 			this.tpGetData.PerformLayout();
 			this.tpPageTips.ResumeLayout(false);
@@ -820,5 +897,9 @@
 		private System.Windows.Forms.ComboBox cbGetData;
 		private System.Windows.Forms.Button btnGetData;
 		private System.Windows.Forms.Label label6;
+		private System.Windows.Forms.TextBox txtSetData;
+		private System.Windows.Forms.ComboBox cbSetData;
+		private System.Windows.Forms.Button btnSetData;
+		private System.Windows.Forms.Label label7;
 	}
 }
