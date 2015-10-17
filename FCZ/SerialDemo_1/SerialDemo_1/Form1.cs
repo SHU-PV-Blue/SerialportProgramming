@@ -26,14 +26,22 @@ namespace SerialDemo_1
 		public static string strDataBits = "";
 		public static string strStopBits = "";
 		//public static string strPortName = "";
+		bool IsSended = false;
+		Timer AutoSendTimer = new Timer();
+		
 
 
 		private void Form1_Load(object sender, EventArgs e)
 		{
-			
+			//InitParam();
+			AutoSendTimer.Tick  += new EventHandler(AutoSend);
 		}
 
 		private void btnSetParam_Click(object sender, EventArgs e)
+		{
+			InitParam();
+		}
+		private void InitParam()
 		{
 			strPortName = cmbPorts.Text;
 			strBaudRate = cmbBaudRate.Text;
@@ -45,7 +53,6 @@ namespace SerialDemo_1
 			sp.DataBits = Convert.ToByte(strDataBits);
 			sp.StopBits = StopBits.One;
 		}
-
 		private void btnOpen_Click(object sender, EventArgs e)
 		{
 			try
@@ -71,16 +78,37 @@ namespace SerialDemo_1
 
 		private void btnSend_Click(object sender, EventArgs e)
 		{
-			if (ckbAutoSend.Checked)
-			{
-				Timer AutoSendTimer = new Timer();
-
-			}
-			else
-			{
-				sp.Write(txtSend.Text);
-			}
 			
+				if (ckbAutoSend.Checked)
+				{
+					if (!IsSended)
+					{
+						btnSend.Text = "停止";
+						int interval;
+						if( ! int.TryParse(txtTimeCell.Text, out interval))
+							interval = 1;
+						AutoSendTimer.Interval = 1000 * interval;
+						AutoSendTimer.Start();
+						IsSended = true;
+					}
+					else
+					{
+						btnSend.Text = "发送";
+						AutoSendTimer.Stop();
+						AutoSendTimer.Dispose();
+						IsSended = false;
+					}
+				}
+				else
+				{
+					sp.Write(txtSend.Text);
+					ReciveData();
+				}
+		}
+		private void AutoSend(object sender, EventArgs e) 
+		{
+			sp.Write(txtSend.Text);
+			ReciveData();
 		}
 
 		private void btnInit_Click(object sender, EventArgs e)
@@ -105,29 +133,27 @@ namespace SerialDemo_1
 		{
 			if (sp.IsOpen)
 			{
-				DateTime dt = DateTime.Now;
-				string strRecivel = sp.ReadExisting();
-				txtRecive.AppendText(dt.ToString() + strRecivel);
-				txtRecive.AppendText("\n");
-
-				SaveData(dt, strRecivel);
+				ReciveData();
 			}
 			
 		}
 
-		private void SaveData(DateTime dt, string strRecive)
+		private void ReciveData()
 		{
 			try
 			{
+				DateTime dt = DateTime.Now;
+				string strRecivel = sp.ReadExisting();
+				txtRecive.AppendText(dt.ToString() + strRecivel);
+				txtRecive.AppendText("\n");
 				FileStream fs = new FileStream(@"E:\光伏\串口\Data\"  + "1.txt", FileMode.OpenOrCreate, FileAccess.Write);
-				
 				fs.Position = fs.Length;                  //将待写入内容追加到文件末尾  
-				 StreamWriter sw = new StreamWriter(fs, Encoding.UTF8);//(fs, System.Text.Encoding.GetEncoding("GB2312"));
-				 sw.Flush();
-				 sw.BaseStream.Seek(fs.Position, SeekOrigin.Begin);
-				 sw.WriteLine(dt.ToString() + strRecive);
-				 sw.Flush();
-				 sw.Close();
+				StreamWriter sw = new StreamWriter(fs, Encoding.UTF8);//(fs, System.Text.Encoding.GetEncoding("GB2312"));
+				sw.Flush();
+				sw.BaseStream.Seek(fs.Position, SeekOrigin.Begin);
+				sw.WriteLine(dt.ToString() + strRecivel);
+				sw.Flush();
+				sw.Close();
 			}
 			catch(Exception ex)
 			{
@@ -140,6 +166,10 @@ namespace SerialDemo_1
 			if(ckbAutoSend.Checked)
 			{
 				txtTimeCell.ReadOnly = false;
+				btnSend.Text = "发送";
+				AutoSendTimer.Stop();
+				AutoSendTimer.Dispose();
+				IsSended = false;
 			}
 			else
 			{

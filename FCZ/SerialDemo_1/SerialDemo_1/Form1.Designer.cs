@@ -49,10 +49,10 @@
 			this.btnExit = new System.Windows.Forms.Button();
 			this.btnRecive = new System.Windows.Forms.Button();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
-			this.ckbAutoSend = new System.Windows.Forms.CheckBox();
-			this.txtTimeCell = new System.Windows.Forms.TextBox();
-			this.label6 = new System.Windows.Forms.Label();
 			this.label7 = new System.Windows.Forms.Label();
+			this.label6 = new System.Windows.Forms.Label();
+			this.txtTimeCell = new System.Windows.Forms.TextBox();
+			this.ckbAutoSend = new System.Windows.Forms.CheckBox();
 			this.groupBox1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
 			this.SuspendLayout();
@@ -242,7 +242,7 @@
 			// 
 			// btnSend
 			// 
-			this.btnSend.Location = new System.Drawing.Point(303, 179);
+			this.btnSend.Location = new System.Drawing.Point(6, 170);
 			this.btnSend.Name = "btnSend";
 			this.btnSend.Size = new System.Drawing.Size(83, 37);
 			this.btnSend.TabIndex = 5;
@@ -286,23 +286,14 @@
 			this.groupBox2.TabStop = false;
 			this.groupBox2.Text = "数据发送/接收";
 			// 
-			// ckbAutoSend
+			// label7
 			// 
-			this.ckbAutoSend.AutoSize = true;
-			this.ckbAutoSend.Location = new System.Drawing.Point(6, 213);
-			this.ckbAutoSend.Name = "ckbAutoSend";
-			this.ckbAutoSend.Size = new System.Drawing.Size(72, 16);
-			this.ckbAutoSend.TabIndex = 6;
-			this.ckbAutoSend.Text = "自动发送";
-			this.ckbAutoSend.UseVisualStyleBackColor = true;
-			this.ckbAutoSend.CheckedChanged += new System.EventHandler(this.ckbAutoSend_CheckedChanged);
-			// 
-			// txtTimeCell
-			// 
-			this.txtTimeCell.Location = new System.Drawing.Point(148, 211);
-			this.txtTimeCell.Name = "txtTimeCell";
-			this.txtTimeCell.Size = new System.Drawing.Size(100, 21);
-			this.txtTimeCell.TabIndex = 7;
+			this.label7.AutoSize = true;
+			this.label7.Location = new System.Drawing.Point(254, 217);
+			this.label7.Name = "label7";
+			this.label7.Size = new System.Drawing.Size(17, 12);
+			this.label7.TabIndex = 9;
+			this.label7.Text = "秒";
 			// 
 			// label6
 			// 
@@ -313,14 +304,23 @@
 			this.label6.TabIndex = 8;
 			this.label6.Text = "时间间隔";
 			// 
-			// label7
+			// txtTimeCell
 			// 
-			this.label7.AutoSize = true;
-			this.label7.Location = new System.Drawing.Point(254, 217);
-			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(17, 12);
-			this.label7.TabIndex = 9;
-			this.label7.Text = "秒";
+			this.txtTimeCell.Location = new System.Drawing.Point(148, 211);
+			this.txtTimeCell.Name = "txtTimeCell";
+			this.txtTimeCell.Size = new System.Drawing.Size(100, 21);
+			this.txtTimeCell.TabIndex = 7;
+			// 
+			// ckbAutoSend
+			// 
+			this.ckbAutoSend.AutoSize = true;
+			this.ckbAutoSend.Location = new System.Drawing.Point(6, 213);
+			this.ckbAutoSend.Name = "ckbAutoSend";
+			this.ckbAutoSend.Size = new System.Drawing.Size(72, 16);
+			this.ckbAutoSend.TabIndex = 6;
+			this.ckbAutoSend.Text = "自动发送";
+			this.ckbAutoSend.UseVisualStyleBackColor = true;
+			this.ckbAutoSend.CheckedChanged += new System.EventHandler(this.ckbAutoSend_CheckedChanged);
 			// 
 			// Form1
 			// 
