@@ -195,12 +195,18 @@ namespace SerialDemo_1
 					{
 						btnSend.Text = "发送";
 						AutoSendTimer.Stop();
+						txtSend.Clear();
 						IsSended = false;
 					}
 				}
 				else
 				{
-					try { Send(txtSend.Text);}
+					try 
+					{
+						Send(txtSend.Text);
+						txtRecive.AppendText(txtSend.Text + Environment.NewLine);
+						txtSend.Clear();
+					}
 					catch (Exception ex) { txtRecive.AppendText("异常: " + ex.Message + "\r\n"); }
 				}
 		}
@@ -235,6 +241,7 @@ namespace SerialDemo_1
 			try 
 			{
 				Send(txtSend.Text);
+				txtRecive.AppendText(txtSend.Text + Environment.NewLine);
 			}
 			catch (Exception ex) { txtRecive.AppendText("异常: " + ex.Message + "\r\n"); }
 		}
@@ -450,12 +457,32 @@ namespace SerialDemo_1
 
 		private void btnPswBack_Click(object sender, EventArgs e)
 		{
-
+			if (txtPsw.Text.Length > 0)
+			{
+				pswStr = pswStr.Remove(pswStr.Length - 2);
+				txtPsw.Text = txtPsw.Text.Remove(txtPsw.Text.Length - 1);
+			}
+			else
+			{
+				txtPsw.Clear();
+				pswStr = "";
+			}
 		}
 
 		private void btnSetPsw_Click(object sender, EventArgs e)
 		{
-
+			if (pswStr.Length != 8 || txtPsw.Text.Length != 4)
+			{
+				MessageBox.Show("密码长度为三位,请重新输入", "错误", MessageBoxButtons.OK,MessageBoxIcon.Error);
+			}
+			else
+			{
+				Send(pswStr);
+				txtRecive.AppendText(pswStr+Environment.NewLine);
+				pswStr = "";
+				txtPsw.Clear();
+				txtRecive.AppendText("设置密码成功!\r\n");
+			}
 		}
 
 	}

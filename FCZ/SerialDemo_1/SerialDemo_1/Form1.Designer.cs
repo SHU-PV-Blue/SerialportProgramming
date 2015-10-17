@@ -247,9 +247,9 @@
 			// 
 			// btnSetParam
 			// 
-			this.btnSetParam.Location = new System.Drawing.Point(20, 20);
+			this.btnSetParam.Location = new System.Drawing.Point(2, 18);
 			this.btnSetParam.Name = "btnSetParam";
-			this.btnSetParam.Size = new System.Drawing.Size(141, 29);
+			this.btnSetParam.Size = new System.Drawing.Size(170, 60);
 			this.btnSetParam.TabIndex = 2;
 			this.btnSetParam.Text = "打开串口";
 			this.btnSetParam.UseVisualStyleBackColor = true;
@@ -266,9 +266,9 @@
 			// 
 			// btnClose
 			// 
-			this.btnClose.Location = new System.Drawing.Point(20, 56);
+			this.btnClose.Location = new System.Drawing.Point(2, 78);
 			this.btnClose.Name = "btnClose";
-			this.btnClose.Size = new System.Drawing.Size(141, 29);
+			this.btnClose.Size = new System.Drawing.Size(170, 60);
 			this.btnClose.TabIndex = 4;
 			this.btnClose.Text = "关闭串口";
 			this.btnClose.UseVisualStyleBackColor = true;
@@ -276,9 +276,9 @@
 			// 
 			// btnExit
 			// 
-			this.btnExit.Location = new System.Drawing.Point(20, 97);
+			this.btnExit.Location = new System.Drawing.Point(2, 138);
 			this.btnExit.Name = "btnExit";
-			this.btnExit.Size = new System.Drawing.Size(141, 29);
+			this.btnExit.Size = new System.Drawing.Size(170, 60);
 			this.btnExit.TabIndex = 6;
 			this.btnExit.Text = "退出";
 			this.btnExit.UseVisualStyleBackColor = true;
@@ -318,7 +318,7 @@
 			this.groupBox3.Controls.Add(this.btnClose);
 			this.groupBox3.Location = new System.Drawing.Point(3, 253);
 			this.groupBox3.Name = "groupBox3";
-			this.groupBox3.Size = new System.Drawing.Size(174, 138);
+			this.groupBox3.Size = new System.Drawing.Size(174, 204);
 			this.groupBox3.TabIndex = 3;
 			this.groupBox3.TabStop = false;
 			this.groupBox3.Text = "操作";
@@ -329,6 +329,7 @@
 			this.tabControl1.Controls.Add(this.tbpSysConfig);
 			this.tabControl1.Controls.Add(this.tbpSetPsw);
 			this.tabControl1.Controls.Add(this.tbpSendString);
+			this.tabControl1.ItemSize = new System.Drawing.Size(60, 18);
 			this.tabControl1.Location = new System.Drawing.Point(189, 273);
 			this.tabControl1.Name = "tabControl1";
 			this.tabControl1.SelectedIndex = 0;
@@ -646,6 +647,7 @@
 			this.tbpSendString.Location = new System.Drawing.Point(4, 22);
 			this.tbpSendString.Name = "tbpSendString";
 			this.tbpSendString.Padding = new System.Windows.Forms.Padding(3);
+			this.tbpSendString.RightToLeft = System.Windows.Forms.RightToLeft.No;
 			this.tbpSendString.Size = new System.Drawing.Size(338, 158);
 			this.tbpSendString.TabIndex = 3;
 			this.tbpSendString.Text = "自定义发送";
