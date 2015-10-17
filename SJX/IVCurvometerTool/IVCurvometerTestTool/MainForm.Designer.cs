@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			this.gbPortSet = new System.Windows.Forms.GroupBox();
 			this.btnSwitchPort = new System.Windows.Forms.Button();
 			this.cbStopBits = new System.Windows.Forms.ComboBox();
@@ -49,6 +50,9 @@
 			this.txtHeartbeat = new System.Windows.Forms.TextBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.tpSystem = new System.Windows.Forms.TabPage();
+			this.cbSystem = new System.Windows.Forms.ComboBox();
+			this.btnSystem = new System.Windows.Forms.Button();
+			this.label2 = new System.Windows.Forms.Label();
 			this.tpSTC = new System.Windows.Forms.TabPage();
 			this.tpSetI2C = new System.Windows.Forms.TabPage();
 			this.tpGetI2C = new System.Windows.Forms.TabPage();
@@ -67,9 +71,7 @@
 			this.txtTesterID = new System.Windows.Forms.TextBox();
 			this.btnTesterID = new System.Windows.Forms.Button();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
-			this.btnSystem = new System.Windows.Forms.Button();
-			this.label2 = new System.Windows.Forms.Label();
-			this.cbSystem = new System.Windows.Forms.ComboBox();
+			this.tmrSendHeartbeat = new System.Windows.Forms.Timer(this.components);
 			this.gbPortSet.SuspendLayout();
 			this.gbReceiveData.SuspendLayout();
 			this.gbControl.SuspendLayout();
@@ -335,6 +337,46 @@
 			this.tpSystem.Text = "系统命令";
 			this.tpSystem.UseVisualStyleBackColor = true;
 			// 
+			// cbSystem
+			// 
+			this.cbSystem.FormattingEnabled = true;
+			this.cbSystem.Items.AddRange(new object[] {
+            "测量命令",
+            "辐照度测量",
+            "温度测量",
+            "电源电压测量",
+            "IV特性数据",
+            "IV-STC特性数据",
+            "存储命令",
+            "电压系数测量",
+            "电流系数测量",
+            "辐照度系数测量",
+            "温度系数测量",
+            "电源电压系数测量"});
+			this.cbSystem.Location = new System.Drawing.Point(184, 85);
+			this.cbSystem.Name = "cbSystem";
+			this.cbSystem.Size = new System.Drawing.Size(121, 20);
+			this.cbSystem.TabIndex = 21;
+			// 
+			// btnSystem
+			// 
+			this.btnSystem.Location = new System.Drawing.Point(311, 83);
+			this.btnSystem.Name = "btnSystem";
+			this.btnSystem.Size = new System.Drawing.Size(75, 23);
+			this.btnSystem.TabIndex = 20;
+			this.btnSystem.Text = "发送";
+			this.btnSystem.UseVisualStyleBackColor = true;
+			this.btnSystem.Click += new System.EventHandler(this.btnSystem_Click);
+			// 
+			// label2
+			// 
+			this.label2.AutoSize = true;
+			this.label2.Location = new System.Drawing.Point(125, 88);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(53, 12);
+			this.label2.TabIndex = 18;
+			this.label2.Text = "选择操作";
+			// 
 			// tpSTC
 			// 
 			this.tpSTC.Location = new System.Drawing.Point(4, 22);
@@ -503,45 +545,9 @@
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "测试仪选择";
 			// 
-			// btnSystem
+			// tmrSendHeartbeat
 			// 
-			this.btnSystem.Location = new System.Drawing.Point(311, 83);
-			this.btnSystem.Name = "btnSystem";
-			this.btnSystem.Size = new System.Drawing.Size(75, 23);
-			this.btnSystem.TabIndex = 20;
-			this.btnSystem.Text = "发送";
-			this.btnSystem.UseVisualStyleBackColor = true;
-			this.btnSystem.Click += new System.EventHandler(this.btnSystem_Click);
-			// 
-			// label2
-			// 
-			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(125, 88);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(53, 12);
-			this.label2.TabIndex = 18;
-			this.label2.Text = "选择操作";
-			// 
-			// cbSystem
-			// 
-			this.cbSystem.FormattingEnabled = true;
-			this.cbSystem.Items.AddRange(new object[] {
-            "测量命令",
-            "辐照度测量",
-            "温度测量",
-            "电源电压测量",
-            "IV特性数据",
-            "IV-STC特性数据",
-            "存储命令",
-            "电压系数测量",
-            "电流系数测量",
-            "辐照度系数测量",
-            "温度系数测量",
-            "电源电压系数测量"});
-			this.cbSystem.Location = new System.Drawing.Point(184, 85);
-			this.cbSystem.Name = "cbSystem";
-			this.cbSystem.Size = new System.Drawing.Size(121, 20);
-			this.cbSystem.TabIndex = 21;
+			this.tmrSendHeartbeat.Tick += new System.EventHandler(this.tmrSendHeartbeat_Tick);
 			// 
 			// MainForm
 			// 
@@ -624,5 +630,6 @@
 		private System.Windows.Forms.ComboBox cbSystem;
 		private System.Windows.Forms.Button btnSystem;
 		private System.Windows.Forms.Label label2;
+		private System.Windows.Forms.Timer tmrSendHeartbeat;
 	}
 }
