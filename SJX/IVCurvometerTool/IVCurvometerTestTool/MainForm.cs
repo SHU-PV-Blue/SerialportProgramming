@@ -20,6 +20,7 @@ namespace IVCurvometerTestTool
 		SerialPort _serialPort;
 		byte _testerID;
 		Thread _sendHeartbeatThread;
+		Thread _listenPortThread;
 		int _heartbeatCycle;
 
 
@@ -35,6 +36,66 @@ namespace IVCurvometerTestTool
 				byte[] heartbeat = { 0xAA, _testerID, 0x00, 0xCC, 0x33, 0xC3, 0x3C };
 				_serialPort.Write(heartbeat, 0, heartbeat.Length);
 				Thread.Sleep(_heartbeatCycle);
+			}
+		}
+
+		void WritePort(byte[] data, string messege)
+		{
+			_serialPort.Write(data, 0, data.Length);
+			string showData = "";
+			foreach(var b in data)
+			{
+				string str = Convert.ToString(b, 16);
+				str = str.ToUpper();
+				if (str.Length == 1)
+					str = "0" + str;
+				showData += str + " ";
+			}
+			lbSendData.Items.Add(showData);
+			lbSendData.SelectedIndex = lbSendData.Items.Count - 1;
+			lbSendExplanation.Items.Add(messege);
+			lbSendExplanation.SelectedIndex = lbSendData.Items.Count - 1;
+		}
+
+		void ListenPort()
+		{
+			List<byte> receiveData = new List<byte>();
+			while(true)
+			{
+				byte[] readbyte = new byte[1];
+				try
+				{
+					_serialPort.Read(readbyte, 0, 1);
+					//虽然极力避免，但还是有一定的概率关闭串口时触发“System.ObjectDisposedException”类型的未经处理的异常在 mscorlib.dll 中发生   其他信息: 已关闭 S
+				}
+				catch
+				{
+					Thread.Sleep(200);
+					continue;
+				}
+				receiveData.Add(readbyte[0]);
+				if(receiveData.Count > 1 + 4
+					&& receiveData[receiveData.Count - 4] == 0xCC
+					&& receiveData[receiveData.Count - 3] == 0x33
+ 					&& receiveData[receiveData.Count - 2] == 0xC3
+					&& receiveData[receiveData.Count - 1] == 0x3C
+					)
+				{
+					string showData = "";
+					foreach (var b in receiveData)
+					{
+						string str = Convert.ToString(b, 16);
+						str = str.ToUpper();
+						if (str.Length == 1)
+							str = "0" + str;
+						showData += str + " ";
+					}
+					lbReceiveData.Items.Add(showData);
+					lbReceiveData.SelectedIndex = lbReceiveData.Items.Count - 1;
+					lbReceiveExplanation.Items.Add(Explainer.Explain(receiveData.ToArray()));
+					lbReceiveExplanation.SelectedIndex = lbReceiveExplanation.Items.Count - 1;
+					receiveData.Clear();
+				}
 			}
 		}
 
@@ -54,6 +115,10 @@ namespace IVCurvometerTestTool
 		{
 			if(btnSwitchPort.Text == "关闭串口")
 			{
+				if (_listenPortThread != null && _listenPortThread.IsAlive)
+					_listenPortThread.Abort();
+				if (_sendHeartbeatThread != null && _sendHeartbeatThread.IsAlive)
+					_sendHeartbeatThread.Abort();
 				if (_serialPort.IsOpen)
 					_serialPort.Close();
 				btnSwitchPort.Text = "打开串口";
@@ -101,6 +166,7 @@ namespace IVCurvometerTestTool
 					_serialPort.StopBits = StopBits.OnePointFive;
 					break;
 			}
+			_serialPort.ReadTimeout = 1;
 			try
 			{
 				_serialPort.Open();
@@ -110,6 +176,8 @@ namespace IVCurvometerTestTool
 				MessageBox.Show(ex.Message,"打开串口失败");
 				return;
 			}
+			_listenPortThread = new Thread(new ThreadStart(ListenPort));
+			_listenPortThread.Start();
 			btnSwitchPort.Text = "关闭串口";
 		}
 
@@ -138,6 +206,8 @@ namespace IVCurvometerTestTool
 		{
 			if (_sendHeartbeatThread != null && _sendHeartbeatThread.IsAlive)
 				_sendHeartbeatThread.Abort();
+			if (_listenPortThread != null && _listenPortThread.IsAlive)
+				_listenPortThread.Abort();
 			if (_serialPort != null && _serialPort.IsOpen)
 				_serialPort.Close();
 		}
@@ -145,6 +215,61 @@ namespace IVCurvometerTestTool
 		private void btnTesterID_Click(object sender, EventArgs e)
 		{
 			_testerID = Convert.ToByte(txtTesterID.Text, 16);
+		}
+
+		private void btnSystem_Click(object sender, EventArgs e)
+		{
+			if (_serialPort == null || !_serialPort.IsOpen)
+			{
+				MessageBox.Show("请先打开串口", "失败");
+				return;
+			}
+			byte commandCode;
+			switch(cbSystem.Text)
+			{
+				case "测量命令":
+					commandCode = 0x05;
+					break;
+				case "辐照度测量":
+					commandCode = 0x06;
+					break;
+				case "温度测量":
+					commandCode = 0x07;
+					break;
+				case "电源电压测量":
+					commandCode = 0x08;
+					break;
+				case "IV特性数据":
+					commandCode = 0x09;
+					break;
+				case "IV-STC特性数据":
+					commandCode = 0x0A;
+					break;
+				case "存储命令":
+					commandCode = 0x0B;
+					break;
+				case "电压系数测量":
+					commandCode = 0x3D;
+					break;
+				case "电流系数测量":
+					commandCode = 0x3E;
+					break;
+				case "辐照度系数测量":
+					commandCode = 0x3F;
+					break;
+				case "温度系数测量":
+					commandCode = 0x40;
+					break;
+				case "电源电压系数测量":
+					commandCode = 0x42;
+					break;
+				default:
+					MessageBox.Show("请选择操作!", "错误");
+					return;
+			}
+			
+			byte[] systemCommand = { 0xAA, _testerID, 0x01, commandCode, 0xCC, 0x33, 0xC3, 0x3C };
+			WritePort(systemCommand, "系统命令:" + cbSystem.Text);
 		}
 	}
 }

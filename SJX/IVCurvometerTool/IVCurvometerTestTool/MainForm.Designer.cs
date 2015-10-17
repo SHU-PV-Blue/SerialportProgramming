@@ -41,40 +41,44 @@
 			this.cbPortName = new System.Windows.Forms.ComboBox();
 			this.lblPortName = new System.Windows.Forms.Label();
 			this.gbReceiveData = new System.Windows.Forms.GroupBox();
+			this.lbReceiveData = new System.Windows.Forms.ListBox();
 			this.gbControl = new System.Windows.Forms.GroupBox();
-			this.gbReceiveExplanation = new System.Windows.Forms.GroupBox();
-			this.gbSendData = new System.Windows.Forms.GroupBox();
-			this.gbSendExplanation = new System.Windows.Forms.GroupBox();
-			this.tpMainPage = new System.Windows.Forms.TabPage();
-			this.tpPageTips = new System.Windows.Forms.TabPage();
-			this.tpMeasure = new System.Windows.Forms.TabPage();
-			this.tpGetData = new System.Windows.Forms.TabPage();
-			this.tpSetData = new System.Windows.Forms.TabPage();
-			this.tpGetI2C = new System.Windows.Forms.TabPage();
-			this.tpSetI2C = new System.Windows.Forms.TabPage();
-			this.tpSTC = new System.Windows.Forms.TabPage();
-			this.tpSystem = new System.Windows.Forms.TabPage();
-			this.tpHeartbeat = new System.Windows.Forms.TabPage();
 			this.tcControl = new System.Windows.Forms.TabControl();
-			this.lblTesterID = new System.Windows.Forms.Label();
-			this.txtTesterID = new System.Windows.Forms.TextBox();
-			this.btnTesterID = new System.Windows.Forms.Button();
+			this.tpHeartbeat = new System.Windows.Forms.TabPage();
 			this.btnSwitchHeartbeat = new System.Windows.Forms.Button();
 			this.txtHeartbeat = new System.Windows.Forms.TextBox();
 			this.label1 = new System.Windows.Forms.Label();
-			this.groupBox1 = new System.Windows.Forms.GroupBox();
-			this.lbReceiveData = new System.Windows.Forms.ListBox();
+			this.tpSystem = new System.Windows.Forms.TabPage();
+			this.tpSTC = new System.Windows.Forms.TabPage();
+			this.tpSetI2C = new System.Windows.Forms.TabPage();
+			this.tpGetI2C = new System.Windows.Forms.TabPage();
+			this.tpSetData = new System.Windows.Forms.TabPage();
+			this.tpGetData = new System.Windows.Forms.TabPage();
+			this.tpMeasure = new System.Windows.Forms.TabPage();
+			this.tpPageTips = new System.Windows.Forms.TabPage();
+			this.tpMainPage = new System.Windows.Forms.TabPage();
+			this.gbReceiveExplanation = new System.Windows.Forms.GroupBox();
 			this.lbReceiveExplanation = new System.Windows.Forms.ListBox();
+			this.gbSendData = new System.Windows.Forms.GroupBox();
 			this.lbSendData = new System.Windows.Forms.ListBox();
+			this.gbSendExplanation = new System.Windows.Forms.GroupBox();
 			this.lbSendExplanation = new System.Windows.Forms.ListBox();
+			this.lblTesterID = new System.Windows.Forms.Label();
+			this.txtTesterID = new System.Windows.Forms.TextBox();
+			this.btnTesterID = new System.Windows.Forms.Button();
+			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.btnSystem = new System.Windows.Forms.Button();
+			this.label2 = new System.Windows.Forms.Label();
+			this.cbSystem = new System.Windows.Forms.ComboBox();
 			this.gbPortSet.SuspendLayout();
 			this.gbReceiveData.SuspendLayout();
 			this.gbControl.SuspendLayout();
+			this.tcControl.SuspendLayout();
+			this.tpHeartbeat.SuspendLayout();
+			this.tpSystem.SuspendLayout();
 			this.gbReceiveExplanation.SuspendLayout();
 			this.gbSendData.SuspendLayout();
 			this.gbSendExplanation.SuspendLayout();
-			this.tpHeartbeat.SuspendLayout();
-			this.tcControl.SuspendLayout();
 			this.groupBox1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -238,6 +242,15 @@
 			this.gbReceiveData.TabStop = false;
 			this.gbReceiveData.Text = "接收数据";
 			// 
+			// lbReceiveData
+			// 
+			this.lbReceiveData.FormattingEnabled = true;
+			this.lbReceiveData.ItemHeight = 12;
+			this.lbReceiveData.Location = new System.Drawing.Point(6, 20);
+			this.lbReceiveData.Name = "lbReceiveData";
+			this.lbReceiveData.Size = new System.Drawing.Size(293, 160);
+			this.lbReceiveData.TabIndex = 0;
+			// 
 			// gbControl
 			// 
 			this.gbControl.Controls.Add(this.tcControl);
@@ -247,131 +260,6 @@
 			this.gbControl.TabIndex = 6;
 			this.gbControl.TabStop = false;
 			this.gbControl.Text = "控制";
-			// 
-			// gbReceiveExplanation
-			// 
-			this.gbReceiveExplanation.Controls.Add(this.lbReceiveExplanation);
-			this.gbReceiveExplanation.Location = new System.Drawing.Point(454, 12);
-			this.gbReceiveExplanation.Name = "gbReceiveExplanation";
-			this.gbReceiveExplanation.Size = new System.Drawing.Size(305, 192);
-			this.gbReceiveExplanation.TabIndex = 15;
-			this.gbReceiveExplanation.TabStop = false;
-			this.gbReceiveExplanation.Text = "接收数据解析";
-			// 
-			// gbSendData
-			// 
-			this.gbSendData.Controls.Add(this.lbSendData);
-			this.gbSendData.Location = new System.Drawing.Point(143, 210);
-			this.gbSendData.Name = "gbSendData";
-			this.gbSendData.Size = new System.Drawing.Size(305, 145);
-			this.gbSendData.TabIndex = 2;
-			this.gbSendData.TabStop = false;
-			this.gbSendData.Text = "发送数据";
-			// 
-			// gbSendExplanation
-			// 
-			this.gbSendExplanation.Controls.Add(this.lbSendExplanation);
-			this.gbSendExplanation.Location = new System.Drawing.Point(454, 210);
-			this.gbSendExplanation.Name = "gbSendExplanation";
-			this.gbSendExplanation.Size = new System.Drawing.Size(305, 145);
-			this.gbSendExplanation.TabIndex = 16;
-			this.gbSendExplanation.TabStop = false;
-			this.gbSendExplanation.Text = "发送数据解析";
-			// 
-			// tpMainPage
-			// 
-			this.tpMainPage.Location = new System.Drawing.Point(4, 22);
-			this.tpMainPage.Name = "tpMainPage";
-			this.tpMainPage.Size = new System.Drawing.Size(727, 163);
-			this.tpMainPage.TabIndex = 9;
-			this.tpMainPage.Text = "主页面";
-			this.tpMainPage.UseVisualStyleBackColor = true;
-			// 
-			// tpPageTips
-			// 
-			this.tpPageTips.Location = new System.Drawing.Point(4, 22);
-			this.tpPageTips.Name = "tpPageTips";
-			this.tpPageTips.Size = new System.Drawing.Size(727, 163);
-			this.tpPageTips.TabIndex = 8;
-			this.tpPageTips.Text = "页面提示";
-			this.tpPageTips.UseVisualStyleBackColor = true;
-			// 
-			// tpMeasure
-			// 
-			this.tpMeasure.Location = new System.Drawing.Point(4, 22);
-			this.tpMeasure.Name = "tpMeasure";
-			this.tpMeasure.Size = new System.Drawing.Size(727, 163);
-			this.tpMeasure.TabIndex = 7;
-			this.tpMeasure.Text = "测量数据";
-			this.tpMeasure.UseVisualStyleBackColor = true;
-			// 
-			// tpGetData
-			// 
-			this.tpGetData.Location = new System.Drawing.Point(4, 22);
-			this.tpGetData.Name = "tpGetData";
-			this.tpGetData.Size = new System.Drawing.Size(727, 163);
-			this.tpGetData.TabIndex = 6;
-			this.tpGetData.Text = "查询数据";
-			this.tpGetData.UseVisualStyleBackColor = true;
-			// 
-			// tpSetData
-			// 
-			this.tpSetData.Location = new System.Drawing.Point(4, 22);
-			this.tpSetData.Name = "tpSetData";
-			this.tpSetData.Size = new System.Drawing.Size(727, 163);
-			this.tpSetData.TabIndex = 5;
-			this.tpSetData.Text = "设置数据";
-			this.tpSetData.UseVisualStyleBackColor = true;
-			// 
-			// tpGetI2C
-			// 
-			this.tpGetI2C.Location = new System.Drawing.Point(4, 22);
-			this.tpGetI2C.Name = "tpGetI2C";
-			this.tpGetI2C.Size = new System.Drawing.Size(727, 163);
-			this.tpGetI2C.TabIndex = 4;
-			this.tpGetI2C.Text = "查询I2C";
-			this.tpGetI2C.UseVisualStyleBackColor = true;
-			// 
-			// tpSetI2C
-			// 
-			this.tpSetI2C.Location = new System.Drawing.Point(4, 22);
-			this.tpSetI2C.Name = "tpSetI2C";
-			this.tpSetI2C.Size = new System.Drawing.Size(727, 163);
-			this.tpSetI2C.TabIndex = 3;
-			this.tpSetI2C.Text = "设置I2C";
-			this.tpSetI2C.UseVisualStyleBackColor = true;
-			// 
-			// tpSTC
-			// 
-			this.tpSTC.Location = new System.Drawing.Point(4, 22);
-			this.tpSTC.Name = "tpSTC";
-			this.tpSTC.Size = new System.Drawing.Size(727, 163);
-			this.tpSTC.TabIndex = 2;
-			this.tpSTC.Text = "STC命令";
-			this.tpSTC.UseVisualStyleBackColor = true;
-			// 
-			// tpSystem
-			// 
-			this.tpSystem.Location = new System.Drawing.Point(4, 22);
-			this.tpSystem.Name = "tpSystem";
-			this.tpSystem.Padding = new System.Windows.Forms.Padding(3);
-			this.tpSystem.Size = new System.Drawing.Size(727, 163);
-			this.tpSystem.TabIndex = 1;
-			this.tpSystem.Text = "系统命令";
-			this.tpSystem.UseVisualStyleBackColor = true;
-			// 
-			// tpHeartbeat
-			// 
-			this.tpHeartbeat.Controls.Add(this.btnSwitchHeartbeat);
-			this.tpHeartbeat.Controls.Add(this.txtHeartbeat);
-			this.tpHeartbeat.Controls.Add(this.label1);
-			this.tpHeartbeat.Location = new System.Drawing.Point(4, 22);
-			this.tpHeartbeat.Name = "tpHeartbeat";
-			this.tpHeartbeat.Padding = new System.Windows.Forms.Padding(3);
-			this.tpHeartbeat.Size = new System.Drawing.Size(727, 179);
-			this.tpHeartbeat.TabIndex = 0;
-			this.tpHeartbeat.Text = "心跳包";
-			this.tpHeartbeat.UseVisualStyleBackColor = true;
 			// 
 			// tcControl
 			// 
@@ -393,6 +281,188 @@
 			this.tcControl.SelectedIndex = 0;
 			this.tcControl.Size = new System.Drawing.Size(735, 205);
 			this.tcControl.TabIndex = 14;
+			// 
+			// tpHeartbeat
+			// 
+			this.tpHeartbeat.Controls.Add(this.btnSwitchHeartbeat);
+			this.tpHeartbeat.Controls.Add(this.txtHeartbeat);
+			this.tpHeartbeat.Controls.Add(this.label1);
+			this.tpHeartbeat.Location = new System.Drawing.Point(4, 22);
+			this.tpHeartbeat.Name = "tpHeartbeat";
+			this.tpHeartbeat.Padding = new System.Windows.Forms.Padding(3);
+			this.tpHeartbeat.Size = new System.Drawing.Size(727, 179);
+			this.tpHeartbeat.TabIndex = 0;
+			this.tpHeartbeat.Text = "心跳包";
+			this.tpHeartbeat.UseVisualStyleBackColor = true;
+			// 
+			// btnSwitchHeartbeat
+			// 
+			this.btnSwitchHeartbeat.Location = new System.Drawing.Point(372, 83);
+			this.btnSwitchHeartbeat.Name = "btnSwitchHeartbeat";
+			this.btnSwitchHeartbeat.Size = new System.Drawing.Size(75, 23);
+			this.btnSwitchHeartbeat.TabIndex = 17;
+			this.btnSwitchHeartbeat.Text = "开始";
+			this.btnSwitchHeartbeat.UseVisualStyleBackColor = true;
+			this.btnSwitchHeartbeat.Click += new System.EventHandler(this.btnSwitchHeartbeat_Click);
+			// 
+			// txtHeartbeat
+			// 
+			this.txtHeartbeat.Location = new System.Drawing.Point(244, 85);
+			this.txtHeartbeat.Name = "txtHeartbeat";
+			this.txtHeartbeat.Size = new System.Drawing.Size(122, 21);
+			this.txtHeartbeat.TabIndex = 16;
+			this.txtHeartbeat.Text = "1000";
+			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Location = new System.Drawing.Point(125, 88);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(113, 12);
+			this.label1.TabIndex = 15;
+			this.label1.Text = "设置心跳包周期(ms)";
+			// 
+			// tpSystem
+			// 
+			this.tpSystem.Controls.Add(this.cbSystem);
+			this.tpSystem.Controls.Add(this.btnSystem);
+			this.tpSystem.Controls.Add(this.label2);
+			this.tpSystem.Location = new System.Drawing.Point(4, 22);
+			this.tpSystem.Name = "tpSystem";
+			this.tpSystem.Padding = new System.Windows.Forms.Padding(3);
+			this.tpSystem.Size = new System.Drawing.Size(727, 179);
+			this.tpSystem.TabIndex = 1;
+			this.tpSystem.Text = "系统命令";
+			this.tpSystem.UseVisualStyleBackColor = true;
+			// 
+			// tpSTC
+			// 
+			this.tpSTC.Location = new System.Drawing.Point(4, 22);
+			this.tpSTC.Name = "tpSTC";
+			this.tpSTC.Size = new System.Drawing.Size(727, 179);
+			this.tpSTC.TabIndex = 2;
+			this.tpSTC.Text = "STC命令";
+			this.tpSTC.UseVisualStyleBackColor = true;
+			// 
+			// tpSetI2C
+			// 
+			this.tpSetI2C.Location = new System.Drawing.Point(4, 22);
+			this.tpSetI2C.Name = "tpSetI2C";
+			this.tpSetI2C.Size = new System.Drawing.Size(727, 179);
+			this.tpSetI2C.TabIndex = 3;
+			this.tpSetI2C.Text = "设置I2C";
+			this.tpSetI2C.UseVisualStyleBackColor = true;
+			// 
+			// tpGetI2C
+			// 
+			this.tpGetI2C.Location = new System.Drawing.Point(4, 22);
+			this.tpGetI2C.Name = "tpGetI2C";
+			this.tpGetI2C.Size = new System.Drawing.Size(727, 179);
+			this.tpGetI2C.TabIndex = 4;
+			this.tpGetI2C.Text = "查询I2C";
+			this.tpGetI2C.UseVisualStyleBackColor = true;
+			// 
+			// tpSetData
+			// 
+			this.tpSetData.Location = new System.Drawing.Point(4, 22);
+			this.tpSetData.Name = "tpSetData";
+			this.tpSetData.Size = new System.Drawing.Size(727, 179);
+			this.tpSetData.TabIndex = 5;
+			this.tpSetData.Text = "设置数据";
+			this.tpSetData.UseVisualStyleBackColor = true;
+			// 
+			// tpGetData
+			// 
+			this.tpGetData.Location = new System.Drawing.Point(4, 22);
+			this.tpGetData.Name = "tpGetData";
+			this.tpGetData.Size = new System.Drawing.Size(727, 179);
+			this.tpGetData.TabIndex = 6;
+			this.tpGetData.Text = "查询数据";
+			this.tpGetData.UseVisualStyleBackColor = true;
+			// 
+			// tpMeasure
+			// 
+			this.tpMeasure.Location = new System.Drawing.Point(4, 22);
+			this.tpMeasure.Name = "tpMeasure";
+			this.tpMeasure.Size = new System.Drawing.Size(727, 179);
+			this.tpMeasure.TabIndex = 7;
+			this.tpMeasure.Text = "测量数据";
+			this.tpMeasure.UseVisualStyleBackColor = true;
+			// 
+			// tpPageTips
+			// 
+			this.tpPageTips.Location = new System.Drawing.Point(4, 22);
+			this.tpPageTips.Name = "tpPageTips";
+			this.tpPageTips.Size = new System.Drawing.Size(727, 179);
+			this.tpPageTips.TabIndex = 8;
+			this.tpPageTips.Text = "页面提示";
+			this.tpPageTips.UseVisualStyleBackColor = true;
+			// 
+			// tpMainPage
+			// 
+			this.tpMainPage.Location = new System.Drawing.Point(4, 22);
+			this.tpMainPage.Name = "tpMainPage";
+			this.tpMainPage.Size = new System.Drawing.Size(727, 179);
+			this.tpMainPage.TabIndex = 9;
+			this.tpMainPage.Text = "主页面";
+			this.tpMainPage.UseVisualStyleBackColor = true;
+			// 
+			// gbReceiveExplanation
+			// 
+			this.gbReceiveExplanation.Controls.Add(this.lbReceiveExplanation);
+			this.gbReceiveExplanation.Location = new System.Drawing.Point(454, 12);
+			this.gbReceiveExplanation.Name = "gbReceiveExplanation";
+			this.gbReceiveExplanation.Size = new System.Drawing.Size(305, 192);
+			this.gbReceiveExplanation.TabIndex = 15;
+			this.gbReceiveExplanation.TabStop = false;
+			this.gbReceiveExplanation.Text = "接收数据解析";
+			// 
+			// lbReceiveExplanation
+			// 
+			this.lbReceiveExplanation.FormattingEnabled = true;
+			this.lbReceiveExplanation.ItemHeight = 12;
+			this.lbReceiveExplanation.Location = new System.Drawing.Point(6, 20);
+			this.lbReceiveExplanation.Name = "lbReceiveExplanation";
+			this.lbReceiveExplanation.Size = new System.Drawing.Size(293, 160);
+			this.lbReceiveExplanation.TabIndex = 1;
+			// 
+			// gbSendData
+			// 
+			this.gbSendData.Controls.Add(this.lbSendData);
+			this.gbSendData.Location = new System.Drawing.Point(143, 210);
+			this.gbSendData.Name = "gbSendData";
+			this.gbSendData.Size = new System.Drawing.Size(305, 145);
+			this.gbSendData.TabIndex = 2;
+			this.gbSendData.TabStop = false;
+			this.gbSendData.Text = "发送数据";
+			// 
+			// lbSendData
+			// 
+			this.lbSendData.FormattingEnabled = true;
+			this.lbSendData.ItemHeight = 12;
+			this.lbSendData.Location = new System.Drawing.Point(6, 20);
+			this.lbSendData.Name = "lbSendData";
+			this.lbSendData.Size = new System.Drawing.Size(293, 112);
+			this.lbSendData.TabIndex = 1;
+			// 
+			// gbSendExplanation
+			// 
+			this.gbSendExplanation.Controls.Add(this.lbSendExplanation);
+			this.gbSendExplanation.Location = new System.Drawing.Point(454, 210);
+			this.gbSendExplanation.Name = "gbSendExplanation";
+			this.gbSendExplanation.Size = new System.Drawing.Size(305, 145);
+			this.gbSendExplanation.TabIndex = 16;
+			this.gbSendExplanation.TabStop = false;
+			this.gbSendExplanation.Text = "发送数据解析";
+			// 
+			// lbSendExplanation
+			// 
+			this.lbSendExplanation.FormattingEnabled = true;
+			this.lbSendExplanation.ItemHeight = 12;
+			this.lbSendExplanation.Location = new System.Drawing.Point(6, 20);
+			this.lbSendExplanation.Name = "lbSendExplanation";
+			this.lbSendExplanation.Size = new System.Drawing.Size(293, 112);
+			this.lbSendExplanation.TabIndex = 2;
 			// 
 			// lblTesterID
 			// 
@@ -421,33 +491,6 @@
 			this.btnTesterID.UseVisualStyleBackColor = true;
 			this.btnTesterID.Click += new System.EventHandler(this.btnTesterID_Click);
 			// 
-			// btnSwitchHeartbeat
-			// 
-			this.btnSwitchHeartbeat.Location = new System.Drawing.Point(448, 83);
-			this.btnSwitchHeartbeat.Name = "btnSwitchHeartbeat";
-			this.btnSwitchHeartbeat.Size = new System.Drawing.Size(75, 23);
-			this.btnSwitchHeartbeat.TabIndex = 17;
-			this.btnSwitchHeartbeat.Text = "开始";
-			this.btnSwitchHeartbeat.UseVisualStyleBackColor = true;
-			this.btnSwitchHeartbeat.Click += new System.EventHandler(this.btnSwitchHeartbeat_Click);
-			// 
-			// txtHeartbeat
-			// 
-			this.txtHeartbeat.Location = new System.Drawing.Point(310, 85);
-			this.txtHeartbeat.Name = "txtHeartbeat";
-			this.txtHeartbeat.Size = new System.Drawing.Size(122, 21);
-			this.txtHeartbeat.TabIndex = 16;
-			this.txtHeartbeat.Text = "1000";
-			// 
-			// label1
-			// 
-			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(191, 88);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(113, 12);
-			this.label1.TabIndex = 15;
-			this.label1.Text = "设置心跳包周期(ms)";
-			// 
 			// groupBox1
 			// 
 			this.groupBox1.Controls.Add(this.btnTesterID);
@@ -460,41 +503,45 @@
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "测试仪选择";
 			// 
-			// lbReceiveData
+			// btnSystem
 			// 
-			this.lbReceiveData.FormattingEnabled = true;
-			this.lbReceiveData.ItemHeight = 12;
-			this.lbReceiveData.Location = new System.Drawing.Point(6, 20);
-			this.lbReceiveData.Name = "lbReceiveData";
-			this.lbReceiveData.Size = new System.Drawing.Size(293, 160);
-			this.lbReceiveData.TabIndex = 0;
+			this.btnSystem.Location = new System.Drawing.Point(311, 83);
+			this.btnSystem.Name = "btnSystem";
+			this.btnSystem.Size = new System.Drawing.Size(75, 23);
+			this.btnSystem.TabIndex = 20;
+			this.btnSystem.Text = "发送";
+			this.btnSystem.UseVisualStyleBackColor = true;
+			this.btnSystem.Click += new System.EventHandler(this.btnSystem_Click);
 			// 
-			// lbReceiveExplanation
+			// label2
 			// 
-			this.lbReceiveExplanation.FormattingEnabled = true;
-			this.lbReceiveExplanation.ItemHeight = 12;
-			this.lbReceiveExplanation.Location = new System.Drawing.Point(6, 20);
-			this.lbReceiveExplanation.Name = "lbReceiveExplanation";
-			this.lbReceiveExplanation.Size = new System.Drawing.Size(293, 160);
-			this.lbReceiveExplanation.TabIndex = 1;
+			this.label2.AutoSize = true;
+			this.label2.Location = new System.Drawing.Point(125, 88);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(53, 12);
+			this.label2.TabIndex = 18;
+			this.label2.Text = "选择操作";
 			// 
-			// lbSendData
+			// cbSystem
 			// 
-			this.lbSendData.FormattingEnabled = true;
-			this.lbSendData.ItemHeight = 12;
-			this.lbSendData.Location = new System.Drawing.Point(6, 20);
-			this.lbSendData.Name = "lbSendData";
-			this.lbSendData.Size = new System.Drawing.Size(293, 112);
-			this.lbSendData.TabIndex = 1;
-			// 
-			// lbSendExplanation
-			// 
-			this.lbSendExplanation.FormattingEnabled = true;
-			this.lbSendExplanation.ItemHeight = 12;
-			this.lbSendExplanation.Location = new System.Drawing.Point(6, 20);
-			this.lbSendExplanation.Name = "lbSendExplanation";
-			this.lbSendExplanation.Size = new System.Drawing.Size(293, 112);
-			this.lbSendExplanation.TabIndex = 2;
+			this.cbSystem.FormattingEnabled = true;
+			this.cbSystem.Items.AddRange(new object[] {
+            "测量命令",
+            "辐照度测量",
+            "温度测量",
+            "电源电压测量",
+            "IV特性数据",
+            "IV-STC特性数据",
+            "存储命令",
+            "电压系数测量",
+            "电流系数测量",
+            "辐照度系数测量",
+            "温度系数测量",
+            "电源电压系数测量"});
+			this.cbSystem.Location = new System.Drawing.Point(184, 85);
+			this.cbSystem.Name = "cbSystem";
+			this.cbSystem.Size = new System.Drawing.Size(121, 20);
+			this.cbSystem.TabIndex = 21;
 			// 
 			// MainForm
 			// 
@@ -508,6 +555,8 @@
 			this.Controls.Add(this.gbControl);
 			this.Controls.Add(this.gbReceiveData);
 			this.Controls.Add(this.gbPortSet);
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+			this.MaximizeBox = false;
 			this.Name = "MainForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "IV曲线仪通讯测试";
@@ -517,12 +566,14 @@
 			this.gbPortSet.PerformLayout();
 			this.gbReceiveData.ResumeLayout(false);
 			this.gbControl.ResumeLayout(false);
+			this.tcControl.ResumeLayout(false);
+			this.tpHeartbeat.ResumeLayout(false);
+			this.tpHeartbeat.PerformLayout();
+			this.tpSystem.ResumeLayout(false);
+			this.tpSystem.PerformLayout();
 			this.gbReceiveExplanation.ResumeLayout(false);
 			this.gbSendData.ResumeLayout(false);
 			this.gbSendExplanation.ResumeLayout(false);
-			this.tpHeartbeat.ResumeLayout(false);
-			this.tpHeartbeat.PerformLayout();
-			this.tcControl.ResumeLayout(false);
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox1.PerformLayout();
 			this.ResumeLayout(false);
@@ -570,5 +621,8 @@
 		private System.Windows.Forms.ListBox lbReceiveExplanation;
 		private System.Windows.Forms.ListBox lbSendData;
 		private System.Windows.Forms.ListBox lbSendExplanation;
+		private System.Windows.Forms.ComboBox cbSystem;
+		private System.Windows.Forms.Button btnSystem;
+		private System.Windows.Forms.Label label2;
 	}
 }
