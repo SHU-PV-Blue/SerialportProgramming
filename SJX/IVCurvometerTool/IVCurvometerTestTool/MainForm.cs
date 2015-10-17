@@ -282,11 +282,51 @@ namespace IVCurvometerTestTool
 			}
 			if (!ifFind)
 			{
-				MessageBox.Show("请选择页面类型", "错误");
+				MessageBox.Show("请选择数据类型", "错误");
 				return;
 			}
 			byte[] buffer = { 0xAA, _testerID, 0x11, address[0], address[1], 0xCC, 0x33, 0xC3, 0x3C };
 			WritePort(buffer, "数据查询:" + cbGetData.Text);
+		}
+
+		private void btnSetData_Click(object sender, EventArgs e)
+		{
+			byte[] address = new byte[2];
+			bool ifFind = false;
+
+			foreach (var p in CodeCommadPair.数据地址)
+			{
+				if (p.Value == cbSetData.Text)
+				{
+					address = p.Key;
+					ifFind = true;
+				}
+			}
+			if (!ifFind)
+			{
+				MessageBox.Show("请选择数据类型", "错误");
+				return;
+			}
+
+			byte[] data = new byte[4];
+
+			string input = txtSetData.Text.Replace(" ", "");
+			try
+			{
+				int index = 0;
+				for(int i = 0; i < 8; i += 2)
+				{
+					data[index++] = Convert.ToByte((input.Substring(i, 2)), 16);
+				}
+			}
+			catch(Exception ex)
+			{
+				MessageBox.Show("请输入正确格式的数据" + ex.Message);
+				return;
+			}
+
+			byte[] buffer = { 0xAA, _testerID, 0x10, address[0], address[1], data[0], data[1], data[2], data[3], 0xCC, 0x33, 0xC3, 0x3C };
+			WritePort(buffer, "数据设置:" + cbSetData.Text);
 		}
 	}
 }
