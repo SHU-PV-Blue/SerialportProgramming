@@ -30,7 +30,6 @@
 		{
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.btnInit = new System.Windows.Forms.Button();
-			this.btnSetParam = new System.Windows.Forms.Button();
 			this.cmbParity = new System.Windows.Forms.ComboBox();
 			this.label5 = new System.Windows.Forms.Label();
 			this.cmbStopBit = new System.Windows.Forms.ComboBox();
@@ -41,20 +40,22 @@
 			this.label2 = new System.Windows.Forms.Label();
 			this.cmbPorts = new System.Windows.Forms.ComboBox();
 			this.label1 = new System.Windows.Forms.Label();
+			this.btnSetParam = new System.Windows.Forms.Button();
 			this.txtRecive = new System.Windows.Forms.TextBox();
 			this.txtSend = new System.Windows.Forms.TextBox();
 			this.btnClose = new System.Windows.Forms.Button();
 			this.btnSend = new System.Windows.Forms.Button();
 			this.btnExit = new System.Windows.Forms.Button();
-			this.btnRecive = new System.Windows.Forms.Button();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
+			this.btnReciveClear = new System.Windows.Forms.Button();
 			this.label7 = new System.Windows.Forms.Label();
 			this.label6 = new System.Windows.Forms.Label();
 			this.txtTimeCell = new System.Windows.Forms.TextBox();
 			this.ckbAutoSend = new System.Windows.Forms.CheckBox();
-			this.button1 = new System.Windows.Forms.Button();
+			this.groupBox3 = new System.Windows.Forms.GroupBox();
 			this.groupBox1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
+			this.groupBox3.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// groupBox1
@@ -71,7 +72,7 @@
 			this.groupBox1.Controls.Add(this.cmbPorts);
 			this.groupBox1.Controls.Add(this.label1);
 			this.groupBox1.ForeColor = System.Drawing.Color.Orange;
-			this.groupBox1.Location = new System.Drawing.Point(0, 11);
+			this.groupBox1.Location = new System.Drawing.Point(0, 35);
 			this.groupBox1.Name = "groupBox1";
 			this.groupBox1.Size = new System.Drawing.Size(226, 227);
 			this.groupBox1.TabIndex = 0;
@@ -80,7 +81,9 @@
 			// 
 			// btnInit
 			// 
-			this.btnInit.Location = new System.Drawing.Point(36, 177);
+			this.btnInit.FlatAppearance.BorderSize = 0;
+			this.btnInit.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+			this.btnInit.Location = new System.Drawing.Point(39, 30);
 			this.btnInit.Name = "btnInit";
 			this.btnInit.Size = new System.Drawing.Size(152, 30);
 			this.btnInit.TabIndex = 2;
@@ -88,22 +91,12 @@
 			this.btnInit.UseVisualStyleBackColor = true;
 			this.btnInit.Click += new System.EventHandler(this.btnInit_Click);
 			// 
-			// btnSetParam
-			// 
-			this.btnSetParam.Location = new System.Drawing.Point(26, 244);
-			this.btnSetParam.Name = "btnSetParam";
-			this.btnSetParam.Size = new System.Drawing.Size(95, 30);
-			this.btnSetParam.TabIndex = 2;
-			this.btnSetParam.Text = "打开串口";
-			this.btnSetParam.UseVisualStyleBackColor = true;
-			this.btnSetParam.Click += new System.EventHandler(this.btnSetParam_Click);
-			// 
 			// cmbParity
 			// 
 			this.cmbParity.FormattingEnabled = true;
 			this.cmbParity.Items.AddRange(new object[] {
             "无"});
-			this.cmbParity.Location = new System.Drawing.Point(80, 143);
+			this.cmbParity.Location = new System.Drawing.Point(82, 182);
 			this.cmbParity.Name = "cmbParity";
 			this.cmbParity.Size = new System.Drawing.Size(121, 20);
 			this.cmbParity.TabIndex = 1;
@@ -112,7 +105,7 @@
 			// 
 			this.label5.AutoSize = true;
 			this.label5.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.label5.Location = new System.Drawing.Point(12, 143);
+			this.label5.Location = new System.Drawing.Point(14, 182);
 			this.label5.Name = "label5";
 			this.label5.Size = new System.Drawing.Size(51, 20);
 			this.label5.TabIndex = 0;
@@ -123,7 +116,7 @@
 			this.cmbStopBit.FormattingEnabled = true;
 			this.cmbStopBit.Items.AddRange(new object[] {
             "1"});
-			this.cmbStopBit.Location = new System.Drawing.Point(80, 117);
+			this.cmbStopBit.Location = new System.Drawing.Point(82, 156);
 			this.cmbStopBit.Name = "cmbStopBit";
 			this.cmbStopBit.Size = new System.Drawing.Size(121, 20);
 			this.cmbStopBit.TabIndex = 1;
@@ -132,7 +125,7 @@
 			// 
 			this.label4.AutoSize = true;
 			this.label4.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.label4.Location = new System.Drawing.Point(12, 117);
+			this.label4.Location = new System.Drawing.Point(14, 156);
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(66, 20);
 			this.label4.TabIndex = 0;
@@ -146,7 +139,7 @@
             "7",
             "6",
             "5"});
-			this.cmbDataBit.Location = new System.Drawing.Point(80, 91);
+			this.cmbDataBit.Location = new System.Drawing.Point(82, 130);
 			this.cmbDataBit.Name = "cmbDataBit";
 			this.cmbDataBit.Size = new System.Drawing.Size(121, 20);
 			this.cmbDataBit.TabIndex = 1;
@@ -155,7 +148,7 @@
 			// 
 			this.label3.AutoSize = true;
 			this.label3.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.label3.Location = new System.Drawing.Point(12, 91);
+			this.label3.Location = new System.Drawing.Point(14, 130);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(62, 20);
 			this.label3.TabIndex = 0;
@@ -171,7 +164,7 @@
             "4800",
             "2400",
             "1200"});
-			this.cmbBaudRate.Location = new System.Drawing.Point(80, 65);
+			this.cmbBaudRate.Location = new System.Drawing.Point(82, 104);
 			this.cmbBaudRate.Name = "cmbBaudRate";
 			this.cmbBaudRate.Size = new System.Drawing.Size(121, 20);
 			this.cmbBaudRate.TabIndex = 1;
@@ -180,7 +173,7 @@
 			// 
 			this.label2.AutoSize = true;
 			this.label2.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.label2.Location = new System.Drawing.Point(12, 65);
+			this.label2.Location = new System.Drawing.Point(14, 104);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(62, 20);
 			this.label2.TabIndex = 0;
@@ -189,7 +182,7 @@
 			// cmbPorts
 			// 
 			this.cmbPorts.FormattingEnabled = true;
-			this.cmbPorts.Location = new System.Drawing.Point(80, 39);
+			this.cmbPorts.Location = new System.Drawing.Point(82, 78);
 			this.cmbPorts.Name = "cmbPorts";
 			this.cmbPorts.Size = new System.Drawing.Size(121, 20);
 			this.cmbPorts.TabIndex = 1;
@@ -198,11 +191,21 @@
 			// 
 			this.label1.AutoSize = true;
 			this.label1.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.label1.Location = new System.Drawing.Point(12, 39);
+			this.label1.Location = new System.Drawing.Point(14, 78);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(62, 20);
 			this.label1.TabIndex = 0;
 			this.label1.Text = "串口号 : ";
+			// 
+			// btnSetParam
+			// 
+			this.btnSetParam.Location = new System.Drawing.Point(79, 20);
+			this.btnSetParam.Name = "btnSetParam";
+			this.btnSetParam.Size = new System.Drawing.Size(109, 29);
+			this.btnSetParam.TabIndex = 2;
+			this.btnSetParam.Text = "打开串口";
+			this.btnSetParam.UseVisualStyleBackColor = true;
+			this.btnSetParam.Click += new System.EventHandler(this.btnSetParam_Click);
 			// 
 			// txtRecive
 			// 
@@ -223,9 +226,9 @@
 			// 
 			// btnClose
 			// 
-			this.btnClose.Location = new System.Drawing.Point(26, 318);
+			this.btnClose.Location = new System.Drawing.Point(79, 56);
 			this.btnClose.Name = "btnClose";
-			this.btnClose.Size = new System.Drawing.Size(95, 33);
+			this.btnClose.Size = new System.Drawing.Size(109, 29);
 			this.btnClose.TabIndex = 4;
 			this.btnClose.Text = "关闭";
 			this.btnClose.UseVisualStyleBackColor = true;
@@ -243,27 +246,17 @@
 			// 
 			// btnExit
 			// 
-			this.btnExit.Location = new System.Drawing.Point(26, 357);
+			this.btnExit.Location = new System.Drawing.Point(79, 97);
 			this.btnExit.Name = "btnExit";
-			this.btnExit.Size = new System.Drawing.Size(95, 29);
+			this.btnExit.Size = new System.Drawing.Size(109, 29);
 			this.btnExit.TabIndex = 6;
 			this.btnExit.Text = "退出";
 			this.btnExit.UseVisualStyleBackColor = true;
 			this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
 			// 
-			// btnRecive
-			// 
-			this.btnRecive.Location = new System.Drawing.Point(26, 282);
-			this.btnRecive.Name = "btnRecive";
-			this.btnRecive.Size = new System.Drawing.Size(95, 30);
-			this.btnRecive.TabIndex = 7;
-			this.btnRecive.Text = "接收";
-			this.btnRecive.UseVisualStyleBackColor = true;
-			this.btnRecive.Click += new System.EventHandler(this.btnRecive_Click);
-			// 
 			// groupBox2
 			// 
-			this.groupBox2.Controls.Add(this.button1);
+			this.groupBox2.Controls.Add(this.btnReciveClear);
 			this.groupBox2.Controls.Add(this.label7);
 			this.groupBox2.Controls.Add(this.label6);
 			this.groupBox2.Controls.Add(this.txtTimeCell);
@@ -271,12 +264,28 @@
 			this.groupBox2.Controls.Add(this.txtRecive);
 			this.groupBox2.Controls.Add(this.txtSend);
 			this.groupBox2.Controls.Add(this.btnSend);
-			this.groupBox2.Location = new System.Drawing.Point(232, 11);
+			this.groupBox2.Location = new System.Drawing.Point(232, 35);
 			this.groupBox2.Name = "groupBox2";
 			this.groupBox2.Size = new System.Drawing.Size(460, 375);
 			this.groupBox2.TabIndex = 8;
 			this.groupBox2.TabStop = false;
 			this.groupBox2.Text = "数据发送/接收";
+			// 
+			// btnReciveClear
+			// 
+			this.btnReciveClear.BackColor = System.Drawing.SystemColors.ControlLightLight;
+			this.btnReciveClear.FlatAppearance.BorderSize = 0;
+			this.btnReciveClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnReciveClear.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+			this.btnReciveClear.ForeColor = System.Drawing.Color.Turquoise;
+			this.btnReciveClear.Location = new System.Drawing.Point(335, 219);
+			this.btnReciveClear.Name = "btnReciveClear";
+			this.btnReciveClear.Size = new System.Drawing.Size(99, 41);
+			this.btnReciveClear.TabIndex = 10;
+			this.btnReciveClear.Text = "清空";
+			this.btnReciveClear.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+			this.btnReciveClear.UseVisualStyleBackColor = false;
+			this.btnReciveClear.Click += new System.EventHandler(this.button1_Click);
 			// 
 			// label7
 			// 
@@ -314,35 +323,34 @@
 			this.ckbAutoSend.UseVisualStyleBackColor = true;
 			this.ckbAutoSend.CheckedChanged += new System.EventHandler(this.ckbAutoSend_CheckedChanged);
 			// 
-			// button1
+			// groupBox3
 			// 
-			this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.button1.Location = new System.Drawing.Point(359, 237);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(75, 23);
-			this.button1.TabIndex = 10;
-			this.button1.Text = "清空";
-			this.button1.UseVisualStyleBackColor = true;
-			this.button1.Click += new System.EventHandler(this.button1_Click);
+			this.groupBox3.Controls.Add(this.btnSetParam);
+			this.groupBox3.Controls.Add(this.btnExit);
+			this.groupBox3.Controls.Add(this.btnClose);
+			this.groupBox3.Location = new System.Drawing.Point(3, 272);
+			this.groupBox3.Name = "groupBox3";
+			this.groupBox3.Size = new System.Drawing.Size(223, 138);
+			this.groupBox3.TabIndex = 3;
+			this.groupBox3.TabStop = false;
+			this.groupBox3.Text = "操作";
 			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(704, 452);
-			this.Controls.Add(this.btnRecive);
-			this.Controls.Add(this.btnSetParam);
-			this.Controls.Add(this.btnExit);
-			this.Controls.Add(this.btnClose);
 			this.Controls.Add(this.groupBox1);
 			this.Controls.Add(this.groupBox2);
+			this.Controls.Add(this.groupBox3);
 			this.Name = "Form1";
-			this.Text = "Form1";
+			this.Text = "气象仪";
 			this.Load += new System.EventHandler(this.Form1_Load);
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox1.PerformLayout();
 			this.groupBox2.ResumeLayout(false);
 			this.groupBox2.PerformLayout();
+			this.groupBox3.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
@@ -367,13 +375,13 @@
 		private System.Windows.Forms.Button btnSend;
 		private System.Windows.Forms.Button btnExit;
 		private System.Windows.Forms.Button btnInit;
-		private System.Windows.Forms.Button btnRecive;
 		private System.Windows.Forms.GroupBox groupBox2;
 		private System.Windows.Forms.CheckBox ckbAutoSend;
 		private System.Windows.Forms.Label label6;
 		private System.Windows.Forms.TextBox txtTimeCell;
 		private System.Windows.Forms.Label label7;
-		private System.Windows.Forms.Button button1;
+		private System.Windows.Forms.Button btnReciveClear;
+		private System.Windows.Forms.GroupBox groupBox3;
 	}
 }
 

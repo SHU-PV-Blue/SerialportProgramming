@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 using System.IO.Ports;
 using System.IO;
+
 
 namespace SerialDemo_1
 {
@@ -20,13 +20,21 @@ namespace SerialDemo_1
 			InitializeComponent();
 		}
 
+		//定义一个串口对象
 		SerialPort sp = new SerialPort();
+
+		//初始化各个参数变量的值
 		public static string strPortName = "";
 		public static string strBaudRate = "";
 		public static string strDataBits = "";
 		public static string strStopBits = "";
+//变量声明
+
+		//是否处于发送状态
 		bool IsSended = false;
+		//自动发送的定时器
 		Timer AutoSendTimer = new Timer();
+		//接收的数据字符串
 		StringBuilder Recivestr = new StringBuilder();
 		
 		
@@ -67,6 +75,8 @@ namespace SerialDemo_1
 				sp.ReadTimeout = 500;
 
 				sp.Open();
+
+				txtRecive.AppendText("串口成功开启!\n");
 			}
 			catch (Exception ex)
 			{
@@ -142,16 +152,12 @@ namespace SerialDemo_1
 					{
 						btnSend.Text = "发送";
 						AutoSendTimer.Stop();
-						AutoSendTimer.Dispose();
 						IsSended = false;
 					}
 				}
 				else
 				{
-					try 
-					{
-						Send();
-					}
+					try { Send();}
 					catch (Exception ex) { txtRecive.AppendText("异常: " + ex.Message + "\r\n"); }
 				}
 		}
@@ -164,15 +170,19 @@ namespace SerialDemo_1
 		{
 			if (sp != null)
 			{
-				string mess = txtSend.Text.Trim();
-				string[] messages = mess.Split(' ');
-				byte[] buf = Array.ConvertAll(messages, new Converter<string, byte>(StringToHex));
-				sp.Write(buf, 0, buf.Length);
+				string str = txtSend.Text;
+				str = str.Replace(" ", "");
+				byte[] Sendbyte = new byte[str.Length / 2];
+				for (int i = 0, j = 0; i < str.Length; i = i + 2, j++)
+				{
+					string mysubstring = str.Substring(i, 2);
+					Sendbyte[j] = Convert.ToByte(mysubstring, 16);
+				}
+
+				sp.Write(Sendbyte, 0, Sendbyte.Length);
+				txtRecive.AppendText("发送数据: " + str);
+				txtRecive.AppendText("\r\n");
 			}
-		}
-		public static byte StringToHex(string str)
-		{
-			return Convert.ToByte(str, 16);
 		}
 
 		/// <summary>
@@ -189,9 +199,14 @@ namespace SerialDemo_1
 			catch (Exception ex) { txtRecive.AppendText("异常: " + ex.Message + "\r\n"); }
 		}
 
+		/// <summary>
+		/// 初始化参数
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void btnInit_Click(object sender, EventArgs e)
 		{
-			
+			InitParam();
 		}
 
 		/// <summary>
@@ -221,6 +236,11 @@ namespace SerialDemo_1
 				sw.Close();
 		}
 
+		/// <summary>
+		/// 将接收到的数据转化成相应字符串
+		/// </summary>
+		/// <param name="buffer"></param>
+		/// <returns></returns>
 		private StringBuilder  TranString(byte[] buffer)
 		{
 			Recivestr.Clear();
