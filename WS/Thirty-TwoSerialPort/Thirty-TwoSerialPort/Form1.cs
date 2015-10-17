@@ -22,6 +22,7 @@ namespace Thirty_TwoSerialPort
 		public byte dbit = 8;
 		System.Timers.Timer tm = new System.Timers.Timer();
 		System.Timers.Timer TimeGetSencond = new System.Timers.Timer();
+		System.Timers.Timer TimeReadSencond = new System.Timers.Timer();
 		private StringBuilder builder = new StringBuilder();
 		private void groupBox1_Enter(object sender, EventArgs e)
 		{
@@ -221,7 +222,6 @@ namespace Thirty_TwoSerialPort
 
 		private void toolStripButton3_Click(object sender, EventArgs e)
 		{
-			//点击button之后，新开线程，用来检测时间，时间到了可以自动触发并发送指令
 			DateTime dt = DateTime.Now;
 			DateTime StartTime;
 			DateTime.TryParse(comboBox2.Text, out StartTime);
@@ -232,19 +232,12 @@ namespace Thirty_TwoSerialPort
 
 			DateTime EndTime;
 			DateTime.TryParse(comboBox3.Text, out EndTime);
-			try
-			{
-			//	if(DateTime.Now == StartTime)
-				//{
-				tm.Start();
-				tm.Enabled = true;
-				tm.Interval = 3000;
-				tm.Elapsed += new ElapsedEventHandler(timer1_Tick);
-				TimeGetSencond.Start();
-				TimeGetSencond.Elapsed += new ElapsedEventHandler(timer2_Tick);
-				TimeGetSencond.Enabled = true;
-				TimeGetSencond.Interval = 1000;
-
+		//	try
+		//	{
+				TimeReadSencond.Start();
+				TimeReadSencond.Enabled = true;
+				TimeReadSencond.Interval = 1000;
+				TimeReadSencond.Elapsed += new ElapsedEventHandler(timer3_Tick);
 				string StrTime = dt.ToLongTimeString().ToString();
 				DateTime NowTime;
 				DateTime.TryParse(StrTime, out NowTime);
@@ -256,30 +249,35 @@ namespace Thirty_TwoSerialPort
 					TimeGetSencond.Enabled = false;
 				}
 
-			}
-			catch(Exception ee)
-			{
-				MessageBox.Show(ee.Message, "提示信息");
-			}
+		//	}
+		//	catch(Exception ee)
+		//	{
+		//		MessageBox.Show(ee.Message, "提示信息");
+		//	}
 		}
 		private delegate void Combobox2CallBack();
 		private void timer1_Tick(object sender, EventArgs e)
 		{
 			textBox6CallBack callback = delegate()
 			{
-					try
-					{
-						
-						string str = "01001010101010 ";
-						byte[] SendMessage = System.Text.Encoding.Default.GetBytes(str);
-						serialPort.Write(SendMessage, 0, SendMessage.Length);
+				//	try
+				//	{
 
-						textBox6.AppendText("发送信息[电机：" + DateTime.Now + "]" +  "010101010101010\r\n");
-					}
-					catch (Exception ee)
-					{
-						MessageBox.Show(ee.Message, "提示信息");
-					}
+						string str = "010400000020F1D2";
+						byte[] Sendbyte = new byte[str.Length / 2];
+						for (int i = 0, j = 0; i < str.Length; i = i + 2, j++)
+						{
+							string mysubstring = str.Substring(i, 2);
+							Sendbyte[j] = Convert.ToByte(mysubstring, 16);
+						}
+						serialPort.Write(Sendbyte, 0, Sendbyte.Length);
+
+						textBox6.AppendText("发送信息[电机：" + DateTime.Now + "]" + "01 04 00 00 00 20 F1 D2\r\n");
+				//	}
+				//	catch (Exception ee)
+				//	{
+				//		MessageBox.Show(ee.Message, "提示信息");
+				//	}
 			};
 			textBox6.Invoke(callback);
 					
@@ -289,23 +287,61 @@ namespace Thirty_TwoSerialPort
 			Combobox2CallBack comcalback = delegate()
 			{
 
-				try
-				{
+			//	try
+			//	{
 					DateTime dt = DateTime.Now;
 					DateTime StartTime;
 					DateTime.TryParse(comboBox2.Text, out StartTime);
-					DateTime EndTime;
-					DateTime.TryParse(comboBox3.Text, out EndTime);
+					//DateTime EndTime;
+					//DateTime.TryParse(comboBox3.Text, out EndTime);
 					string StrTime = dt.ToLongTimeString().ToString();
 					DateTime NowTime;
 					DateTime.TryParse(StrTime, out NowTime);
 					textBox1.Text = (NowTime - StartTime).ToString();
 					toolStripStatusLabel1.Text = "发送成功";
-				}
-				catch (Exception ee)
-				{
-					MessageBox.Show(ee.Message, "信息提示");
-				}
+			//	}
+			//	catch (Exception ee)
+			///	{
+			//		MessageBox.Show(ee.Message, "信息提示");
+			//	}
+			};
+			comboBox2.Invoke(comcalback);
+		}
+		private void timer3_Tick(object sender, EventArgs e)
+		{
+			Combobox2CallBack comcalback = delegate()
+			{
+				//try
+				//{
+					DateTime dt = DateTime.Now;
+					string StrTime = dt.ToLongTimeString().ToString();
+					DateTime NowTime;
+					DateTime.TryParse(StrTime, out NowTime);
+					DateTime StartTime;
+					DateTime.TryParse(comboBox2.Text, out StartTime);
+					DateTime EndTime;
+					DateTime.TryParse(comboBox3.Text, out EndTime);
+					if (StartTime == NowTime)
+					{
+						tm.Start();
+						tm.Enabled = true;
+						tm.Interval = 3000;
+						tm.Elapsed += new ElapsedEventHandler(timer1_Tick);
+						TimeGetSencond.Start();
+						TimeGetSencond.Elapsed += new ElapsedEventHandler(timer2_Tick);
+						TimeGetSencond.Enabled = true;
+						TimeGetSencond.Interval = 1000;
+					}
+					if (EndTime == NowTime)
+					{
+						tm.Stop();
+						TimeGetSencond.Stop();
+					}
+			//	}
+			//	catch (Exception ee)
+			//	{
+				//	MessageBox.Show(ee.Message);
+			//	}
 			};
 			comboBox2.Invoke(comcalback);
 		}
