@@ -19,22 +19,10 @@ namespace IVCurvometerTestTool
 
 		SerialPort _serialPort;
 		byte _testerID;
-		Thread _sendHeartbeatThread;
-		int _heartbeatCycle;
 
 		public MainForm()
 		{
 			InitializeComponent();
-		}
-
-		void SendHeartbeat()
-		{
-			while(true)
-			{
-				byte[] heartbeat = { 0xAA, _testerID, 0x00, 0xCC, 0x33, 0xC3, 0x3C };
-				_serialPort.Write(heartbeat, 0, heartbeat.Length);
-				Thread.Sleep(_heartbeatCycle);
-			}
 		}
 
 		void WritePort(byte[] data, string messege)
@@ -92,8 +80,6 @@ namespace IVCurvometerTestTool
 		{
 			if(btnSwitchPort.Text == "关闭串口")
 			{
-				if (_sendHeartbeatThread != null && _sendHeartbeatThread.IsAlive)
-					_sendHeartbeatThread.Abort();
 				if (_serialPort.IsOpen)
 					_serialPort.Close();
 				btnSwitchPort.Text = "打开串口";
@@ -163,23 +149,20 @@ namespace IVCurvometerTestTool
 				return;
 			}
 
-			if (_sendHeartbeatThread != null && _sendHeartbeatThread.IsAlive)
-				_sendHeartbeatThread.Abort();
+			
 			if (btnSwitchHeartbeat.Text == "终止")
 			{
+				tmrSendHeartbeat.Stop();
 				btnSwitchHeartbeat.Text = "开始";
 				return;
 			}
-			_heartbeatCycle = Convert.ToInt32(txtHeartbeat.Text);
-			_sendHeartbeatThread = new Thread(new ThreadStart(SendHeartbeat));
-			_sendHeartbeatThread.Start();
+			tmrSendHeartbeat.Interval = Convert.ToInt32(txtHeartbeat.Text);
+			tmrSendHeartbeat.Start();
 			btnSwitchHeartbeat.Text = "终止";
 		}
 
 		private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
 		{
-			if (_sendHeartbeatThread != null && _sendHeartbeatThread.IsAlive)
-				_sendHeartbeatThread.Abort();
 			if (_serialPort != null && _serialPort.IsOpen)
 				_serialPort.Close();
 		}
@@ -242,6 +225,12 @@ namespace IVCurvometerTestTool
 			
 			byte[] systemCommand = { 0xAA, _testerID, 0x01, commandCode, 0xCC, 0x33, 0xC3, 0x3C };
 			WritePort(systemCommand, "系统命令:" + cbSystem.Text);
+		}
+
+		private void tmrSendHeartbeat_Tick(object sender, EventArgs e)
+		{
+			byte[] heartbeat = { 0xAA, _testerID, 0x00, 0xCC, 0x33, 0xC3, 0x3C };
+			_serialPort.Write(heartbeat, 0, heartbeat.Length);
 		}
 	}
 }
