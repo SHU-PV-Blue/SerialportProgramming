@@ -43,7 +43,6 @@
 			this.label1 = new System.Windows.Forms.Label();
 			this.txtRecive = new System.Windows.Forms.TextBox();
 			this.txtSend = new System.Windows.Forms.TextBox();
-			this.btnOpen = new System.Windows.Forms.Button();
 			this.btnClose = new System.Windows.Forms.Button();
 			this.btnSend = new System.Windows.Forms.Button();
 			this.btnExit = new System.Windows.Forms.Button();
@@ -53,6 +52,7 @@
 			this.label6 = new System.Windows.Forms.Label();
 			this.txtTimeCell = new System.Windows.Forms.TextBox();
 			this.ckbAutoSend = new System.Windows.Forms.CheckBox();
+			this.button1 = new System.Windows.Forms.Button();
 			this.groupBox1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
 			this.SuspendLayout();
@@ -60,7 +60,6 @@
 			// groupBox1
 			// 
 			this.groupBox1.Controls.Add(this.btnInit);
-			this.groupBox1.Controls.Add(this.btnSetParam);
 			this.groupBox1.Controls.Add(this.cmbParity);
 			this.groupBox1.Controls.Add(this.label5);
 			this.groupBox1.Controls.Add(this.cmbStopBit);
@@ -74,16 +73,16 @@
 			this.groupBox1.ForeColor = System.Drawing.Color.Orange;
 			this.groupBox1.Location = new System.Drawing.Point(0, 11);
 			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(226, 235);
+			this.groupBox1.Size = new System.Drawing.Size(226, 227);
 			this.groupBox1.TabIndex = 0;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "设置";
 			// 
 			// btnInit
 			// 
-			this.btnInit.Location = new System.Drawing.Point(12, 179);
+			this.btnInit.Location = new System.Drawing.Point(36, 177);
 			this.btnInit.Name = "btnInit";
-			this.btnInit.Size = new System.Drawing.Size(88, 30);
+			this.btnInit.Size = new System.Drawing.Size(152, 30);
 			this.btnInit.TabIndex = 2;
 			this.btnInit.Text = "重新加载参数";
 			this.btnInit.UseVisualStyleBackColor = true;
@@ -91,11 +90,11 @@
 			// 
 			// btnSetParam
 			// 
-			this.btnSetParam.Location = new System.Drawing.Point(106, 179);
+			this.btnSetParam.Location = new System.Drawing.Point(26, 244);
 			this.btnSetParam.Name = "btnSetParam";
 			this.btnSetParam.Size = new System.Drawing.Size(95, 30);
 			this.btnSetParam.TabIndex = 2;
-			this.btnSetParam.Text = "应用设置";
+			this.btnSetParam.Text = "打开串口";
 			this.btnSetParam.UseVisualStyleBackColor = true;
 			this.btnSetParam.Click += new System.EventHandler(this.btnSetParam_Click);
 			// 
@@ -210,31 +209,23 @@
 			this.txtRecive.Location = new System.Drawing.Point(6, 30);
 			this.txtRecive.Multiline = true;
 			this.txtRecive.Name = "txtRecive";
-			this.txtRecive.Size = new System.Drawing.Size(393, 107);
+			this.txtRecive.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+			this.txtRecive.Size = new System.Drawing.Size(448, 233);
 			this.txtRecive.TabIndex = 1;
 			// 
 			// txtSend
 			// 
-			this.txtSend.Location = new System.Drawing.Point(6, 143);
+			this.txtSend.Location = new System.Drawing.Point(7, 275);
+			this.txtSend.Multiline = true;
 			this.txtSend.Name = "txtSend";
-			this.txtSend.Size = new System.Drawing.Size(393, 21);
+			this.txtSend.Size = new System.Drawing.Size(346, 37);
 			this.txtSend.TabIndex = 1;
-			// 
-			// btnOpen
-			// 
-			this.btnOpen.Location = new System.Drawing.Point(12, 290);
-			this.btnOpen.Name = "btnOpen";
-			this.btnOpen.Size = new System.Drawing.Size(59, 38);
-			this.btnOpen.TabIndex = 3;
-			this.btnOpen.Text = "打开";
-			this.btnOpen.UseVisualStyleBackColor = true;
-			this.btnOpen.Click += new System.EventHandler(this.btnOpen_Click);
 			// 
 			// btnClose
 			// 
-			this.btnClose.Location = new System.Drawing.Point(80, 290);
+			this.btnClose.Location = new System.Drawing.Point(26, 318);
 			this.btnClose.Name = "btnClose";
-			this.btnClose.Size = new System.Drawing.Size(59, 38);
+			this.btnClose.Size = new System.Drawing.Size(95, 33);
 			this.btnClose.TabIndex = 4;
 			this.btnClose.Text = "关闭";
 			this.btnClose.UseVisualStyleBackColor = true;
@@ -242,9 +233,9 @@
 			// 
 			// btnSend
 			// 
-			this.btnSend.Location = new System.Drawing.Point(6, 170);
+			this.btnSend.Location = new System.Drawing.Point(359, 275);
 			this.btnSend.Name = "btnSend";
-			this.btnSend.Size = new System.Drawing.Size(83, 37);
+			this.btnSend.Size = new System.Drawing.Size(95, 37);
 			this.btnSend.TabIndex = 5;
 			this.btnSend.Text = "发送";
 			this.btnSend.UseVisualStyleBackColor = true;
@@ -252,9 +243,9 @@
 			// 
 			// btnExit
 			// 
-			this.btnExit.Location = new System.Drawing.Point(155, 290);
+			this.btnExit.Location = new System.Drawing.Point(26, 357);
 			this.btnExit.Name = "btnExit";
-			this.btnExit.Size = new System.Drawing.Size(59, 38);
+			this.btnExit.Size = new System.Drawing.Size(95, 29);
 			this.btnExit.TabIndex = 6;
 			this.btnExit.Text = "退出";
 			this.btnExit.UseVisualStyleBackColor = true;
@@ -262,9 +253,9 @@
 			// 
 			// btnRecive
 			// 
-			this.btnRecive.Location = new System.Drawing.Point(232, 290);
+			this.btnRecive.Location = new System.Drawing.Point(26, 282);
 			this.btnRecive.Name = "btnRecive";
-			this.btnRecive.Size = new System.Drawing.Size(75, 38);
+			this.btnRecive.Size = new System.Drawing.Size(95, 30);
 			this.btnRecive.TabIndex = 7;
 			this.btnRecive.Text = "接收";
 			this.btnRecive.UseVisualStyleBackColor = true;
@@ -272,6 +263,7 @@
 			// 
 			// groupBox2
 			// 
+			this.groupBox2.Controls.Add(this.button1);
 			this.groupBox2.Controls.Add(this.label7);
 			this.groupBox2.Controls.Add(this.label6);
 			this.groupBox2.Controls.Add(this.txtTimeCell);
@@ -281,7 +273,7 @@
 			this.groupBox2.Controls.Add(this.btnSend);
 			this.groupBox2.Location = new System.Drawing.Point(232, 11);
 			this.groupBox2.Name = "groupBox2";
-			this.groupBox2.Size = new System.Drawing.Size(405, 235);
+			this.groupBox2.Size = new System.Drawing.Size(460, 375);
 			this.groupBox2.TabIndex = 8;
 			this.groupBox2.TabStop = false;
 			this.groupBox2.Text = "数据发送/接收";
@@ -289,7 +281,7 @@
 			// label7
 			// 
 			this.label7.AutoSize = true;
-			this.label7.Location = new System.Drawing.Point(254, 217);
+			this.label7.Location = new System.Drawing.Point(311, 334);
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(17, 12);
 			this.label7.TabIndex = 9;
@@ -298,7 +290,7 @@
 			// label6
 			// 
 			this.label6.AutoSize = true;
-			this.label6.Location = new System.Drawing.Point(87, 215);
+			this.label6.Location = new System.Drawing.Point(144, 332);
 			this.label6.Name = "label6";
 			this.label6.Size = new System.Drawing.Size(53, 12);
 			this.label6.TabIndex = 8;
@@ -306,7 +298,7 @@
 			// 
 			// txtTimeCell
 			// 
-			this.txtTimeCell.Location = new System.Drawing.Point(148, 211);
+			this.txtTimeCell.Location = new System.Drawing.Point(205, 328);
 			this.txtTimeCell.Name = "txtTimeCell";
 			this.txtTimeCell.Size = new System.Drawing.Size(100, 21);
 			this.txtTimeCell.TabIndex = 7;
@@ -314,7 +306,7 @@
 			// ckbAutoSend
 			// 
 			this.ckbAutoSend.AutoSize = true;
-			this.ckbAutoSend.Location = new System.Drawing.Point(6, 213);
+			this.ckbAutoSend.Location = new System.Drawing.Point(40, 331);
 			this.ckbAutoSend.Name = "ckbAutoSend";
 			this.ckbAutoSend.Size = new System.Drawing.Size(72, 16);
 			this.ckbAutoSend.TabIndex = 6;
@@ -322,15 +314,26 @@
 			this.ckbAutoSend.UseVisualStyleBackColor = true;
 			this.ckbAutoSend.CheckedChanged += new System.EventHandler(this.ckbAutoSend_CheckedChanged);
 			// 
+			// button1
+			// 
+			this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.button1.Location = new System.Drawing.Point(359, 237);
+			this.button1.Name = "button1";
+			this.button1.Size = new System.Drawing.Size(75, 23);
+			this.button1.TabIndex = 10;
+			this.button1.Text = "清空";
+			this.button1.UseVisualStyleBackColor = true;
+			this.button1.Click += new System.EventHandler(this.button1_Click);
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(649, 399);
+			this.ClientSize = new System.Drawing.Size(704, 452);
 			this.Controls.Add(this.btnRecive);
+			this.Controls.Add(this.btnSetParam);
 			this.Controls.Add(this.btnExit);
 			this.Controls.Add(this.btnClose);
-			this.Controls.Add(this.btnOpen);
 			this.Controls.Add(this.groupBox1);
 			this.Controls.Add(this.groupBox2);
 			this.Name = "Form1";
@@ -360,7 +363,6 @@
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.TextBox txtRecive;
 		private System.Windows.Forms.TextBox txtSend;
-		private System.Windows.Forms.Button btnOpen;
 		private System.Windows.Forms.Button btnClose;
 		private System.Windows.Forms.Button btnSend;
 		private System.Windows.Forms.Button btnExit;
@@ -371,6 +373,7 @@
 		private System.Windows.Forms.Label label6;
 		private System.Windows.Forms.TextBox txtTimeCell;
 		private System.Windows.Forms.Label label7;
+		private System.Windows.Forms.Button button1;
 	}
 }
 
