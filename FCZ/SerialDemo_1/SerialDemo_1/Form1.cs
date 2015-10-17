@@ -54,11 +54,43 @@ namespace SerialDemo_1
 			InitParam();
 			AutoSendTimer.Tick  += new EventHandler(AutoSend);
 
-			BindingSource bs = new BindingSource();
-			bs.DataSource = InfoDictionary.dicYear;
-			cmbYear.DataSource = bs;
+			BindingSource bsYear = new BindingSource();
+			bsYear.DataSource = InfoDictionary.dicYear;
+			cmbYear.DataSource = bsYear;
 			cmbYear.DisplayMember = "Value";
 			cmbYear.ValueMember = "Key";
+
+
+
+			BindingSource bsMonth = new BindingSource();
+			bsMonth.DataSource = InfoDictionary.dicMonth;
+			cmbMonth.DataSource = bsMonth;
+			cmbMonth.DisplayMember = "Value";
+			cmbMonth.ValueMember = "Key";
+
+			BindingSource bsDay = new BindingSource();
+			bsDay.DataSource = InfoDictionary.dicDay;
+			cmbDay.DataSource = bsDay;
+			cmbDay.DisplayMember = "Value";
+			cmbDay.ValueMember = "Key";
+
+			BindingSource bsHour = new BindingSource();
+			bsHour.DataSource = InfoDictionary.dicHour;
+			cmbHour.DataSource = bsHour;
+			cmbHour.DisplayMember = "Value";
+			cmbHour.ValueMember = "Key";
+
+			BindingSource bsMinute = new BindingSource();
+			bsMinute.DataSource = InfoDictionary.dicMinute;
+			cmbMinute.DataSource = bsMinute;
+			cmbMinute.DisplayMember = "Value";
+			cmbMinute.ValueMember = "Key";
+
+			BindingSource bsLang = new BindingSource();
+			bsLang.DataSource = InfoDictionary.dicLang;
+			cmbLang.DataSource = bsLang;
+			cmbLang.DisplayMember = "Value";
+			cmbLang.ValueMember = "Key";
 
 		}
 
@@ -190,8 +222,6 @@ namespace SerialDemo_1
 				}
 
 				sp.Write(Sendbyte, 0, Sendbyte.Length);
-				txtRecive.AppendText("发送数据: " + str);
-				txtRecive.AppendText("\r\n");
 			}
 		}
 
@@ -296,31 +326,53 @@ namespace SerialDemo_1
 		private void button1_Click(object sender, EventArgs e)
 		{
 			Send(strWeatherInfo);
+			txtRecive.AppendText(strWeatherInfo + "\r\n");
 		}
 
 		private void btnHistoryWeather_Click(object sender, EventArgs e)
 		{
 			Send(strHistoryWeather);
+			txtRecive.AppendText(strHistoryWeather + "\r\n");
 		}
 
 		private void btnSysConfig_Click(object sender, EventArgs e)
 		{
 			Send(strSystemInfo);
+			txtRecive.AppendText(strSystemInfo + "\r\n");
 		}
 
 		private void btnPassWord_Click(object sender, EventArgs e)
 		{
 			Send(strPasswordInfo);
+			txtRecive.AppendText(strPasswordInfo + "\r\n");
 		}
 
 		private void btnSetSystemConfig_Click(object sender, EventArgs e)
 		{
+			string SendMsg = "01 10 00 20 00 04 08 "
+						+ValueToString(cmbYear.SelectedValue) + " "
+						+ ValueToString(cmbMonth.SelectedValue) + " "
+						+ ValueToString(cmbDay.SelectedValue) + " "
+						+ ValueToString(cmbHour.SelectedValue) + " "
+						+ ValueToString(cmbMinute.SelectedValue) + " "
+						+ ValueToString(txtSaveTime.Text) + " "
+						+ ValueToString(cmbLang.SelectedValue)
+						+ " 00 59 DD";
+			Send(SendMsg);
 
+			txtRecive.AppendText(SendMsg + "\r\n");
 		}
 
 
 //=============================================================================================
-
-
+		private string ValueToString(object obj)
+		{
+			string str = Convert.ToString(Convert.ToInt32(obj), 16);
+			if (str.Length%2 == 1)
+			{
+				str = "0" + str;
+			}
+			return str;
+		}
 	}
 }

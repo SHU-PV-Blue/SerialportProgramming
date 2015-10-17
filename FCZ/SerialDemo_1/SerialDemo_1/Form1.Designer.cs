@@ -557,6 +557,7 @@
 			this.btnSend.TabIndex = 17;
 			this.btnSend.Text = "发送";
 			this.btnSend.UseVisualStyleBackColor = true;
+			this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
 			// 
 			// label12
 			// 
@@ -677,7 +678,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(615, 469);
+			this.ClientSize = new System.Drawing.Size(551, 469);
 			this.Controls.Add(this.tabControl1);
 			this.Controls.Add(this.groupBox1);
 			this.Controls.Add(this.groupBox2);
