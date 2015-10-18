@@ -105,10 +105,13 @@ namespace SerialDemo_1
 		/// <param name="e"></param>
 		private void btnSetParam_Click(object sender, EventArgs e)
 		{
-			btnSetParam.BackColor =  Color.FromArgb(128, 255, 128);
-			btnClose.BackColor = Form1.DefaultBackColor;
 			try
 			{
+				if(sp.IsOpen)
+				{
+					txtRecive.AppendText("串口已经打开!\n");
+					return;
+				}
 				strPortName = cmbPorts.Text;
 				strBaudRate = cmbBaudRate.Text;
 				strDataBits = cmbDataBit.Text;
@@ -123,11 +126,12 @@ namespace SerialDemo_1
 				sp.Open();
 
 				txtRecive.AppendText("串口成功开启!\n");
+				btnSetParam.BackColor = Color.FromArgb(128, 255, 128);
+				btnClose.BackColor = Form1.DefaultBackColor;
 			}
 			catch (Exception ex)
 			{
-				txtRecive.AppendText("异常: " + ex.Message);
-				txtRecive.AppendText("\r\n");
+				txtRecive.AppendText("异常信息: " + ex.Message + "\r\n错误码: " + ex.GetHashCode()+"\r\n");
 			}
 		}
 
@@ -162,10 +166,9 @@ namespace SerialDemo_1
 			{
 				sp.Close();
 				txtRecive.AppendText("串口已关闭!\r\n");
-			}
-			btnSetParam.BackColor = Form1.DefaultBackColor;
-			btnClose.BackColor = Color.FromArgb(128, 255, 128);
-				
+				btnSetParam.BackColor = Form1.DefaultBackColor;
+				btnClose.BackColor = Color.FromArgb(128, 255, 128);
+			}	
 		}
 
 		/// <summary>
@@ -294,8 +297,8 @@ namespace SerialDemo_1
 			return Recivestr;
 		}
 //====================    快捷键设置      ======================================================
-		//string strWeatherInfo = "01 03 00 00 F1 D8";  //老的收集实时天气的信息
-		string strWeatherInfo = "03 03 00 00 F0 60";	//新的指令
+		string strWeatherInfo = "01 03 00 00 F1 D8";  //老的收集实时天气的信息
+		//string strWeatherInfo = "03 03 00 00 F0 60";	//新的指令
 		string strHistoryWeather = "01 03 00 37 B0 0E";
 		string strReHistoryWeather = "01 03 00 38 F0 0A";
 		string strSystemInfo = "01 03 00 20 F0 00";
