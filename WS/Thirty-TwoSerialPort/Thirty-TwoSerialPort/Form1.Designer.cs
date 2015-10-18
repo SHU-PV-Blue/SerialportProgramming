@@ -28,12 +28,16 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
 			this.textBox2 = new System.Windows.Forms.TextBox();
 			this.textBox3 = new System.Windows.Forms.TextBox();
 			this.textBox4 = new System.Windows.Forms.TextBox();
 			this.textBox5 = new System.Windows.Forms.TextBox();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.label13 = new System.Windows.Forms.Label();
+			this.label12 = new System.Windows.Forms.Label();
+			this.label11 = new System.Windows.Forms.Label();
 			this.label10 = new System.Windows.Forms.Label();
 			this.textBox1 = new System.Windows.Forms.TextBox();
 			this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -72,9 +76,9 @@
 			this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
 			this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
-			this.label11 = new System.Windows.Forms.Label();
-			this.label12 = new System.Windows.Forms.Label();
-			this.label13 = new System.Windows.Forms.Label();
+			this.timer1 = new System.Windows.Forms.Timer(this.components);
+			this.timer2 = new System.Windows.Forms.Timer(this.components);
+			this.timer3 = new System.Windows.Forms.Timer(this.components);
 			this.groupBox1.SuspendLayout();
 			this.statusStrip1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
@@ -142,6 +146,31 @@
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "参数设置";
 			this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+			// 
+			// label13
+			// 
+			this.label13.AutoSize = true;
+			this.label13.Location = new System.Drawing.Point(309, 37);
+			this.label13.Name = "label13";
+			this.label13.Size = new System.Drawing.Size(0, 12);
+			this.label13.TabIndex = 23;
+			// 
+			// label12
+			// 
+			this.label12.AutoSize = true;
+			this.label12.Location = new System.Drawing.Point(219, 40);
+			this.label12.Name = "label12";
+			this.label12.Size = new System.Drawing.Size(65, 12);
+			this.label12.TabIndex = 22;
+			this.label12.Text = "当前时间：";
+			// 
+			// label11
+			// 
+			this.label11.AutoSize = true;
+			this.label11.Location = new System.Drawing.Point(231, 141);
+			this.label11.Name = "label11";
+			this.label11.Size = new System.Drawing.Size(0, 12);
+			this.label11.TabIndex = 21;
 			// 
 			// label10
 			// 
@@ -527,30 +556,20 @@
 			this.toolStripButton4.Text = "退出";
 			this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
 			// 
-			// label11
+			// timer1
 			// 
-			this.label11.AutoSize = true;
-			this.label11.Location = new System.Drawing.Point(231, 141);
-			this.label11.Name = "label11";
-			this.label11.Size = new System.Drawing.Size(0, 12);
-			this.label11.TabIndex = 21;
+			this.timer1.Interval = 3000;
+			this.timer1.Tick += new System.EventHandler(this.timer1_Tick_1);
 			// 
-			// label12
+			// timer2
 			// 
-			this.label12.AutoSize = true;
-			this.label12.Location = new System.Drawing.Point(219, 40);
-			this.label12.Name = "label12";
-			this.label12.Size = new System.Drawing.Size(65, 12);
-			this.label12.TabIndex = 22;
-			this.label12.Text = "当前时间：";
+			this.timer2.Interval = 1000;
+			this.timer2.Tick += new System.EventHandler(this.timer2_Tick_1);
 			// 
-			// label13
+			// timer3
 			// 
-			this.label13.AutoSize = true;
-			this.label13.Location = new System.Drawing.Point(309, 37);
-			this.label13.Name = "label13";
-			this.label13.Size = new System.Drawing.Size(0, 12);
-			this.label13.TabIndex = 23;
+			this.timer3.Interval = 1000;
+			this.timer3.Tick += new System.EventHandler(this.timer3_Tick_1);
 			// 
 			// Form1
 			// 
@@ -633,6 +652,9 @@
 		private System.Windows.Forms.Label label12;
 		private System.Windows.Forms.Label label11;
 		private System.Windows.Forms.Label label13;
+		private System.Windows.Forms.Timer timer1;
+		private System.Windows.Forms.Timer timer2;
+		private System.Windows.Forms.Timer timer3;
 	}
 }
 
