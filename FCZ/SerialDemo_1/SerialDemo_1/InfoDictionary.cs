@@ -39,11 +39,11 @@ namespace SerialDemo_1
 			{
 				dicDay.Add(j, i);
 			}
-			for (i = 0, j = 0x00; i < 23; i++, j++)
+			for (i = 0, j = 0x00; i <= 23; i++, j++)
 			{
 				dicHour.Add(j, i);
 			}
-			for (i = 0, j = 0x00; i < 59; i++, j++)
+			for (i = 0, j = 0x00; i <= 59; i++, j++)
 			{
 				dicMinute.Add(j, i);
 			}

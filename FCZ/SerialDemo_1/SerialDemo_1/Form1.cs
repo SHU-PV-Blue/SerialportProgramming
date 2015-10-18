@@ -174,83 +174,7 @@ namespace SerialDemo_1
 				sp.Close();
 			this.Close();
 		}
-
-		/// <summary>
-		/// 发送数据
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		private void btnSend_Click(object sender, EventArgs e)
-		{
-			
-				if (ckbAutoSend.Checked)
-				{
-					if (!IsSended)
-					{
-						btnSend.Text = "停止";
-						int interval;
-						if( ! int.TryParse(txtTimeCell.Text, out interval))
-							interval = 1;
-						AutoSendTimer.Interval = 1000 * interval;
-						AutoSendTimer.Start();
-						IsSended = true;
-					}
-					else
-					{
-						btnSend.Text = "发送";
-						AutoSendTimer.Stop();
-						txtSend.Clear();
-						IsSended = false;
-					}
-				}
-				else
-				{
-					try 
-					{
-						Send(txtSend.Text);
-						txtRecive.AppendText(txtSend.Text + Environment.NewLine);
-						txtSend.Clear();
-					}
-					catch (Exception ex) { txtRecive.AppendText("异常: " + ex.Message + "\r\n"); }
-				}
-		}
-
-
-		/// <summary>
-		/// 发送数据
-		/// </summary>
-		private void Send(String str)
-		{
-			if (sp != null)
-			{
-				str = str.Replace(" ", "");
-				byte[] Sendbyte = new byte[str.Length / 2];
-				for (int i = 0, j = 0; i < str.Length; i = i + 2, j++)
-				{
-					string mysubstring = str.Substring(i, 2);
-					Sendbyte[j] = Convert.ToByte(mysubstring, 16);
-				}
-
-				sp.Write(Sendbyte, 0, Sendbyte.Length);
-			}
-		}
-
-		/// <summary>
-		/// 自动发送的内容
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		private void AutoSend(object sender, EventArgs e) 
-		{
-			try 
-			{
-				Send(txtSend.Text);
-				txtRecive.AppendText(txtSend.Text + Environment.NewLine);
-			}
-			catch (Exception ex) { txtRecive.AppendText("异常: " + ex.Message + "\r\n"); }
-		}
-
-		/// <summary>
+				/// <summary>
 		/// 初始化参数
 		/// </summary>
 		/// <param name="sender"></param>
@@ -259,51 +183,7 @@ namespace SerialDemo_1
 		{
 			InitParam();
 		}
-
-		/// <summary>
-		/// 接收数据线程
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		private void ReciveData(object sender, SerialDataReceivedEventArgs e)
-		{
-				DateTime dt = DateTime.Now;
-				int n = sp.BytesToRead;			//缓冲区中的字节数
-				byte[] buffer = new byte[n];
-				sp.Read(buffer, 0, n);
-				this.Invoke((EventHandler)(delegate
-				{
-					txtRecive.AppendText(dt.ToString() +" "+ TranString(buffer));
-					txtRecive.AppendText("\r\n");
-					
-				}));
-				FileStream fs = new FileStream(@"E:\光伏\串口\Data\" + "1.txt", FileMode.OpenOrCreate, FileAccess.Write);
-				fs.Position = fs.Length;                  //将待写入内容追加到文件末尾  
-				StreamWriter sw = new StreamWriter(fs, Encoding.UTF8);//(fs, System.Text.Encoding.GetEncoding("GB2312"));
-				sw.Flush();
-				sw.BaseStream.Seek(fs.Position, SeekOrigin.Begin);
-				sw.WriteLine(dt.ToString() + " " + TranString(buffer));
-				sw.Flush();
-				sw.Close();
-		}
-
-		/// <summary>
-		/// 将接收到的数据转化成相应字符串
-		/// </summary>
-		/// <param name="buffer"></param>
-		/// <returns></returns>
-		private StringBuilder  TranString(byte[] buffer)
-		{
-			Recivestr.Clear();
-			//依次的拼接出16进制字符串  
-			foreach (byte b in buffer)
-			{
-				Recivestr.Append(b.ToString("X2") + " ");
-			}
-			return Recivestr;
-		}
-
-		/// <summary>
+				/// <summary>
 		/// 是否循环发送
 		/// </summary>
 		/// <param name="sender"></param>
@@ -328,12 +208,93 @@ namespace SerialDemo_1
 		{
 			txtRecive.Clear();
 		}
+
+//====================   发送和接收   ================================================================
+		/// <summary>
+		/// 发送数据
+		/// </summary>
+		private void Send(String str)
+		{
+			if (sp != null)
+			{
+				str = str.Replace(" ", "");
+				byte[] Sendbyte = new byte[str.Length / 2];
+				for (int i = 0, j = 0; i < str.Length; i = i + 2, j++)
+				{
+					string mysubstring = str.Substring(i, 2);
+					Sendbyte[j] = Convert.ToByte(mysubstring, 16);
+				}
+
+				sp.Write(Sendbyte, 0, Sendbyte.Length);
+			}
+		}
+		/// <summary>
+		/// 自动发送的内容
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void AutoSend(object sender, EventArgs e) 
+		{
+			try 
+			{
+				Send(txtSend.Text);
+				txtRecive.AppendText(txtSend.Text + Environment.NewLine);
+			}
+			catch (Exception ex) { txtRecive.AppendText("异常: " + ex.Message + "\r\n"); }
+		}
+
+
+
+		/// <summary>
+		/// 接收数据
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void ReciveData(object sender, SerialDataReceivedEventArgs e)
+		{
+				DateTime dt = DateTime.Now;
+				int n = sp.BytesToRead;			//缓冲区中的字节数
+				byte[] buffer = new byte[n];
+				sp.Read(buffer, 0, n);
+				this.Invoke((EventHandler)(delegate
+				{
+					txtRecive.AppendText(dt.ToString() +" "+ TranString(buffer));
+					txtRecive.AppendText("\r\n");
+					
+				}));
+				FileStream fs = new FileStream(dt.ToLongDateString() + ".txt", FileMode.OpenOrCreate, FileAccess.Write);
+				fs.Position = fs.Length;                  //将待写入内容追加到文件末尾  
+				StreamWriter sw = new StreamWriter(fs, Encoding.UTF8);//(fs, System.Text.Encoding.GetEncoding("GB2312"));
+				sw.Flush();
+				sw.BaseStream.Seek(fs.Position, SeekOrigin.Begin);
+				sw.WriteLine(dt.ToString() + " " + TranString(buffer));
+				sw.Flush();
+				sw.Close();
+		}
+
+		/// <summary>
+		/// 将接收到的数据转化成相应字符串
+		/// </summary>
+		/// <param name="buffer"></param>
+		/// <returns></returns>
+		private StringBuilder  TranString(byte[] buffer)
+		{
+			Recivestr.Clear();
+			//依次的拼接出16进制字符串  
+			foreach (byte b in buffer)
+			{
+				Recivestr.Append(b.ToString("X2") + " ");
+			}
+			return Recivestr;
+		}
 //====================    快捷键设置      ======================================================
 		string strWeatherInfo = "01 03 00 00 F1 D8";
 		string strHistoryWeather = "01 03 00 37 B0 0E";
+		string strReHistoryWeather = "01 03 00 38 F0 0A";
 		string strSystemInfo = "01 03 00 20 F0 00";
 		string strPasswordInfo = "01 03 00 61 00 04 15 d7";
-
+		string strReset = "01 80 01 80";
+		
 		private void button1_Click(object sender, EventArgs e)
 		{
 			Send(strWeatherInfo);
@@ -357,6 +318,17 @@ namespace SerialDemo_1
 			Send(strPasswordInfo);
 			txtRecive.AppendText(strPasswordInfo + "\r\n");
 		}
+		private void btnReset_Click(object sender, EventArgs e)
+		{
+			Send(strReset);
+			txtRecive.AppendText(strReset + "\r\n");
+		}
+
+		private void btnReHistoryWeather_Click(object sender, EventArgs e)
+		{
+			Send(strReHistoryWeather);
+			txtRecive.AppendText(strReHistoryWeather + "\r\n");
+		}
 
 		private void btnSetSystemConfig_Click(object sender, EventArgs e)
 		{
@@ -373,9 +345,6 @@ namespace SerialDemo_1
 
 			txtRecive.AppendText(SendMsg + "\r\n");
 		}
-
-
-//=============================================================================================
 		private string ValueToString(object obj)
 		{
 			string str = Convert.ToString(Convert.ToInt32(obj), 16);
@@ -389,9 +358,14 @@ namespace SerialDemo_1
 //======================   设置密码   ==========================================
 
 		string pswStr = "";
-
+		bool IsInput = false;
 		private void btnPsw0_Click(object sender, EventArgs e)
 		{
+			if (!IsInput)
+			{
+				txtPsw.Clear();
+				IsInput = true;
+			}
 			if (txtPsw.Text.Length >= 4) { return; }
 			pswStr += "30";
 			txtPsw.AppendText("0");
@@ -399,12 +373,22 @@ namespace SerialDemo_1
 
 		private void btnPsw1_Click(object sender, EventArgs e)
 		{
+			if (!IsInput)
+			{
+				txtPsw.Clear();
+				IsInput = true;
+			}
 			if (txtPsw.Text.Length >= 4) { return; }
 			pswStr += "31";
 			txtPsw.AppendText("1");
 		}
 		private void btnPsw2_Click(object sender, EventArgs e)
 		{
+			if (!IsInput)
+			{
+				txtPsw.Clear();
+				IsInput = true;
+			}
 			if (txtPsw.Text.Length >= 4) { return; }
 			pswStr += "32";
 			txtPsw.AppendText("2");
@@ -412,6 +396,11 @@ namespace SerialDemo_1
 
 		private void btnPsw3_Click(object sender, EventArgs e)
 		{
+			if (!IsInput)
+			{
+				txtPsw.Clear();
+				IsInput = true;
+			}
 			if (txtPsw.Text.Length >= 4) { return; }
 			pswStr += "33";
 			txtPsw.AppendText("3");
@@ -419,6 +408,11 @@ namespace SerialDemo_1
 
 		private void btnPsw4_Click(object sender, EventArgs e)
 		{
+			if (!IsInput)
+			{
+				txtPsw.Clear();
+				IsInput = true;
+			}
 			if (txtPsw.Text.Length >= 4) { return; }
 			pswStr += "34";
 			txtPsw.AppendText("4");
@@ -426,6 +420,11 @@ namespace SerialDemo_1
 
 		private void btnPsw5_Click(object sender, EventArgs e)
 		{
+			if (!IsInput)
+			{
+				txtPsw.Clear();
+				IsInput = true;
+			}
 			if (txtPsw.Text.Length >= 4) { return; }
 			pswStr += "35";
 			txtPsw.AppendText("5");
@@ -433,6 +432,11 @@ namespace SerialDemo_1
 
 		private void btnPsw6_Click(object sender, EventArgs e)
 		{
+			if (!IsInput)
+			{
+				txtPsw.Clear();
+				IsInput = true;
+			}
 			if (txtPsw.Text.Length >= 4) { return; }
 			pswStr += "36";
 			txtPsw.AppendText("6");
@@ -440,6 +444,11 @@ namespace SerialDemo_1
 
 		private void btnPsw7_Click(object sender, EventArgs e)
 		{
+			if (!IsInput)
+			{
+				txtPsw.Clear();
+				IsInput = true;
+			}
 			if (txtPsw.Text.Length >= 4) { return; }
 			pswStr += "37";
 			txtPsw.AppendText("7");
@@ -447,6 +456,11 @@ namespace SerialDemo_1
 
 		private void btnPsw8_Click(object sender, EventArgs e)
 		{
+			if (!IsInput)
+			{
+				txtPsw.Clear();
+				IsInput = true;
+			}
 			if (txtPsw.Text.Length >= 4) { return; }
 			pswStr += "38";
 			txtPsw.AppendText("8");
@@ -454,6 +468,11 @@ namespace SerialDemo_1
 
 		private void btnPsw9_Click(object sender, EventArgs e)
 		{
+			if (!IsInput)
+			{
+				txtPsw.Clear();
+				IsInput = true;
+			}
 			if (txtPsw.Text.Length >= 4) { return; }
 			pswStr += "39";
 			txtPsw.AppendText("9");
@@ -461,15 +480,16 @@ namespace SerialDemo_1
 
 		private void btnPswBack_Click(object sender, EventArgs e)
 		{
-			if (txtPsw.Text.Length > 0)
+			if (pswStr.Length>0 && txtPsw.Text.Length > 0)
 			{
 				pswStr = pswStr.Remove(pswStr.Length - 2);
 				txtPsw.Text = txtPsw.Text.Remove(txtPsw.Text.Length - 1);
 			}
 			else
 			{
-				txtPsw.Clear();
+				txtPsw.Text = "请输入4位密码";
 				pswStr = "";
+				IsInput = false;
 			}
 		}
 
@@ -484,8 +504,57 @@ namespace SerialDemo_1
 				Send(pswStr);
 				txtRecive.AppendText(pswStr+Environment.NewLine);
 				pswStr = "";
-				txtPsw.Clear();
+				txtPsw.Text = "请输入4位密码";
+				IsInput = false;
 				txtRecive.AppendText("设置密码成功!\r\n");
+			}
+		}
+
+		private void btnPswClear_Click(object sender, EventArgs e)
+		{
+			txtPsw.Clear();
+			pswStr = "";
+			IsInput = false;
+		}
+		//==================   自定义发送  ====================================================================
+
+		/// <summary>
+		/// 发送数据
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void btnSend_Click(object sender, EventArgs e)
+		{
+
+			if (ckbAutoSend.Checked)
+			{
+				if (!IsSended)
+				{
+					btnSend.Text = "停止";
+					int interval;
+					if (!int.TryParse(txtTimeCell.Text, out interval))
+						interval = 1;
+					AutoSendTimer.Interval = 1000 * interval;
+					AutoSendTimer.Start();
+					IsSended = true;
+				}
+				else
+				{
+					btnSend.Text = "发送";
+					AutoSendTimer.Stop();
+					txtSend.Clear();
+					IsSended = false;
+				}
+			}
+			else
+			{
+				try
+				{
+					Send(txtSend.Text);
+					txtRecive.AppendText(txtSend.Text + Environment.NewLine);
+					txtSend.Clear();
+				}
+				catch (Exception ex) { txtRecive.AppendText("异常: " + ex.Message + "\r\n"); }
 			}
 		}
 
