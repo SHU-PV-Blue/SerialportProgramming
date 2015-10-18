@@ -76,7 +76,8 @@ namespace SerialPortTest01
                     //直接按ASCII规则转换成字符串  
                     builder.Append(Encoding.ASCII.GetString(buf));
                 }
-                this.txtGet.AppendText(DateTime.Now.ToShortTimeString() + ":    ");
+                if(chbShowTime.Checked)
+                    this.txtGet.AppendText(DateTime.Now.ToShortTimeString() + ":    ");
                 //追加的形式添加到文本框末端，并滚动到最后。  
                 this.txtGet.AppendText(builder.ToString());
                 this.txtGet.AppendText(Environment.NewLine);
@@ -351,5 +352,6 @@ namespace SerialPortTest01
             Info.FileName = "calc.exe ";//"calc.exe"为计算器，"notepad.exe"为记事本
             pcalc = Process.Start(Info);
         }
+
     }
 }
