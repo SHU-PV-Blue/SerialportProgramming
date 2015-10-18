@@ -5,9 +5,11 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.InteropServices;
+using System.Diagnostics;
 using System.Windows.Forms;
 using System.IO.Ports;
+using System.Text.RegularExpressions;
 
 namespace SerialPortTest01
 {
@@ -74,7 +76,8 @@ namespace SerialPortTest01
                     //直接按ASCII规则转换成字符串  
                     builder.Append(Encoding.ASCII.GetString(buf));
                 }
-                this.txtGet.AppendText(DateTime.Now.ToShortTimeString() + ":    ");
+                if(chbShowTime.Checked)
+                    this.txtGet.AppendText(DateTime.Now.ToShortTimeString() + ":    ");
                 //追加的形式添加到文本框末端，并滚动到最后。  
                 this.txtGet.AppendText(builder.ToString());
                 this.txtGet.AppendText(Environment.NewLine);
@@ -244,15 +247,42 @@ namespace SerialPortTest01
             if (sePort != null)
             {
                 string mess = txtSend.Text.Trim();
-                string[] messages = mess.Split(' ');
-                byte[] buf = Array.ConvertAll(messages, new Converter<string, byte>(StringToHex));
-                
-                sePort.Write(buf, 0, buf.Length);
+                if (!string.IsNullOrEmpty(mess))
+                {
+                    if (rbSendHex.Checked)      //判断是否十六进制发送
+                    {
+                        try
+                        {
+                            string pattern = @"\s+";
+                            string[] messages = Regex.Split(mess, pattern);
+                            byte[] buf = Array.ConvertAll(messages, new Converter<string, byte>(StringToHex));
+
+                            sePort.Write(buf, 0, buf.Length);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("发送数据格式错误,请检查格式!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        byte[] buf = Encoding.ASCII.GetBytes(mess);
+                        sePort.Write(buf,0,buf.Length);
+                    }
+                }
             }
         }
         public static byte StringToHex(string str)
         {
-            return Convert.ToByte(str, 16);
+            try
+            {
+                return Convert.ToByte(str, 16);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
         /// <summary>
         /// 发送消息按钮事件
@@ -305,5 +335,23 @@ namespace SerialPortTest01
         {
             ClosePort(sender, e);
         }
+
+        private void 退出ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Environment.Exit(0);
+        }
+
+        private void 串口助手ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Copyright © 2015 PVBlue. All Rights Reserved","关于");
+        }
+        Process pcalc = null;
+        private void 计算器ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ProcessStartInfo Info = new ProcessStartInfo();
+            Info.FileName = "calc.exe ";//"calc.exe"为计算器，"notepad.exe"为记事本
+            pcalc = Process.Start(Info);
+        }
+
     }
 }
