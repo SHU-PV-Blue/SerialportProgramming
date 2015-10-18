@@ -24,7 +24,7 @@ namespace SerialPortTest01
         private string[] baudRate = {"300","600","1200","2400","4800","9600","19200","38400","43000","56000","57600","115200" };
         private string[] dataBit = { "5", "6", "7", "8" };
         private string[] parityBit = { "None", "Odd", "Even" };
-        private string[] stopBit = { "1", "2" };
+        private string[] stopBit = { "1", "1.5","2" };
 
         private long received_count = 0;
         private StringBuilder builder = new StringBuilder();
@@ -164,24 +164,30 @@ namespace SerialPortTest01
                 {
                     sParity = Parity.Even;
                 }
-                string stopStr = cbPort.SelectedItem.ToString();            //获取停止位
+                string stopStr = cbStopBit.SelectedItem.ToString();            //获取停止位
                 StopBits sStop;
                 if (stopStr.Equals("1"))
                 {
                     sStop = StopBits.One;
                 }
-                else
+                else if(stopStr.Equals("2"))
                 {
                     sStop = StopBits.Two;
                 }
-             
+                else
+                {
+                    sStop = StopBits.OnePointFive;
+                }
+            
                 try
                 {
                     ///////*************
-                    sePort = new SerialPort(sPort, sBaudRate, sParity, sDataBit, sStop);
-
-                    sePort.NewLine = Environment.NewLine;
-                    //sePort.RtsEnable = true;
+                    sePort = new SerialPort();
+                    sePort.PortName = sPort;
+                    sePort.BaudRate = sBaudRate;
+                    sePort.DataBits = sDataBit;
+                    sePort.Parity = sParity;
+                    sePort.StopBits = sStop;
                     sePort.DataReceived += sePort_DataReceived;
                     sePort.Open();
                     lblComStatus.ForeColor = Color.Black;
@@ -350,6 +356,13 @@ namespace SerialPortTest01
         {
             ProcessStartInfo Info = new ProcessStartInfo();
             Info.FileName = "calc.exe ";//"calc.exe"为计算器，"notepad.exe"为记事本
+            pcalc = Process.Start(Info);
+        }
+
+        private void 记事本ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ProcessStartInfo Info = new ProcessStartInfo();
+            Info.FileName = "notepad.exe ";//"calc.exe"为计算器，"notepad.exe"为记事本
             pcalc = Process.Start(Info);
         }
 
