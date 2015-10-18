@@ -139,9 +139,8 @@
   <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="label15.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="&gt;&gt;cmbLang.Parent" xml:space="preserve">
+    <value>tbpSysConfig</value>
   </data>
   <data name="&gt;&gt;cmbBaudRate.ZOrder" xml:space="preserve">
     <value>7</value>
@@ -171,9 +170,6 @@
   <data name="label12.Font" type="System.Drawing.Font, System.Drawing">
     <value>宋体, 10.5pt</value>
   </data>
-  <data name="&gt;&gt;btnReHistoryWeather.Name" xml:space="preserve">
-    <value>btnReHistoryWeather</value>
-  </data>
   <data name="txtSend.Location" type="System.Drawing.Point, System.Drawing">
     <value>23, 55</value>
   </data>
@@ -189,6 +185,7 @@
   <data name="&gt;&gt;label3.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="label4.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
@@ -197,9 +194,6 @@
   </data>
   <data name="btnPsw9.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
-  </data>
-  <data name="btnReset.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
   </data>
   <data name="&gt;&gt;tbpSetPsw.Name" xml:space="preserve">
     <value>tbpSetPsw</value>
@@ -255,8 +249,8 @@
   <data name="btnPsw4.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="&gt;&gt;cmbDay.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="label7.Text" xml:space="preserve">
+    <value>秒</value>
   </data>
   <data name="&gt;&gt;btnReciveClear.Name" xml:space="preserve">
     <value>btnReciveClear</value>
@@ -284,6 +278,9 @@
   </data>
   <data name="&gt;&gt;label15.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="btnReciveClear.Text" xml:space="preserve">
+    <value>清空</value>
   </data>
   <data name="btnSetParam.Size" type="System.Drawing.Size, System.Drawing">
     <value>170, 60</value>
@@ -318,8 +315,8 @@
   <data name="&gt;&gt;cmbDay.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>21, 14</value>
+  <data name="btnSetPsw.Text" xml:space="preserve">
+    <value>设置</value>
   </data>
   <data name="cmbMinute.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -329,9 +326,6 @@
   </data>
   <data name="cmbHour.Location" type="System.Drawing.Point, System.Drawing">
     <value>78, 60</value>
-  </data>
-  <data name="&gt;&gt;label7.Name" xml:space="preserve">
-    <value>label7</value>
   </data>
   <data name="&gt;&gt;label4.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -345,8 +339,8 @@
   <data name="btnClose.Text" xml:space="preserve">
     <value>关闭串口</value>
   </data>
-  <data name="label7.Text" xml:space="preserve">
-    <value>秒</value>
+  <data name="&gt;&gt;cmbMinute.Name" xml:space="preserve">
+    <value>cmbMinute</value>
   </data>
   <data name="&gt;&gt;label10.Name" xml:space="preserve">
     <value>label10</value>
@@ -360,8 +354,14 @@
   <data name="&gt;&gt;label5.Parent" xml:space="preserve">
     <value>groupBox1</value>
   </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>波特率 : </value>
+  </data>
   <data name="&gt;&gt;tbpSetPsw.Parent" xml:space="preserve">
     <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;btnReset.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="cmbDataBit.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -386,6 +386,9 @@
   </data>
   <data name="&gt;&gt;button1.Name" xml:space="preserve">
     <value>button1</value>
+  </data>
+  <data name="tbpReadInfo.Text" xml:space="preserve">
+    <value>读取信息</value>
   </data>
   <data name="cmbBaudRate.Items" xml:space="preserve">
     <value>9600</value>
@@ -428,9 +431,6 @@
   </data>
   <data name="&gt;&gt;groupBox3.ZOrder" xml:space="preserve">
     <value>3</value>
-  </data>
-  <data name="&gt;&gt;label9.Name" xml:space="preserve">
-    <value>label9</value>
   </data>
   <data name="cmbHour.Size" type="System.Drawing.Size, System.Drawing">
     <value>69, 20</value>
@@ -513,6 +513,9 @@
   <data name="&gt;&gt;cmbDay.Parent" xml:space="preserve">
     <value>tbpSysConfig</value>
   </data>
+  <data name="&gt;&gt;label6.Name" xml:space="preserve">
+    <value>label6</value>
+  </data>
   <data name="btnSetPsw.Location" type="System.Drawing.Point, System.Drawing">
     <value>186, 0</value>
   </data>
@@ -585,14 +588,461 @@
   <data name="cmbHour.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="cmbBaudRate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>82, 20</value>
-  </data>
   <data name="ckbAutoSend.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
     <value>66, 20</value>
+  </data>
+  <data name="btnPsw4.Text" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;cmbYear.Parent" xml:space="preserve">
+    <value>tbpSysConfig</value>
+  </data>
+  <data name="&gt;&gt;ckbAutoSend.Parent" xml:space="preserve">
+    <value>tbpSendString</value>
+  </data>
+  <data name="&gt;&gt;label14.Parent" xml:space="preserve">
+    <value>tbpSysConfig</value>
+  </data>
+  <data name="label4.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 10.5pt</value>
+  </data>
+  <data name="cmbStopBit.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;btnHistoryWeather.Name" xml:space="preserve">
+    <value>btnHistoryWeather</value>
+  </data>
+  <data name="txtPsw.Size" type="System.Drawing.Size, System.Drawing">
+    <value>161, 22</value>
+  </data>
+  <data name="label11.Font" type="System.Drawing.Font, System.Drawing">
+    <value>宋体, 10.5pt</value>
+  </data>
+  <data name="&gt;&gt;btnReset.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tbpReadInfo.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 14</value>
+  </data>
+  <data name="cmbBaudRate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>82, 104</value>
+  </data>
+  <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>174, 204</value>
+  </data>
+  <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
+    <value>37, 61</value>
+  </data>
+  <data name="cmbPorts.Location" type="System.Drawing.Point, System.Drawing">
+    <value>82, 78</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label17.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="cmbLang.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;btnClose.Name" xml:space="preserve">
+    <value>btnClose</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="label18.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cmbDataBit.Items" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="tbpSendString.Text" xml:space="preserve">
+    <value>自定义发送</value>
+  </data>
+  <data name="&gt;&gt;label11.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnReHistoryWeather.Parent" xml:space="preserve">
+    <value>tbpReadInfo</value>
+  </data>
+  <data name="btnPsw5.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="label9.Font" type="System.Drawing.Font, System.Drawing">
+    <value>宋体, 10.5pt</value>
+  </data>
+  <data name="&gt;&gt;cmbMinute.Parent" xml:space="preserve">
+    <value>tbpSysConfig</value>
+  </data>
+  <data name="btnExit.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="txtTimeCell.Location" type="System.Drawing.Point, System.Drawing">
+    <value>216, 102</value>
+  </data>
+  <data name="&gt;&gt;label12.Name" xml:space="preserve">
+    <value>label12</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;btnExit.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="btnReHistoryWeather.Size" type="System.Drawing.Size, System.Drawing">
+    <value>78, 79</value>
+  </data>
+  <data name="label8.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label12.Location" type="System.Drawing.Point, System.Drawing">
+    <value>147, 26</value>
+  </data>
+  <data name="&gt;&gt;btnHistoryWeather.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;label14.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="&gt;&gt;cmbPorts.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="btnPsw6.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="label17.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="btnReHistoryWeather.Location" type="System.Drawing.Point, System.Drawing">
+    <value>260, 0</value>
+  </data>
+  <data name="&gt;&gt;btnPsw3.Parent" xml:space="preserve">
+    <value>tbpSetPsw</value>
+  </data>
+  <data name="btnHistoryWeather.Location" type="System.Drawing.Point, System.Drawing">
+    <value>130, 0</value>
+  </data>
+  <data name="btnPassWord.Location" type="System.Drawing.Point, System.Drawing">
+    <value>130, 79</value>
+  </data>
+  <data name="btnSetPsw.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="tbpSysConfig.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="&gt;&gt;cmbYear.Name" xml:space="preserve">
+    <value>cmbYear</value>
+  </data>
+  <data name="cmbDataBit.Items2" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="cmbDataBit.Items3" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="cmbDataBit.Items1" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="cmbMinute.Size" type="System.Drawing.Size, System.Drawing">
+    <value>57, 20</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>62, 20</value>
+  </data>
+  <data name="&gt;&gt;tbpSysConfig.Name" xml:space="preserve">
+    <value>tbpSysConfig</value>
+  </data>
+  <data name="&gt;&gt;label8.Name" xml:space="preserve">
+    <value>label8</value>
+  </data>
+  <data name="&gt;&gt;label13.Name" xml:space="preserve">
+    <value>label13</value>
+  </data>
+  <data name="&gt;&gt;btnReHistoryWeather.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="btnSetSystemConfig.Text" xml:space="preserve">
+    <value>确定</value>
+  </data>
+  <data name="&gt;&gt;ckbAutoSend.Name" xml:space="preserve">
+    <value>ckbAutoSend</value>
+  </data>
+  <data name="cmbMinute.Location" type="System.Drawing.Point, System.Drawing">
+    <value>170, 60</value>
+  </data>
+  <data name="&gt;&gt;button1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnPsw9.Parent" xml:space="preserve">
+    <value>tbpSetPsw</value>
+  </data>
+  <data name="&gt;&gt;cmbParity.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label14.Location" type="System.Drawing.Point, System.Drawing">
+    <value>315, 25</value>
+  </data>
+  <data name="&gt;&gt;label9.Name" xml:space="preserve">
+    <value>label9</value>
+  </data>
+  <data name="cmbYear.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="ckbAutoSend.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 16</value>
+  </data>
+  <data name="&gt;&gt;btnPswBack.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;tbpSysConfig.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;ckbAutoSend.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;cmbHour.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="cmbBaudRate.Items4" xml:space="preserve">
+    <value>2400</value>
+  </data>
+  <data name="label7.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="btnPsw5.Text" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="label16.Text" xml:space="preserve">
+    <value>分</value>
+  </data>
+  <data name="&gt;&gt;label7.Name" xml:space="preserve">
+    <value>label7</value>
+  </data>
+  <data name="cmbBaudRate.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="txtSaveTime.Size" type="System.Drawing.Size, System.Drawing">
+    <value>69, 21</value>
+  </data>
+  <data name="label15.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;btnInit.Name" xml:space="preserve">
+    <value>btnInit</value>
+  </data>
+  <data name="&gt;&gt;btnPsw1.Parent" xml:space="preserve">
+    <value>tbpSetPsw</value>
+  </data>
+  <data name="btnHistoryWeather.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="btnPsw3.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="&gt;&gt;label10.Parent" xml:space="preserve">
+    <value>tbpSysConfig</value>
+  </data>
+  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;btnInit.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="btnPsw0.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;label12.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="btnSetPsw.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 40</value>
+  </data>
+  <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="btnPsw0.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="btnPsw7.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="btnHistoryWeather.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="&gt;&gt;btnPassWord.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="tbpSendString.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="&gt;&gt;cmbDataBit.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label13.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="btnSend.Size" type="System.Drawing.Size, System.Drawing">
+    <value>58, 28</value>
+  </data>
+  <data name="label7.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;btnPsw4.Parent" xml:space="preserve">
+    <value>tbpSetPsw</value>
+  </data>
+  <data name="&gt;&gt;btnSysConfig.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtSaveTime.Name" xml:space="preserve">
+    <value>txtSaveTime</value>
+  </data>
+  <data name="btnPsw9.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;cmbBaudRate.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;label11.Parent" xml:space="preserve">
+    <value>tbpSysConfig</value>
+  </data>
+  <data name="&gt;&gt;cmbStopBit.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ckbAutoSend.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="btnSysConfig.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="&gt;&gt;cmbMonth.Parent" xml:space="preserve">
+    <value>tbpSysConfig</value>
+  </data>
+  <data name="cmbBaudRate.Items1" xml:space="preserve">
+    <value>19200</value>
+  </data>
+  <data name="&gt;&gt;txtPsw.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label15.Size" type="System.Drawing.Size, System.Drawing">
+    <value>21, 14</value>
+  </data>
+  <data name="label18.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 14</value>
+  </data>
+  <data name="&gt;&gt;label15.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>62, 20</value>
+  </data>
+  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 182</value>
+  </data>
+  <data name="&gt;&gt;btnPassWord.Name" xml:space="preserve">
+    <value>btnPassWord</value>
+  </data>
+  <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;btnPsw3.Name" xml:space="preserve">
+    <value>btnPsw3</value>
+  </data>
+  <data name="&gt;&gt;btnReciveClear.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 10.5pt</value>
+  </data>
+  <data name="&gt;&gt;label18.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="btnPsw7.Text" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;btnPsw7.Parent" xml:space="preserve">
+    <value>tbpSetPsw</value>
+  </data>
+  <data name="cmbParity.Items" xml:space="preserve">
+    <value>无</value>
+  </data>
+  <data name="&gt;&gt;cmbDataBit.Name" xml:space="preserve">
+    <value>cmbDataBit</value>
+  </data>
+  <data name="btnReciveClear.Size" type="System.Drawing.Size, System.Drawing">
+    <value>74, 35</value>
+  </data>
+  <data name="&gt;&gt;label16.Parent" xml:space="preserve">
+    <value>tbpSysConfig</value>
+  </data>
+  <data name="&gt;&gt;btnSetParam.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 14</value>
+  </data>
+  <data name="&gt;&gt;cmbDay.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="btnReciveClear.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 12pt</value>
+  </data>
+  <data name="btnPsw6.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;btnSetSystemConfig.Parent" xml:space="preserve">
+    <value>tbpSysConfig</value>
+  </data>
+  <data name="&gt;&gt;txtSend.Parent" xml:space="preserve">
+    <value>tbpSendString</value>
+  </data>
+  <data name="&gt;&gt;btnPswClear.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;cmbMinute.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;btnReciveClear.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btnReciveClear.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;cmbMonth.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="btnSetPsw.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;btnPsw0.Name" xml:space="preserve">
+    <value>btnPsw0</value>
+  </data>
+  <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;btnPsw9.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -6658,467 +7108,8 @@
         AAAAAAAAgAEAAIABAADAAwAA8AcAAPw/AAA=
 </value>
   </data>
-  <data name="btnPsw4.Text" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;cmbYear.Parent" xml:space="preserve">
+  <data name="&gt;&gt;label17.Parent" xml:space="preserve">
     <value>tbpSysConfig</value>
-  </data>
-  <data name="&gt;&gt;ckbAutoSend.Parent" xml:space="preserve">
-    <value>tbpSendString</value>
-  </data>
-  <data name="&gt;&gt;label14.Parent" xml:space="preserve">
-    <value>tbpSysConfig</value>
-  </data>
-  <data name="label4.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 10.5pt</value>
-  </data>
-  <data name="cmbStopBit.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;btnHistoryWeather.Name" xml:space="preserve">
-    <value>btnHistoryWeather</value>
-  </data>
-  <data name="txtPsw.Size" type="System.Drawing.Size, System.Drawing">
-    <value>161, 22</value>
-  </data>
-  <data name="label11.Font" type="System.Drawing.Font, System.Drawing">
-    <value>宋体, 10.5pt</value>
-  </data>
-  <data name="&gt;&gt;btnReset.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tbpReadInfo.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
-    <value>None</value>
-  </data>
-  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 14</value>
-  </data>
-  <data name="cmbBaudRate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>82, 104</value>
-  </data>
-  <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>174, 204</value>
-  </data>
-  <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>37, 61</value>
-  </data>
-  <data name="cmbPorts.Location" type="System.Drawing.Point, System.Drawing">
-    <value>82, 78</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label17.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="cmbLang.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;btnClose.Name" xml:space="preserve">
-    <value>btnClose</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="label18.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="cmbDataBit.Items" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;label11.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnReHistoryWeather.Parent" xml:space="preserve">
-    <value>tbpReadInfo</value>
-  </data>
-  <data name="btnPsw5.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
-  </data>
-  <data name="label9.Font" type="System.Drawing.Font, System.Drawing">
-    <value>宋体, 10.5pt</value>
-  </data>
-  <data name="&gt;&gt;cmbMinute.Parent" xml:space="preserve">
-    <value>tbpSysConfig</value>
-  </data>
-  <data name="btnExit.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="txtTimeCell.Location" type="System.Drawing.Point, System.Drawing">
-    <value>216, 102</value>
-  </data>
-  <data name="&gt;&gt;label12.Name" xml:space="preserve">
-    <value>label12</value>
-  </data>
-  <data name="&gt;&gt;label2.Name" xml:space="preserve">
-    <value>label2</value>
-  </data>
-  <data name="&gt;&gt;btnExit.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="btnReHistoryWeather.Size" type="System.Drawing.Size, System.Drawing">
-    <value>78, 79</value>
-  </data>
-  <data name="label8.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label12.Location" type="System.Drawing.Point, System.Drawing">
-    <value>147, 26</value>
-  </data>
-  <data name="&gt;&gt;btnHistoryWeather.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;label14.ZOrder" xml:space="preserve">
-    <value>14</value>
-  </data>
-  <data name="&gt;&gt;cmbPorts.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="btnPsw6.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
-  </data>
-  <data name="label17.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="btnReHistoryWeather.Location" type="System.Drawing.Point, System.Drawing">
-    <value>260, 0</value>
-  </data>
-  <data name="&gt;&gt;btnPsw3.Parent" xml:space="preserve">
-    <value>tbpSetPsw</value>
-  </data>
-  <data name="btnHistoryWeather.Location" type="System.Drawing.Point, System.Drawing">
-    <value>130, 0</value>
-  </data>
-  <data name="btnPassWord.Location" type="System.Drawing.Point, System.Drawing">
-    <value>130, 79</value>
-  </data>
-  <data name="btnSetPsw.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
-  </data>
-  <data name="&gt;&gt;btnReset.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="tbpSysConfig.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="&gt;&gt;cmbYear.Name" xml:space="preserve">
-    <value>cmbYear</value>
-  </data>
-  <data name="cmbDataBit.Items2" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="cmbDataBit.Items3" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="cmbDataBit.Items1" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="cmbMinute.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 20</value>
-  </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>62, 20</value>
-  </data>
-  <data name="&gt;&gt;tbpSysConfig.Name" xml:space="preserve">
-    <value>tbpSysConfig</value>
-  </data>
-  <data name="&gt;&gt;label8.Name" xml:space="preserve">
-    <value>label8</value>
-  </data>
-  <data name="&gt;&gt;label13.Name" xml:space="preserve">
-    <value>label13</value>
-  </data>
-  <data name="&gt;&gt;btnReHistoryWeather.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="btnSetSystemConfig.Text" xml:space="preserve">
-    <value>确定</value>
-  </data>
-  <data name="&gt;&gt;ckbAutoSend.Name" xml:space="preserve">
-    <value>ckbAutoSend</value>
-  </data>
-  <data name="cmbMinute.Location" type="System.Drawing.Point, System.Drawing">
-    <value>170, 60</value>
-  </data>
-  <data name="&gt;&gt;button1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnPsw9.Parent" xml:space="preserve">
-    <value>tbpSetPsw</value>
-  </data>
-  <data name="&gt;&gt;ckbAutoSend.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;cmbParity.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="label14.Location" type="System.Drawing.Point, System.Drawing">
-    <value>315, 25</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="cmbYear.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="ckbAutoSend.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 16</value>
-  </data>
-  <data name="&gt;&gt;btnPswBack.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;tbpSysConfig.Parent" xml:space="preserve">
-    <value>tabControl1</value>
-  </data>
-  <data name="btnReciveClear.Text" xml:space="preserve">
-    <value>清空</value>
-  </data>
-  <data name="&gt;&gt;cmbHour.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
-  </data>
-  <data name="cmbBaudRate.Items4" xml:space="preserve">
-    <value>2400</value>
-  </data>
-  <data name="label7.TabIndex" type="System.Int32, mscorlib">
-    <value>21</value>
-  </data>
-  <data name="btnPsw5.Text" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="label16.Text" xml:space="preserve">
-    <value>分</value>
-  </data>
-  <data name="&gt;&gt;label12.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="cmbBaudRate.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="txtSaveTime.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 21</value>
-  </data>
-  <data name="&gt;&gt;tbpReadInfo.Name" xml:space="preserve">
-    <value>tbpReadInfo</value>
-  </data>
-  <data name="&gt;&gt;btnInit.Name" xml:space="preserve">
-    <value>btnInit</value>
-  </data>
-  <data name="&gt;&gt;btnPsw1.Parent" xml:space="preserve">
-    <value>tbpSetPsw</value>
-  </data>
-  <data name="btnHistoryWeather.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="btnPsw3.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
-  </data>
-  <data name="&gt;&gt;label10.Parent" xml:space="preserve">
-    <value>tbpSysConfig</value>
-  </data>
-  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;btnInit.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="btnPsw0.Text" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="btnSetPsw.Text" xml:space="preserve">
-    <value>设置</value>
-  </data>
-  <data name="btnSetPsw.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 40</value>
-  </data>
-  <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="btnPsw0.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="btnPsw7.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="btnHistoryWeather.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
-  </data>
-  <data name="&gt;&gt;btnPassWord.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="tbpSendString.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="&gt;&gt;cmbDataBit.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label13.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="btnSend.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 28</value>
-  </data>
-  <data name="label7.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;btnSysConfig.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtSaveTime.Name" xml:space="preserve">
-    <value>txtSaveTime</value>
-  </data>
-  <data name="btnPsw9.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
-  </data>
-  <data name="&gt;&gt;cmbBaudRate.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;label11.Parent" xml:space="preserve">
-    <value>tbpSysConfig</value>
-  </data>
-  <data name="&gt;&gt;cmbStopBit.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="btnPsw7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>84, 39</value>
-  </data>
-  <data name="&gt;&gt;ckbAutoSend.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="btnSysConfig.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
-  </data>
-  <data name="&gt;&gt;cmbMonth.Parent" xml:space="preserve">
-    <value>tbpSysConfig</value>
-  </data>
-  <data name="cmbBaudRate.Items1" xml:space="preserve">
-    <value>19200</value>
-  </data>
-  <data name="&gt;&gt;txtPsw.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="label15.Size" type="System.Drawing.Size, System.Drawing">
-    <value>21, 14</value>
-  </data>
-  <data name="label18.Size" type="System.Drawing.Size, System.Drawing">
-    <value>77, 14</value>
-  </data>
-  <data name="&gt;&gt;label15.ZOrder" xml:space="preserve">
-    <value>15</value>
-  </data>
-  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>62, 20</value>
-  </data>
-  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 182</value>
-  </data>
-  <data name="&gt;&gt;btnPassWord.Name" xml:space="preserve">
-    <value>btnPassWord</value>
-  </data>
-  <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;btnPsw3.Name" xml:space="preserve">
-    <value>btnPsw3</value>
-  </data>
-  <data name="&gt;&gt;btnReciveClear.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 10.5pt</value>
-  </data>
-  <data name="&gt;&gt;label18.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="btnPsw7.Text" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;btnPsw7.Parent" xml:space="preserve">
-    <value>tbpSetPsw</value>
-  </data>
-  <data name="cmbParity.Items" xml:space="preserve">
-    <value>无</value>
-  </data>
-  <data name="&gt;&gt;cmbDataBit.Name" xml:space="preserve">
-    <value>cmbDataBit</value>
-  </data>
-  <data name="btnReciveClear.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 35</value>
-  </data>
-  <data name="&gt;&gt;label16.Parent" xml:space="preserve">
-    <value>tbpSysConfig</value>
-  </data>
-  <data name="&gt;&gt;btnSetParam.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 14</value>
-  </data>
-  <data name="&gt;&gt;btnPsw7.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="btnPsw5.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="btnPsw6.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
-  </data>
-  <data name="&gt;&gt;btnSetSystemConfig.Parent" xml:space="preserve">
-    <value>tbpSysConfig</value>
-  </data>
-  <data name="&gt;&gt;txtSend.Parent" xml:space="preserve">
-    <value>tbpSendString</value>
-  </data>
-  <data name="&gt;&gt;btnPswClear.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="&gt;&gt;cmbMinute.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;btnReciveClear.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="groupBox2.Text" xml:space="preserve">
-    <value>数据发送/接收</value>
-  </data>
-  <data name="btnReciveClear.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="&gt;&gt;cmbLang.Parent" xml:space="preserve">
-    <value>tbpSysConfig</value>
-  </data>
-  <data name="&gt;&gt;cmbMonth.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="btnSetPsw.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;btnPsw0.Name" xml:space="preserve">
-    <value>btnPsw0</value>
-  </data>
-  <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;btnPsw9.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>波特率 : </value>
-  </data>
-  <data name="&gt;&gt;btnPsw4.Parent" xml:space="preserve">
-    <value>tbpSetPsw</value>
   </data>
   <data name="&gt;&gt;txtSend.Name" xml:space="preserve">
     <value>txtSend</value>
@@ -7129,8 +7120,8 @@
   <data name="label10.Font" type="System.Drawing.Font, System.Drawing">
     <value>宋体, 10.5pt</value>
   </data>
-  <data name="btnPsw4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 82</value>
+  <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>21, 14</value>
   </data>
   <data name="btnInit.Text" xml:space="preserve">
     <value>重新加载参数</value>
@@ -7144,11 +7135,17 @@
   <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;txtTimeCell.Parent" xml:space="preserve">
+    <value>tbpSendString</value>
+  </data>
   <data name="label3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 253</value>
+  </data>
+  <data name="&gt;&gt;label5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="tbpSetPsw.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
@@ -7249,11 +7246,8 @@
   <data name="label15.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="&gt;&gt;label3.Name" xml:space="preserve">
-    <value>label3</value>
-  </data>
-  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>51, 20</value>
+  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>183, 16</value>
   </data>
   <data name="btnPsw3.Location" type="System.Drawing.Point, System.Drawing">
     <value>171, 121</value>
@@ -7315,6 +7309,9 @@
   <data name="&gt;&gt;btnPsw7.Name" xml:space="preserve">
     <value>btnPsw7</value>
   </data>
+  <data name="&gt;&gt;btnPsw1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="btnPsw4.Size" type="System.Drawing.Size, System.Drawing">
     <value>84, 39</value>
   </data>
@@ -7326,9 +7323,6 @@
   </data>
   <data name="&gt;&gt;cmbMonth.ZOrder" xml:space="preserve">
     <value>4</value>
-  </data>
-  <data name="btnPassWord.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
   </data>
   <data name="cmbStopBit.Size" type="System.Drawing.Size, System.Drawing">
     <value>82, 20</value>
@@ -7375,8 +7369,8 @@
   <data name="tbpReadInfo.Size" type="System.Drawing.Size, System.Drawing">
     <value>338, 158</value>
   </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>数据位 : </value>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
   </data>
   <data name="&gt;&gt;cmbStopBit.Name" xml:space="preserve">
     <value>cmbStopBit</value>
@@ -7387,11 +7381,8 @@
   <data name="label16.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;btnPsw2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnSend.ZOrder" xml:space="preserve">
-    <value>5</value>
+  <data name="cmbBaudRate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>82, 20</value>
   </data>
   <data name="&gt;&gt;label13.Parent" xml:space="preserve">
     <value>tbpSysConfig</value>
@@ -7422,9 +7413,6 @@
   </data>
   <data name="label17.Text" xml:space="preserve">
     <value>小时</value>
-  </data>
-  <data name="&gt;&gt;btnSysConfig.Name" xml:space="preserve">
-    <value>btnSysConfig</value>
   </data>
   <data name="cmbDataBit.Size" type="System.Drawing.Size, System.Drawing">
     <value>82, 20</value>
@@ -7471,17 +7459,17 @@
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
     <value>17, 12</value>
   </data>
-  <data name="txtRecive.Multiline" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="cmbStopBit.Location" type="System.Drawing.Point, System.Drawing">
     <value>82, 156</value>
   </data>
   <data name="&gt;&gt;txtSaveTime.Parent" xml:space="preserve">
     <value>tbpSysConfig</value>
   </data>
-  <data name="&gt;&gt;cmbMinute.Name" xml:space="preserve">
-    <value>cmbMinute</value>
+  <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 92</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>数据发送/接收</value>
   </data>
   <data name="&gt;&gt;label18.Parent" xml:space="preserve">
     <value>tbpSysConfig</value>
@@ -7492,8 +7480,8 @@
   <data name="btnSysConfig.Size" type="System.Drawing.Size, System.Drawing">
     <value>130, 79</value>
   </data>
-  <data name="btnPsw9.Text" xml:space="preserve">
-    <value>9</value>
+  <data name="btnPsw3.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
   </data>
   <data name="&gt;&gt;cmbPorts.ZOrder" xml:space="preserve">
     <value>9</value>
@@ -7558,8 +7546,8 @@
   <data name="btnPsw1.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
-  <data name="&gt;&gt;btnClose.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="&gt;&gt;btnReHistoryWeather.Name" xml:space="preserve">
+    <value>btnReHistoryWeather</value>
   </data>
   <data name="label13.Text" xml:space="preserve">
     <value>月</value>
@@ -7585,8 +7573,8 @@
   <data name="btnReset.Size" type="System.Drawing.Size, System.Drawing">
     <value>78, 79</value>
   </data>
-  <data name="&gt;&gt;btnPsw1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="&gt;&gt;btnPswClear.Parent" xml:space="preserve">
     <value>tbpSetPsw</value>
@@ -7600,8 +7588,8 @@
   <data name="cmbDay.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;btnPsw0.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="txtRecive.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="txtTimeCell.Size" type="System.Drawing.Size, System.Drawing">
     <value>57, 21</value>
@@ -7642,14 +7630,17 @@
   <data name="btnPsw9.Size" type="System.Drawing.Size, System.Drawing">
     <value>84, 39</value>
   </data>
+  <data name="&gt;&gt;btnPsw0.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="btnSend.TabIndex" type="System.Int32, mscorlib">
     <value>17</value>
   </data>
   <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
     <value>18</value>
   </data>
-  <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>37, 29</value>
+  <data name="label3.Text" xml:space="preserve">
+    <value>数据位 : </value>
   </data>
   <data name="cmbDay.Size" type="System.Drawing.Size, System.Drawing">
     <value>59, 20</value>
@@ -7669,14 +7660,14 @@
   <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
-  <data name="btnPswClear.Size" type="System.Drawing.Size, System.Drawing">
-    <value>84, 39</value>
+  <data name="btnPsw5.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
   </data>
   <data name="&gt;&gt;cmbYear.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>183, 16</value>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>10</value>
   </data>
   <data name="btnPassWord.Text" xml:space="preserve">
     <value>读取密码</value>
@@ -7741,8 +7732,8 @@
   <data name="&gt;&gt;btnPswBack.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="btnReciveClear.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 12pt</value>
+  <data name="&gt;&gt;btnPsw7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="tbpSetPsw.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
@@ -7759,8 +7750,11 @@
   <data name="tbpSendString.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
   </data>
-  <data name="&gt;&gt;txtTimeCell.Parent" xml:space="preserve">
-    <value>tbpSendString</value>
+  <data name="&gt;&gt;btnSysConfig.Name" xml:space="preserve">
+    <value>btnSysConfig</value>
+  </data>
+  <data name="&gt;&gt;tbpReadInfo.Name" xml:space="preserve">
+    <value>tbpReadInfo</value>
   </data>
   <data name="cmbLang.Size" type="System.Drawing.Size, System.Drawing">
     <value>69, 20</value>
@@ -7783,8 +7777,8 @@
   <data name="label2.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 92</value>
+  <data name="cmbParity.Size" type="System.Drawing.Size, System.Drawing">
+    <value>82, 20</value>
   </data>
   <data name="&gt;&gt;tbpReadInfo.Parent" xml:space="preserve">
     <value>tabControl1</value>
@@ -7810,8 +7804,8 @@
   <data name="&gt;&gt;cmbLang.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label17.Parent" xml:space="preserve">
-    <value>tbpSysConfig</value>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>51, 20</value>
   </data>
   <data name="tbpSysConfig.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -7819,8 +7813,8 @@
   <data name="&gt;&gt;btnPsw9.ZOrder" xml:space="preserve">
     <value>11</value>
   </data>
-  <data name="&gt;&gt;txtPsw.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;btnClose.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="btnPsw9.Location" type="System.Drawing.Point, System.Drawing">
     <value>171, 43</value>
@@ -7855,8 +7849,8 @@
   <data name="btnReHistoryWeather.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>37, 29</value>
   </data>
   <data name="label5.Text" xml:space="preserve">
     <value>校验位</value>
@@ -7870,8 +7864,8 @@
   <data name="$this.Text" xml:space="preserve">
     <value>气象仪</value>
   </data>
-  <data name="cmbParity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>82, 20</value>
+  <data name="btnPsw4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 82</value>
   </data>
   <data name="&gt;&gt;cmbYear.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -7891,8 +7885,8 @@
   <data name="&gt;&gt;btnPsw5.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="tbpSendString.Text" xml:space="preserve">
-    <value>自定义发送</value>
+  <data name="btnPassWord.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
   </data>
   <data name="btnPsw1.Size" type="System.Drawing.Size, System.Drawing">
     <value>84, 39</value>
@@ -7948,14 +7942,17 @@
   <data name="&gt;&gt;cmbDataBit.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <data name="btnPswClear.Size" type="System.Drawing.Size, System.Drawing">
+    <value>84, 39</value>
+  </data>
   <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
   </data>
   <data name="&gt;&gt;btnPassWord.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="tbpReadInfo.Text" xml:space="preserve">
-    <value>读取信息</value>
+  <data name="&gt;&gt;btnPsw2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="tbpSendString.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
     <value>No</value>
@@ -7987,8 +7984,8 @@
   <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;label5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="btnReset.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
   </data>
   <data name="label6.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -7996,8 +7993,8 @@
   <data name="&gt;&gt;btnPsw6.Name" xml:space="preserve">
     <value>btnPsw6</value>
   </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>10</value>
+  <data name="&gt;&gt;txtPsw.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
     <value>352, 245</value>
@@ -8008,8 +8005,8 @@
   <data name="label15.Location" type="System.Drawing.Point, System.Drawing">
     <value>147, 63</value>
   </data>
-  <data name="btnPsw3.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
+  <data name="btnPsw7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>84, 39</value>
   </data>
   <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
     <value>279, 107</value>
@@ -8050,8 +8047,8 @@
   <data name="&gt;&gt;label6.Parent" xml:space="preserve">
     <value>tbpSendString</value>
   </data>
-  <data name="&gt;&gt;label6.Name" xml:space="preserve">
-    <value>label6</value>
+  <data name="&gt;&gt;btnSend.ZOrder" xml:space="preserve">
+    <value>5</value>
   </data>
   <data name="&gt;&gt;btnPsw8.ZOrder" xml:space="preserve">
     <value>6</value>
@@ -8076,6 +8073,9 @@
   </data>
   <data name="&gt;&gt;btnExit.Name" xml:space="preserve">
     <value>btnExit</value>
+  </data>
+  <data name="btnPsw9.Text" xml:space="preserve">
+    <value>9</value>
   </data>
   <data name="label12.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>

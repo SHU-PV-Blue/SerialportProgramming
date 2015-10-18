@@ -294,7 +294,8 @@ namespace SerialDemo_1
 			return Recivestr;
 		}
 //====================    快捷键设置      ======================================================
-		string strWeatherInfo = "01 03 00 00 F1 D8";
+		//string strWeatherInfo = "01 03 00 00 F1 D8";  //老的收集实时天气的信息
+		string strWeatherInfo = "03 03 00 00 F0 60";	//新的指令
 		string strHistoryWeather = "01 03 00 37 B0 0E";
 		string strReHistoryWeather = "01 03 00 38 F0 0A";
 		string strSystemInfo = "01 03 00 20 F0 00";

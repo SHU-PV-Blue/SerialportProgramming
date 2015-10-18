@@ -128,6 +128,12 @@
   <data name="btnSetParam.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
     <value>No</value>
   </data>
+  <data name="txtRecive.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 20</value>
+  </data>
+  <data name="txtRecive.Size" type="System.Drawing.Size, System.Drawing">
+    <value>346, 219</value>
+  </data>
   <data name="btnClose.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
   </data>
@@ -139,6 +145,18 @@
   </data>
   <data name="btnExit.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 12pt</value>
+  </data>
+  <data name="btnReciveClear.Location" type="System.Drawing.Point, System.Drawing">
+    <value>254, 198</value>
+  </data>
+  <data name="txtSend.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 39</value>
+  </data>
+  <data name="btnSend.Location" type="System.Drawing.Point, System.Drawing">
+    <value>261, 34</value>
+  </data>
+  <data name="btnSysConfig.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>545, 469</value>
