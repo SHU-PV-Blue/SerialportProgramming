@@ -210,9 +210,11 @@
 			// btnSetParam
 			// 
 			resources.ApplyResources(this.btnSetParam, "btnSetParam");
-			this.btnSetParam.BackColor = System.Drawing.SystemColors.Control;
+			this.btnSetParam.FlatAppearance.BorderSize = 0;
+			this.btnSetParam.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
+			this.btnSetParam.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
 			this.btnSetParam.Name = "btnSetParam";
-			this.btnSetParam.UseVisualStyleBackColor = false;
+			this.btnSetParam.UseVisualStyleBackColor = true;
 			this.btnSetParam.Click += new System.EventHandler(this.btnSetParam_Click);
 			// 
 			// txtRecive
@@ -223,6 +225,9 @@
 			// btnClose
 			// 
 			resources.ApplyResources(this.btnClose, "btnClose");
+			this.btnClose.FlatAppearance.BorderSize = 0;
+			this.btnClose.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
+			this.btnClose.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
 			this.btnClose.Name = "btnClose";
 			this.btnClose.UseVisualStyleBackColor = true;
 			this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -230,6 +235,9 @@
 			// btnExit
 			// 
 			resources.ApplyResources(this.btnExit, "btnExit");
+			this.btnExit.FlatAppearance.BorderSize = 0;
+			this.btnExit.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
+			this.btnExit.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
 			this.btnExit.Name = "btnExit";
 			this.btnExit.UseVisualStyleBackColor = true;
 			this.btnExit.Click += new System.EventHandler(this.btnExit_Click);

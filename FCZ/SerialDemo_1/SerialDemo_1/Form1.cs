@@ -32,6 +32,7 @@ namespace SerialDemo_1
 
 		//是否处于发送状态
 		bool IsSended = false;
+		bool isPortOpen = false;
 		//定时器
 		Timer AutoSendTimer = new Timer();
 
@@ -104,6 +105,8 @@ namespace SerialDemo_1
 		/// <param name="e"></param>
 		private void btnSetParam_Click(object sender, EventArgs e)
 		{
+			btnSetParam.BackColor =  Color.FromArgb(128, 255, 128);
+			btnClose.BackColor = Form1.DefaultBackColor;
 			try
 			{
 				strPortName = cmbPorts.Text;
@@ -113,7 +116,7 @@ namespace SerialDemo_1
 
 				sp.PortName = strPortName;
 				sp.BaudRate = Convert.ToInt32(strBaudRate);
-				sp.DataBits = Convert.ToByte(strDataBits);
+				sp.DataBits = Convert.ToInt32(strDataBits);
 				sp.StopBits = StopBits.One;
 				sp.ReadTimeout = 500;
 
@@ -160,6 +163,8 @@ namespace SerialDemo_1
 				sp.Close();
 				txtRecive.AppendText("串口已关闭!\r\n");
 			}
+			btnSetParam.BackColor = Form1.DefaultBackColor;
+			btnClose.BackColor = Color.FromArgb(128, 255, 128);
 				
 		}
 
@@ -226,6 +231,7 @@ namespace SerialDemo_1
 				}
 
 				sp.Write(Sendbyte, 0, Sendbyte.Length);
+				txtRecive.AppendText("发送: ");
 			}
 		}
 		/// <summary>
@@ -258,7 +264,7 @@ namespace SerialDemo_1
 				sp.Read(buffer, 0, n);
 				this.Invoke((EventHandler)(delegate
 				{
-					txtRecive.AppendText(dt.ToString() +" "+ TranString(buffer));
+					txtRecive.AppendText(dt.ToLongTimeString() +"接收: "+ TranString(buffer));
 					txtRecive.AppendText("\r\n");
 					
 				}));
