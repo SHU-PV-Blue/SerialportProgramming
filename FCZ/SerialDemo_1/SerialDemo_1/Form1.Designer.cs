@@ -54,12 +54,24 @@
 			this.btnSysConfig = new System.Windows.Forms.Button();
 			this.button1 = new System.Windows.Forms.Button();
 			this.tbpSysConfig = new System.Windows.Forms.TabPage();
+			this.txtSaveTime = new System.Windows.Forms.TextBox();
+			this.btnSetSystemConfig = new System.Windows.Forms.Button();
 			this.cmbDay = new System.Windows.Forms.ComboBox();
+			this.cmbMinute = new System.Windows.Forms.ComboBox();
 			this.cmbMonth = new System.Windows.Forms.ComboBox();
+			this.cmbLang = new System.Windows.Forms.ComboBox();
+			this.cmbHour = new System.Windows.Forms.ComboBox();
 			this.cmbYear = new System.Windows.Forms.ComboBox();
 			this.label11 = new System.Windows.Forms.Label();
 			this.label10 = new System.Windows.Forms.Label();
 			this.label9 = new System.Windows.Forms.Label();
+			this.label18 = new System.Windows.Forms.Label();
+			this.label16 = new System.Windows.Forms.Label();
+			this.label17 = new System.Windows.Forms.Label();
+			this.label14 = new System.Windows.Forms.Label();
+			this.label15 = new System.Windows.Forms.Label();
+			this.label13 = new System.Windows.Forms.Label();
+			this.label12 = new System.Windows.Forms.Label();
 			this.label8 = new System.Windows.Forms.Label();
 			this.tbpSetPsw = new System.Windows.Forms.TabPage();
 			this.tbpSendString = new System.Windows.Forms.TabPage();
@@ -69,25 +81,29 @@
 			this.ckbAutoSend = new System.Windows.Forms.CheckBox();
 			this.txtSend = new System.Windows.Forms.TextBox();
 			this.btnSend = new System.Windows.Forms.Button();
-			this.label12 = new System.Windows.Forms.Label();
-			this.label13 = new System.Windows.Forms.Label();
-			this.label14 = new System.Windows.Forms.Label();
-			this.label15 = new System.Windows.Forms.Label();
-			this.label16 = new System.Windows.Forms.Label();
-			this.cmbHour = new System.Windows.Forms.ComboBox();
-			this.cmbMinute = new System.Windows.Forms.ComboBox();
-			this.label17 = new System.Windows.Forms.Label();
-			this.cmbLang = new System.Windows.Forms.ComboBox();
-			this.label18 = new System.Windows.Forms.Label();
-			this.btnSetSystemConfig = new System.Windows.Forms.Button();
-			this.txtSaveTime = new System.Windows.Forms.TextBox();
+			this.btnSetPsw = new System.Windows.Forms.Button();
+			this.txtPsw = new System.Windows.Forms.TextBox();
+			this.panel1 = new System.Windows.Forms.Panel();
+			this.btnPsw7 = new System.Windows.Forms.Button();
+			this.btnPsw4 = new System.Windows.Forms.Button();
+			this.btnPsw1 = new System.Windows.Forms.Button();
+			this.btnPsw2 = new System.Windows.Forms.Button();
+			this.btnPsw5 = new System.Windows.Forms.Button();
+			this.btnPsw8 = new System.Windows.Forms.Button();
+			this.btnPsw0 = new System.Windows.Forms.Button();
+			this.btnPswBack = new System.Windows.Forms.Button();
+			this.btnPsw3 = new System.Windows.Forms.Button();
+			this.btnPsw6 = new System.Windows.Forms.Button();
+			this.btnPsw9 = new System.Windows.Forms.Button();
 			this.groupBox1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
 			this.groupBox3.SuspendLayout();
 			this.tabControl1.SuspendLayout();
 			this.tbpReadInfo.SuspendLayout();
 			this.tbpSysConfig.SuspendLayout();
+			this.tbpSetPsw.SuspendLayout();
 			this.tbpSendString.SuspendLayout();
+			this.panel1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// groupBox1
@@ -231,9 +247,9 @@
 			// 
 			// btnSetParam
 			// 
-			this.btnSetParam.Location = new System.Drawing.Point(20, 20);
+			this.btnSetParam.Location = new System.Drawing.Point(2, 18);
 			this.btnSetParam.Name = "btnSetParam";
-			this.btnSetParam.Size = new System.Drawing.Size(141, 29);
+			this.btnSetParam.Size = new System.Drawing.Size(170, 60);
 			this.btnSetParam.TabIndex = 2;
 			this.btnSetParam.Text = "打开串口";
 			this.btnSetParam.UseVisualStyleBackColor = true;
@@ -250,9 +266,9 @@
 			// 
 			// btnClose
 			// 
-			this.btnClose.Location = new System.Drawing.Point(20, 56);
+			this.btnClose.Location = new System.Drawing.Point(2, 78);
 			this.btnClose.Name = "btnClose";
-			this.btnClose.Size = new System.Drawing.Size(141, 29);
+			this.btnClose.Size = new System.Drawing.Size(170, 60);
 			this.btnClose.TabIndex = 4;
 			this.btnClose.Text = "关闭串口";
 			this.btnClose.UseVisualStyleBackColor = true;
@@ -260,9 +276,9 @@
 			// 
 			// btnExit
 			// 
-			this.btnExit.Location = new System.Drawing.Point(20, 97);
+			this.btnExit.Location = new System.Drawing.Point(2, 138);
 			this.btnExit.Name = "btnExit";
-			this.btnExit.Size = new System.Drawing.Size(141, 29);
+			this.btnExit.Size = new System.Drawing.Size(170, 60);
 			this.btnExit.TabIndex = 6;
 			this.btnExit.Text = "退出";
 			this.btnExit.UseVisualStyleBackColor = true;
@@ -302,7 +318,7 @@
 			this.groupBox3.Controls.Add(this.btnClose);
 			this.groupBox3.Location = new System.Drawing.Point(3, 253);
 			this.groupBox3.Name = "groupBox3";
-			this.groupBox3.Size = new System.Drawing.Size(174, 138);
+			this.groupBox3.Size = new System.Drawing.Size(174, 204);
 			this.groupBox3.TabIndex = 3;
 			this.groupBox3.TabStop = false;
 			this.groupBox3.Text = "操作";
@@ -313,6 +329,7 @@
 			this.tabControl1.Controls.Add(this.tbpSysConfig);
 			this.tabControl1.Controls.Add(this.tbpSetPsw);
 			this.tabControl1.Controls.Add(this.tbpSendString);
+			this.tabControl1.ItemSize = new System.Drawing.Size(60, 18);
 			this.tabControl1.Location = new System.Drawing.Point(189, 273);
 			this.tabControl1.Name = "tabControl1";
 			this.tabControl1.SelectedIndex = 0;
@@ -416,6 +433,27 @@
 			this.tbpSysConfig.TabIndex = 1;
 			this.tbpSysConfig.Text = "系统配置";
 			// 
+			// txtSaveTime
+			// 
+			this.txtSaveTime.Location = new System.Drawing.Point(78, 89);
+			this.txtSaveTime.Name = "txtSaveTime";
+			this.txtSaveTime.Size = new System.Drawing.Size(69, 21);
+			this.txtSaveTime.TabIndex = 3;
+			// 
+			// btnSetSystemConfig
+			// 
+			this.btnSetSystemConfig.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+			this.btnSetSystemConfig.FlatAppearance.BorderColor = System.Drawing.Color.Aqua;
+			this.btnSetSystemConfig.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnSetSystemConfig.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+			this.btnSetSystemConfig.Location = new System.Drawing.Point(226, 106);
+			this.btnSetSystemConfig.Name = "btnSetSystemConfig";
+			this.btnSetSystemConfig.Size = new System.Drawing.Size(104, 44);
+			this.btnSetSystemConfig.TabIndex = 2;
+			this.btnSetSystemConfig.Text = "确定";
+			this.btnSetSystemConfig.UseVisualStyleBackColor = false;
+			this.btnSetSystemConfig.Click += new System.EventHandler(this.btnSetSystemConfig_Click);
+			// 
 			// cmbDay
 			// 
 			this.cmbDay.FormattingEnabled = true;
@@ -424,6 +462,14 @@
 			this.cmbDay.Size = new System.Drawing.Size(59, 20);
 			this.cmbDay.TabIndex = 1;
 			// 
+			// cmbMinute
+			// 
+			this.cmbMinute.FormattingEnabled = true;
+			this.cmbMinute.Location = new System.Drawing.Point(170, 60);
+			this.cmbMinute.Name = "cmbMinute";
+			this.cmbMinute.Size = new System.Drawing.Size(57, 20);
+			this.cmbMinute.TabIndex = 1;
+			// 
 			// cmbMonth
 			// 
 			this.cmbMonth.FormattingEnabled = true;
@@ -431,6 +477,22 @@
 			this.cmbMonth.Name = "cmbMonth";
 			this.cmbMonth.Size = new System.Drawing.Size(57, 20);
 			this.cmbMonth.TabIndex = 1;
+			// 
+			// cmbLang
+			// 
+			this.cmbLang.FormattingEnabled = true;
+			this.cmbLang.Location = new System.Drawing.Point(78, 122);
+			this.cmbLang.Name = "cmbLang";
+			this.cmbLang.Size = new System.Drawing.Size(69, 20);
+			this.cmbLang.TabIndex = 1;
+			// 
+			// cmbHour
+			// 
+			this.cmbHour.FormattingEnabled = true;
+			this.cmbHour.Location = new System.Drawing.Point(78, 60);
+			this.cmbHour.Name = "cmbHour";
+			this.cmbHour.Size = new System.Drawing.Size(69, 20);
+			this.cmbHour.TabIndex = 1;
 			// 
 			// cmbYear
 			// 
@@ -470,6 +532,76 @@
 			this.label9.TabIndex = 0;
 			this.label9.Text = "时间";
 			// 
+			// label18
+			// 
+			this.label18.AutoSize = true;
+			this.label18.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+			this.label18.Location = new System.Drawing.Point(260, 61);
+			this.label18.Name = "label18";
+			this.label18.Size = new System.Drawing.Size(77, 14);
+			this.label18.TabIndex = 0;
+			this.label18.Text = "(24小时制)";
+			// 
+			// label16
+			// 
+			this.label16.AutoSize = true;
+			this.label16.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+			this.label16.Location = new System.Drawing.Point(233, 61);
+			this.label16.Name = "label16";
+			this.label16.Size = new System.Drawing.Size(21, 14);
+			this.label16.TabIndex = 0;
+			this.label16.Text = "分";
+			// 
+			// label17
+			// 
+			this.label17.AutoSize = true;
+			this.label17.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+			this.label17.Location = new System.Drawing.Point(147, 95);
+			this.label17.Name = "label17";
+			this.label17.Size = new System.Drawing.Size(35, 14);
+			this.label17.TabIndex = 0;
+			this.label17.Text = "小时";
+			// 
+			// label14
+			// 
+			this.label14.AutoSize = true;
+			this.label14.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+			this.label14.Location = new System.Drawing.Point(315, 25);
+			this.label14.Name = "label14";
+			this.label14.Size = new System.Drawing.Size(21, 14);
+			this.label14.TabIndex = 0;
+			this.label14.Text = "日";
+			// 
+			// label15
+			// 
+			this.label15.AutoSize = true;
+			this.label15.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+			this.label15.Location = new System.Drawing.Point(147, 63);
+			this.label15.Name = "label15";
+			this.label15.Size = new System.Drawing.Size(21, 14);
+			this.label15.TabIndex = 0;
+			this.label15.Text = "时";
+			// 
+			// label13
+			// 
+			this.label13.AutoSize = true;
+			this.label13.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+			this.label13.Location = new System.Drawing.Point(227, 25);
+			this.label13.Name = "label13";
+			this.label13.Size = new System.Drawing.Size(21, 14);
+			this.label13.TabIndex = 0;
+			this.label13.Text = "月";
+			// 
+			// label12
+			// 
+			this.label12.AutoSize = true;
+			this.label12.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+			this.label12.Location = new System.Drawing.Point(147, 26);
+			this.label12.Name = "label12";
+			this.label12.Size = new System.Drawing.Size(21, 14);
+			this.label12.TabIndex = 0;
+			this.label12.Text = "年";
+			// 
 			// label8
 			// 
 			this.label8.AutoSize = true;
@@ -483,12 +615,24 @@
 			// tbpSetPsw
 			// 
 			this.tbpSetPsw.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+			this.tbpSetPsw.Controls.Add(this.btnPsw3);
+			this.tbpSetPsw.Controls.Add(this.btnPsw6);
+			this.tbpSetPsw.Controls.Add(this.btnPsw9);
+			this.tbpSetPsw.Controls.Add(this.btnPsw0);
+			this.tbpSetPsw.Controls.Add(this.btnPswBack);
+			this.tbpSetPsw.Controls.Add(this.btnPsw2);
+			this.tbpSetPsw.Controls.Add(this.btnPsw5);
+			this.tbpSetPsw.Controls.Add(this.btnPsw8);
+			this.tbpSetPsw.Controls.Add(this.btnPsw1);
+			this.tbpSetPsw.Controls.Add(this.btnPsw4);
+			this.tbpSetPsw.Controls.Add(this.btnPsw7);
+			this.tbpSetPsw.Controls.Add(this.panel1);
 			this.tbpSetPsw.Location = new System.Drawing.Point(4, 22);
 			this.tbpSetPsw.Name = "tbpSetPsw";
 			this.tbpSetPsw.Padding = new System.Windows.Forms.Padding(3);
 			this.tbpSetPsw.Size = new System.Drawing.Size(338, 158);
 			this.tbpSetPsw.TabIndex = 2;
-			this.tbpSetPsw.Text = "设置密码";
+			this.tbpSetPsw.Text = "修改密码";
 			this.tbpSetPsw.UseVisualStyleBackColor = true;
 			// 
 			// tbpSendString
@@ -503,6 +647,7 @@
 			this.tbpSendString.Location = new System.Drawing.Point(4, 22);
 			this.tbpSendString.Name = "tbpSendString";
 			this.tbpSendString.Padding = new System.Windows.Forms.Padding(3);
+			this.tbpSendString.RightToLeft = System.Windows.Forms.RightToLeft.No;
 			this.tbpSendString.Size = new System.Drawing.Size(338, 158);
 			this.tbpSendString.TabIndex = 3;
 			this.tbpSendString.Text = "自定义发送";
@@ -551,7 +696,7 @@
 			// 
 			// btnSend
 			// 
-			this.btnSend.Location = new System.Drawing.Point(274, 50);
+			this.btnSend.Location = new System.Drawing.Point(266, 50);
 			this.btnSend.Name = "btnSend";
 			this.btnSend.Size = new System.Drawing.Size(58, 28);
 			this.btnSend.TabIndex = 17;
@@ -559,120 +704,183 @@
 			this.btnSend.UseVisualStyleBackColor = true;
 			this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
 			// 
-			// label12
+			// btnSetPsw
 			// 
-			this.label12.AutoSize = true;
-			this.label12.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.label12.Location = new System.Drawing.Point(147, 26);
-			this.label12.Name = "label12";
-			this.label12.Size = new System.Drawing.Size(21, 14);
-			this.label12.TabIndex = 0;
-			this.label12.Text = "年";
+			this.btnSetPsw.BackColor = System.Drawing.Color.PaleGreen;
+			this.btnSetPsw.FlatAppearance.BorderSize = 0;
+			this.btnSetPsw.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnSetPsw.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+			this.btnSetPsw.Location = new System.Drawing.Point(186, 0);
+			this.btnSetPsw.Name = "btnSetPsw";
+			this.btnSetPsw.Size = new System.Drawing.Size(149, 40);
+			this.btnSetPsw.TabIndex = 0;
+			this.btnSetPsw.Text = "设置";
+			this.btnSetPsw.UseVisualStyleBackColor = false;
+			this.btnSetPsw.Click += new System.EventHandler(this.btnSetPsw_Click);
 			// 
-			// label13
+			// txtPsw
 			// 
-			this.label13.AutoSize = true;
-			this.label13.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.label13.Location = new System.Drawing.Point(227, 25);
-			this.label13.Name = "label13";
-			this.label13.Size = new System.Drawing.Size(21, 14);
-			this.label13.TabIndex = 0;
-			this.label13.Text = "月";
+			this.txtPsw.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+			this.txtPsw.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.txtPsw.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+			this.txtPsw.Location = new System.Drawing.Point(13, 9);
+			this.txtPsw.Name = "txtPsw";
+			this.txtPsw.ReadOnly = true;
+			this.txtPsw.Size = new System.Drawing.Size(161, 22);
+			this.txtPsw.TabIndex = 1;
 			// 
-			// label14
+			// panel1
 			// 
-			this.label14.AutoSize = true;
-			this.label14.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.label14.Location = new System.Drawing.Point(315, 25);
-			this.label14.Name = "label14";
-			this.label14.Size = new System.Drawing.Size(21, 14);
-			this.label14.TabIndex = 0;
-			this.label14.Text = "日";
+			this.panel1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+			this.panel1.Controls.Add(this.btnSetPsw);
+			this.panel1.Controls.Add(this.txtPsw);
+			this.panel1.Location = new System.Drawing.Point(3, 3);
+			this.panel1.Name = "panel1";
+			this.panel1.Size = new System.Drawing.Size(335, 40);
+			this.panel1.TabIndex = 2;
 			// 
-			// label15
+			// btnPsw7
 			// 
-			this.label15.AutoSize = true;
-			this.label15.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.label15.Location = new System.Drawing.Point(147, 63);
-			this.label15.Name = "label15";
-			this.label15.Size = new System.Drawing.Size(21, 14);
-			this.label15.TabIndex = 0;
-			this.label15.Text = "时";
+			this.btnPsw7.BackColor = System.Drawing.Color.Gainsboro;
+			this.btnPsw7.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+			this.btnPsw7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnPsw7.Location = new System.Drawing.Point(3, 43);
+			this.btnPsw7.Name = "btnPsw7";
+			this.btnPsw7.Size = new System.Drawing.Size(84, 39);
+			this.btnPsw7.TabIndex = 3;
+			this.btnPsw7.Text = "7";
+			this.btnPsw7.UseVisualStyleBackColor = false;
+			this.btnPsw7.Click += new System.EventHandler(this.btnPsw7_Click);
 			// 
-			// label16
+			// btnPsw4
 			// 
-			this.label16.AutoSize = true;
-			this.label16.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.label16.Location = new System.Drawing.Point(233, 61);
-			this.label16.Name = "label16";
-			this.label16.Size = new System.Drawing.Size(21, 14);
-			this.label16.TabIndex = 0;
-			this.label16.Text = "分";
+			this.btnPsw4.BackColor = System.Drawing.Color.Gainsboro;
+			this.btnPsw4.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+			this.btnPsw4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnPsw4.Location = new System.Drawing.Point(3, 82);
+			this.btnPsw4.Name = "btnPsw4";
+			this.btnPsw4.Size = new System.Drawing.Size(84, 39);
+			this.btnPsw4.TabIndex = 4;
+			this.btnPsw4.Text = "4";
+			this.btnPsw4.UseVisualStyleBackColor = false;
+			this.btnPsw4.Click += new System.EventHandler(this.btnPsw4_Click);
 			// 
-			// cmbHour
+			// btnPsw1
 			// 
-			this.cmbHour.FormattingEnabled = true;
-			this.cmbHour.Location = new System.Drawing.Point(78, 60);
-			this.cmbHour.Name = "cmbHour";
-			this.cmbHour.Size = new System.Drawing.Size(69, 20);
-			this.cmbHour.TabIndex = 1;
+			this.btnPsw1.BackColor = System.Drawing.Color.Gainsboro;
+			this.btnPsw1.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+			this.btnPsw1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnPsw1.Location = new System.Drawing.Point(3, 121);
+			this.btnPsw1.Name = "btnPsw1";
+			this.btnPsw1.Size = new System.Drawing.Size(84, 39);
+			this.btnPsw1.TabIndex = 5;
+			this.btnPsw1.Text = "1";
+			this.btnPsw1.UseVisualStyleBackColor = false;
+			this.btnPsw1.Click += new System.EventHandler(this.btnPsw1_Click);
 			// 
-			// cmbMinute
+			// btnPsw2
 			// 
-			this.cmbMinute.FormattingEnabled = true;
-			this.cmbMinute.Location = new System.Drawing.Point(170, 60);
-			this.cmbMinute.Name = "cmbMinute";
-			this.cmbMinute.Size = new System.Drawing.Size(57, 20);
-			this.cmbMinute.TabIndex = 1;
+			this.btnPsw2.BackColor = System.Drawing.Color.Gainsboro;
+			this.btnPsw2.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+			this.btnPsw2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnPsw2.Location = new System.Drawing.Point(87, 121);
+			this.btnPsw2.Name = "btnPsw2";
+			this.btnPsw2.Size = new System.Drawing.Size(84, 39);
+			this.btnPsw2.TabIndex = 8;
+			this.btnPsw2.Text = "2";
+			this.btnPsw2.UseVisualStyleBackColor = false;
+			this.btnPsw2.Click += new System.EventHandler(this.btnPsw2_Click);
 			// 
-			// label17
+			// btnPsw5
 			// 
-			this.label17.AutoSize = true;
-			this.label17.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.label17.Location = new System.Drawing.Point(147, 95);
-			this.label17.Name = "label17";
-			this.label17.Size = new System.Drawing.Size(35, 14);
-			this.label17.TabIndex = 0;
-			this.label17.Text = "小时";
+			this.btnPsw5.BackColor = System.Drawing.Color.Gainsboro;
+			this.btnPsw5.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+			this.btnPsw5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnPsw5.Location = new System.Drawing.Point(87, 82);
+			this.btnPsw5.Name = "btnPsw5";
+			this.btnPsw5.Size = new System.Drawing.Size(84, 39);
+			this.btnPsw5.TabIndex = 7;
+			this.btnPsw5.Text = "5";
+			this.btnPsw5.UseVisualStyleBackColor = false;
+			this.btnPsw5.Click += new System.EventHandler(this.btnPsw5_Click);
 			// 
-			// cmbLang
+			// btnPsw8
 			// 
-			this.cmbLang.FormattingEnabled = true;
-			this.cmbLang.Location = new System.Drawing.Point(78, 122);
-			this.cmbLang.Name = "cmbLang";
-			this.cmbLang.Size = new System.Drawing.Size(69, 20);
-			this.cmbLang.TabIndex = 1;
+			this.btnPsw8.BackColor = System.Drawing.Color.Gainsboro;
+			this.btnPsw8.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+			this.btnPsw8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnPsw8.Location = new System.Drawing.Point(87, 43);
+			this.btnPsw8.Name = "btnPsw8";
+			this.btnPsw8.Size = new System.Drawing.Size(84, 39);
+			this.btnPsw8.TabIndex = 6;
+			this.btnPsw8.Text = "8";
+			this.btnPsw8.UseVisualStyleBackColor = false;
+			this.btnPsw8.Click += new System.EventHandler(this.btnPsw8_Click);
 			// 
-			// label18
+			// btnPsw0
 			// 
-			this.label18.AutoSize = true;
-			this.label18.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.label18.Location = new System.Drawing.Point(260, 61);
-			this.label18.Name = "label18";
-			this.label18.Size = new System.Drawing.Size(77, 14);
-			this.label18.TabIndex = 0;
-			this.label18.Text = "(24小时制)";
+			this.btnPsw0.BackColor = System.Drawing.Color.Gainsboro;
+			this.btnPsw0.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+			this.btnPsw0.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnPsw0.Location = new System.Drawing.Point(251, 121);
+			this.btnPsw0.Name = "btnPsw0";
+			this.btnPsw0.Size = new System.Drawing.Size(84, 39);
+			this.btnPsw0.TabIndex = 11;
+			this.btnPsw0.Text = "0";
+			this.btnPsw0.UseVisualStyleBackColor = false;
+			this.btnPsw0.Click += new System.EventHandler(this.btnPsw0_Click);
 			// 
-			// btnSetSystemConfig
+			// btnPswBack
 			// 
-			this.btnSetSystemConfig.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-			this.btnSetSystemConfig.FlatAppearance.BorderColor = System.Drawing.Color.Aqua;
-			this.btnSetSystemConfig.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnSetSystemConfig.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.btnSetSystemConfig.Location = new System.Drawing.Point(226, 106);
-			this.btnSetSystemConfig.Name = "btnSetSystemConfig";
-			this.btnSetSystemConfig.Size = new System.Drawing.Size(104, 44);
-			this.btnSetSystemConfig.TabIndex = 2;
-			this.btnSetSystemConfig.Text = "确定";
-			this.btnSetSystemConfig.UseVisualStyleBackColor = false;
-			this.btnSetSystemConfig.Click += new System.EventHandler(this.btnSetSystemConfig_Click);
+			this.btnPswBack.BackColor = System.Drawing.Color.Gainsboro;
+			this.btnPswBack.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+			this.btnPswBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnPswBack.Location = new System.Drawing.Point(250, 43);
+			this.btnPswBack.Name = "btnPswBack";
+			this.btnPswBack.Size = new System.Drawing.Size(85, 78);
+			this.btnPswBack.TabIndex = 10;
+			this.btnPswBack.Text = "退格";
+			this.btnPswBack.UseVisualStyleBackColor = false;
+			this.btnPswBack.Click += new System.EventHandler(this.btnPswBack_Click);
 			// 
-			// txtSaveTime
+			// btnPsw3
 			// 
-			this.txtSaveTime.Location = new System.Drawing.Point(78, 89);
-			this.txtSaveTime.Name = "txtSaveTime";
-			this.txtSaveTime.Size = new System.Drawing.Size(69, 21);
-			this.txtSaveTime.TabIndex = 3;
+			this.btnPsw3.BackColor = System.Drawing.Color.Gainsboro;
+			this.btnPsw3.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+			this.btnPsw3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnPsw3.Location = new System.Drawing.Point(171, 121);
+			this.btnPsw3.Name = "btnPsw3";
+			this.btnPsw3.Size = new System.Drawing.Size(84, 39);
+			this.btnPsw3.TabIndex = 14;
+			this.btnPsw3.Text = "3";
+			this.btnPsw3.UseVisualStyleBackColor = false;
+			this.btnPsw3.Click += new System.EventHandler(this.btnPsw3_Click);
+			// 
+			// btnPsw6
+			// 
+			this.btnPsw6.BackColor = System.Drawing.Color.Gainsboro;
+			this.btnPsw6.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+			this.btnPsw6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnPsw6.Location = new System.Drawing.Point(171, 82);
+			this.btnPsw6.Name = "btnPsw6";
+			this.btnPsw6.Size = new System.Drawing.Size(84, 39);
+			this.btnPsw6.TabIndex = 13;
+			this.btnPsw6.Text = "6";
+			this.btnPsw6.UseVisualStyleBackColor = false;
+			this.btnPsw6.Click += new System.EventHandler(this.btnPsw6_Click);
+			// 
+			// btnPsw9
+			// 
+			this.btnPsw9.BackColor = System.Drawing.Color.Gainsboro;
+			this.btnPsw9.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+			this.btnPsw9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnPsw9.Location = new System.Drawing.Point(171, 43);
+			this.btnPsw9.Name = "btnPsw9";
+			this.btnPsw9.Size = new System.Drawing.Size(84, 39);
+			this.btnPsw9.TabIndex = 12;
+			this.btnPsw9.Text = "9";
+			this.btnPsw9.UseVisualStyleBackColor = false;
+			this.btnPsw9.Click += new System.EventHandler(this.btnPsw9_Click);
 			// 
 			// Form1
 			// 
@@ -695,8 +903,11 @@
 			this.tbpReadInfo.ResumeLayout(false);
 			this.tbpSysConfig.ResumeLayout(false);
 			this.tbpSysConfig.PerformLayout();
+			this.tbpSetPsw.ResumeLayout(false);
 			this.tbpSendString.ResumeLayout(false);
 			this.tbpSendString.PerformLayout();
+			this.panel1.ResumeLayout(false);
+			this.panel1.PerformLayout();
 			this.ResumeLayout(false);
 
 		}
@@ -756,6 +967,20 @@
 		private System.Windows.Forms.Label label12;
 		private System.Windows.Forms.Button btnSetSystemConfig;
 		private System.Windows.Forms.TextBox txtSaveTime;
+		private System.Windows.Forms.Panel panel1;
+		private System.Windows.Forms.Button btnSetPsw;
+		private System.Windows.Forms.TextBox txtPsw;
+		private System.Windows.Forms.Button btnPsw3;
+		private System.Windows.Forms.Button btnPsw6;
+		private System.Windows.Forms.Button btnPsw9;
+		private System.Windows.Forms.Button btnPsw0;
+		private System.Windows.Forms.Button btnPswBack;
+		private System.Windows.Forms.Button btnPsw2;
+		private System.Windows.Forms.Button btnPsw5;
+		private System.Windows.Forms.Button btnPsw8;
+		private System.Windows.Forms.Button btnPsw1;
+		private System.Windows.Forms.Button btnPsw4;
+		private System.Windows.Forms.Button btnPsw7;
 	}
 }
 

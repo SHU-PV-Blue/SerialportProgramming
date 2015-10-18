@@ -39,6 +39,68 @@ namespace IVCurvometerTestTool
 						break;
 					}
 
+				case 0x10:
+					{
+						result += "设置数据返回:";
+						string str = "";
+						bool ifFind = false;
+						foreach (var p in CodeCommadPair.数据地址)
+						{
+							if (p.Key[0] == inputBytes[3] && p.Key[1] == inputBytes[4])
+							{
+								str = p.Value;
+								ifFind = true;
+								break;
+							}
+						}
+						if (ifFind)
+						{
+							result += str + ": ";
+							for (int i = 5; i <= 8; ++i)
+							{
+								str = Convert.ToString(inputBytes[i], 16);
+								str = str.ToUpper();
+								if (str.Length == 1)
+									str = "0" + str;
+								result += str + " ";
+							}
+						}
+						else
+							result += "无法解析的数据地址";
+						break;
+					}
+
+
+				case 0x11:
+					{
+						result += "查询数据返回:";
+						string str = "";
+						bool ifFind = false;
+						foreach(var p in CodeCommadPair.数据地址)
+						{
+							if(p.Key[0] == inputBytes[3] && p.Key[1] == inputBytes[4])
+							{
+								str = p.Value;
+								ifFind = true;
+								break;
+							}
+						}
+						if (ifFind)
+						{
+							result += str + ": ";
+							for(int i = 5; i <= 8; ++i)
+							{
+								str = Convert.ToString(inputBytes[i], 16);
+								str = str.ToUpper();
+								if (str.Length == 1)
+								str = "0" + str;
+								result += str + " ";
+							}
+						}
+						else
+							result += "无法解析的数据地址";
+						break;
+					}
 
 				case 0x14:
 					{
