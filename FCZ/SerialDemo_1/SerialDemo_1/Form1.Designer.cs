@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.btnInit = new System.Windows.Forms.Button();
 			this.cmbParity = new System.Windows.Forms.ComboBox();
@@ -49,6 +50,8 @@
 			this.groupBox3 = new System.Windows.Forms.GroupBox();
 			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.tbpReadInfo = new System.Windows.Forms.TabPage();
+			this.btnReset = new System.Windows.Forms.Button();
+			this.btnReHistoryWeather = new System.Windows.Forms.Button();
 			this.btnPassWord = new System.Windows.Forms.Button();
 			this.btnHistoryWeather = new System.Windows.Forms.Button();
 			this.btnSysConfig = new System.Windows.Forms.Button();
@@ -74,6 +77,21 @@
 			this.label12 = new System.Windows.Forms.Label();
 			this.label8 = new System.Windows.Forms.Label();
 			this.tbpSetPsw = new System.Windows.Forms.TabPage();
+			this.btnPsw3 = new System.Windows.Forms.Button();
+			this.btnPsw6 = new System.Windows.Forms.Button();
+			this.btnPsw0 = new System.Windows.Forms.Button();
+			this.btnPswBack = new System.Windows.Forms.Button();
+			this.btnPsw2 = new System.Windows.Forms.Button();
+			this.btnPsw5 = new System.Windows.Forms.Button();
+			this.btnPsw8 = new System.Windows.Forms.Button();
+			this.btnPsw1 = new System.Windows.Forms.Button();
+			this.btnPsw4 = new System.Windows.Forms.Button();
+			this.btnPsw7 = new System.Windows.Forms.Button();
+			this.panel1 = new System.Windows.Forms.Panel();
+			this.btnSetPsw = new System.Windows.Forms.Button();
+			this.txtPsw = new System.Windows.Forms.TextBox();
+			this.btnPsw9 = new System.Windows.Forms.Button();
+			this.btnPswClear = new System.Windows.Forms.Button();
 			this.tbpSendString = new System.Windows.Forms.TabPage();
 			this.label7 = new System.Windows.Forms.Label();
 			this.label6 = new System.Windows.Forms.Label();
@@ -81,20 +99,6 @@
 			this.ckbAutoSend = new System.Windows.Forms.CheckBox();
 			this.txtSend = new System.Windows.Forms.TextBox();
 			this.btnSend = new System.Windows.Forms.Button();
-			this.btnSetPsw = new System.Windows.Forms.Button();
-			this.txtPsw = new System.Windows.Forms.TextBox();
-			this.panel1 = new System.Windows.Forms.Panel();
-			this.btnPsw7 = new System.Windows.Forms.Button();
-			this.btnPsw4 = new System.Windows.Forms.Button();
-			this.btnPsw1 = new System.Windows.Forms.Button();
-			this.btnPsw2 = new System.Windows.Forms.Button();
-			this.btnPsw5 = new System.Windows.Forms.Button();
-			this.btnPsw8 = new System.Windows.Forms.Button();
-			this.btnPsw0 = new System.Windows.Forms.Button();
-			this.btnPswBack = new System.Windows.Forms.Button();
-			this.btnPsw3 = new System.Windows.Forms.Button();
-			this.btnPsw6 = new System.Windows.Forms.Button();
-			this.btnPsw9 = new System.Windows.Forms.Button();
 			this.groupBox1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
 			this.groupBox3.SuspendLayout();
@@ -102,12 +106,13 @@
 			this.tbpReadInfo.SuspendLayout();
 			this.tbpSysConfig.SuspendLayout();
 			this.tbpSetPsw.SuspendLayout();
-			this.tbpSendString.SuspendLayout();
 			this.panel1.SuspendLayout();
+			this.tbpSendString.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// groupBox1
 			// 
+			resources.ApplyResources(this.groupBox1, "groupBox1");
 			this.groupBox1.Controls.Add(this.btnInit);
 			this.groupBox1.Controls.Add(this.cmbParity);
 			this.groupBox1.Controls.Add(this.label5);
@@ -120,293 +125,223 @@
 			this.groupBox1.Controls.Add(this.cmbPorts);
 			this.groupBox1.Controls.Add(this.label1);
 			this.groupBox1.ForeColor = System.Drawing.Color.Orange;
-			this.groupBox1.Location = new System.Drawing.Point(0, 16);
 			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(177, 227);
-			this.groupBox1.TabIndex = 0;
 			this.groupBox1.TabStop = false;
-			this.groupBox1.Text = "设置";
 			// 
 			// btnInit
 			// 
+			resources.ApplyResources(this.btnInit, "btnInit");
 			this.btnInit.FlatAppearance.BorderSize = 0;
-			this.btnInit.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-			this.btnInit.Location = new System.Drawing.Point(33, 30);
 			this.btnInit.Name = "btnInit";
-			this.btnInit.Size = new System.Drawing.Size(107, 30);
-			this.btnInit.TabIndex = 2;
-			this.btnInit.Text = "重新加载参数";
 			this.btnInit.UseVisualStyleBackColor = true;
 			this.btnInit.Click += new System.EventHandler(this.btnInit_Click);
 			// 
 			// cmbParity
 			// 
+			resources.ApplyResources(this.cmbParity, "cmbParity");
 			this.cmbParity.FormattingEnabled = true;
 			this.cmbParity.Items.AddRange(new object[] {
-            "无"});
-			this.cmbParity.Location = new System.Drawing.Point(82, 182);
+            resources.GetString("cmbParity.Items")});
 			this.cmbParity.Name = "cmbParity";
-			this.cmbParity.Size = new System.Drawing.Size(82, 20);
-			this.cmbParity.TabIndex = 1;
 			// 
 			// label5
 			// 
-			this.label5.AutoSize = true;
-			this.label5.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.label5.Location = new System.Drawing.Point(14, 182);
+			resources.ApplyResources(this.label5, "label5");
 			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(51, 20);
-			this.label5.TabIndex = 0;
-			this.label5.Text = "校验位";
 			// 
 			// cmbStopBit
 			// 
+			resources.ApplyResources(this.cmbStopBit, "cmbStopBit");
 			this.cmbStopBit.FormattingEnabled = true;
 			this.cmbStopBit.Items.AddRange(new object[] {
-            "1"});
-			this.cmbStopBit.Location = new System.Drawing.Point(82, 156);
+            resources.GetString("cmbStopBit.Items")});
 			this.cmbStopBit.Name = "cmbStopBit";
-			this.cmbStopBit.Size = new System.Drawing.Size(82, 20);
-			this.cmbStopBit.TabIndex = 1;
 			// 
 			// label4
 			// 
-			this.label4.AutoSize = true;
-			this.label4.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.label4.Location = new System.Drawing.Point(14, 156);
+			resources.ApplyResources(this.label4, "label4");
 			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(66, 20);
-			this.label4.TabIndex = 0;
-			this.label4.Text = "停止位 :  ";
 			// 
 			// cmbDataBit
 			// 
+			resources.ApplyResources(this.cmbDataBit, "cmbDataBit");
 			this.cmbDataBit.FormattingEnabled = true;
 			this.cmbDataBit.Items.AddRange(new object[] {
-            "8",
-            "7",
-            "6",
-            "5"});
-			this.cmbDataBit.Location = new System.Drawing.Point(82, 130);
+            resources.GetString("cmbDataBit.Items"),
+            resources.GetString("cmbDataBit.Items1"),
+            resources.GetString("cmbDataBit.Items2"),
+            resources.GetString("cmbDataBit.Items3")});
 			this.cmbDataBit.Name = "cmbDataBit";
-			this.cmbDataBit.Size = new System.Drawing.Size(82, 20);
-			this.cmbDataBit.TabIndex = 1;
 			// 
 			// label3
 			// 
-			this.label3.AutoSize = true;
-			this.label3.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.label3.Location = new System.Drawing.Point(14, 130);
+			resources.ApplyResources(this.label3, "label3");
 			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(62, 20);
-			this.label3.TabIndex = 0;
-			this.label3.Text = "数据位 : ";
 			// 
 			// cmbBaudRate
 			// 
+			resources.ApplyResources(this.cmbBaudRate, "cmbBaudRate");
 			this.cmbBaudRate.FormattingEnabled = true;
 			this.cmbBaudRate.Items.AddRange(new object[] {
-            "9600",
-            "19200",
-            "38400",
-            "4800",
-            "2400",
-            "1200"});
-			this.cmbBaudRate.Location = new System.Drawing.Point(82, 104);
+            resources.GetString("cmbBaudRate.Items"),
+            resources.GetString("cmbBaudRate.Items1"),
+            resources.GetString("cmbBaudRate.Items2"),
+            resources.GetString("cmbBaudRate.Items3"),
+            resources.GetString("cmbBaudRate.Items4"),
+            resources.GetString("cmbBaudRate.Items5")});
 			this.cmbBaudRate.Name = "cmbBaudRate";
-			this.cmbBaudRate.Size = new System.Drawing.Size(82, 20);
-			this.cmbBaudRate.TabIndex = 1;
 			// 
 			// label2
 			// 
-			this.label2.AutoSize = true;
-			this.label2.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.label2.Location = new System.Drawing.Point(14, 104);
+			resources.ApplyResources(this.label2, "label2");
 			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(62, 20);
-			this.label2.TabIndex = 0;
-			this.label2.Text = "波特率 : ";
 			// 
 			// cmbPorts
 			// 
+			resources.ApplyResources(this.cmbPorts, "cmbPorts");
 			this.cmbPorts.FormattingEnabled = true;
-			this.cmbPorts.Location = new System.Drawing.Point(82, 78);
 			this.cmbPorts.Name = "cmbPorts";
-			this.cmbPorts.Size = new System.Drawing.Size(82, 20);
-			this.cmbPorts.TabIndex = 1;
 			// 
 			// label1
 			// 
-			this.label1.AutoSize = true;
-			this.label1.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.label1.Location = new System.Drawing.Point(14, 78);
+			resources.ApplyResources(this.label1, "label1");
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(62, 20);
-			this.label1.TabIndex = 0;
-			this.label1.Text = "串口号 : ";
 			// 
 			// btnSetParam
 			// 
-			this.btnSetParam.Location = new System.Drawing.Point(2, 18);
+			resources.ApplyResources(this.btnSetParam, "btnSetParam");
+			this.btnSetParam.BackColor = System.Drawing.SystemColors.Control;
 			this.btnSetParam.Name = "btnSetParam";
-			this.btnSetParam.Size = new System.Drawing.Size(170, 60);
-			this.btnSetParam.TabIndex = 2;
-			this.btnSetParam.Text = "打开串口";
-			this.btnSetParam.UseVisualStyleBackColor = true;
+			this.btnSetParam.UseVisualStyleBackColor = false;
 			this.btnSetParam.Click += new System.EventHandler(this.btnSetParam_Click);
 			// 
 			// txtRecive
 			// 
-			this.txtRecive.Location = new System.Drawing.Point(6, 30);
-			this.txtRecive.Multiline = true;
+			resources.ApplyResources(this.txtRecive, "txtRecive");
 			this.txtRecive.Name = "txtRecive";
-			this.txtRecive.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-			this.txtRecive.Size = new System.Drawing.Size(346, 192);
-			this.txtRecive.TabIndex = 1;
 			// 
 			// btnClose
 			// 
-			this.btnClose.Location = new System.Drawing.Point(2, 78);
+			resources.ApplyResources(this.btnClose, "btnClose");
 			this.btnClose.Name = "btnClose";
-			this.btnClose.Size = new System.Drawing.Size(170, 60);
-			this.btnClose.TabIndex = 4;
-			this.btnClose.Text = "关闭串口";
 			this.btnClose.UseVisualStyleBackColor = true;
 			this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
 			// 
 			// btnExit
 			// 
-			this.btnExit.Location = new System.Drawing.Point(2, 138);
+			resources.ApplyResources(this.btnExit, "btnExit");
 			this.btnExit.Name = "btnExit";
-			this.btnExit.Size = new System.Drawing.Size(170, 60);
-			this.btnExit.TabIndex = 6;
-			this.btnExit.Text = "退出";
 			this.btnExit.UseVisualStyleBackColor = true;
 			this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
 			// 
 			// groupBox2
 			// 
+			resources.ApplyResources(this.groupBox2, "groupBox2");
 			this.groupBox2.Controls.Add(this.btnReciveClear);
 			this.groupBox2.Controls.Add(this.txtRecive);
-			this.groupBox2.Location = new System.Drawing.Point(183, 16);
 			this.groupBox2.Name = "groupBox2";
-			this.groupBox2.Size = new System.Drawing.Size(352, 245);
-			this.groupBox2.TabIndex = 8;
 			this.groupBox2.TabStop = false;
-			this.groupBox2.Text = "数据发送/接收";
 			// 
 			// btnReciveClear
 			// 
+			resources.ApplyResources(this.btnReciveClear, "btnReciveClear");
 			this.btnReciveClear.BackColor = System.Drawing.SystemColors.ControlLightLight;
 			this.btnReciveClear.FlatAppearance.BorderSize = 0;
-			this.btnReciveClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnReciveClear.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
 			this.btnReciveClear.ForeColor = System.Drawing.Color.Turquoise;
-			this.btnReciveClear.Location = new System.Drawing.Point(260, 187);
 			this.btnReciveClear.Name = "btnReciveClear";
-			this.btnReciveClear.Size = new System.Drawing.Size(74, 35);
-			this.btnReciveClear.TabIndex = 10;
-			this.btnReciveClear.Text = "清空";
-			this.btnReciveClear.TextAlign = System.Drawing.ContentAlignment.BottomRight;
 			this.btnReciveClear.UseVisualStyleBackColor = false;
 			this.btnReciveClear.Click += new System.EventHandler(this.btnReciveClear_Click);
 			// 
 			// groupBox3
 			// 
+			resources.ApplyResources(this.groupBox3, "groupBox3");
 			this.groupBox3.Controls.Add(this.btnSetParam);
 			this.groupBox3.Controls.Add(this.btnExit);
 			this.groupBox3.Controls.Add(this.btnClose);
-			this.groupBox3.Location = new System.Drawing.Point(3, 253);
 			this.groupBox3.Name = "groupBox3";
-			this.groupBox3.Size = new System.Drawing.Size(174, 204);
-			this.groupBox3.TabIndex = 3;
 			this.groupBox3.TabStop = false;
-			this.groupBox3.Text = "操作";
 			// 
 			// tabControl1
 			// 
+			resources.ApplyResources(this.tabControl1, "tabControl1");
 			this.tabControl1.Controls.Add(this.tbpReadInfo);
 			this.tabControl1.Controls.Add(this.tbpSysConfig);
 			this.tabControl1.Controls.Add(this.tbpSetPsw);
 			this.tabControl1.Controls.Add(this.tbpSendString);
-			this.tabControl1.ItemSize = new System.Drawing.Size(60, 18);
-			this.tabControl1.Location = new System.Drawing.Point(189, 273);
 			this.tabControl1.Name = "tabControl1";
 			this.tabControl1.SelectedIndex = 0;
-			this.tabControl1.Size = new System.Drawing.Size(346, 184);
-			this.tabControl1.TabIndex = 9;
 			// 
 			// tbpReadInfo
 			// 
-			this.tbpReadInfo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+			resources.ApplyResources(this.tbpReadInfo, "tbpReadInfo");
+			this.tbpReadInfo.Controls.Add(this.btnReset);
+			this.tbpReadInfo.Controls.Add(this.btnReHistoryWeather);
 			this.tbpReadInfo.Controls.Add(this.btnPassWord);
 			this.tbpReadInfo.Controls.Add(this.btnHistoryWeather);
 			this.tbpReadInfo.Controls.Add(this.btnSysConfig);
 			this.tbpReadInfo.Controls.Add(this.button1);
-			this.tbpReadInfo.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.tbpReadInfo.Location = new System.Drawing.Point(4, 22);
 			this.tbpReadInfo.Name = "tbpReadInfo";
-			this.tbpReadInfo.Padding = new System.Windows.Forms.Padding(3);
-			this.tbpReadInfo.Size = new System.Drawing.Size(338, 158);
-			this.tbpReadInfo.TabIndex = 0;
-			this.tbpReadInfo.Text = "读取信息";
 			this.tbpReadInfo.UseVisualStyleBackColor = true;
+			// 
+			// btnReset
+			// 
+			resources.ApplyResources(this.btnReset, "btnReset");
+			this.btnReset.BackColor = System.Drawing.Color.LightGray;
+			this.btnReset.FlatAppearance.BorderSize = 0;
+			this.btnReset.Name = "btnReset";
+			this.btnReset.UseVisualStyleBackColor = false;
+			this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+			// 
+			// btnReHistoryWeather
+			// 
+			resources.ApplyResources(this.btnReHistoryWeather, "btnReHistoryWeather");
+			this.btnReHistoryWeather.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+			this.btnReHistoryWeather.FlatAppearance.BorderSize = 0;
+			this.btnReHistoryWeather.Name = "btnReHistoryWeather";
+			this.btnReHistoryWeather.UseVisualStyleBackColor = false;
+			this.btnReHistoryWeather.Click += new System.EventHandler(this.btnReHistoryWeather_Click);
 			// 
 			// btnPassWord
 			// 
+			resources.ApplyResources(this.btnPassWord, "btnPassWord");
 			this.btnPassWord.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
 			this.btnPassWord.FlatAppearance.BorderSize = 0;
-			this.btnPassWord.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnPassWord.Location = new System.Drawing.Point(169, 79);
 			this.btnPassWord.Name = "btnPassWord";
-			this.btnPassWord.Size = new System.Drawing.Size(169, 81);
-			this.btnPassWord.TabIndex = 3;
-			this.btnPassWord.Text = "读取密码";
 			this.btnPassWord.UseVisualStyleBackColor = false;
 			this.btnPassWord.Click += new System.EventHandler(this.btnPassWord_Click);
 			// 
 			// btnHistoryWeather
 			// 
+			resources.ApplyResources(this.btnHistoryWeather, "btnHistoryWeather");
 			this.btnHistoryWeather.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
 			this.btnHistoryWeather.FlatAppearance.BorderSize = 0;
-			this.btnHistoryWeather.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnHistoryWeather.Location = new System.Drawing.Point(169, 0);
 			this.btnHistoryWeather.Name = "btnHistoryWeather";
-			this.btnHistoryWeather.Size = new System.Drawing.Size(169, 81);
-			this.btnHistoryWeather.TabIndex = 2;
-			this.btnHistoryWeather.Text = "历史天气";
 			this.btnHistoryWeather.UseVisualStyleBackColor = false;
 			this.btnHistoryWeather.Click += new System.EventHandler(this.btnHistoryWeather_Click);
 			// 
 			// btnSysConfig
 			// 
+			resources.ApplyResources(this.btnSysConfig, "btnSysConfig");
 			this.btnSysConfig.BackColor = System.Drawing.Color.Turquoise;
 			this.btnSysConfig.FlatAppearance.BorderSize = 0;
-			this.btnSysConfig.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnSysConfig.Location = new System.Drawing.Point(0, 80);
 			this.btnSysConfig.Name = "btnSysConfig";
-			this.btnSysConfig.Size = new System.Drawing.Size(169, 81);
-			this.btnSysConfig.TabIndex = 1;
-			this.btnSysConfig.Text = "系统信息";
 			this.btnSysConfig.UseVisualStyleBackColor = false;
 			this.btnSysConfig.Click += new System.EventHandler(this.btnSysConfig_Click);
 			// 
 			// button1
 			// 
+			resources.ApplyResources(this.button1, "button1");
 			this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+			this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
 			this.button1.FlatAppearance.BorderSize = 0;
-			this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.button1.Location = new System.Drawing.Point(0, 0);
 			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(169, 81);
-			this.button1.TabIndex = 0;
-			this.button1.Text = "天气信息";
 			this.button1.UseVisualStyleBackColor = false;
 			this.button1.Click += new System.EventHandler(this.button1_Click);
 			// 
 			// tbpSysConfig
 			// 
-			this.tbpSysConfig.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+			resources.ApplyResources(this.tbpSysConfig, "tbpSysConfig");
+			this.tbpSysConfig.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
 			this.tbpSysConfig.Controls.Add(this.txtSaveTime);
 			this.tbpSysConfig.Controls.Add(this.btnSetSystemConfig);
 			this.tbpSysConfig.Controls.Add(this.cmbDay);
@@ -426,198 +361,118 @@
 			this.tbpSysConfig.Controls.Add(this.label13);
 			this.tbpSysConfig.Controls.Add(this.label12);
 			this.tbpSysConfig.Controls.Add(this.label8);
-			this.tbpSysConfig.Location = new System.Drawing.Point(4, 22);
 			this.tbpSysConfig.Name = "tbpSysConfig";
-			this.tbpSysConfig.Padding = new System.Windows.Forms.Padding(3);
-			this.tbpSysConfig.Size = new System.Drawing.Size(338, 158);
-			this.tbpSysConfig.TabIndex = 1;
-			this.tbpSysConfig.Text = "系统配置";
 			// 
 			// txtSaveTime
 			// 
-			this.txtSaveTime.Location = new System.Drawing.Point(78, 89);
+			resources.ApplyResources(this.txtSaveTime, "txtSaveTime");
 			this.txtSaveTime.Name = "txtSaveTime";
-			this.txtSaveTime.Size = new System.Drawing.Size(69, 21);
-			this.txtSaveTime.TabIndex = 3;
 			// 
 			// btnSetSystemConfig
 			// 
-			this.btnSetSystemConfig.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+			resources.ApplyResources(this.btnSetSystemConfig, "btnSetSystemConfig");
+			this.btnSetSystemConfig.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
 			this.btnSetSystemConfig.FlatAppearance.BorderColor = System.Drawing.Color.Aqua;
-			this.btnSetSystemConfig.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnSetSystemConfig.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.btnSetSystemConfig.Location = new System.Drawing.Point(226, 106);
 			this.btnSetSystemConfig.Name = "btnSetSystemConfig";
-			this.btnSetSystemConfig.Size = new System.Drawing.Size(104, 44);
-			this.btnSetSystemConfig.TabIndex = 2;
-			this.btnSetSystemConfig.Text = "确定";
 			this.btnSetSystemConfig.UseVisualStyleBackColor = false;
 			this.btnSetSystemConfig.Click += new System.EventHandler(this.btnSetSystemConfig_Click);
 			// 
 			// cmbDay
 			// 
+			resources.ApplyResources(this.cmbDay, "cmbDay");
 			this.cmbDay.FormattingEnabled = true;
-			this.cmbDay.Location = new System.Drawing.Point(250, 23);
 			this.cmbDay.Name = "cmbDay";
-			this.cmbDay.Size = new System.Drawing.Size(59, 20);
-			this.cmbDay.TabIndex = 1;
 			// 
 			// cmbMinute
 			// 
+			resources.ApplyResources(this.cmbMinute, "cmbMinute");
 			this.cmbMinute.FormattingEnabled = true;
-			this.cmbMinute.Location = new System.Drawing.Point(170, 60);
 			this.cmbMinute.Name = "cmbMinute";
-			this.cmbMinute.Size = new System.Drawing.Size(57, 20);
-			this.cmbMinute.TabIndex = 1;
 			// 
 			// cmbMonth
 			// 
+			resources.ApplyResources(this.cmbMonth, "cmbMonth");
 			this.cmbMonth.FormattingEnabled = true;
-			this.cmbMonth.Location = new System.Drawing.Point(170, 23);
 			this.cmbMonth.Name = "cmbMonth";
-			this.cmbMonth.Size = new System.Drawing.Size(57, 20);
-			this.cmbMonth.TabIndex = 1;
 			// 
 			// cmbLang
 			// 
+			resources.ApplyResources(this.cmbLang, "cmbLang");
 			this.cmbLang.FormattingEnabled = true;
-			this.cmbLang.Location = new System.Drawing.Point(78, 122);
 			this.cmbLang.Name = "cmbLang";
-			this.cmbLang.Size = new System.Drawing.Size(69, 20);
-			this.cmbLang.TabIndex = 1;
 			// 
 			// cmbHour
 			// 
+			resources.ApplyResources(this.cmbHour, "cmbHour");
 			this.cmbHour.FormattingEnabled = true;
-			this.cmbHour.Location = new System.Drawing.Point(78, 60);
 			this.cmbHour.Name = "cmbHour";
-			this.cmbHour.Size = new System.Drawing.Size(69, 20);
-			this.cmbHour.TabIndex = 1;
 			// 
 			// cmbYear
 			// 
+			resources.ApplyResources(this.cmbYear, "cmbYear");
 			this.cmbYear.FormattingEnabled = true;
-			this.cmbYear.Location = new System.Drawing.Point(78, 23);
 			this.cmbYear.Name = "cmbYear";
-			this.cmbYear.Size = new System.Drawing.Size(69, 20);
-			this.cmbYear.TabIndex = 1;
 			// 
 			// label11
 			// 
-			this.label11.AutoSize = true;
-			this.label11.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.label11.Location = new System.Drawing.Point(37, 123);
+			resources.ApplyResources(this.label11, "label11");
 			this.label11.Name = "label11";
-			this.label11.Size = new System.Drawing.Size(35, 14);
-			this.label11.TabIndex = 0;
-			this.label11.Text = "语言";
 			// 
 			// label10
 			// 
-			this.label10.AutoSize = true;
-			this.label10.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.label10.Location = new System.Drawing.Point(9, 92);
+			resources.ApplyResources(this.label10, "label10");
 			this.label10.Name = "label10";
-			this.label10.Size = new System.Drawing.Size(63, 14);
-			this.label10.TabIndex = 0;
-			this.label10.Text = "存储间隔";
 			// 
 			// label9
 			// 
-			this.label9.AutoSize = true;
-			this.label9.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.label9.Location = new System.Drawing.Point(37, 61);
+			resources.ApplyResources(this.label9, "label9");
 			this.label9.Name = "label9";
-			this.label9.Size = new System.Drawing.Size(35, 14);
-			this.label9.TabIndex = 0;
-			this.label9.Text = "时间";
 			// 
 			// label18
 			// 
-			this.label18.AutoSize = true;
-			this.label18.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.label18.Location = new System.Drawing.Point(260, 61);
+			resources.ApplyResources(this.label18, "label18");
 			this.label18.Name = "label18";
-			this.label18.Size = new System.Drawing.Size(77, 14);
-			this.label18.TabIndex = 0;
-			this.label18.Text = "(24小时制)";
 			// 
 			// label16
 			// 
-			this.label16.AutoSize = true;
-			this.label16.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.label16.Location = new System.Drawing.Point(233, 61);
+			resources.ApplyResources(this.label16, "label16");
 			this.label16.Name = "label16";
-			this.label16.Size = new System.Drawing.Size(21, 14);
-			this.label16.TabIndex = 0;
-			this.label16.Text = "分";
 			// 
 			// label17
 			// 
-			this.label17.AutoSize = true;
-			this.label17.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.label17.Location = new System.Drawing.Point(147, 95);
+			resources.ApplyResources(this.label17, "label17");
 			this.label17.Name = "label17";
-			this.label17.Size = new System.Drawing.Size(35, 14);
-			this.label17.TabIndex = 0;
-			this.label17.Text = "小时";
 			// 
 			// label14
 			// 
-			this.label14.AutoSize = true;
-			this.label14.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.label14.Location = new System.Drawing.Point(315, 25);
+			resources.ApplyResources(this.label14, "label14");
 			this.label14.Name = "label14";
-			this.label14.Size = new System.Drawing.Size(21, 14);
-			this.label14.TabIndex = 0;
-			this.label14.Text = "日";
 			// 
 			// label15
 			// 
-			this.label15.AutoSize = true;
-			this.label15.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.label15.Location = new System.Drawing.Point(147, 63);
+			resources.ApplyResources(this.label15, "label15");
 			this.label15.Name = "label15";
-			this.label15.Size = new System.Drawing.Size(21, 14);
-			this.label15.TabIndex = 0;
-			this.label15.Text = "时";
 			// 
 			// label13
 			// 
-			this.label13.AutoSize = true;
-			this.label13.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.label13.Location = new System.Drawing.Point(227, 25);
+			resources.ApplyResources(this.label13, "label13");
 			this.label13.Name = "label13";
-			this.label13.Size = new System.Drawing.Size(21, 14);
-			this.label13.TabIndex = 0;
-			this.label13.Text = "月";
 			// 
 			// label12
 			// 
-			this.label12.AutoSize = true;
-			this.label12.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.label12.Location = new System.Drawing.Point(147, 26);
+			resources.ApplyResources(this.label12, "label12");
 			this.label12.Name = "label12";
-			this.label12.Size = new System.Drawing.Size(21, 14);
-			this.label12.TabIndex = 0;
-			this.label12.Text = "年";
 			// 
 			// label8
 			// 
-			this.label8.AutoSize = true;
-			this.label8.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.label8.Location = new System.Drawing.Point(37, 29);
+			resources.ApplyResources(this.label8, "label8");
 			this.label8.Name = "label8";
-			this.label8.Size = new System.Drawing.Size(35, 14);
-			this.label8.TabIndex = 0;
-			this.label8.Text = "日期";
 			// 
 			// tbpSetPsw
 			// 
-			this.tbpSetPsw.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+			resources.ApplyResources(this.tbpSetPsw, "tbpSetPsw");
 			this.tbpSetPsw.Controls.Add(this.btnPsw3);
 			this.tbpSetPsw.Controls.Add(this.btnPsw6);
-			this.tbpSetPsw.Controls.Add(this.btnPsw9);
 			this.tbpSetPsw.Controls.Add(this.btnPsw0);
 			this.tbpSetPsw.Controls.Add(this.btnPswBack);
 			this.tbpSetPsw.Controls.Add(this.btnPsw2);
@@ -627,16 +482,148 @@
 			this.tbpSetPsw.Controls.Add(this.btnPsw4);
 			this.tbpSetPsw.Controls.Add(this.btnPsw7);
 			this.tbpSetPsw.Controls.Add(this.panel1);
-			this.tbpSetPsw.Location = new System.Drawing.Point(4, 22);
+			this.tbpSetPsw.Controls.Add(this.btnPsw9);
+			this.tbpSetPsw.Controls.Add(this.btnPswClear);
 			this.tbpSetPsw.Name = "tbpSetPsw";
-			this.tbpSetPsw.Padding = new System.Windows.Forms.Padding(3);
-			this.tbpSetPsw.Size = new System.Drawing.Size(338, 158);
-			this.tbpSetPsw.TabIndex = 2;
-			this.tbpSetPsw.Text = "修改密码";
 			this.tbpSetPsw.UseVisualStyleBackColor = true;
+			// 
+			// btnPsw3
+			// 
+			resources.ApplyResources(this.btnPsw3, "btnPsw3");
+			this.btnPsw3.BackColor = System.Drawing.Color.Gainsboro;
+			this.btnPsw3.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+			this.btnPsw3.Name = "btnPsw3";
+			this.btnPsw3.UseVisualStyleBackColor = false;
+			this.btnPsw3.Click += new System.EventHandler(this.btnPsw3_Click);
+			// 
+			// btnPsw6
+			// 
+			resources.ApplyResources(this.btnPsw6, "btnPsw6");
+			this.btnPsw6.BackColor = System.Drawing.Color.Gainsboro;
+			this.btnPsw6.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+			this.btnPsw6.Name = "btnPsw6";
+			this.btnPsw6.UseVisualStyleBackColor = false;
+			this.btnPsw6.Click += new System.EventHandler(this.btnPsw6_Click);
+			// 
+			// btnPsw0
+			// 
+			resources.ApplyResources(this.btnPsw0, "btnPsw0");
+			this.btnPsw0.BackColor = System.Drawing.Color.Gainsboro;
+			this.btnPsw0.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+			this.btnPsw0.Name = "btnPsw0";
+			this.btnPsw0.UseVisualStyleBackColor = false;
+			this.btnPsw0.Click += new System.EventHandler(this.btnPsw0_Click);
+			// 
+			// btnPswBack
+			// 
+			resources.ApplyResources(this.btnPswBack, "btnPswBack");
+			this.btnPswBack.BackColor = System.Drawing.Color.Gainsboro;
+			this.btnPswBack.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+			this.btnPswBack.Name = "btnPswBack";
+			this.btnPswBack.UseVisualStyleBackColor = false;
+			this.btnPswBack.Click += new System.EventHandler(this.btnPswBack_Click);
+			// 
+			// btnPsw2
+			// 
+			resources.ApplyResources(this.btnPsw2, "btnPsw2");
+			this.btnPsw2.BackColor = System.Drawing.Color.Gainsboro;
+			this.btnPsw2.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+			this.btnPsw2.Name = "btnPsw2";
+			this.btnPsw2.UseVisualStyleBackColor = false;
+			this.btnPsw2.Click += new System.EventHandler(this.btnPsw2_Click);
+			// 
+			// btnPsw5
+			// 
+			resources.ApplyResources(this.btnPsw5, "btnPsw5");
+			this.btnPsw5.BackColor = System.Drawing.Color.Gainsboro;
+			this.btnPsw5.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+			this.btnPsw5.Name = "btnPsw5";
+			this.btnPsw5.UseVisualStyleBackColor = false;
+			this.btnPsw5.Click += new System.EventHandler(this.btnPsw5_Click);
+			// 
+			// btnPsw8
+			// 
+			resources.ApplyResources(this.btnPsw8, "btnPsw8");
+			this.btnPsw8.BackColor = System.Drawing.Color.Gainsboro;
+			this.btnPsw8.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+			this.btnPsw8.Name = "btnPsw8";
+			this.btnPsw8.UseVisualStyleBackColor = false;
+			this.btnPsw8.Click += new System.EventHandler(this.btnPsw8_Click);
+			// 
+			// btnPsw1
+			// 
+			resources.ApplyResources(this.btnPsw1, "btnPsw1");
+			this.btnPsw1.BackColor = System.Drawing.Color.Gainsboro;
+			this.btnPsw1.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+			this.btnPsw1.Name = "btnPsw1";
+			this.btnPsw1.UseVisualStyleBackColor = false;
+			this.btnPsw1.Click += new System.EventHandler(this.btnPsw1_Click);
+			// 
+			// btnPsw4
+			// 
+			resources.ApplyResources(this.btnPsw4, "btnPsw4");
+			this.btnPsw4.BackColor = System.Drawing.Color.Gainsboro;
+			this.btnPsw4.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+			this.btnPsw4.Name = "btnPsw4";
+			this.btnPsw4.UseVisualStyleBackColor = false;
+			this.btnPsw4.Click += new System.EventHandler(this.btnPsw4_Click);
+			// 
+			// btnPsw7
+			// 
+			resources.ApplyResources(this.btnPsw7, "btnPsw7");
+			this.btnPsw7.BackColor = System.Drawing.Color.Gainsboro;
+			this.btnPsw7.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+			this.btnPsw7.FlatAppearance.BorderSize = 0;
+			this.btnPsw7.Name = "btnPsw7";
+			this.btnPsw7.UseVisualStyleBackColor = false;
+			this.btnPsw7.Click += new System.EventHandler(this.btnPsw7_Click);
+			// 
+			// panel1
+			// 
+			resources.ApplyResources(this.panel1, "panel1");
+			this.panel1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+			this.panel1.Controls.Add(this.btnSetPsw);
+			this.panel1.Controls.Add(this.txtPsw);
+			this.panel1.Name = "panel1";
+			// 
+			// btnSetPsw
+			// 
+			resources.ApplyResources(this.btnSetPsw, "btnSetPsw");
+			this.btnSetPsw.BackColor = System.Drawing.Color.PaleGreen;
+			this.btnSetPsw.FlatAppearance.BorderSize = 0;
+			this.btnSetPsw.Name = "btnSetPsw";
+			this.btnSetPsw.UseVisualStyleBackColor = false;
+			this.btnSetPsw.Click += new System.EventHandler(this.btnSetPsw_Click);
+			// 
+			// txtPsw
+			// 
+			resources.ApplyResources(this.txtPsw, "txtPsw");
+			this.txtPsw.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+			this.txtPsw.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.txtPsw.Name = "txtPsw";
+			this.txtPsw.ReadOnly = true;
+			// 
+			// btnPsw9
+			// 
+			resources.ApplyResources(this.btnPsw9, "btnPsw9");
+			this.btnPsw9.BackColor = System.Drawing.Color.Gainsboro;
+			this.btnPsw9.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+			this.btnPsw9.Name = "btnPsw9";
+			this.btnPsw9.UseVisualStyleBackColor = false;
+			this.btnPsw9.Click += new System.EventHandler(this.btnPsw9_Click);
+			// 
+			// btnPswClear
+			// 
+			resources.ApplyResources(this.btnPswClear, "btnPswClear");
+			this.btnPswClear.BackColor = System.Drawing.Color.Gainsboro;
+			this.btnPswClear.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+			this.btnPswClear.Name = "btnPswClear";
+			this.btnPswClear.UseVisualStyleBackColor = false;
+			this.btnPswClear.Click += new System.EventHandler(this.btnPswClear_Click);
 			// 
 			// tbpSendString
 			// 
+			resources.ApplyResources(this.tbpSendString, "tbpSendString");
 			this.tbpSendString.BackColor = System.Drawing.Color.WhiteSmoke;
 			this.tbpSendString.Controls.Add(this.label7);
 			this.tbpSendString.Controls.Add(this.label6);
@@ -644,255 +631,52 @@
 			this.tbpSendString.Controls.Add(this.ckbAutoSend);
 			this.tbpSendString.Controls.Add(this.txtSend);
 			this.tbpSendString.Controls.Add(this.btnSend);
-			this.tbpSendString.Location = new System.Drawing.Point(4, 22);
 			this.tbpSendString.Name = "tbpSendString";
-			this.tbpSendString.Padding = new System.Windows.Forms.Padding(3);
-			this.tbpSendString.RightToLeft = System.Windows.Forms.RightToLeft.No;
-			this.tbpSendString.Size = new System.Drawing.Size(338, 158);
-			this.tbpSendString.TabIndex = 3;
-			this.tbpSendString.Text = "自定义发送";
 			// 
 			// label7
 			// 
-			this.label7.AutoSize = true;
-			this.label7.Location = new System.Drawing.Point(279, 107);
+			resources.ApplyResources(this.label7, "label7");
 			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(17, 12);
-			this.label7.TabIndex = 21;
-			this.label7.Text = "秒";
 			// 
 			// label6
 			// 
-			this.label6.AutoSize = true;
-			this.label6.Location = new System.Drawing.Point(161, 105);
+			resources.ApplyResources(this.label6, "label6");
 			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(53, 12);
-			this.label6.TabIndex = 20;
-			this.label6.Text = "时间间隔";
 			// 
 			// txtTimeCell
 			// 
-			this.txtTimeCell.Location = new System.Drawing.Point(216, 102);
+			resources.ApplyResources(this.txtTimeCell, "txtTimeCell");
 			this.txtTimeCell.Name = "txtTimeCell";
-			this.txtTimeCell.Size = new System.Drawing.Size(57, 21);
-			this.txtTimeCell.TabIndex = 19;
 			// 
 			// ckbAutoSend
 			// 
-			this.ckbAutoSend.AutoSize = true;
-			this.ckbAutoSend.Location = new System.Drawing.Point(39, 104);
+			resources.ApplyResources(this.ckbAutoSend, "ckbAutoSend");
 			this.ckbAutoSend.Name = "ckbAutoSend";
-			this.ckbAutoSend.Size = new System.Drawing.Size(72, 16);
-			this.ckbAutoSend.TabIndex = 18;
-			this.ckbAutoSend.Text = "自动发送";
 			this.ckbAutoSend.UseVisualStyleBackColor = true;
 			// 
 			// txtSend
 			// 
-			this.txtSend.Location = new System.Drawing.Point(23, 55);
+			resources.ApplyResources(this.txtSend, "txtSend");
 			this.txtSend.Name = "txtSend";
-			this.txtSend.Size = new System.Drawing.Size(231, 21);
-			this.txtSend.TabIndex = 16;
 			// 
 			// btnSend
 			// 
-			this.btnSend.Location = new System.Drawing.Point(266, 50);
+			resources.ApplyResources(this.btnSend, "btnSend");
 			this.btnSend.Name = "btnSend";
-			this.btnSend.Size = new System.Drawing.Size(58, 28);
-			this.btnSend.TabIndex = 17;
-			this.btnSend.Text = "发送";
 			this.btnSend.UseVisualStyleBackColor = true;
 			this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
 			// 
-			// btnSetPsw
-			// 
-			this.btnSetPsw.BackColor = System.Drawing.Color.PaleGreen;
-			this.btnSetPsw.FlatAppearance.BorderSize = 0;
-			this.btnSetPsw.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnSetPsw.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.btnSetPsw.Location = new System.Drawing.Point(186, 0);
-			this.btnSetPsw.Name = "btnSetPsw";
-			this.btnSetPsw.Size = new System.Drawing.Size(149, 40);
-			this.btnSetPsw.TabIndex = 0;
-			this.btnSetPsw.Text = "设置";
-			this.btnSetPsw.UseVisualStyleBackColor = false;
-			this.btnSetPsw.Click += new System.EventHandler(this.btnSetPsw_Click);
-			// 
-			// txtPsw
-			// 
-			this.txtPsw.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-			this.txtPsw.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.txtPsw.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.txtPsw.Location = new System.Drawing.Point(13, 9);
-			this.txtPsw.Name = "txtPsw";
-			this.txtPsw.ReadOnly = true;
-			this.txtPsw.Size = new System.Drawing.Size(161, 22);
-			this.txtPsw.TabIndex = 1;
-			// 
-			// panel1
-			// 
-			this.panel1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-			this.panel1.Controls.Add(this.btnSetPsw);
-			this.panel1.Controls.Add(this.txtPsw);
-			this.panel1.Location = new System.Drawing.Point(3, 3);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(335, 40);
-			this.panel1.TabIndex = 2;
-			// 
-			// btnPsw7
-			// 
-			this.btnPsw7.BackColor = System.Drawing.Color.Gainsboro;
-			this.btnPsw7.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-			this.btnPsw7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnPsw7.Location = new System.Drawing.Point(3, 43);
-			this.btnPsw7.Name = "btnPsw7";
-			this.btnPsw7.Size = new System.Drawing.Size(84, 39);
-			this.btnPsw7.TabIndex = 3;
-			this.btnPsw7.Text = "7";
-			this.btnPsw7.UseVisualStyleBackColor = false;
-			this.btnPsw7.Click += new System.EventHandler(this.btnPsw7_Click);
-			// 
-			// btnPsw4
-			// 
-			this.btnPsw4.BackColor = System.Drawing.Color.Gainsboro;
-			this.btnPsw4.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-			this.btnPsw4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnPsw4.Location = new System.Drawing.Point(3, 82);
-			this.btnPsw4.Name = "btnPsw4";
-			this.btnPsw4.Size = new System.Drawing.Size(84, 39);
-			this.btnPsw4.TabIndex = 4;
-			this.btnPsw4.Text = "4";
-			this.btnPsw4.UseVisualStyleBackColor = false;
-			this.btnPsw4.Click += new System.EventHandler(this.btnPsw4_Click);
-			// 
-			// btnPsw1
-			// 
-			this.btnPsw1.BackColor = System.Drawing.Color.Gainsboro;
-			this.btnPsw1.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-			this.btnPsw1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnPsw1.Location = new System.Drawing.Point(3, 121);
-			this.btnPsw1.Name = "btnPsw1";
-			this.btnPsw1.Size = new System.Drawing.Size(84, 39);
-			this.btnPsw1.TabIndex = 5;
-			this.btnPsw1.Text = "1";
-			this.btnPsw1.UseVisualStyleBackColor = false;
-			this.btnPsw1.Click += new System.EventHandler(this.btnPsw1_Click);
-			// 
-			// btnPsw2
-			// 
-			this.btnPsw2.BackColor = System.Drawing.Color.Gainsboro;
-			this.btnPsw2.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-			this.btnPsw2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnPsw2.Location = new System.Drawing.Point(87, 121);
-			this.btnPsw2.Name = "btnPsw2";
-			this.btnPsw2.Size = new System.Drawing.Size(84, 39);
-			this.btnPsw2.TabIndex = 8;
-			this.btnPsw2.Text = "2";
-			this.btnPsw2.UseVisualStyleBackColor = false;
-			this.btnPsw2.Click += new System.EventHandler(this.btnPsw2_Click);
-			// 
-			// btnPsw5
-			// 
-			this.btnPsw5.BackColor = System.Drawing.Color.Gainsboro;
-			this.btnPsw5.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-			this.btnPsw5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnPsw5.Location = new System.Drawing.Point(87, 82);
-			this.btnPsw5.Name = "btnPsw5";
-			this.btnPsw5.Size = new System.Drawing.Size(84, 39);
-			this.btnPsw5.TabIndex = 7;
-			this.btnPsw5.Text = "5";
-			this.btnPsw5.UseVisualStyleBackColor = false;
-			this.btnPsw5.Click += new System.EventHandler(this.btnPsw5_Click);
-			// 
-			// btnPsw8
-			// 
-			this.btnPsw8.BackColor = System.Drawing.Color.Gainsboro;
-			this.btnPsw8.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-			this.btnPsw8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnPsw8.Location = new System.Drawing.Point(87, 43);
-			this.btnPsw8.Name = "btnPsw8";
-			this.btnPsw8.Size = new System.Drawing.Size(84, 39);
-			this.btnPsw8.TabIndex = 6;
-			this.btnPsw8.Text = "8";
-			this.btnPsw8.UseVisualStyleBackColor = false;
-			this.btnPsw8.Click += new System.EventHandler(this.btnPsw8_Click);
-			// 
-			// btnPsw0
-			// 
-			this.btnPsw0.BackColor = System.Drawing.Color.Gainsboro;
-			this.btnPsw0.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-			this.btnPsw0.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnPsw0.Location = new System.Drawing.Point(251, 121);
-			this.btnPsw0.Name = "btnPsw0";
-			this.btnPsw0.Size = new System.Drawing.Size(84, 39);
-			this.btnPsw0.TabIndex = 11;
-			this.btnPsw0.Text = "0";
-			this.btnPsw0.UseVisualStyleBackColor = false;
-			this.btnPsw0.Click += new System.EventHandler(this.btnPsw0_Click);
-			// 
-			// btnPswBack
-			// 
-			this.btnPswBack.BackColor = System.Drawing.Color.Gainsboro;
-			this.btnPswBack.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-			this.btnPswBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnPswBack.Location = new System.Drawing.Point(250, 43);
-			this.btnPswBack.Name = "btnPswBack";
-			this.btnPswBack.Size = new System.Drawing.Size(85, 78);
-			this.btnPswBack.TabIndex = 10;
-			this.btnPswBack.Text = "退格";
-			this.btnPswBack.UseVisualStyleBackColor = false;
-			this.btnPswBack.Click += new System.EventHandler(this.btnPswBack_Click);
-			// 
-			// btnPsw3
-			// 
-			this.btnPsw3.BackColor = System.Drawing.Color.Gainsboro;
-			this.btnPsw3.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-			this.btnPsw3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnPsw3.Location = new System.Drawing.Point(171, 121);
-			this.btnPsw3.Name = "btnPsw3";
-			this.btnPsw3.Size = new System.Drawing.Size(84, 39);
-			this.btnPsw3.TabIndex = 14;
-			this.btnPsw3.Text = "3";
-			this.btnPsw3.UseVisualStyleBackColor = false;
-			this.btnPsw3.Click += new System.EventHandler(this.btnPsw3_Click);
-			// 
-			// btnPsw6
-			// 
-			this.btnPsw6.BackColor = System.Drawing.Color.Gainsboro;
-			this.btnPsw6.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-			this.btnPsw6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnPsw6.Location = new System.Drawing.Point(171, 82);
-			this.btnPsw6.Name = "btnPsw6";
-			this.btnPsw6.Size = new System.Drawing.Size(84, 39);
-			this.btnPsw6.TabIndex = 13;
-			this.btnPsw6.Text = "6";
-			this.btnPsw6.UseVisualStyleBackColor = false;
-			this.btnPsw6.Click += new System.EventHandler(this.btnPsw6_Click);
-			// 
-			// btnPsw9
-			// 
-			this.btnPsw9.BackColor = System.Drawing.Color.Gainsboro;
-			this.btnPsw9.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-			this.btnPsw9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnPsw9.Location = new System.Drawing.Point(171, 43);
-			this.btnPsw9.Name = "btnPsw9";
-			this.btnPsw9.Size = new System.Drawing.Size(84, 39);
-			this.btnPsw9.TabIndex = 12;
-			this.btnPsw9.Text = "9";
-			this.btnPsw9.UseVisualStyleBackColor = false;
-			this.btnPsw9.Click += new System.EventHandler(this.btnPsw9_Click);
-			// 
 			// Form1
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+			resources.ApplyResources(this, "$this");
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(551, 469);
 			this.Controls.Add(this.tabControl1);
 			this.Controls.Add(this.groupBox1);
 			this.Controls.Add(this.groupBox2);
 			this.Controls.Add(this.groupBox3);
+			this.MaximizeBox = false;
+			this.MinimizeBox = false;
 			this.Name = "Form1";
-			this.Text = "气象仪";
 			this.Load += new System.EventHandler(this.Form1_Load);
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox1.PerformLayout();
@@ -904,10 +688,10 @@
 			this.tbpSysConfig.ResumeLayout(false);
 			this.tbpSysConfig.PerformLayout();
 			this.tbpSetPsw.ResumeLayout(false);
-			this.tbpSendString.ResumeLayout(false);
-			this.tbpSendString.PerformLayout();
 			this.panel1.ResumeLayout(false);
 			this.panel1.PerformLayout();
+			this.tbpSendString.ResumeLayout(false);
+			this.tbpSendString.PerformLayout();
 			this.ResumeLayout(false);
 
 		}
@@ -981,6 +765,9 @@
 		private System.Windows.Forms.Button btnPsw1;
 		private System.Windows.Forms.Button btnPsw4;
 		private System.Windows.Forms.Button btnPsw7;
+		private System.Windows.Forms.Button btnReset;
+		private System.Windows.Forms.Button btnReHistoryWeather;
+		private System.Windows.Forms.Button btnPswClear;
 	}
 }
 
