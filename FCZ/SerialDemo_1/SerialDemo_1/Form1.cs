@@ -32,6 +32,7 @@ namespace SerialDemo_1
 
 		//是否处于发送状态
 		bool IsSended = false;
+		bool isPortOpen = false;
 		//定时器
 		Timer AutoSendTimer = new Timer();
 
@@ -106,6 +107,11 @@ namespace SerialDemo_1
 		{
 			try
 			{
+				if(sp.IsOpen)
+				{
+					txtRecive.AppendText("串口已经打开!\n");
+					return;
+				}
 				strPortName = cmbPorts.Text;
 				strBaudRate = cmbBaudRate.Text;
 				strDataBits = cmbDataBit.Text;
@@ -113,18 +119,19 @@ namespace SerialDemo_1
 
 				sp.PortName = strPortName;
 				sp.BaudRate = Convert.ToInt32(strBaudRate);
-				sp.DataBits = Convert.ToByte(strDataBits);
+				sp.DataBits = Convert.ToInt32(strDataBits);
 				sp.StopBits = StopBits.One;
 				sp.ReadTimeout = 500;
 
 				sp.Open();
 
 				txtRecive.AppendText("串口成功开启!\n");
+				btnSetParam.BackColor = Color.FromArgb(128, 255, 128);
+				btnClose.BackColor = Form1.DefaultBackColor;
 			}
 			catch (Exception ex)
 			{
-				txtRecive.AppendText("异常: " + ex.Message);
-				txtRecive.AppendText("\r\n");
+				txtRecive.AppendText("异常信息: " + ex.Message + "\r\n错误码: " + ex.GetHashCode()+"\r\n");
 			}
 		}
 
@@ -159,8 +166,9 @@ namespace SerialDemo_1
 			{
 				sp.Close();
 				txtRecive.AppendText("串口已关闭!\r\n");
-			}
-				
+				btnSetParam.BackColor = Form1.DefaultBackColor;
+				btnClose.BackColor = Color.FromArgb(128, 255, 128);
+			}	
 		}
 
 		/// <summary>
@@ -226,6 +234,7 @@ namespace SerialDemo_1
 				}
 
 				sp.Write(Sendbyte, 0, Sendbyte.Length);
+				txtRecive.AppendText("发送: ");
 			}
 		}
 		/// <summary>
@@ -258,7 +267,7 @@ namespace SerialDemo_1
 				sp.Read(buffer, 0, n);
 				this.Invoke((EventHandler)(delegate
 				{
-					txtRecive.AppendText(dt.ToString() +" "+ TranString(buffer));
+					txtRecive.AppendText(dt.ToLongTimeString() +"接收: "+ TranString(buffer));
 					txtRecive.AppendText("\r\n");
 					
 				}));
@@ -288,6 +297,7 @@ namespace SerialDemo_1
 			return Recivestr;
 		}
 //====================    快捷键设置      ======================================================
+
 		//老版本指令， 地址码为01
         //string strWeatherInfo = "01 03 00 00 F1 D8";
         //string strHistoryWeather = "01 03 00 37 B0 0E";
