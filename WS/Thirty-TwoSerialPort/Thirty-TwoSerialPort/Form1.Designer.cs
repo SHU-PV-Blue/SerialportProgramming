@@ -69,7 +69,7 @@
 			this.继电器开ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.继电器关ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.继电器全开ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.继电器全开ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+			this.继电器全关ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
@@ -364,7 +364,8 @@
 			// 
 			// textBox6
 			// 
-			this.textBox6.ForeColor = System.Drawing.Color.Lime;
+			this.textBox6.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+			this.textBox6.ForeColor = System.Drawing.Color.Black;
 			this.textBox6.Location = new System.Drawing.Point(7, 20);
 			this.textBox6.Multiline = true;
 			this.textBox6.Name = "textBox6";
@@ -481,7 +482,7 @@
             this.继电器开ToolStripMenuItem,
             this.继电器关ToolStripMenuItem,
             this.继电器全开ToolStripMenuItem,
-            this.继电器全开ToolStripMenuItem1});
+            this.继电器全关ToolStripMenuItem1});
 			this.继电器控制命令ToolStripMenuItem.Name = "继电器控制命令ToolStripMenuItem";
 			this.继电器控制命令ToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
 			this.继电器控制命令ToolStripMenuItem.Text = "继电器控制命令";
@@ -492,24 +493,28 @@
 			this.继电器开ToolStripMenuItem.Name = "继电器开ToolStripMenuItem";
 			this.继电器开ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
 			this.继电器开ToolStripMenuItem.Text = "继电器开";
+			this.继电器开ToolStripMenuItem.Click += new System.EventHandler(this.继电器开ToolStripMenuItem_Click);
 			// 
 			// 继电器关ToolStripMenuItem
 			// 
 			this.继电器关ToolStripMenuItem.Name = "继电器关ToolStripMenuItem";
 			this.继电器关ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
 			this.继电器关ToolStripMenuItem.Text = "继电器关";
+			this.继电器关ToolStripMenuItem.Click += new System.EventHandler(this.继电器关ToolStripMenuItem_Click);
 			// 
 			// 继电器全开ToolStripMenuItem
 			// 
 			this.继电器全开ToolStripMenuItem.Name = "继电器全开ToolStripMenuItem";
 			this.继电器全开ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
 			this.继电器全开ToolStripMenuItem.Text = "继电器全开";
+			this.继电器全开ToolStripMenuItem.Click += new System.EventHandler(this.继电器全开ToolStripMenuItem_Click);
 			// 
-			// 继电器全开ToolStripMenuItem1
+			// 继电器全关ToolStripMenuItem1
 			// 
-			this.继电器全开ToolStripMenuItem1.Name = "继电器全开ToolStripMenuItem1";
-			this.继电器全开ToolStripMenuItem1.Size = new System.Drawing.Size(136, 22);
-			this.继电器全开ToolStripMenuItem1.Text = "继电器全开";
+			this.继电器全关ToolStripMenuItem1.Name = "继电器全关ToolStripMenuItem1";
+			this.继电器全关ToolStripMenuItem1.Size = new System.Drawing.Size(136, 22);
+			this.继电器全关ToolStripMenuItem1.Text = "继电器全关";
+			this.继电器全关ToolStripMenuItem1.Click += new System.EventHandler(this.继电器全关ToolStripMenuItem1_Click);
 			// 
 			// toolStripSeparator1
 			// 
@@ -588,6 +593,7 @@
 			this.Controls.Add(this.groupBox1);
 			this.KeyPreview = true;
 			this.MaximumSize = new System.Drawing.Size(573, 540);
+			this.MinimumSize = new System.Drawing.Size(573, 540);
 			this.Name = "Form1";
 			this.Text = "32路串口继电器";
 			this.Load += new System.EventHandler(this.Form1_Load);
@@ -633,7 +639,7 @@
 		private System.Windows.Forms.ToolStripMenuItem 继电器开ToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem 继电器关ToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem 继电器全开ToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem 继电器全开ToolStripMenuItem1;
+		private System.Windows.Forms.ToolStripMenuItem 继电器全关ToolStripMenuItem1;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
 		private System.Windows.Forms.ToolStripButton toolStripButton1;
 		private System.Windows.Forms.ToolStripButton toolStripButton2;

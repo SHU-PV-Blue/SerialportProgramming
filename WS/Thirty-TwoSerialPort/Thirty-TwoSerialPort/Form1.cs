@@ -176,16 +176,9 @@ namespace Thirty_TwoSerialPort
 
 		private void toolStripButton1_Click(object sender, EventArgs e)
 		{
-			Parity parity = Parity.None;
-			StopBits stopbits = StopBits.One;
-			serialPort.PortName = comboBox1.Text;
-			serialPort.BaudRate = int.Parse("9600");
-			serialPort.DataBits = dbit;
-			serialPort.Parity = parity;
-			serialPort.StopBits = stopbits;
 			try
 			{
-				if (toolStripButton1.Text == "关闭串口")
+				if (serialPort.IsOpen)
 				{
 					serialPort.Close();
 					toolStripButton1.Text = "开启串口";
@@ -194,10 +187,17 @@ namespace Thirty_TwoSerialPort
 				}
 				else
 				{
+					Parity parity = Parity.None;
+					StopBits stopbits = StopBits.One;
+					serialPort.PortName = comboBox1.Text;
+					serialPort.BaudRate = int.Parse("9600");
+					serialPort.DataBits = dbit;
+					serialPort.Parity = parity;
+					serialPort.StopBits = stopbits;
 					serialPort.Open();
 					isStart = false;
 					toolStripButton1.Text = "关闭串口";
-					toolStripStatusLabel1.Text = "串口成功开启,正在准备发送数据... ...";
+					toolStripStatusLabel1.Text = "串口成功开启";
 				}
 			}
 			catch (Exception ee)
@@ -205,7 +205,6 @@ namespace Thirty_TwoSerialPort
 				MessageBox.Show(ee.Message, "信息提示");
 			}
 		}
-
 		private void toolStripButton4_Click(object sender, EventArgs e)
 		{
 			if (serialPort.IsOpen)
@@ -382,7 +381,93 @@ namespace Thirty_TwoSerialPort
 			comboBox2.Invoke(comcalback);
 		}
 
-	
+		private void 继电器开ToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			try
+			{
+				string str = "010F00000020040101000004B4";
+				byte[] Sendbyte = new byte [str.Length / 2];
+				for (int i = 0,j = 0; i < str.Length; i = i +2,j++)
+				{
+					string mysubstring = str.Substring(i,2);
+					Sendbyte[j] = Convert.ToByte(mysubstring,16);
+				}
+
+				serialPort.Write(Sendbyte, 0, Sendbyte.Length);
+				toolStripStatusLabel1.Text = "发送数据成功";
+				textBox6.AppendText("发送数据：01 0F 00 00 00 20 04 01 01 00 00 04 B4\r\n");
+			}
+			catch (Exception ee)
+			{
+				MessageBox.Show(ee.Message);
+			}
+		}
+
+		private void 继电器关ToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			try
+			{
+				string str = "010400000020F1D2";
+				byte[] Sendbyte = new byte [str.Length / 2];
+				for (int i = 0,j = 0; i < str.Length; i = i +2,j++)
+				{
+					string mysubstring = str.Substring(i,2);
+					Sendbyte[j] = Convert.ToByte(mysubstring,16);
+				}
+
+				serialPort.Write(Sendbyte, 0, Sendbyte.Length);
+				toolStripStatusLabel1.Text = "发送数据成功";
+				textBox6.AppendText("发送数据：01 04 00 00 00 20 F1 D2\r\n");
+			}
+			catch (Exception ee)
+			{
+				MessageBox.Show(ee.Message);
+			}
+		}
+
+		private void 继电器全开ToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			try
+			{
+				string str = "010400000020F1D2";
+				byte[] Sendbyte = new byte [str.Length / 2];
+				for (int i = 0,j = 0; i < str.Length; i = i +2,j++)
+				{
+					string mysubstring = str.Substring(i,2);
+					Sendbyte[j] = Convert.ToByte(mysubstring,16);
+				}
+
+				serialPort.Write(Sendbyte, 0, Sendbyte.Length);
+				toolStripStatusLabel1.Text = "发送数据成功";
+				textBox6.AppendText("发送数据：01 04 00 00 00 20 F1 D2\r\n");
+			}
+			catch (Exception ee)
+			{
+				MessageBox.Show(ee.Message);
+			}
+		}
+
+		private void 继电器全关ToolStripMenuItem1_Click(object sender, EventArgs e)
+		{
+			try
+			{
+				string str = "010400000020F1D2";
+				byte[] Sendbyte = new byte [str.Length / 2];
+				for (int i = 0,j = 0; i < str.Length; i = i +2,j++)
+				{
+					string mysubstring = str.Substring(i,2);
+					Sendbyte[j] = Convert.ToByte(mysubstring,16);
+				}
+
+				serialPort.Write(Sendbyte, 0, Sendbyte.Length);
+				toolStripStatusLabel1.Text = "发送数据成功";
+				textBox6.AppendText("发送数据：01 04 00 00 00 20 F1 D2\r\n");
+			}
+			catch (Exception ee)
+			{
+				MessageBox.Show(ee.Message);
+			}
+		}
 	}
 }
 		
