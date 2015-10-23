@@ -288,13 +288,23 @@ namespace SerialDemo_1
 			return Recivestr;
 		}
 //====================    快捷键设置      ======================================================
-		string strWeatherInfo = "01 03 00 00 F1 D8";
-		string strHistoryWeather = "01 03 00 37 B0 0E";
-		string strReHistoryWeather = "01 03 00 38 F0 0A";
-		string strSystemInfo = "01 03 00 20 F0 00";
-		string strPasswordInfo = "01 03 00 61 00 04 15 d7";
-		string strReset = "01 80 01 80";
-		
+		//老版本指令， 地址码为01
+        //string strWeatherInfo = "01 03 00 00 F1 D8";
+        //string strHistoryWeather = "01 03 00 37 B0 0E";
+        //string strReHistoryWeather = "01 03 00 38 F0 0A";
+        //string strSystemInfo = "01 03 00 20 F0 00";
+        //string strPasswordInfo = "01 03 00 61 00 04 15 d7";
+        //string strReset = "01 80 01 80";
+        
+        
+        //新版本指令，地址码为 03 更改校验码
+        string strWeatherInfo = "03 03 00 00 F0 60";
+        string strHistoryWeather = "03 03 00 37 B1 B6";
+        string strReHistoryWeather = "03 03 00 38 F1 B2";
+        string strSystemInfo = "03 03 00 20 F1 B8";
+        string strPasswordInfo = "03 03 00 61 00 04 14 35";
+        string strReset = "03 80 01 B8";
+
 		private void button1_Click(object sender, EventArgs e)
 		{
 			Send(strWeatherInfo);
