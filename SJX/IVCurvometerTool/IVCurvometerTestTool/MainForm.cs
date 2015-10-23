@@ -19,6 +19,7 @@ namespace IVCurvometerTestTool
 
 		SerialPort _serialPort;
 		byte _testerID;
+		Thread thTest;
 
 		public MainForm()
 		{
@@ -33,6 +34,7 @@ namespace IVCurvometerTestTool
 				return;
 			}
 			_serialPort.Write(data, 0, data.Length);
+			DateTime dt = DateTime.Now;
 			string showData = "";
 			foreach(var b in data)
 			{
@@ -46,7 +48,7 @@ namespace IVCurvometerTestTool
 			{
 				lbSendData.Items.Add(showData);
 				lbSendData.SelectedIndex = lbSendData.Items.Count - 1;
-				lbSendExplanation.Items.Add(messege);
+				lbSendExplanation.Items.Add(dt.TimeOfDay + messege);
 				lbSendExplanation.SelectedIndex = lbSendData.Items.Count - 1;
 			}));
 		}
@@ -168,8 +170,11 @@ namespace IVCurvometerTestTool
 
 		private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
 		{
+			if (thTest != null && thTest.IsAlive)
+				thTest.Abort();
 			if (_serialPort != null && _serialPort.IsOpen)
 				_serialPort.Close();
+
 		}
 
 		private void btnTesterID_Click(object sender, EventArgs e)
@@ -327,6 +332,32 @@ namespace IVCurvometerTestTool
 
 			byte[] buffer = { 0xAA, _testerID, 0x10, address[0], address[1], data[0], data[1], data[2], data[3], 0xCC, 0x33, 0xC3, 0x3C };
 			WritePort(buffer, "数据设置:" + cbSetData.Text);
+		}
+
+		private void btnTest_Click(object sender, EventArgs e)
+		{
+			if(btnTest.Text == "终止")
+			{
+				if(thTest != null && thTest.IsAlive)
+				{
+					thTest.Abort();
+				}
+				btnTest.Text = "启动";
+				return;
+			}
+			thTest = new Thread(new ThreadStart(SendTest));
+			thTest.Start();
+			btnTest.Text = "终止";
+		}
+
+		void SendTest()
+		{
+			while(true)
+			{
+				byte[] systemCommand = { 0xAA, _testerID, 0x01, 0x05, 0xCC, 0x33, 0xC3, 0x3C };
+				WritePort(systemCommand, "重复测量命令");
+				Thread.Sleep(Convert.ToInt32(txtTestTime.Text));
+			}
 		}
 	}
 }
