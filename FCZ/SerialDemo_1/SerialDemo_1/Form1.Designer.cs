@@ -54,7 +54,6 @@
 			this.btnReHistoryWeather = new System.Windows.Forms.Button();
 			this.btnPassWord = new System.Windows.Forms.Button();
 			this.btnHistoryWeather = new System.Windows.Forms.Button();
-			this.btnSysConfig = new System.Windows.Forms.Button();
 			this.button1 = new System.Windows.Forms.Button();
 			this.tbpSysConfig = new System.Windows.Forms.TabPage();
 			this.txtSaveTime = new System.Windows.Forms.TextBox();
@@ -99,6 +98,7 @@
 			this.ckbAutoSend = new System.Windows.Forms.CheckBox();
 			this.txtSend = new System.Windows.Forms.TextBox();
 			this.btnSend = new System.Windows.Forms.Button();
+			this.btnSysConfig = new System.Windows.Forms.Button();
 			this.groupBox1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
 			this.groupBox3.SuspendLayout();
@@ -131,6 +131,7 @@
 			// btnInit
 			// 
 			resources.ApplyResources(this.btnInit, "btnInit");
+			this.btnInit.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.btnInit.FlatAppearance.BorderSize = 0;
 			this.btnInit.Name = "btnInit";
 			this.btnInit.UseVisualStyleBackColor = true;
@@ -210,9 +211,10 @@
 			// btnSetParam
 			// 
 			resources.ApplyResources(this.btnSetParam, "btnSetParam");
-			this.btnSetParam.BackColor = System.Drawing.SystemColors.Control;
+			this.btnSetParam.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnSetParam.FlatAppearance.BorderSize = 0;
 			this.btnSetParam.Name = "btnSetParam";
-			this.btnSetParam.UseVisualStyleBackColor = false;
+			this.btnSetParam.UseVisualStyleBackColor = true;
 			this.btnSetParam.Click += new System.EventHandler(this.btnSetParam_Click);
 			// 
 			// txtRecive
@@ -223,6 +225,8 @@
 			// btnClose
 			// 
 			resources.ApplyResources(this.btnClose, "btnClose");
+			this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnClose.FlatAppearance.BorderSize = 0;
 			this.btnClose.Name = "btnClose";
 			this.btnClose.UseVisualStyleBackColor = true;
 			this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -230,6 +234,8 @@
 			// btnExit
 			// 
 			resources.ApplyResources(this.btnExit, "btnExit");
+			this.btnExit.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnExit.FlatAppearance.BorderSize = 0;
 			this.btnExit.Name = "btnExit";
 			this.btnExit.UseVisualStyleBackColor = true;
 			this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
@@ -246,7 +252,10 @@
 			// 
 			resources.ApplyResources(this.btnReciveClear, "btnReciveClear");
 			this.btnReciveClear.BackColor = System.Drawing.SystemColors.ControlLightLight;
+			this.btnReciveClear.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.btnReciveClear.FlatAppearance.BorderSize = 0;
+			this.btnReciveClear.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+			this.btnReciveClear.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
 			this.btnReciveClear.ForeColor = System.Drawing.Color.Turquoise;
 			this.btnReciveClear.Name = "btnReciveClear";
 			this.btnReciveClear.UseVisualStyleBackColor = false;
@@ -287,6 +296,7 @@
 			// 
 			resources.ApplyResources(this.btnReset, "btnReset");
 			this.btnReset.BackColor = System.Drawing.Color.LightGray;
+			this.btnReset.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.btnReset.FlatAppearance.BorderSize = 0;
 			this.btnReset.Name = "btnReset";
 			this.btnReset.UseVisualStyleBackColor = false;
@@ -296,6 +306,7 @@
 			// 
 			resources.ApplyResources(this.btnReHistoryWeather, "btnReHistoryWeather");
 			this.btnReHistoryWeather.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+			this.btnReHistoryWeather.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.btnReHistoryWeather.FlatAppearance.BorderSize = 0;
 			this.btnReHistoryWeather.Name = "btnReHistoryWeather";
 			this.btnReHistoryWeather.UseVisualStyleBackColor = false;
@@ -305,6 +316,7 @@
 			// 
 			resources.ApplyResources(this.btnPassWord, "btnPassWord");
 			this.btnPassWord.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+			this.btnPassWord.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.btnPassWord.FlatAppearance.BorderSize = 0;
 			this.btnPassWord.Name = "btnPassWord";
 			this.btnPassWord.UseVisualStyleBackColor = false;
@@ -314,24 +326,17 @@
 			// 
 			resources.ApplyResources(this.btnHistoryWeather, "btnHistoryWeather");
 			this.btnHistoryWeather.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+			this.btnHistoryWeather.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.btnHistoryWeather.FlatAppearance.BorderSize = 0;
 			this.btnHistoryWeather.Name = "btnHistoryWeather";
 			this.btnHistoryWeather.UseVisualStyleBackColor = false;
 			this.btnHistoryWeather.Click += new System.EventHandler(this.btnHistoryWeather_Click);
 			// 
-			// btnSysConfig
-			// 
-			resources.ApplyResources(this.btnSysConfig, "btnSysConfig");
-			this.btnSysConfig.BackColor = System.Drawing.Color.Turquoise;
-			this.btnSysConfig.FlatAppearance.BorderSize = 0;
-			this.btnSysConfig.Name = "btnSysConfig";
-			this.btnSysConfig.UseVisualStyleBackColor = false;
-			this.btnSysConfig.Click += new System.EventHandler(this.btnSysConfig_Click);
-			// 
 			// button1
 			// 
 			resources.ApplyResources(this.button1, "button1");
 			this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+			this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
 			this.button1.FlatAppearance.BorderSize = 0;
 			this.button1.Name = "button1";
@@ -372,6 +377,7 @@
 			// 
 			resources.ApplyResources(this.btnSetSystemConfig, "btnSetSystemConfig");
 			this.btnSetSystemConfig.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+			this.btnSetSystemConfig.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.btnSetSystemConfig.FlatAppearance.BorderColor = System.Drawing.Color.Aqua;
 			this.btnSetSystemConfig.Name = "btnSetSystemConfig";
 			this.btnSetSystemConfig.UseVisualStyleBackColor = false;
@@ -590,6 +596,7 @@
 			// 
 			resources.ApplyResources(this.btnSetPsw, "btnSetPsw");
 			this.btnSetPsw.BackColor = System.Drawing.Color.PaleGreen;
+			this.btnSetPsw.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.btnSetPsw.FlatAppearance.BorderSize = 0;
 			this.btnSetPsw.Name = "btnSetPsw";
 			this.btnSetPsw.UseVisualStyleBackColor = false;
@@ -662,9 +669,20 @@
 			// btnSend
 			// 
 			resources.ApplyResources(this.btnSend, "btnSend");
+			this.btnSend.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.btnSend.Name = "btnSend";
 			this.btnSend.UseVisualStyleBackColor = true;
 			this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
+			// 
+			// btnSysConfig
+			// 
+			resources.ApplyResources(this.btnSysConfig, "btnSysConfig");
+			this.btnSysConfig.BackColor = System.Drawing.Color.Turquoise;
+			this.btnSysConfig.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnSysConfig.FlatAppearance.BorderSize = 0;
+			this.btnSysConfig.Name = "btnSysConfig";
+			this.btnSysConfig.UseVisualStyleBackColor = false;
+			this.btnSysConfig.Click += new System.EventHandler(this.btnSysConfig_Click);
 			// 
 			// Form1
 			// 
@@ -731,7 +749,6 @@
 		private System.Windows.Forms.Button btnSend;
 		private System.Windows.Forms.Button btnPassWord;
 		private System.Windows.Forms.Button btnHistoryWeather;
-		private System.Windows.Forms.Button btnSysConfig;
 		private System.Windows.Forms.ComboBox cmbDay;
 		private System.Windows.Forms.ComboBox cmbMonth;
 		private System.Windows.Forms.ComboBox cmbYear;
@@ -768,6 +785,7 @@
 		private System.Windows.Forms.Button btnReset;
 		private System.Windows.Forms.Button btnReHistoryWeather;
 		private System.Windows.Forms.Button btnPswClear;
+		private System.Windows.Forms.Button btnSysConfig;
 	}
 }
 

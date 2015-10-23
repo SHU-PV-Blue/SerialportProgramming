@@ -39,6 +39,7 @@
             this.编辑EToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.工具TToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.计算器ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.记事本ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.帮助HToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.关于ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.串口助手ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -196,7 +197,8 @@
             // 工具TToolStripMenuItem
             // 
             this.工具TToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.计算器ToolStripMenuItem});
+            this.计算器ToolStripMenuItem,
+            this.记事本ToolStripMenuItem});
             this.工具TToolStripMenuItem.Name = "工具TToolStripMenuItem";
             this.工具TToolStripMenuItem.Size = new System.Drawing.Size(59, 21);
             this.工具TToolStripMenuItem.Text = "工具(&T)";
@@ -208,6 +210,14 @@
             this.计算器ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.计算器ToolStripMenuItem.Text = "计算器";
             this.计算器ToolStripMenuItem.Click += new System.EventHandler(this.计算器ToolStripMenuItem_Click);
+            // 
+            // 记事本ToolStripMenuItem
+            // 
+            this.记事本ToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("记事本ToolStripMenuItem.Image")));
+            this.记事本ToolStripMenuItem.Name = "记事本ToolStripMenuItem";
+            this.记事本ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.记事本ToolStripMenuItem.Text = "记事本";
+            this.记事本ToolStripMenuItem.Click += new System.EventHandler(this.记事本ToolStripMenuItem_Click);
             // 
             // 帮助HToolStripMenuItem
             // 
@@ -568,8 +578,7 @@
             this.rbSendHex.TabIndex = 2;
             this.rbSendHex.TabStop = true;
             this.rbSendHex.Text = "Hex";
-            this.rbSendHex.UseVisualStyleBackColor = true;
-            // 
+            this.rbSendHex.UseVisualStyleBackColor = true;            // 
             // rbSendAscii
             // 
             this.rbSendAscii.AutoSize = true;
@@ -1027,14 +1036,15 @@
             this.Controls.Add(this.gbPortSet);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menuStrip1);
+            this.Cursor = System.Windows.Forms.Cursors.Default;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(627, 529);
-            this.MinimumSize = new System.Drawing.Size(612, 529);
+            this.MinimumSize = new System.Drawing.Size(627, 529);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "串口助手";
+            this.Text = "8路串口助手";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
@@ -1152,6 +1162,7 @@
         private System.Windows.Forms.ToolStripMenuItem 退出ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 串口助手ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 计算器ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 记事本ToolStripMenuItem;
     }
 }
 
