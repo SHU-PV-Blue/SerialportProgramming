@@ -133,8 +133,9 @@ namespace IVCurvometerTestTool
 				return;
 			}
 			_thread = new Thread(new ThreadStart(Work));
-			commands = new List<Command>();
 			commands = Translate.Translation();
+			if (commands == null)
+				return;
 			btnStart.Enabled = false;
 			txtTimes.Enabled = false;
 			_needStop = false;
@@ -153,7 +154,15 @@ namespace IVCurvometerTestTool
 						case "open":
 							{
 								_serialPort.BaudRate = c.Files;
-								_serialPort.Open();
+								try
+								{
+									_serialPort.Open();
+								}
+								catch(Exception ex)
+								{
+									MessageBox.Show(ex.Message);
+									Application.Exit();
+								}
 								break;
 							}
 						case"close":
@@ -173,7 +182,6 @@ namespace IVCurvometerTestTool
 							}
 					}
 				}
-				Thread.Sleep(1000);
 			}
 			btnStart.Enabled = true;
 			txtTimes.Enabled = true;
