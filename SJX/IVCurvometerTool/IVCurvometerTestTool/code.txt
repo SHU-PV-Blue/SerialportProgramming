@@ -1,0 +1,8 @@
+open:9600
+send:01 02 04 EF
+sleep:1000
+send:010A
+send:01 0A 01 0A 01 0A
+send:01 0A 01 0A 01 0A 01 0A
+sleep:1000
+close:

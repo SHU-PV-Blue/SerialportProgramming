@@ -18,63 +18,48 @@ namespace IVCurvometerTestTool
 	{
 
 		SerialPort _serialPort;
-		byte _testerID;
-		Thread thTest;
-
+		Thread _thread;
+		bool _needStop;
+		bool _ifSet = false;
+		List<Command> commands;
 		public MainForm()
 		{
 			InitializeComponent();
 		}
 
-		void WritePort(byte[] data, string messege)
+		void WritePort(byte[] data)
 		{
 			if (_serialPort == null || !_serialPort.IsOpen)
 			{
-				MessageBox.Show("请先打开串口", "失败");
+				MessageBox.Show("请先配置打开串口", "失败");
 				return;
 			}
 			_serialPort.Write(data, 0, data.Length);
 			DateTime dt = DateTime.Now;
-			string showData = "";
-			foreach(var b in data)
-			{
-				string str = Convert.ToString(b, 16);
-				str = str.ToUpper();
-				if (str.Length == 1)
-					str = "0" + str;
-				showData += str + " ";
-			}
+			string showData = Transfer.BaToS(data);
+
 			this.Invoke((EventHandler)(delegate
 			{
-				lbSendData.Items.Add(showData);
+				lbSendData.Items.Add(dt.TimeOfDay + "###" + showData);
 				lbSendData.SelectedIndex = lbSendData.Items.Count - 1;
-				lbSendExplanation.Items.Add(dt.TimeOfDay + messege);
-				lbSendExplanation.SelectedIndex = lbSendData.Items.Count - 1;
 			}));
+			WriteData.SendLog(dt,showData);
 		}
 
-		void DataReceivedHandler(object sender, SerialDataReceivedEventArgs e)
+		private void DataReceivedHandler(object sender, SerialDataReceivedEventArgs e)
 		{
 			byte[] readbyte = new byte[_serialPort.BytesToRead];
 
 			_serialPort.Read(readbyte, 0, readbyte.Length);
+			DateTime dt = DateTime.Now;
+			string showData = Transfer.BaToS(readbyte);
 
-			string showData = "";
-			foreach (var b in readbyte)
-			{
-				string str = Convert.ToString(b, 16);
-				str = str.ToUpper();
-				if (str.Length == 1)
-					str = "0" + str;
-				showData += str + " ";
-			}
 			this.Invoke((EventHandler)(delegate
 			{
-				lbReceiveData.Items.Add(showData);
+				lbReceiveData.Items.Add(dt.TimeOfDay + "###" + showData);
 				lbReceiveData.SelectedIndex = lbReceiveData.Items.Count - 1;
-				lbReceiveExplanation.Items.Add(Explainer.Explain(readbyte));
-				lbReceiveExplanation.SelectedIndex = lbReceiveExplanation.Items.Count - 1;
 			}));
+			WriteData.ReciveLog(dt, showData);
 		}
 
 		private void MainForm_Load(object sender, EventArgs e)
@@ -86,26 +71,22 @@ namespace IVCurvometerTestTool
 				foreach (string str in com.Ports.SerialPortNames)
 					cbPortName.Items.Add(str);
 			}
-			_testerID = Convert.ToByte(txtTesterID.Text, 16);
+			_serialPort = new SerialPort();
+			_serialPort.DataReceived += DataReceivedHandler;
+		}
+
+		private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+		{
+			if (_serialPort != null && _serialPort.IsOpen)
+				_serialPort.Close();
+			if (_thread != null && _thread.IsAlive)
+				_thread.Abort();
 		}
 
 		private void btnSwitchPort_Click(object sender, EventArgs e)
 		{
-			if(btnSwitchPort.Text == "关闭串口")
-			{
-				if (_serialPort.IsOpen)
-					_serialPort.Close();
-				tmrSendHeartbeat.Stop();
-				btnSwitchPort.Text = "打开串口";
-				return;
-			}
-
-			if (string.IsNullOrEmpty(cbPortName.Text) || cbPortName.Text == "无可用")
-			{
-				MessageBox.Show("请选择可用串口");
-				return;
-			}
-			_serialPort = new SerialPort(cbPortName.Text, Convert.ToInt32(cbBaudRate.Text));
+			_ifSet = true;
+			_serialPort.PortName = cbPortName.Text;
 			switch (cbParity.Text)
 			{
 				case "None":
@@ -141,223 +122,72 @@ namespace IVCurvometerTestTool
 					_serialPort.StopBits = StopBits.OnePointFive;
 					break;
 			}
-			_serialPort.ReadTimeout = 1;
-			_serialPort.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
-			try
+			btnSwitchPort.Enabled = false;
+		}
+
+		private void btnStart_Click(object sender, EventArgs e)
+		{
+			if (!_ifSet)
 			{
-				_serialPort.Open();
-			}
-			catch(Exception ex)
-			{
-				MessageBox.Show(ex.Message,"打开串口失败");
+				MessageBox.Show("请先配置串口参数");
 				return;
 			}
-			btnSwitchPort.Text = "关闭串口";
+			_thread = new Thread(new ThreadStart(Work));
+			commands = new List<Command>();
+			commands = Translate.Translation();
+			btnStart.Enabled = false;
+			txtTimes.Enabled = false;
+			_needStop = false;
+			_thread.Start();
 		}
 
-		private void btnSwitchHeartbeat_Click(object sender, EventArgs e)
+		void Work()
 		{
-			if (btnSwitchHeartbeat.Text == "终止")
+			while (Convert.ToInt32(txtTimes.Text) > 0 && !_needStop)
 			{
-				tmrSendHeartbeat.Stop();
-				btnSwitchHeartbeat.Text = "开始";
-				return;
-			}
-			tmrSendHeartbeat.Interval = Convert.ToInt32(txtHeartbeat.Text);
-			tmrSendHeartbeat.Start();
-			btnSwitchHeartbeat.Text = "终止";
-		}
-
-		private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
-		{
-			if (thTest != null && thTest.IsAlive)
-				thTest.Abort();
-			if (_serialPort != null && _serialPort.IsOpen)
-				_serialPort.Close();
-
-		}
-
-		private void btnTesterID_Click(object sender, EventArgs e)
-		{
-			_testerID = Convert.ToByte(txtTesterID.Text, 16);
-		}
-
-		private void btnSystem_Click(object sender, EventArgs e)
-		{
-			if (_serialPort == null || !_serialPort.IsOpen)
-			{
-				MessageBox.Show("请先打开串口", "失败");
-				return;
-			}
-			byte commandCode = 0;
-			bool ifFind = false;
-			foreach(var p in CodeCommadPair.系统操作)
-			{
-				if (p.Value == cbSystem.Text)
+				txtTimes.Text = (Convert.ToInt32(txtTimes.Text) - 1).ToString();
+				foreach(Command c in commands)
 				{
-					commandCode = p.Key;
-					ifFind = true;
-					break;
+					switch(c.Open)
+					{
+						case "open":
+							{
+								_serialPort.BaudRate = c.Files;
+								_serialPort.Open();
+								break;
+							}
+						case"close":
+							{
+								_serialPort.Close();
+								break;
+							}
+						case "send":
+							{
+								WritePort(c.Array);
+								break;
+							}
+						case "sleep":
+							{
+								Thread.Sleep(c.Files);
+								break;
+							}
+					}
 				}
+				Thread.Sleep(1000);
 			}
-			if (!ifFind)
-			{
-				MessageBox.Show("请选择操作!", "错误");
-				return;
-			}
-			byte[] systemCommand = { 0xAA, _testerID, 0x01, commandCode, 0xCC, 0x33, 0xC3, 0x3C };
-			WritePort(systemCommand, "系统操作:" + cbSystem.Text);
+			btnStart.Enabled = true;
+			txtTimes.Enabled = true;
 		}
 
-		private void tmrSendHeartbeat_Tick(object sender, EventArgs e)
+		private void btnStop_Click(object sender, EventArgs e)
 		{
-			byte[] heartbeat = { 0xAA, _testerID, 0x00, 0xCC, 0x33, 0xC3, 0x3C };
-			_serialPort.Write(heartbeat, 0, heartbeat.Length);
+			_needStop = true;
 		}
 
-		private void btnPageTips_Click(object sender, EventArgs e)
+		private void cbBaudRate_MouseUp(object sender, MouseEventArgs e)
 		{
-			byte pageID = 0;
-			byte pageType = 0;
-			byte pageOperate = 0;
-			bool ifFind;
-
-			ifFind = false;
-			foreach (var p in CodeCommadPair.页面类型)
-			{
-				if (p.Value == cbPageType.Text)
-				{
-					pageType = p.Key;
-					ifFind = true;
-				}
-			}
-			if (!ifFind)
-			{
-				MessageBox.Show("请选择页面类型", "错误");
-				return;
-			}
-
-			ifFind = false;
-			foreach(var p in CodeCommadPair.页面编号)
-			{
-				if(p.Value == cbPageID.Text)
-				{
-					pageID = p.Key;
-					ifFind = true;
-				}
-			}
-			if(!ifFind)
-			{
-				MessageBox.Show("请选择页面编号", "错误");
-				return;
-			}
-
-
-			ifFind = false;
-			foreach (var p in CodeCommadPair.页面操作)
-			{
-				if (p.Value == cbPageOperate.Text)
-				{
-					pageOperate = p.Key;
-					ifFind = true;
-				}
-			}
-			if (!ifFind)
-			{
-				MessageBox.Show("请选择页面操作", "错误");
-				return;
-			}
-
-			byte[] buffer = { 0xAA, _testerID, 0x14, pageID, pageType, pageOperate, 0xCC, 0x33, 0xC3, 0x3C };
-			WritePort(buffer, "页面提示:" + cbPageType.Text + ":" + cbPageID.Text + ":" + cbPageOperate.Text);
+			MessageBox.Show("请使用Open [波特率] 命令");
 		}
 
-		private void btnGetData_Click(object sender, EventArgs e)
-		{
-			byte[] address = new byte[2];
-			bool ifFind = false;
-
-			foreach (var p in CodeCommadPair.数据地址)
-			{
-				if (p.Value == cbGetData.Text)
-				{
-					address = p.Key;
-					ifFind = true;
-				}
-			}
-			if (!ifFind)
-			{
-				MessageBox.Show("请选择数据类型", "错误");
-				return;
-			}
-			byte[] buffer = { 0xAA, _testerID, 0x11, address[0], address[1], 0xCC, 0x33, 0xC3, 0x3C };
-			WritePort(buffer, "数据查询:" + cbGetData.Text);
-		}
-
-		private void btnSetData_Click(object sender, EventArgs e)
-		{
-			byte[] address = new byte[2];
-			bool ifFind = false;
-
-			foreach (var p in CodeCommadPair.数据地址)
-			{
-				if (p.Value == cbSetData.Text)
-				{
-					address = p.Key;
-					ifFind = true;
-				}
-			}
-			if (!ifFind)
-			{
-				MessageBox.Show("请选择数据类型", "错误");
-				return;
-			}
-
-			byte[] data = new byte[4];
-
-			string input = txtSetData.Text.Replace(" ", "");
-			try
-			{
-				int index = 0;
-				for(int i = 0; i < 8; i += 2)
-				{
-					data[index++] = Convert.ToByte((input.Substring(i, 2)), 16);
-				}
-			}
-			catch(Exception ex)
-			{
-				MessageBox.Show("请输入正确格式的数据" + ex.Message);
-				return;
-			}
-
-			byte[] buffer = { 0xAA, _testerID, 0x10, address[0], address[1], data[0], data[1], data[2], data[3], 0xCC, 0x33, 0xC3, 0x3C };
-			WritePort(buffer, "数据设置:" + cbSetData.Text);
-		}
-
-		private void btnTest_Click(object sender, EventArgs e)
-		{
-			if(btnTest.Text == "终止")
-			{
-				if(thTest != null && thTest.IsAlive)
-				{
-					thTest.Abort();
-				}
-				btnTest.Text = "启动";
-				return;
-			}
-			thTest = new Thread(new ThreadStart(SendTest));
-			thTest.Start();
-			btnTest.Text = "终止";
-		}
-
-		void SendTest()
-		{
-			while(true)
-			{
-				byte[] systemCommand = { 0xAA, _testerID, 0x01, 0x05, 0xCC, 0x33, 0xC3, 0x3C };
-				WritePort(systemCommand, "重复测量命令");
-				Thread.Sleep(Convert.ToInt32(txtTestTime.Text));
-			}
-		}
 	}
 }
