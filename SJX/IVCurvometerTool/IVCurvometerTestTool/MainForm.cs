@@ -19,7 +19,6 @@ namespace IVCurvometerTestTool
 
 		SerialPort _serialPort;
 		Thread _thread;
-		bool _needStop;
 		bool _ifSet = false;
 		List<Command> commands;
 		public MainForm()
@@ -73,6 +72,7 @@ namespace IVCurvometerTestTool
 			}
 			_serialPort = new SerialPort();
 			_serialPort.DataReceived += DataReceivedHandler;
+			tmrDateTime.Start();
 		}
 
 		private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -123,6 +123,8 @@ namespace IVCurvometerTestTool
 					break;
 			}
 			btnSwitchPort.Enabled = false;
+			lblTip.Text = "每天六点整时，程序将自动按下启动按钮";
+			lblTip.ForeColor = Color.Green;
 		}
 
 		private void btnStart_Click(object sender, EventArgs e)
@@ -136,17 +138,17 @@ namespace IVCurvometerTestTool
 			commands = Translate.Translation();
 			if (commands == null)
 				return;
+			lblTimesToDo.Text = Convert.ToInt32(txtTimes.Text).ToString();
 			btnStart.Enabled = false;
 			txtTimes.Enabled = false;
-			_needStop = false;
 			_thread.Start();
 		}
 
 		void Work()
 		{
-			while (Convert.ToInt32(txtTimes.Text) > 0 && !_needStop)
+			while (Convert.ToInt32(lblTimesToDo.Text) > 0)
 			{
-				txtTimes.Text = (Convert.ToInt32(txtTimes.Text) - 1).ToString();
+				lblTimesToDo.Text = (Convert.ToInt32(lblTimesToDo.Text) - 1).ToString();
 				foreach(Command c in commands)
 				{
 					switch(c.Open)
@@ -189,12 +191,21 @@ namespace IVCurvometerTestTool
 
 		private void btnStop_Click(object sender, EventArgs e)
 		{
-			_needStop = true;
+			lblTimesToDo.Text = "0";
 		}
 
 		private void cbBaudRate_MouseUp(object sender, MouseEventArgs e)
 		{
 			MessageBox.Show("请使用Open [波特率] 命令");
+		}
+
+		private void tmrDateTime_Tick(object sender, EventArgs e)
+		{
+			lalDateTime.Text = DateTime.Now.ToString();
+			if (DateTime.Now.Hour == 6 && DateTime.Now.Minute == 0 && DateTime.Now.Second == 0 && btnStart.Enabled && _ifSet)
+			{
+				btnStart_Click(sender, e);
+			}
 		}
 
 	}
