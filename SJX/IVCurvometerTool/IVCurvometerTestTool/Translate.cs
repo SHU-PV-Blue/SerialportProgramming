@@ -12,10 +12,10 @@ namespace IVCurvometerTestTool
 {
     public class Translate
     {
-		static List<Command> list = new List<Command>();
 		public static List<Command> Translation()
 		{
 			
+			List<Command> list = new List<Command>();
 			string strReader = null;
 			string open = null;
 			int files = 0;
@@ -50,7 +50,7 @@ namespace IVCurvometerTestTool
 				}
 				list.Add(new Command(open, files, array));
 			}
-
+			sr.Close();
 			return list;
 		}
     }
